@@ -9,6 +9,7 @@ function App(): JSX.Element {
             </header>
             <p> William Hart </p>
             <p> Robby Sammataro </p>
+            <p> Christopher Bennett </p>
         </div>
     );
 }
