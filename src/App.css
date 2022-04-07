@@ -25,6 +25,14 @@
     color: white;
 }
 
+.Hello-message {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 4px dotted #00539f;
+}
+
 .App-link {
     color: #61dafb;
 }

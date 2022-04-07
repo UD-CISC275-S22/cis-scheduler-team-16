@@ -11,11 +11,13 @@ function App(): JSX.Element {
                     start your course plan by adding a semester and add/remove
                     classes at your own will!
                 </p>
+                <p>
+                    {" "}
+                    Created by Robby Sammataro, Christopher Bennett, and William
+                    Hart
+                </p>
             </header>
-            <p> William Hart </p>
-            <p> Robby Sammataro </p>
-            <p> Christopher Bennett. </p>
-            <p>
+            <p className="Hello-message">
                 Hello and welcome to our BlueHen CISC Planner. As we may know,
                 our advising department is not in its best state right now, so
                 we are just going to do things ourselves. Our goal is to make
