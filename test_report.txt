@@ -3,7 +3,7 @@
 > react-scripts test "--coverage"
 
 FAIL src/App.test.tsx
-  ✕ renders the course name somewhere (43 ms)
+  ✕ renders the course name somewhere (49 ms)
 
   ● renders the course name somewhere
 
@@ -34,6 +34,9 @@ FAIL src/App.test.tsx
           [36m</p>[39m
           [36m<p>[39m
             [0m Christopher Bennett. [0m
+          [36m</p>[39m
+          [36m<p>[39m
+            [0mHello and welcome to our BlueHen CISC Planner. As we may know, our advising department is not in its best state right now, so we are just going to do things ourselves. Our goal is to make your college course scheduling as easy and efficient as possible. Whether it be through simple dropdown menus or through displaying what courses you wll need to take in order to graduate, we will always be there for you with a 24 hour website dedicated to labelling your scholarly journey.[0m
           [36m</p>[39m
         [36m</div>[39m
       [36m</div>[39m
@@ -70,5 +73,5 @@ All files      |     100 |      100 |     100 |     100 |
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        1.677 s
+Time:        2.091 s
 Ran all test suites.
