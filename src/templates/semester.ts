@@ -10,5 +10,4 @@ export interface Semester {
     year: number;
     /** Array of courses that are being taken. */
     courses: Course[];
-
 }

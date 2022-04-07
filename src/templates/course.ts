@@ -12,5 +12,4 @@ export interface Course {
     credithours: number;
     /** Wheter this course counts as a techincal elective */
     isTechElective: boolean;
-
 }
