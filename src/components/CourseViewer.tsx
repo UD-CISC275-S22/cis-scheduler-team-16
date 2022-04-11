@@ -27,7 +27,28 @@ export function CourseViewer({ course }: { course: Course }): JSX.Element {
                         </p>
                         <h5>{course.name}</h5>
                     </Col>
-                    <Col></Col>
+                    <Col
+                        style={{
+                            textAlign: "right",
+                            marginRight: "20px",
+                            marginTop: "20px"
+                        }}
+                    >
+                        <Button>▲</Button>
+                        {"  "}
+                        <Button>▼</Button>
+                        {"  "}
+                        <Button>Edit</Button>
+                        {"  "}
+                        <Button
+                            style={{
+                                backgroundColor: "red",
+                                outlineColor: "slategray"
+                            }}
+                        >
+                            Delete
+                        </Button>
+                    </Col>
                 </Form.Group>
             </div>
         </div>
