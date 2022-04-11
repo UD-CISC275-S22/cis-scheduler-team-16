@@ -1,7 +1,17 @@
 import React from "react";
 import "./App.css";
+import { Course } from "./templates/course";
+import { CourseViewer } from "./components/CourseViewer";
 
 function App(): JSX.Element {
+    const myCourse: Course = {
+        courseId: "CISC275",
+        name: "Intro to Software Engineering",
+        prereqs: ["CISC275"],
+        credithours: 3,
+        isTechElective: false
+    };
+
     return (
         <div className="App">
             <header className="App-header">
@@ -27,6 +37,7 @@ function App(): JSX.Element {
                 graduate, we will always be there for you with a 24 hour website
                 dedicated to labelling your scholarly journey.
             </p>
+            <CourseViewer course={myCourse}></CourseViewer>
         </div>
     );
 }
