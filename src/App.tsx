@@ -17,12 +17,8 @@ function App(): JSX.Element {
             <header className="App-header">
                 UD CISC275 with React Hooks and TypeScript
             </header>
-            <p> William Hart </p>
-            <p> Robby Sammataro </p>
-            <p> Christopher Bennett. </p>
-            <p>{myCourse.courseId}</p>
 
-            <CourseViewer></CourseViewer>
+            <CourseViewer course={myCourse}></CourseViewer>
         </div>
     );
 }
