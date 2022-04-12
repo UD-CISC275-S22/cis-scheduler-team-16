@@ -11,8 +11,8 @@ export function CourseViewer({ course }: { course: Course }): JSX.Element {
     const [courseID, setCourseId] = useState<string>(course.courseId);
     const [courseName, setCourseName] = useState<string>(course.name);
     const [creditHours, setCreditHours] = useState<number>(course.credithours);
-    const [prerequisites, setPrerequisites] = useState<string[]>(
-        course.prereqs
+    const [prerequisites, setPrerequisites] = useState<string>(
+        course.prereqs.join(", ")
     );
     const [requirements, setRequirements] = useState<string[]>(
         course.satisfied_requirements
@@ -42,6 +42,10 @@ export function CourseViewer({ course }: { course: Course }): JSX.Element {
         if (!isNaN(value) && value >= 0) {
             setCreditHours(parseInt(event.target.value) || 0);
         }
+    }
+
+    function updatePrerequisites(event: ChangeEvent) {
+        setPrerequisites(event.target.value);
     }
 
     return (
@@ -76,15 +80,15 @@ export function CourseViewer({ course }: { course: Course }): JSX.Element {
                         </p>
 
                         <strong>Prerequisites: </strong>
-                        {prerequisites.length != 0
+                        {course.prereqs.length != 0
                             ? course.prereqs.join(", ")
                             : "None"}
                         <br></br>
                         {/** Displays the requirements this course counts towards if there are any */}
-                        {requirements.length !== 0 && (
+                        {course.satisfied_requirements.length !== 0 && (
                             <div>
                                 <strong>This Course Fulfills: </strong>
-                                {requirements.join(", ")}
+                                {course.satisfied_requirements.join(", ")}
                             </div>
                         )}
                     </Col>
@@ -142,7 +146,7 @@ export function CourseViewer({ course }: { course: Course }): JSX.Element {
                         </Col>
                         <Col>
                             <Form.Control
-                                value={courseName}
+                                value={course.name}
                                 onChange={updateCourseName}
                             ></Form.Control>
                         </Col>
@@ -155,7 +159,7 @@ export function CourseViewer({ course }: { course: Course }): JSX.Element {
                         </Col>
                         <Col>
                             <Form.Control
-                                value={courseID}
+                                value={course.courseId}
                                 onChange={updateCourseId}
                             ></Form.Control>
                         </Col>
@@ -169,13 +173,13 @@ export function CourseViewer({ course }: { course: Course }): JSX.Element {
                         <Col>
                             <Form.Control
                                 type="number"
-                                value={creditHours}
+                                value={course.credithours}
                                 onChange={updateCreditHours}
                             ></Form.Control>
                         </Col>
                     </Form.Group>
 
-                    {/** Displays Prerequisites Title Box / Edit Box Horizontally
+                    {/** Displays Prerequisites Title Box / Edit Box Horizontally */}
                     <Form.Group as={Row}>
                         <Col>
                             <p style={{ marginBottom: "0px" }}>Prerequisites</p>
@@ -187,7 +191,6 @@ export function CourseViewer({ course }: { course: Course }): JSX.Element {
                             ></Form.Control>
                         </Col>
                     </Form.Group>
-                     */}
 
                     {/** Displays radio buttons letting the user select what requirements are fulfilled
                      *
