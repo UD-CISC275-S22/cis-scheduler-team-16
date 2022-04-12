@@ -37,6 +37,13 @@ export function CourseViewer({ course }: { course: Course }): JSX.Element {
         }
     }
 
+    function updateCreditHours(event: ChangeEvent) {
+        const value = parseInt(event.target.value);
+        if (!isNaN(value) && value >= 0) {
+            setCreditHours(parseInt(event.target.value) || 0);
+        }
+    }
+
     return (
         <div
             style={{
@@ -161,8 +168,9 @@ export function CourseViewer({ course }: { course: Course }): JSX.Element {
                         </Col>
                         <Col>
                             <Form.Control
-                                value={courseID}
-                                onChange={updateCourseId}
+                                type="number"
+                                value={creditHours}
+                                onChange={updateCreditHours}
                             ></Form.Control>
                         </Col>
                     </Form.Group>
