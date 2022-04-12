@@ -3,6 +3,9 @@ import "./App.css";
 import { Course } from "./templates/course";
 import { CourseViewer } from "./components/CourseViewer";
 import myImage from "./media/banner.png";
+import { SemesterViewer } from "./components/SemesterViewer";
+import { Semester } from "./templates/semester";
+import semesterList from "./templates/Semesters.json";
 
 function App(): JSX.Element {
     {
@@ -60,6 +63,15 @@ function App(): JSX.Element {
             </p>
             <CourseViewer course={myCourse1}></CourseViewer>
             <CourseViewer course={myCourse}></CourseViewer>
+            <div>
+                {semesterList.map((semester: Semester) => (
+                    <div key={Date.now()}>
+                        {" "}
+                        {/*Our semester type doesnt have an ID, so I think this should suffice for now.. */}
+                        <SemesterViewer semester={semester}></SemesterViewer>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }
