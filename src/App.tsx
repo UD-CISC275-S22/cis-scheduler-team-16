@@ -2,17 +2,29 @@ import React from "react";
 import "./App.css";
 import { Course } from "./templates/course";
 import { CourseViewer } from "./components/CourseViewer";
+import myImage from "./media/banner.png";
 import { SemesterViewer } from "./components/SemesterViewer";
 import { Semester } from "./templates/semester";
 import semesterList from "./templates/Semesters.json";
 
 function App(): JSX.Element {
+    {
+        /** THESE ARE JUST SOME TEMPORARY THINGS WHILE I'M TESTING */
+    }
     const myCourse: Course = {
         courseId: "CISC275",
         name: "Intro to Software Engineering",
-        prereqs: ["CISC275"],
+        prereqs: ["CISC275", "CISC181"],
         credithours: 3,
-        isTechElective: false
+        satisfied_requirements: []
+    };
+
+    const myCourse1: Course = {
+        courseId: "CISC181",
+        name: "Introduction to Computer Science II",
+        prereqs: ["CISC108"],
+        credithours: 3,
+        satisfied_requirements: []
     };
 
     return (
@@ -30,7 +42,16 @@ function App(): JSX.Element {
                     Hart
                 </p>
             </header>
-            <p className="Hello-message">
+            <img src={myImage} width="100%" />
+            <p
+                className="Hello-message"
+                style={{
+                    marginLeft: "20px",
+                    marginRight: "20px",
+                    marginTop: "20px",
+                    borderRadius: "5px"
+                }}
+            >
                 Hello and welcome to our BlueHen CISC Planner. As we may know,
                 our advising department is not in its best state right now, so
                 we are just going to do things ourselves. Our goal is to make
@@ -40,6 +61,8 @@ function App(): JSX.Element {
                 graduate, we will always be there for you with a 24 hour website
                 dedicated to labelling your scholarly journey.
             </p>
+            <CourseViewer course={myCourse1}></CourseViewer>
+            <CourseViewer course={myCourse}></CourseViewer>
             <div>
                 {semesterList.map((semester: Semester) => (
                     <div key={Date.now()}>
