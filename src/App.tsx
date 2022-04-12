@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import { Course } from "./templates/course";
 import { CourseViewer } from "./components/CourseViewer";
-import myImage from "./media/banner.png";
+import headerImage from "./media/banner.png";
 import { SemesterViewer } from "./components/SemesterViewer";
 import { Semester } from "./templates/semester";
 import semesterList from "./templates/Semesters.json";
@@ -29,20 +29,7 @@ function App(): JSX.Element {
 
     return (
         <div className="App">
-            <header className="App-header">
-                <h1> Blue Hen CISC Course Planner </h1>
-                <p>
-                    {" "}
-                    start your course plan by adding a semester and add/remove
-                    classes at your own will!
-                </p>
-                <p>
-                    {" "}
-                    Created by Robby Sammataro, Christopher Bennett, and William
-                    Hart
-                </p>
-            </header>
-            <img src={myImage} width="100%" />
+            <img src={headerImage} width="100%" />
             <p
                 className="Hello-message"
                 style={{
