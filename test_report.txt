@@ -2,12 +2,65 @@
 > react-typescript-starter@0.1.0 test
 > react-scripts test "--coverage"
 
+  console.error
+    Warning: Encountered two children with the same key, `1649790293109`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+        at div
+        at div
+        at App
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:67:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:43:5)
+      at warnOnInvalidKey (node_modules/react-dom/cjs/react-dom.development.js:13620:11)
+      at reconcileChildrenArray (node_modules/react-dom/cjs/react-dom.development.js:13651:21)
+      at reconcileChildFibers (node_modules/react-dom/cjs/react-dom.development.js:14125:14)
+      at reconcileChildren (node_modules/react-dom/cjs/react-dom.development.js:16990:28)
+      at updateHostComponent (node_modules/react-dom/cjs/react-dom.development.js:17632:3)
+
 FAIL src/App.test.tsx
-  ✕ renders the course name somewhere (43 ms)
+  ✕ renders the course name somewhere (139 ms)
 
   ● renders the course name somewhere
 
-    TestingLibraryElementError: Unable to find an element with the text: /CISC275/i. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+    TestingLibraryElementError: Found multiple elements with the text: /CISC275/i
+
+    Here are the matching elements:
+
+    Ignored nodes: comments, <script />, <style />
+    [36m<div[39m
+      [33mclass[39m=[32m"col"[39m
+      [33mstyle[39m=[32m"margin-left: 20px;"[39m
+    [36m>[39m
+      [36m<h4[39m
+        [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
+      [36m>[39m
+        [36m<strong>[39m
+          [0mCISC275[0m
+        [36m</strong>[39m
+      [36m</h4>[39m
+      [36m<h5[39m
+        [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
+      [36m>[39m
+        [0mIntro to Software Engineering[0m
+      [36m</h5>[39m
+      [36m<p[39m
+        [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
+      [36m>[39m
+        [0m3[0m
+        [0m Credits[0m
+      [36m</p>[39m
+      [36m<strong>[39m
+        [0mPrerequisites: [0m
+      [36m</strong>[39m
+      [0mCISC275, CISC181[0m
+      [36m<br />[39m
+    [36m</div>[39m
+
+    Ignored nodes: comments, <script />, <style />
+    [36m<strong>[39m
+      [0mCISC275[0m
+    [36m</strong>[39m
+
+    (If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
 
     Ignored nodes: comments, <script />, <style />
     [36m<body>[39m
@@ -15,26 +68,567 @@ FAIL src/App.test.tsx
         [36m<div[39m
           [33mclass[39m=[32m"App"[39m
         [36m>[39m
-          [36m<header[39m
-            [33mclass[39m=[32m"App-header"[39m
-          [36m>[39m
-            [36m<h1>[39m
-              [0m Blue Hen CISC Course Planner [0m
-            [36m</h1>[39m
-            [36m<p>[39m
-              [0m [0m
-              [0mstart your course plan by adding a semester and add/remove classes at your own will![0m
-            [36m</p>[39m
-            [36m<p>[39m
-              [0m [0m
-              [0mCreated by Robby Sammataro, Christopher Bennett, and William Hart[0m
-            [36m</p>[39m
-          [36m</header>[39m
+          [36m<img[39m
+            [33msrc[39m=[32m"banner.png"[39m
+            [33mwidth[39m=[32m"100%"[39m
+          [36m/>[39m
           [36m<p[39m
             [33mclass[39m=[32m"Hello-message"[39m
+            [33mstyle[39m=[32m"margin-left: 20px; margin-right: 20px; margin-top: 20px; border-radius: 5px;"[39m
           [36m>[39m
             [0mHello and welcome to our BlueHen CISC Planner. As we may know, our advising department is not in its best state right now, so we are just going to do things ourselves. Our goal is to make your college course scheduling as easy and efficient as possible. Whether it be through simple dropdown menus or through displaying what courses you wll need to take in order to graduate, we will always be there for you with a 24 hour website dedicated to labelling your scholarly journey.[0m
           [36m</p>[39m
+          [36m<div[39m
+            [33mstyle[39m=[32m"margin: 10px 20px 10px 20px; border-color: darkslategray; background-color: rgb(237, 237, 237); border-radius: 5px; border-width: 1px; border-style: solid;"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mstyle[39m=[32m"text-align: left;"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"row"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"col"[39m
+                  [33mstyle[39m=[32m"margin-left: 20px;"[39m
+                [36m>[39m
+                  [36m<h4[39m
+                    [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
+                  [36m>[39m
+                    [36m<strong>[39m
+                      [0mCISC181[0m
+                    [36m</strong>[39m
+                  [36m</h4>[39m
+                  [36m<h5[39m
+                    [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
+                  [36m>[39m
+                    [0mIntroduction to Computer Science II[0m
+                  [36m</h5>[39m
+                  [36m<p[39m
+                    [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
+                  [36m>[39m
+                    [0m3[0m
+                    [0m Credits[0m
+                  [36m</p>[39m
+                  [36m<strong>[39m
+                    [0mPrerequisites: [0m
+                  [36m</strong>[39m
+                  [0mCISC108[0m
+                  [36m<br />[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"col"[39m
+                  [33mstyle[39m=[32m"text-align: right; margin-right: 20px; margin-top: 20px;"[39m
+                [36m>[39m
+                  [36m<button[39m
+                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mtype[39m=[32m"button"[39m
+                  [36m>[39m
+                    [0m▲[0m
+                  [36m</button>[39m
+                  [0m  [0m
+                  [36m<button[39m
+                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mtype[39m=[32m"button"[39m
+                  [36m>[39m
+                    [0m▼[0m
+                  [36m</button>[39m
+                  [0m  [0m
+                  [36m<button[39m
+                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mtype[39m=[32m"button"[39m
+                  [36m>[39m
+                    [0mEdit[0m
+                  [36m</button>[39m
+                  [0m  [0m
+                  [36m<button[39m
+                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mstyle[39m=[32m"background-color: red; outline-color: slategray;"[39m
+                    [33mtype[39m=[32m"button"[39m
+                  [36m>[39m
+                    [0mDelete[0m
+                  [36m</button>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mstyle[39m=[32m"margin: 10px 20px 10px 20px; border-color: darkslategray; background-color: rgb(237, 237, 237); border-radius: 5px; border-width: 1px; border-style: solid;"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mstyle[39m=[32m"text-align: left;"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"row"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"col"[39m
+                  [33mstyle[39m=[32m"margin-left: 20px;"[39m
+                [36m>[39m
+                  [36m<h4[39m
+                    [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
+                  [36m>[39m
+                    [36m<strong>[39m
+                      [0mCISC275[0m
+                    [36m</strong>[39m
+                  [36m</h4>[39m
+                  [36m<h5[39m
+                    [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
+                  [36m>[39m
+                    [0mIntro to Software Engineering[0m
+                  [36m</h5>[39m
+                  [36m<p[39m
+                    [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
+                  [36m>[39m
+                    [0m3[0m
+                    [0m Credits[0m
+                  [36m</p>[39m
+                  [36m<strong>[39m
+                    [0mPrerequisites: [0m
+                  [36m</strong>[39m
+                  [0mCISC275, CISC181[0m
+                  [36m<br />[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"col"[39m
+                  [33mstyle[39m=[32m"text-align: right; margin-right: 20px; margin-top: 20px;"[39m
+                [36m>[39m
+                  [36m<button[39m
+                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mtype[39m=[32m"button"[39m
+                  [36m>[39m
+                    [0m▲[0m
+                  [36m</button>[39m
+                  [0m  [0m
+                  [36m<button[39m
+                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mtype[39m=[32m"button"[39m
+                  [36m>[39m
+                    [0m▼[0m
+                  [36m</button>[39m
+                  [0m  [0m
+                  [36m<button[39m
+                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mtype[39m=[32m"button"[39m
+                  [36m>[39m
+                    [0mEdit[0m
+                  [36m</button>[39m
+                  [0m  [0m
+                  [36m<button[39m
+                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mstyle[39m=[32m"background-color: red; outline-color: slategray;"[39m
+                    [33mtype[39m=[32m"button"[39m
+                  [36m>[39m
+                    [0mDelete[0m
+                  [36m</button>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<div>[39m
+            [36m<div>[39m
+              [0m [0m
+              [36m<div>[39m
+                [0m [0m
+                [36m<div>[39m
+                  [0mfake-semester-1[0m
+                [36m</div>[39m
+                [36m<div>[39m
+                  [0m2022[0m
+                [36m</div>[39m
+                [36m<div>[39m
+                  [36m<div>[39m
+                    [36m<div[39m
+                      [33mstyle[39m=[32m"margin: 10px 20px 10px 20px; border-color: darkslategray; background-color: rgb(237, 237, 237); border-radius: 5px; border-width: 1px; border-style: solid;"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mstyle[39m=[32m"text-align: left;"[39m
+                      [36m>[39m
+                        [36m<div[39m
+                          [33mclass[39m=[32m"row"[39m
+                        [36m>[39m
+                          [36m<div[39m
+                            [33mclass[39m=[32m"col"[39m
+                            [33mstyle[39m=[32m"margin-left: 20px;"[39m
+                          [36m>[39m
+                            [36m<h4[39m
+                              [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
+                            [36m>[39m
+                              [36m<strong>[39m
+                                [0m0[0m
+                              [36m</strong>[39m
+                            [36m</h4>[39m
+                            [36m<h5[39m
+                              [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
+                            [36m>[39m
+                              [0mCourse1[0m
+                            [36m</h5>[39m
+                            [36m<p[39m
+                              [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
+                            [36m>[39m
+                              [0m50[0m
+                              [0m Credits[0m
+                            [36m</p>[39m
+                            [36m<strong>[39m
+                              [0mPrerequisites: [0m
+                            [36m</strong>[39m
+                            [0mNone[0m
+                            [36m<br />[39m
+                          [36m</div>[39m
+                          [36m<div[39m
+                            [33mclass[39m=[32m"col"[39m
+                            [33mstyle[39m=[32m"text-align: right; margin-right: 20px; margin-top: 20px;"[39m
+                          [36m>[39m
+                            [36m<button[39m
+                              [33mclass[39m=[32m"btn btn-primary"[39m
+                              [33mtype[39m=[32m"button"[39m
+                            [36m>[39m
+                              [0m▲[0m
+                            [36m</button>[39m
+                            [0m  [0m
+                            [36m<button[39m
+                              [33mclass[39m=[32m"btn btn-primary"[39m
+                              [33mtype[39m=[32m"button"[39m
+                            [36m>[39m
+                              [0m▼[0m
+                            [36m</button>[39m
+                            [0m  [0m
+                            [36m<button[39m
+                              [33mclass[39m=[32m"btn btn-primary"[39m
+                              [33mtype[39m=[32m"button"[39m
+                            [36m>[39m
+                              [0mEdit[0m
+                            [36m</button>[39m
+                            [0m  [0m
+                            [36m<button[39m
+                              [33mclass[39m=[32m"btn btn-primary"[39m
+                              [33mstyle[39m=[32m"background-color: red; outline-color: slategray;"[39m
+                              [33mtype[39m=[32m"button"[39m
+                            [36m>[39m
+                              [0mDelete[0m
+                            [36m</button>[39m
+                          [36m</div>[39m
+                        [36m</div>[39m
+                      [36m</div>[39m
+                    [36m</div>[39m
+                  [36m</div>[39m
+                  [36m<div>[39m
+                    [36m<div[39m
+                      [33mstyle[39m=[32m"margin: 10px 20px 10px 20px; border-color: darkslategray; background-color: rgb(237, 237, 237); border-radius: 5px; border-width: 1px; border-style: solid;"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mstyle[39m=[32m"text-align: left;"[39m
+                      [36m>[39m
+                        [36m<div[39m
+                          [33mclass[39m=[32m"row"[39m
+                        [36m>[39m
+                          [36m<div[39m
+                            [33mclass[39m=[32m"col"[39m
+                            [33mstyle[39m=[32m"margin-left: 20px;"[39m
+                          [36m>[39m
+                            [36m<h4[39m
+                              [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
+                            [36m>[39m
+                              [36m<strong>[39m
+                                [0m1[0m
+                              [36m</strong>[39m
+                            [36m</h4>[39m
+                            [36m<h5[39m
+                              [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
+                            [36m>[39m
+                              [0mCourse2[0m
+                            [36m</h5>[39m
+                            [36m<p[39m
+                              [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
+                            [36m>[39m
+                              [0m50[0m
+                              [0m Credits[0m
+                            [36m</p>[39m
+                            [36m<strong>[39m
+                              [0mPrerequisites: [0m
+                            [36m</strong>[39m
+                            [0mNone[0m
+                            [36m<br />[39m
+                          [36m</div>[39m
+                          [36m<div[39m
+                            [33mclass[39m=[32m"col"[39m
+                            [33mstyle[39m=[32m"text-align: right; margin-right: 20px; margin-top: 20px;"[39m
+                          [36m>[39m
+                            [36m<button[39m
+                              [33mclass[39m=[32m"btn btn-primary"[39m
+                              [33mtype[39m=[32m"button"[39m
+                            [36m>[39m
+                              [0m▲[0m
+                            [36m</button>[39m
+                            [0m  [0m
+                            [36m<button[39m
+                              [33mclass[39m=[32m"btn btn-primary"[39m
+                              [33mtype[39m=[32m"button"[39m
+                            [36m>[39m
+                              [0m▼[0m
+                            [36m</button>[39m
+                            [0m  [0m
+                            [36m<button[39m
+                              [33mclass[39m=[32m"btn btn-primary"[39m
+                              [33mtype[39m=[32m"button"[39m
+                            [36m>[39m
+                              [0mEdit[0m
+                            [36m</button>[39m
+                            [0m  [0m
+                            [36m<button[39m
+                              [33mclass[39m=[32m"btn btn-primary"[39m
+                              [33mstyle[39m=[32m"background-color: red; outline-color: slategray;"[39m
+                              [33mtype[39m=[32m"button"[39m
+                            [36m>[39m
+                              [0mDelete[0m
+                            [36m</button>[39m
+                          [36m</div>[39m
+                        [36m</div>[39m
+                      [36m</div>[39m
+                    [36m</div>[39m
+                  [36m</div>[39m
+                  [36m<div>[39m
+                    [36m<div[39m
+                      [33mstyle[39m=[32m"margin: 10px 20px 10px 20px; border-color: darkslategray; background-color: rgb(237, 237, 237); border-radius: 5px; border-width: 1px; border-style: solid;"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mstyle[39m=[32m"text-align: left;"[39m
+                      [36m>[39m
+                        [36m<div[39m
+                          [33mclass[39m=[32m"row"[39m
+                        [36m>[39m
+                          [36m<div[39m
+                            [33mclass[39m=[32m"col"[39m
+                            [33mstyle[39m=[32m"margin-left: 20px;"[39m
+                          [36m>[39m
+                            [36m<h4[39m
+                              [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
+                            [36m>[39m
+                              [36m<strong>[39m
+                                [0m2[0m
+                              [36m</strong>[39m
+                            [36m</h4>[39m
+                            [36m<h5[39m
+                              [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
+                            [36m>[39m
+                              [0mCourse3[0m
+                            [36m</h5>[39m
+                            [36m<p[39m
+                              [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
+                            [36m>[39m
+                              [0m80[0m
+                              [0m Credits[0m
+                            [36m</p>[39m
+                            [36m<strong>[39m
+                              [0mPrerequisites: [0m
+                            [36m</strong>[39m
+                            [0mNone[0m
+                            [36m<br />[39m
+                          [36m</div>[39m
+                          [36m<div[39m
+                            [33mclass[39m=[32m"col"[39m
+                            [33mstyle[39m=[32m"text-align: right; margin-right: 20px; margin-top: 20px;"[39m
+                          [36m>[39m
+                            [36m<button[39m
+                              [33mclass[39m=[32m"btn btn-primary"[39m
+                              [33mtype[39m=[32m"button"[39m
+                            [36m>[39m
+                              [0m▲[0m
+                            [36m</button>[39m
+                            [0m  [0m
+                            [36m<button[39m
+                              [33mclass[39m=[32m"btn btn-primary"[39m
+                              [33mtype[39m=[32m"button"[39m
+                            [36m>[39m
+                              [0m▼[0m
+                            [36m</button>[39m
+                            [0m  [0m
+                            [36m<button[39m
+                              [33mclass[39m=[32m"btn btn-primary"[39m
+                              [33mtype[39m=[32m"button"[39m
+                            [36m>[39m
+                              [0mEdit[0m
+                            [36m</button>[39m
+                            [0m  [0m
+                            [36m<button[39m
+                              [33mclass[39m=[32m"btn btn-primary"[39m
+                              [33mstyle[39m=[32m"background-color: red; outline-color: slategray;"[39m
+                              [33mtype[39m=[32m"button"[39m
+                            [36m>[39m
+                              [0mDelete[0m
+                            [36m</button>[39m
+                          [36m</div>[39m
+                        [36m</div>[39m
+                      [36m</div>[39m
+                    [36m</div>[39m
+                  [36m</div>[39m
+                  [36m<div>[39m
+                    [36m<div[39m
+                      [33mstyle[39m=[32m"margin: 10px 20px 10px 20px; border-color: darkslategray; background-color: rgb(237, 237, 237); border-radius: 5px; border-width: 1px; border-style: solid;"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mstyle[39m=[32m"text-align: left;"[39m
+                      [36m>[39m
+                        [36m<div[39m
+                          [33mclass[39m=[32m"row"[39m
+                        [36m>[39m
+                          [36m<div[39m
+                            [33mclass[39m=[32m"col"[39m
+                            [33mstyle[39m=[32m"margin-left: 20px;"[39m
+                          [36m>[39m
+                            [36m<h4[39m
+                              [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
+                            [36m>[39m
+                              [36m<strong>[39m
+                                [0m3[0m
+                              [36m</strong>[39m
+                            [36m</h4>[39m
+                            [36m<h5[39m
+                              [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
+                            [36m>[39m
+                              [0mCourse4[0m
+                            [36m</h5>[39m
+                            [36m<p[39m
+                              [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
+                            [36m>[39m
+                              [0m20[0m
+                              [0m Credits[0m
+                            [36m</p>[39m
+                            [36m<strong>[39m
+                              [0mPrerequisites: [0m
+                            [36m</strong>[39m
+                            [0mNone[0m
+                            [36m<br />[39m
+                          [36m</div>[39m
+                          [36m<div[39m
+                            [33mclass[39m=[32m"col"[39m
+                            [33mstyle[39m=[32m"text-align: right; margin-right: 20px; margin-top: 20px;"[39m
+                          [36m>[39m
+                            [36m<button[39m
+                              [33mclass[39m=[32m"btn btn-primary"[39m
+                              [33mtype[39m=[32m"button"[39m
+                            [36m>[39m
+                              [0m▲[0m
+                            [36m</button>[39m
+                            [0m  [0m
+                            [36m<button[39m
+                              [33mclass[39m=[32m"btn btn-primary"[39m
+                              [33mtype[39m=[32m"button"[39m
+                            [36m>[39m
+                              [0m▼[0m
+                            [36m</button>[39m
+                            [0m  [0m
+                            [36m<button[39m
+                              [33mclass[39m=[32m"btn btn-primary"[39m
+                              [33mtype[39m=[32m"button"[39m
+                            [36m>[39m
+                              [0mEdit[0m
+                            [36m</button>[39m
+                            [0m  [0m
+                            [36m<button[39m
+                              [33mclass[39m=[32m"btn btn-primary"[39m
+                              [33mstyle[39m=[32m"background-color: red; outline-color: slategray;"[39m
+                              [33mtype[39m=[32m"button"[39m
+                            [36m>[39m
+                              [0mDelete[0m
+                            [36m</button>[39m
+                          [36m</div>[39m
+                        [36m</div>[39m
+                      [36m</div>[39m
+                    [36m</div>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+            [36m<div>[39m
+              [0m [0m
+              [36m<div>[39m
+                [0m [0m
+                [36m<div>[39m
+                  [0mfake-semester-2[0m
+                [36m</div>[39m
+                [36m<div>[39m
+                  [0m2022[0m
+                [36m</div>[39m
+                [36m<div>[39m
+                  [36m<div>[39m
+                    [36m<div[39m
+                      [33mstyle[39m=[32m"margin: 10px 20px 10px 20px; border-color: darkslategray; background-color: rgb(237, 237, 237); border-radius: 5px; border-width: 1px; border-style: solid;"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mstyle[39m=[32m"text-align: left;"[39m
+                      [36m>[39m
+                        [36m<div[39m
+                          [33mclass[39m=[32m"row"[39m
+                        [36m>[39m
+                          [36m<div[39m
+                            [33mclass[39m=[32m"col"[39m
+                            [33mstyle[39m=[32m"margin-left: 20px;"[39m
+                          [36m>[39m
+                            [36m<h4[39m
+                              [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
+                            [36m>[39m
+                              [36m<strong>[39m
+                                [0m0[0m
+                              [36m</strong>[39m
+                            [36m</h4>[39m
+                            [36m<h5[39m
+                              [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
+                            [36m>[39m
+                              [0mCourse1[0m
+                            [36m</h5>[39m
+                            [36m<p[39m
+                              [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
+                            [36m>[39m
+                              [0m1000[0m
+                              [0m Credits[0m
+                            [36m</p>[39m
+                            [36m<strong>[39m
+                              [0mPrerequisites: [0m
+                            [36m</strong>[39m
+                            [0mNone[0m
+                            [36m<br />[39m
+                          [36m</div>[39m
+                          [36m<div[39m
+                            [33mclass[39m=[32m"col"[39m
+                            [33mstyle[39m=[32m"text-align: right; margin-right: 20px; margin-top: 20px;"[39m
+                          [36m>[39m
+                            [36m<button[39m
+                              [33mclass[39m=[32m"btn btn-primary"[39m
+                              [33mtype[39m=[32m"button"[39m
+                            [36m>[39m
+                              [0m▲[0m
+                            [36m</button>[39m
+                            [0m  [0m
+                            [36m<button[39m
+                              [33mclass[39m=[32m"btn btn-primary"[39m
+                              [33mtype[39m=[32m"button"[39m
+                            [36m>[39m
+                              [0m▼[0m
+                            [36m</button>[39m
+                            [0m  [0m
+                            [36m<button[39m
+                              [33mclass[39m=[32m"btn btn-primary"[39m
+                              [33mtype[39m=[32m"button"[39m
+                            [36m>[39m
+                              [0mEdit[0m
+                            [36m</button>[39m
+                            [0m  [0m
+                            [36m<button[39m
+                              [33mclass[39m=[32m"btn btn-primary"[39m
+                              [33mstyle[39m=[32m"background-color: red; outline-color: slategray;"[39m
+                              [33mtype[39m=[32m"button"[39m
+                            [36m>[39m
+                              [0mDelete[0m
+                            [36m</button>[39m
+                          [36m</div>[39m
+                        [36m</div>[39m
+                      [36m</div>[39m
+                    [36m</div>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+          [36m</div>[39m
         [36m</div>[39m
       [36m</div>[39m
     [36m</body>[39m
@@ -48,8 +642,9 @@ FAIL src/App.test.tsx
       10 |
 
       at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:38:19)
-      at node_modules/@testing-library/dom/dist/query-helpers.js:90:38
-      at node_modules/@testing-library/dom/dist/query-helpers.js:62:17
+      at getElementError (node_modules/@testing-library/dom/dist/query-helpers.js:25:35)
+      at getMultipleElementsFoundError (node_modules/@testing-library/dom/dist/query-helpers.js:29:10)
+      at node_modules/@testing-library/dom/dist/query-helpers.js:66:13
       at getByText (node_modules/@testing-library/dom/dist/query-helpers.js:111:19)
       at Object.<anonymous> (src/App.test.tsx:7:32)
       at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
@@ -57,18 +652,21 @@ FAIL src/App.test.tsx
       at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
       at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
 
----------------|---------|----------|---------|---------|-------------------
-File           | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
----------------|---------|----------|---------|---------|-------------------
-All files      |     100 |      100 |     100 |     100 |                   
- src           |     100 |      100 |     100 |     100 |                   
-  App.tsx      |     100 |      100 |     100 |     100 |                   
- src/templates |       0 |        0 |       0 |       0 |                   
-  course.ts    |       0 |        0 |       0 |       0 |                   
-  semester.ts  |       0 |        0 |       0 |       0 |                   
----------------|---------|----------|---------|---------|-------------------
+---------------------|---------|----------|---------|---------|-------------------
+File                 | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+---------------------|---------|----------|---------|---------|-------------------
+All files            |      52 |    31.25 |   41.66 |      52 |                   
+ src                 |     100 |      100 |     100 |     100 |                   
+  App.tsx            |     100 |      100 |     100 |     100 |                   
+ src/components      |   42.85 |    31.25 |      30 |   42.85 |                   
+  CourseViewer.tsx   |   36.84 |    31.25 |    12.5 |   36.84 | 22-48,106         
+  SemesterViewer.tsx |     100 |      100 |     100 |     100 |                   
+ src/templates       |       0 |        0 |       0 |       0 |                   
+  course.ts          |       0 |        0 |       0 |       0 |                   
+  semester.ts        |       0 |        0 |       0 |       0 |                   
+---------------------|---------|----------|---------|---------|-------------------
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        1.824 s
+Time:        2.075 s
 Ran all test suites.
