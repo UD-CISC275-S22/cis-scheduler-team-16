@@ -10,6 +10,6 @@ export interface Course {
     prereqs: string[];
     /** How many credit hours the course is worth. */
     credithours: number;
-    /** Wheter this course counts as a techincal elective */
-    isTechElective: boolean;
+    /** What kinds of school requirements this will fulfill */
+    satisfied_requirements: string[];
 }

@@ -2,10 +2,39 @@ import React, { useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { Course } from "../templates/course";
 
+type ChangeEvent = React.ChangeEvent<
+    HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
+>;
+
 export function CourseViewer({ course }: { course: Course }): JSX.Element {
     const [editMode, setEditMode] = useState<boolean>(false);
-    {
-        /** Add state here to allow users to edit data */
+    const [courseID, setCourseId] = useState<string>(course.courseId);
+    const [courseName, setCourseName] = useState<string>(course.name);
+    const [creditHours, setCreditHours] = useState<number>(course.credithours);
+    const [prerequisites, setPrerequisites] = useState<string[]>(
+        course.prereqs
+    );
+    const [requirements, setRequirements] = useState<string[]>(
+        course.satisfied_requirements
+    );
+
+    function updateCourseId(event: ChangeEvent) {
+        setCourseId(event.target.value);
+    }
+
+    function updateCourseName(event: ChangeEvent) {
+        setCourseName(event.target.value);
+    }
+
+    function updateRequirements(event: ChangeEvent) {
+        const requirement = event.target.value;
+        if (requirements.includes(requirement)) {
+            setRequirements(
+                requirements.filter((input) => input !== requirement)
+            );
+        } else {
+            setRequirements([...requirements, requirement]);
+        }
     }
 
     return (
@@ -31,22 +60,26 @@ export function CourseViewer({ course }: { course: Course }): JSX.Element {
             <div style={{ textAlign: "left" }}>
                 <Form.Group as={Row}>
                     <Col style={{ marginLeft: "20px" }}>
+                        <h4 style={{ marginBottom: "0px" }}>
+                            <strong>{course.courseId}</strong>
+                        </h4>
+                        <h5 style={{ marginBottom: "0px" }}>{course.name}</h5>
                         <p style={{ marginBottom: "0px" }}>
-                            <h4 style={{ marginBottom: "0px" }}>
-                                <strong>{course.courseId}</strong>
-                            </h4>
-                            <h5 style={{ marginBottom: "0px" }}>
-                                {course.name}
-                            </h5>
                             {course.credithours} Credits
                         </p>
 
-                        <Col>
-                            <strong>Prerequisites: </strong>
-                            {course.prereqs.length != 0
-                                ? course.prereqs.join(", ")
-                                : "None"}
-                        </Col>
+                        <strong>Prerequisites: </strong>
+                        {prerequisites.length != 0
+                            ? course.prereqs.join(", ")
+                            : "None"}
+                        <br></br>
+                        {/** Displays the requirements this course counts towards if there are any */}
+                        {requirements.length !== 0 && (
+                            <div>
+                                <strong>This Course Fulfills: </strong>
+                                {requirements.join(", ")}
+                            </div>
+                        )}
                     </Col>
                     <Col
                         style={{
@@ -60,7 +93,7 @@ export function CourseViewer({ course }: { course: Course }): JSX.Element {
                         <Button>▼</Button>
                         {"  "}
                         <Button onClick={() => setEditMode(!editMode)}>
-                            {editMode ? "Cancel Changes" : "Edit"}
+                            {editMode ? "Close" : "Edit"}
                         </Button>
                         {"  "}
                         <Button
@@ -101,7 +134,10 @@ export function CourseViewer({ course }: { course: Course }): JSX.Element {
                             <p style={{ marginBottom: "0px" }}>Course Name</p>
                         </Col>
                         <Col>
-                            <Form.Control value={course.name}></Form.Control>
+                            <Form.Control
+                                value={courseName}
+                                onChange={updateCourseName}
+                            ></Form.Control>
                         </Col>
                     </Form.Group>
 
@@ -112,12 +148,26 @@ export function CourseViewer({ course }: { course: Course }): JSX.Element {
                         </Col>
                         <Col>
                             <Form.Control
-                                value={course.courseId}
+                                value={courseID}
+                                onChange={updateCourseId}
                             ></Form.Control>
                         </Col>
                     </Form.Group>
 
-                    {/** Displays Prerequisites Title Box / Edit Box Horizontally */}
+                    {/** Displays Credit Hours Box / Edit Box Horizontally */}
+                    <Form.Group as={Row}>
+                        <Col>
+                            <p style={{ marginBottom: "0px" }}>Credit Hours</p>
+                        </Col>
+                        <Col>
+                            <Form.Control
+                                value={courseID}
+                                onChange={updateCourseId}
+                            ></Form.Control>
+                        </Col>
+                    </Form.Group>
+
+                    {/** Displays Prerequisites Title Box / Edit Box Horizontally
                     <Form.Group as={Row}>
                         <Col>
                             <p style={{ marginBottom: "0px" }}>Prerequisites</p>
@@ -125,26 +175,140 @@ export function CourseViewer({ course }: { course: Course }): JSX.Element {
                         <Col>
                             <Form.Control
                                 value={course.prereqs.join(", ")}
+                                onChange={updatePrerequisites}
                             ></Form.Control>
                         </Col>
                     </Form.Group>
+                     */}
 
-                    {/** Displays radio buttons letting the user select what requirements are fulfilled */}
-                    {/** ADD HERE */}
+                    {/** Displays radio buttons letting the user select what requirements are fulfilled
+                     *
+                     * University/Engieering Requirements:
+                     *
+                     *   - Seminar in Composition (ENGL110)
+                     *   - First Year Seminar (FYS)
+                     *   - Discovery Learning Experience (DLE)
+                     *   - Multicultural Requirement
+                     *   - Creative Arts and Humanities
+                     *   - History and Cultural Change
+                     *   - Social and Behavioral Sciences
+                     *   - Mathematics, Natural Sciences, and Technology
+                     *   - Capstone Experience
+                     *   - Upper Level Credit
+                     *   - Career and Professional Preparation
+                     *
+                     */}
+                    <Form.Group as={Row}>
+                        <Col>
+                            <p style={{ marginBottom: "0px" }}>
+                                Universtiy/COE Requirements
+                            </p>
+                        </Col>
+                        <Col>
+                            <Form.Check
+                                type="checkbox"
+                                id="requirements-sem"
+                                label="Seminar in Composition (ENGL110)"
+                                name={`requirements-${courseID}`}
+                                value="sem"
+                                checked={requirements.includes("sem")}
+                                onChange={updateRequirements}
+                            />
+                            <Form.Check
+                                type="checkbox"
+                                id="requirements-fys"
+                                label="First Year Seminar (FYS)"
+                                name={`requirements-${courseID}`}
+                                value="fys"
+                                checked={requirements.includes("fys")}
+                                onChange={updateRequirements}
+                            />
+                            <Form.Check
+                                type="checkbox"
+                                id="requirements-dle"
+                                label="Discovery Learning Experience (DLE)"
+                                name={`requirements-${courseID}`}
+                                value="dle"
+                                checked={requirements.includes("dle")}
+                                onChange={updateRequirements}
+                            />
+                            <Form.Check
+                                type="checkbox"
+                                id="requirements-mul"
+                                label="Multicultural"
+                                name={`requirements-${courseID}`}
+                                value="mul"
+                                checked={requirements.includes("mul")}
+                                onChange={updateRequirements}
+                            />
+                            <Form.Check
+                                type="checkbox"
+                                id="requirements-cah"
+                                label="Creative Arts and Humanities"
+                                name={`requirements-${courseID}`}
+                                value="cah"
+                                checked={requirements.includes("cah")}
+                                onChange={updateRequirements}
+                            />
+                            <Form.Check
+                                type="checkbox"
+                                id="requirements-hcc"
+                                label="History and Cultural Change"
+                                name={`requirements-${courseID}`}
+                                value="hcc"
+                                checked={requirements.includes("hcc")}
+                                onChange={updateRequirements}
+                            />
+                            <Form.Check
+                                type="checkbox"
+                                id="requirements-sbs"
+                                label="Social and Behavioral Changes"
+                                name={`requirements-${courseID}`}
+                                value="sbs"
+                                checked={requirements.includes("sbs")}
+                                onChange={updateRequirements}
+                            />
+                            <Form.Check
+                                type="checkbox"
+                                id="requirements-mnt"
+                                label="Mathematics, Natural Sciences, and Technology"
+                                name={`requirements-${courseID}`}
+                                value="mnt"
+                                checked={requirements.includes("mnt")}
+                                onChange={updateRequirements}
+                            />
+                            <Form.Check
+                                type="checkbox"
+                                id="requirements-cap"
+                                label="Capstone Experience"
+                                name={`requirements-${courseID}`}
+                                value="cap"
+                                checked={requirements.includes("cap")}
+                                onChange={updateRequirements}
+                            />
+                            <Form.Check
+                                type="checkbox"
+                                id="requirements-ulc"
+                                label="Upper Level Credit"
+                                name={`requirements-${courseID}`}
+                                value="ulc"
+                                checked={requirements.includes("ulc")}
+                                onChange={updateRequirements}
+                            />
+                            <Form.Check
+                                type="checkbox"
+                                id="requirements-cpp"
+                                label="Career and Professional Preparation"
+                                name={`requirements-${courseID}`}
+                                value="cpp"
+                                checked={requirements.includes("cpp")}
+                                onChange={updateRequirements}
+                            />
+                        </Col>
+                    </Form.Group>
 
-                    {/** Save button for changes made in the overwriting form */}
-                    <div style={{ textAlign: "right" }}>
-                        <Button
-                            style={{
-                                backgroundColor: "green",
-                                borderColor: "green",
-                                marginBottom: "20px",
-                                marginTop: "20px"
-                            }}
-                        >
-                            Save Changes
-                        </Button>
-                        {"  "}
+                    {/** Revert Back to Original State */}
+                    <div style={{ textAlign: "right", marginBottom: "20px" }}>
                         <Button
                             style={{
                                 backgroundColor: "slategray",

@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import { Course } from "./templates/course";
 import { CourseViewer } from "./components/CourseViewer";
+import myImage from "./media/banner.png";
 
 function App(): JSX.Element {
     {
@@ -12,7 +13,7 @@ function App(): JSX.Element {
         name: "Intro to Software Engineering",
         prereqs: ["CISC275", "CISC181"],
         credithours: 3,
-        isTechElective: false
+        satisfied_requirements: []
     };
 
     const myCourse1: Course = {
@@ -20,7 +21,7 @@ function App(): JSX.Element {
         name: "Introduction to Computer Science II",
         prereqs: ["CISC108"],
         credithours: 3,
-        isTechElective: false
+        satisfied_requirements: []
     };
 
     return (
@@ -38,6 +39,7 @@ function App(): JSX.Element {
                     Hart
                 </p>
             </header>
+            <img src={myImage} width="100%" />
             <p
                 className="Hello-message"
                 style={{
