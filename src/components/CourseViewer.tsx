@@ -11,7 +11,7 @@ export function CourseViewer({ course }: { course: Course }): JSX.Element {
     const [courseID, setCourseId] = useState<string>(course.courseId);
     const [courseName, setCourseName] = useState<string>(course.name);
     const [creditHours, setCreditHours] = useState<number>(course.credithours);
-    const [prerequisites, setPrerequisites] = useState<string[]>(
+    const [prerequisites /*, setPrerequisites*/] = useState<string[]>(
         course.prereqs
     );
     const [requirements, setRequirements] = useState<string[]>(

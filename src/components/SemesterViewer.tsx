@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Button, Col, Form, Row } from "react-bootstrap";
+import React /*, { useState } */ from "react";
+//import { Button, Col, Form, Row } from "react-bootstrap";
 import { Semester } from "../templates/semester";
 import { CourseViewer } from "../components/CourseViewer";
 import { Course } from "../templates/course";
