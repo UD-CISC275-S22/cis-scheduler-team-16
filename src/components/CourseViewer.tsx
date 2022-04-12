@@ -11,9 +11,8 @@ export function CourseViewer({ course }: { course: Course }): JSX.Element {
     const [courseID, setCourseId] = useState<string>(course.courseId);
     const [courseName, setCourseName] = useState<string>(course.name);
     const [creditHours, setCreditHours] = useState<number>(course.credithours);
-    const [prerequisites /*, setPrerequisites*/] = useState<string[]>(
-        course.prereqs
-
+    const [prerequisites, setPrerequisites] = useState<string>(
+        course.prereqs.join(", ")
     );
     const [requirements, setRequirements] = useState<string[]>(
         course.satisfied_requirements
@@ -147,7 +146,7 @@ export function CourseViewer({ course }: { course: Course }): JSX.Element {
                         </Col>
                         <Col>
                             <Form.Control
-                                value={course.name}
+                                value={courseName}
                                 onChange={updateCourseName}
                             ></Form.Control>
                         </Col>
@@ -160,7 +159,7 @@ export function CourseViewer({ course }: { course: Course }): JSX.Element {
                         </Col>
                         <Col>
                             <Form.Control
-                                value={course.courseId}
+                                value={courseID}
                                 onChange={updateCourseId}
                             ></Form.Control>
                         </Col>
@@ -174,7 +173,7 @@ export function CourseViewer({ course }: { course: Course }): JSX.Element {
                         <Col>
                             <Form.Control
                                 type="number"
-                                value={course.credithours}
+                                value={creditHours}
                                 onChange={updateCreditHours}
                             ></Form.Control>
                         </Col>
@@ -187,7 +186,7 @@ export function CourseViewer({ course }: { course: Course }): JSX.Element {
                         </Col>
                         <Col>
                             <Form.Control
-                                value={course.prereqs.join(", ")}
+                                value={prerequisites}
                                 onChange={updatePrerequisites}
                             ></Form.Control>
                         </Col>
