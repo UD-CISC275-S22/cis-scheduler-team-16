@@ -1,5 +1,5 @@
-import React /*, { useState } */ from "react";
-//import { Button, Col, Form, Row } from "react-bootstrap";
+import React, { useState } from "react";
+import { Button } from "react-bootstrap";
 import { Semester } from "../templates/semester";
 import { CourseViewer } from "../components/CourseViewer";
 import { Course } from "../templates/course";
@@ -10,9 +10,20 @@ export function SemesterViewer({
     semester: Semester;
 }): JSX.Element {
     //State View
-
+    const [courses, setCourses] = useState<Course[]>(semester.courses);
     //Component View
-
+    function addCourse(): void {
+        //adds a blank course to the semesters course list
+        const newCourse: Course = {
+            courseId: "Blank ID",
+            name: "Blank Name",
+            prereqs: [],
+            credithours: 3,
+            satisfied_requirements: []
+        };
+        const newCourses = [...courses, newCourse];
+        setCourses(newCourses);
+    }
     //Return View
     return (
         <div>
@@ -20,13 +31,14 @@ export function SemesterViewer({
             <div>{semester.term}</div>
             <div>{semester.year}</div>
             <div>
-                {semester.courses.map(
+                {courses.map(
                     (course: Course): JSX.Element => (
                         <div key={course.courseId}>
                             <CourseViewer course={course}></CourseViewer>
                         </div>
                     )
                 )}
+                <Button onClick={addCourse}> Insert Course </Button>
             </div>
         </div>
     );
