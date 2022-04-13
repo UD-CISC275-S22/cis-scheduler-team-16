@@ -24,6 +24,10 @@ export function SemesterViewer({
         const newCourses = [...courses, newCourse];
         setCourses(newCourses);
     }
+    function clearSem(): void {
+        const clearCourses: Course[] = [];
+        setCourses(clearCourses);
+    }
     //Return View
     return (
         <div>
@@ -38,7 +42,8 @@ export function SemesterViewer({
                         </div>
                     )
                 )}
-                <Button onClick={addCourse}> Insert Course </Button>
+                <Button onClick={addCourse}> Insert Course </Button>{" "}
+                <Button onClick={clearSem}> Clear Semester </Button>
             </div>
         </div>
     );
