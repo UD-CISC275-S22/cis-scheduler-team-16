@@ -1,32 +1,11 @@
 import React from "react";
 import "./App.css";
-import { Course } from "./templates/course";
-import { CourseViewer } from "./components/CourseViewer";
 import headerImage from "./media/banner.png";
 import { SemesterViewer } from "./components/SemesterViewer";
 import { Semester } from "./templates/semester";
 import semesterList from "./templates/Semesters.json";
 
 function App(): JSX.Element {
-    {
-        /** THESE ARE JUST SOME TEMPORARY THINGS WHILE I'M TESTING */
-    }
-    const myCourse: Course = {
-        courseId: "CISC275",
-        name: "Intro to Software Engineering",
-        prereqs: ["CISC275", "CISC181"],
-        credithours: 3,
-        satisfied_requirements: []
-    };
-
-    const myCourse1: Course = {
-        courseId: "CISC181",
-        name: "Introduction to Computer Science II",
-        prereqs: ["CISC108"],
-        credithours: 3,
-        satisfied_requirements: []
-    };
-
     return (
         <div className="App">
             <img src={headerImage} width="100%" />
@@ -48,8 +27,6 @@ function App(): JSX.Element {
                 graduate, we will always be there for you with a 24 hour website
                 dedicated to labelling your scholarly journey.
             </p>
-            <CourseViewer course={myCourse1}></CourseViewer>
-            <CourseViewer course={myCourse}></CourseViewer>
             <div>
                 {semesterList.map((semester: Semester) => (
                     <div key={Date.now()}>

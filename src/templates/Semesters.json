@@ -1,47 +1,54 @@
 [
     {
-        "term": "fake-semester-1",
-        "year": 2022,
+        "term": "Fall",
+        "year": 2020,
         "courses": [
             {
-                "courseId": "0",
-                "name": "Course1",
+                "courseId": "ENGL110",
+                "name": "Seminar in Composition",
                 "prereqs": [],
-                "credithours": 50,
+                "credithours": 3,
+                "satisfied_requirements": ["sem"]
+            },
+            {
+                "courseId": "EGGG100",
+                "name": "Introduction to Engineering",
+                "prereqs": [],
+                "credithours": 3,
+                "satisfied_requirements": ["fye"]
+            },
+            {
+                "courseId": "CISC108",
+                "name": "Introduction to Comptuer Science",
+                "prereqs": [],
+                "credithours": 3,
                 "satisfied_requirements": []
             },
             {
-                "courseId": "1",
-                "name": "Course2",
+                "courseId": "MATH241",
+                "name": "Calculus I",
                 "prereqs": [],
-                "credithours": 50,
-                "satisfied_requirements": []
-            },
-            {
-                "courseId": "2",
-                "name": "Course3",
-                "prereqs": [],
-                "credithours": 80,
-                "satisfied_requirements": []
-            },
-            {
-                "courseId": "3",
-                "name": "Course4",
-                "prereqs": [],
-                "credithours": 20,
+                "credithours": 4,
                 "satisfied_requirements": []
             }
         ]
     },
     {
-        "term": "fake-semester-2",
-        "year": 2022,
+        "term": "Spring",
+        "year": 2021,
         "courses": [
             {
-                "courseId": "0",
-                "name": "Course1",
-                "prereqs": [],
-                "credithours": 1000,
+                "courseId": "CISC181",
+                "name": "Intro to Computer Science II",
+                "prereqs": ["CISC108"],
+                "credithours": 3,
+                "satisfied_requirements": []
+            },
+            {
+                "courseId": "CISC210",
+                "name": "Intro to Systems Programming",
+                "prereqs": ["CISC108"],
+                "credithours": 3,
                 "satisfied_requirements": []
             }
         ]
