@@ -3,7 +3,7 @@
 > react-scripts test "--coverage"
 
   console.error
-    Warning: Encountered two children with the same key, `1649810271520`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+    Warning: Encountered two children with the same key, `1649811326579`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
         at div
         at div
         at App
@@ -17,7 +17,7 @@
       at updateHostComponent (node_modules/react-dom/cjs/react-dom.development.js:17632:3)
 
 FAIL src/App.test.tsx
-  ✕ renders the course name somewhere (161 ms)
+  ✕ renders the course name somewhere (167 ms)
 
   ● renders the course name somewhere
 
@@ -262,12 +262,12 @@ FAIL src/App.test.tsx
 ---------------------|---------|----------|---------|---------|-------------------
 File                 | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ---------------------|---------|----------|---------|---------|-------------------
-All files            |   48.27 |    31.25 |   38.46 |   48.27 |                   
+All files            |   45.16 |    31.25 |   35.71 |   45.16 |                   
  src                 |     100 |      100 |     100 |     100 |                   
   App.tsx            |     100 |      100 |     100 |     100 |                   
- src/components      |      40 |    31.25 |   27.27 |      40 |                   
+ src/components      |   37.03 |    31.25 |      25 |   37.03 |                   
   CourseViewer.tsx   |   36.84 |    31.25 |    12.5 |   36.84 | 22-48,106         
-  SemesterViewer.tsx |      50 |      100 |   66.66 |      50 | 17-25             
+  SemesterViewer.tsx |    37.5 |      100 |      50 |    37.5 | 17-29             
  src/templates       |       0 |        0 |       0 |       0 |                   
   course.ts          |       0 |        0 |       0 |       0 |                   
   semester.ts        |       0 |        0 |       0 |       0 |                   
@@ -275,5 +275,5 @@ All files            |   48.27 |    31.25 |   38.46 |   48.27 |
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        2.356 s
+Time:        2.334 s
 Ran all test suites.
