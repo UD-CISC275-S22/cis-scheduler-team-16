@@ -5,7 +5,6 @@ import { Course } from "../templates/course";
 type ChangeEvent = React.ChangeEvent<
     HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
 >;
-
 type CourseViewerProps = {
     course: Course;
     deleteCourse: (semesterIndex: number, courseIndex: number) => void;
@@ -35,6 +34,36 @@ export function CourseViewer({
     const [requirements, setRequirements] = useState<string[]>(
         course.satisfied_requirements
     );
+
+    {
+        /** Creates an updated array of Course objects that gets passed up to Semester Viewer */
+    }
+    /*
+    function updateCourse() {
+        const newCourse = {
+            courseId: courseID,
+            name: courseName,
+            prereqs: prerequisites.split(", "),
+            credithours: creditHours,
+            satisfied_requirements: requirements
+        };
+        const newArray = [...courseArray];
+        const newCourseIndex = newArray.findIndex(
+            (course: Course): boolean => course.courseId === newCourse.courseId
+        );
+        newArray.splice(newCourseIndex, 1, newCourse);
+        changeCourses(newArray);
+    }
+
+    function deleteCourse() {
+        const newArray = [...courseArray];
+        const filteredArray = newArray.filter(
+            (filterCourse: Course): boolean =>
+                filterCourse.courseId !== course.courseId
+        );
+        changeCourses(filteredArray);
+    }
+    */
 
     function updateCourseId(event: ChangeEvent) {
         setCourseId(event.target.value);
@@ -360,6 +389,15 @@ export function CourseViewer({
 
                     {/** Revert Back to Original State */}
                     <div style={{ textAlign: "right", marginBottom: "20px" }}>
+                        <Button
+                            style={{
+                                backgroundColor: "green",
+                                borderColor: "lightslategray"
+                            }}
+                        >
+                            Save
+                        </Button>
+                        {"  "}
                         <Button
                             style={{
                                 backgroundColor: "slategray",

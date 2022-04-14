@@ -49,6 +49,11 @@ export const SemesterViewer = ({
         const newCourses = [...courses, newCourse];
         // setCourses(newCourses);
     }
+
+    function changeCourses(newCourses: Course[]): void {
+        //setCourses(newCourses);
+    }
+
     function clearSem(): void {
         const clearCourses: Course[] = [];
         // setCourses(clearCourses);

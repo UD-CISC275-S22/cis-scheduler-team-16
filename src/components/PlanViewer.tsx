@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Button, Col, Row, Form } from "react-bootstrap";
+import { /*Button, Col, Row,*/ Form } from "react-bootstrap";
 import { Course } from "../templates/course";
 import { Semester } from "../templates/semester";
-import { CourseViewer } from "./CourseViewer";
+//import { CourseViewer } from "./CourseViewer";
 import { SemesterViewer } from "./SemesterViewer";
 import { Plan } from "../templates/plan";
 import planList from "../templates/PlansList.json";
@@ -27,7 +27,7 @@ export function PlanViewer(): JSX.Element {
     );
 
     // This is the State
-    const [allPlans, setAllPlans] = useState<Plan[]>(INITIAL_PLANS);
+    const [allPlans /*, setAllPlans*/] = useState<Plan[]>(INITIAL_PLANS);
     const [curPlan, setCurPlan] = useState<Plan>(allPlans[0]);
 
     //This is the Control
