@@ -1,0 +1,56 @@
+[
+    {
+        "term": "Fall",
+        "year": 2020,
+        "courses": [
+            {
+                "courseId": "ENGL110",
+                "name": "Seminar in Composition",
+                "prereqs": [],
+                "credithours": 3,
+                "satisfied_requirements": ["sem"]
+            },
+            {
+                "courseId": "EGGG100",
+                "name": "Introduction to Engineering",
+                "prereqs": [],
+                "credithours": 3,
+                "satisfied_requirements": ["fye"]
+            },
+            {
+                "courseId": "CISC108",
+                "name": "Introduction to Comptuer Science",
+                "prereqs": [],
+                "credithours": 3,
+                "satisfied_requirements": []
+            },
+            {
+                "courseId": "MATH241",
+                "name": "Calculus I",
+                "prereqs": [],
+                "credithours": 4,
+                "satisfied_requirements": []
+            }
+        ]
+    },
+    {
+        "term": "Spring",
+        "year": 2021,
+        "courses": [
+            {
+                "courseId": "CISC181",
+                "name": "Intro to Computer Science II",
+                "prereqs": ["CISC108"],
+                "credithours": 3,
+                "satisfied_requirements": []
+            },
+            {
+                "courseId": "CISC210",
+                "name": "Intro to Systems Programming",
+                "prereqs": ["CISC108"],
+                "credithours": 3,
+                "satisfied_requirements": []
+            }
+        ]
+    }
+]
