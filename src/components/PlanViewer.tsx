@@ -5,9 +5,25 @@ import { Semester } from "../templates/semester";
 import { CourseViewer } from "./CourseViewer";
 import { SemesterViewer } from "./SemesterViewer";
 import { Plan } from "../templates/plan";
-import semesterList from "../templates/Semesters.json";
+import planList from "../templates/PlansList.json";
 
 export function PlanViewer(): JSX.Element {
+    const INITIAL_PLANS: Plan[] = planList.map(
+        (plan): Plan => ({
+            ...plan,
+            semesters: plan.semesters.map(
+                (semester): Semester => ({
+                    ...semester,
+                    courses: semester.courses.map(
+                        (course): Course => ({
+                            ...course
+                        })
+                    )
+                })
+            )
+        })
+    );
+
     const plans: Plan[] = [
         {
             name: "myPlan1",
@@ -44,8 +60,8 @@ export function PlanViewer(): JSX.Element {
     ];
 
     // This is the State
-    const [allPlans, setAllPlans] = useState<Plan[]>(plans);
-    const [curPlan, setCurPlan] = useState<Plan>(allPlans[2]);
+    const [allPlans, setAllPlans] = useState<Plan[]>(INITIAL_PLANS);
+    const [curPlan, setCurPlan] = useState<Plan>(allPlans[0]);
 
     //This is the Control
 
@@ -62,7 +78,6 @@ export function PlanViewer(): JSX.Element {
                 <Form.Select value={curPlan.id} onChange={updatePlan}>
                     <option value="0">Plan 1</option>
                     <option value="1">Plan 2</option>
-                    <option value="2">Plan 3</option>
                 </Form.Select>
             </Form.Group>
             {/* The user is at <>/*{curPlan.name}</></>. */}
