@@ -2,22 +2,8 @@
 > react-typescript-starter@0.1.0 test
 > react-scripts test "--coverage"
 
-  console.error
-    Warning: Encountered two children with the same key, `1649816819171`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
-        at div
-        at div
-        at App
-
-      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:67:30)
-      at error (node_modules/react-dom/cjs/react-dom.development.js:43:5)
-      at warnOnInvalidKey (node_modules/react-dom/cjs/react-dom.development.js:13620:11)
-      at reconcileChildrenArray (node_modules/react-dom/cjs/react-dom.development.js:13651:21)
-      at reconcileChildFibers (node_modules/react-dom/cjs/react-dom.development.js:14125:14)
-      at reconcileChildren (node_modules/react-dom/cjs/react-dom.development.js:16990:28)
-      at updateHostComponent (node_modules/react-dom/cjs/react-dom.development.js:17632:3)
-
 FAIL src/App.test.tsx
-  ✕ renders the course name somewhere (145 ms)
+  ✕ renders the course name somewhere (123 ms)
 
   ● renders the course name somewhere
 
@@ -41,135 +27,495 @@ FAIL src/App.test.tsx
           [36m</p>[39m
           [36m<div>[39m
             [36m<div>[39m
-              [0m [0m
+              [36m<label[39m
+                [33mclass[39m=[32m"form-label"[39m
+                [33mfor[39m=[32m"userPlan"[39m
+              [36m>[39m
+                [0mChoose your current plan[0m
+              [36m</label>[39m
+              [36m<select[39m
+                [33mclass[39m=[32m"form-select"[39m
+                [33mid[39m=[32m"userPlan"[39m
+              [36m>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"0"[39m
+                [36m>[39m
+                  [0mPlan 1[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"1"[39m
+                [36m>[39m
+                  [0mPlan 2[0m
+                [36m</option>[39m
+              [36m</select>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mstyle[39m=[32m"margin-left: 20px; margin-right: 20px; margin-bottom: 10px; border-color: darkslategray; border-width: 1px; border-style: solid; border-radius: 5px;"[39m
+            [36m>[39m
               [36m<div[39m
-                [33mstyle[39m=[32m"margin-left: 20px; margin-right: 20px; margin-bottom: 10px; border-color: darkslategray; border-width: 1px; border-style: solid; border-radius: 5px;"[39m
+                [33mclass[39m=[32m"row"[39m
               [36m>[39m
                 [36m<div[39m
-                  [33mclass[39m=[32m"row"[39m
+                  [33mclass[39m=[32m"col"[39m
                 [36m>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"col"[39m
+                  [36m<h2[39m
+                    [33mstyle[39m=[32m"text-align: left; margin-left: 20px; margin-top: 5px;"[39m
                   [36m>[39m
-                    [36m<h2[39m
-                      [33mstyle[39m=[32m"text-align: left; margin-left: 20px; margin-top: 5px;"[39m
-                    [36m>[39m
-                      [0mFall  2020[0m
-                    [36m</h2>[39m
-                  [36m</div>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"col"[39m
-                    [33mstyle[39m=[32m"text-align: right; margin-top: 10px; margin-right: 20px;"[39m
-                  [36m>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0m Insert Course [0m
-                    [36m</button>[39m
-                    [0m [0m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0m Clear Semester [0m
-                    [36m</button>[39m
-                    [0m [0m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"btn btn-primary"[39m
-                      [33mtype[39m=[32m"button"[39m
-                    [36m>[39m
-                      [0mShow/Hide[0m
-                    [36m</button>[39m
-                  [36m</div>[39m
+                    [0mfake-semester-1  2022[0m
+                  [36m</h2>[39m
                 [36m</div>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"col"[39m
+                  [33mstyle[39m=[32m"text-align: right; margin-top: 10px; margin-right: 20px;"[39m
+                [36m>[39m
+                  [36m<button[39m
+                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mtype[39m=[32m"button"[39m
+                  [36m>[39m
+                    [0m Insert Course [0m
+                  [36m</button>[39m
+                  [0m [0m
+                  [36m<button[39m
+                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mtype[39m=[32m"button"[39m
+                  [36m>[39m
+                    [0m Clear Semester [0m
+                  [36m</button>[39m
+                  [0m [0m
+                  [36m<button[39m
+                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mtype[39m=[32m"button"[39m
+                  [36m>[39m
+                    [0mShow/Hide[0m
+                  [36m</button>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+              [36m<div>[39m
                 [36m<div>[39m
-                  [36m<div>[39m
+                  [36m<div[39m
+                    [33mstyle[39m=[32m"margin: 10px 20px 10px 20px; border-color: darkslategray; background-color: rgb(237, 237, 237); border-radius: 5px; border-width: 1px; border-style: solid;"[39m
+                  [36m>[39m
                     [36m<div[39m
-                      [33mstyle[39m=[32m"margin: 10px 20px 10px 20px; border-color: darkslategray; background-color: rgb(237, 237, 237); border-radius: 5px; border-width: 1px; border-style: solid;"[39m
+                      [33mstyle[39m=[32m"text-align: left;"[39m
                     [36m>[39m
                       [36m<div[39m
-                        [33mstyle[39m=[32m"text-align: left;"[39m
+                        [33mclass[39m=[32m"row"[39m
                       [36m>[39m
                         [36m<div[39m
-                          [33mclass[39m=[32m"row"[39m
+                          [33mclass[39m=[32m"col"[39m
+                          [33mstyle[39m=[32m"margin-left: 20px;"[39m
                         [36m>[39m
-                          [36m<div[39m
-                            [33mclass[39m=[32m"col"[39m
-                            [33mstyle[39m=[32m"margin-left: 20px;"[39m
+                          [36m<h4[39m
+                            [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
                           [36m>[39m
-                            [36m<h4[39m
-                              [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
-                            [36m>[39m
-                              [36m<strong>[39m
-                                [0mENGL110[0m
-                              [36m</strong>[39m
-                            [36m</h4>[39m
-                            [36m<h5[39m
-                              [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
-                            [36m>[39m
-                              [0mSeminar in Composition[0m
-                            [36m</h5>[39m
-                            [36m<p[39m
-                              [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
-                            [36m>[39m
-                              [0m3[0m
-                              [0m Credits[0m
-                            [36m</p>[39m
                             [36m<strong>[39m
-                              [0mPrerequisites: [0m
+                              [0m0[0m
                             [36m</strong>[39m
-                            [0mNone[0m
-                            [36m<br />[39m
-                            [36m<div>[39m
-                              [36m<strong>[39m
-                                [0mThis Course Fulfills: [0m
-                              [36m</strong>[39m
-                              [0msem[0m
-                            [36m</div>[39m
-                          [36m</div>[39m
-                          [36m<div[39m
-                            [33mclass[39m=[32m"col"[39m
-                            [33mstyle[39m=[32m"text-align: right; margin-right: 20px; margin-top: 20px;"[39m
+                          [36m</h4>[39m
+                          [36m<h5[39m
+                            [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
                           [36m>[39m
-                            [36m<button[39m
-                              [33mclass[39m=[32m"btn btn-primary"[39m
-                              [33mtype[39m=[32m"button"[39m
-                            [36m>[39m
-                              [0m▲[0m
-                            [36m</button>[39m
-                            [0m  [0m
-                            [36m<button[39m
-                              [33mclass[39m=[32m"btn btn-primary"[39m
-                              [33mtype[39m=[32m"button"[39m
-                            [36m>[39m
-                              [0m▼[0m
-                            [36m</button>[39m
-                            [0m  [0m
-                            [36m<button[39m
-                              [33mclass[39m=[32m"btn btn-primary"[39m
-                              [33mtype[39m=[32m"button"[39m
-                            [36m>[39m
-                              [0mEdit[0m
-                            [36m</button>[39m
-                            [0m  [0m
-                            [36m<button[39m
-                              [33mclass[39m=[32m"btn btn-primary"[39m
-                              [33mstyle[39m=[32m"background-color: red; outline-color: slategray;"[39m
-                              [33mtype[39m=[32m"button"[39m
-                            [36m>[39m
-                              [0mDelete[0m
-                            [36m</button>[39m
-                          [36m</div>[39m
+                            [0mCourse1[0m
+                          [36m</h5>[39m
+                          [36m<p[39m
+                            [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
+                          [36m>[39m
+                            [0m50[0m
+                            [0m Credits[0m
+                          [36m</p>[39m
+                          [36m<strong>[39m
+                            [0mPrerequisites: [0m
+                          [36m</strong>[39m
+                          [0mNone[0m
+                          [36m<br />[39m
+                        [36m</div>[39m
+                        [36m<div[39m
+                          [33mclass[39m=[32m"col"[39m
+                          [33mstyle[39m=[32m"text-align: right; margin-right: 20px; margin-top: 20px;"[39m
+                        [36m>[39m
+                          [36m<button[39m
+                            [33mclass[39m=[32m"btn btn-primary"[39m
+                            [33mtype[39m=[32m"button"[39m
+                          [36m>[39m
+                            [0m▲[0m
+                          [36m</button>[39m
+                          [0m  [0m
+                          [36m<button[39m
+                            [33mclass[39m=[32m"btn btn-primary"[39m
+                            [33mtype[39m=[32m"button"[39m
+                          [36m>[39m
+                            [0m▼[0m
+                          [36m</button>[39m
+                          [0m  [0m
+                          [36m<button[39m
+                            [33mclass[39m=[32m"btn btn-primary"[39m
+                            [33mtype[39m=[32m"button"[39m
+                          [36m>[39m
+                            [0mEdit[0m
+                          [36m</button>[39m
+                          [0m  [0m
+                          [36m<button[39m
+                            [33mclass[39m=[32m"btn btn-primary"[39m
+                            [33mstyle[39m=[32m"background-color: red; outline-color: slategray;"[39m
+                            [33mtype[39m=[32m"button"[39m
+                          [36m>[39m
+                            [0mDelete[0m
+                          [36m</button>[39m
                         [36m</div>[39m
                       [36m</div>[39m
                     [36m</div>[39m
                   [36m</div>[39m
-                  [36m<div>[39m
+                [36m</div>[39m
+                [36m<div>[39m
+                  [36m<div[39m
+                    [33mstyle[39m=[32m"margin: 10px 20px 10px 20px; border-color: darkslategray; background-color: rgb(237, 237, 237); border-radius: 5px; border-width: 1px; border-style: solid;"[39m
+                  [36m>[39m
                     [36m<div[39m
-                      [33mstyle[39m=[32m"margin: 10px 20px 10px 20px; border-color: darkslategray; background-color: rgb(237, 237, 237); border-radius: 5px; border-width: 1px; border-style: solid;"[39m
+                      [33mstyle[39m=[32m"text-align: left;"[39m
                     [36m>[39m
-                      [36m<d...
+                      [36m<div[39m
+                        [33mclass[39m=[32m"row"[39m
+                      [36m>[39m
+                        [36m<div[39m
+                          [33mclass[39m=[32m"col"[39m
+                          [33mstyle[39m=[32m"margin-left: 20px;"[39m
+                        [36m>[39m
+                          [36m<h4[39m
+                            [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
+                          [36m>[39m
+                            [36m<strong>[39m
+                              [0m1[0m
+                            [36m</strong>[39m
+                          [36m</h4>[39m
+                          [36m<h5[39m
+                            [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
+                          [36m>[39m
+                            [0mCourse2[0m
+                          [36m</h5>[39m
+                          [36m<p[39m
+                            [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
+                          [36m>[39m
+                            [0m50[0m
+                            [0m Credits[0m
+                          [36m</p>[39m
+                          [36m<strong>[39m
+                            [0mPrerequisites: [0m
+                          [36m</strong>[39m
+                          [0mNone[0m
+                          [36m<br />[39m
+                        [36m</div>[39m
+                        [36m<div[39m
+                          [33mclass[39m=[32m"col"[39m
+                          [33mstyle[39m=[32m"text-align: right; margin-right: 20px; margin-top: 20px;"[39m
+                        [36m>[39m
+                          [36m<button[39m
+                            [33mclass[39m=[32m"btn btn-primary"[39m
+                            [33mtype[39m=[32m"button"[39m
+                          [36m>[39m
+                            [0m▲[0m
+                          [36m</button>[39m
+                          [0m  [0m
+                          [36m<button[39m
+                            [33mclass[39m=[32m"btn btn-primary"[39m
+                            [33mtype[39m=[32m"button"[39m
+                          [36m>[39m
+                            [0m▼[0m
+                          [36m</button>[39m
+                          [0m  [0m
+                          [36m<button[39m
+                            [33mclass[39m=[32m"btn btn-primary"[39m
+                            [33mtype[39m=[32m"button"[39m
+                          [36m>[39m
+                            [0mEdit[0m
+                          [36m</button>[39m
+                          [0m  [0m
+                          [36m<button[39m
+                            [33mclass[39m=[32m"btn btn-primary"[39m
+                            [33mstyle[39m=[32m"background-color: red; outline-color: slategray;"[39m
+                            [33mtype[39m=[32m"button"[39m
+                          [36m>[39m
+                            [0mDelete[0m
+                          [36m</button>[39m
+                        [36m</div>[39m
+                      [36m</div>[39m
+                    [36m</div>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<div>[39m
+                  [36m<div[39m
+                    [33mstyle[39m=[32m"margin: 10px 20px 10px 20px; border-color: darkslategray; background-color: rgb(237, 237, 237); border-radius: 5px; border-width: 1px; border-style: solid;"[39m
+                  [36m>[39m
+                    [36m<div[39m
+                      [33mstyle[39m=[32m"text-align: left;"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"row"[39m
+                      [36m>[39m
+                        [36m<div[39m
+                          [33mclass[39m=[32m"col"[39m
+                          [33mstyle[39m=[32m"margin-left: 20px;"[39m
+                        [36m>[39m
+                          [36m<h4[39m
+                            [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
+                          [36m>[39m
+                            [36m<strong>[39m
+                              [0m2[0m
+                            [36m</strong>[39m
+                          [36m</h4>[39m
+                          [36m<h5[39m
+                            [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
+                          [36m>[39m
+                            [0mCourse3[0m
+                          [36m</h5>[39m
+                          [36m<p[39m
+                            [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
+                          [36m>[39m
+                            [0m80[0m
+                            [0m Credits[0m
+                          [36m</p>[39m
+                          [36m<strong>[39m
+                            [0mPrerequisites: [0m
+                          [36m</strong>[39m
+                          [0mNone[0m
+                          [36m<br />[39m
+                        [36m</div>[39m
+                        [36m<div[39m
+                          [33mclass[39m=[32m"col"[39m
+                          [33mstyle[39m=[32m"text-align: right; margin-right: 20px; margin-top: 20px;"[39m
+                        [36m>[39m
+                          [36m<button[39m
+                            [33mclass[39m=[32m"btn btn-primary"[39m
+                            [33mtype[39m=[32m"button"[39m
+                          [36m>[39m
+                            [0m▲[0m
+                          [36m</button>[39m
+                          [0m  [0m
+                          [36m<button[39m
+                            [33mclass[39m=[32m"btn btn-primary"[39m
+                            [33mtype[39m=[32m"button"[39m
+                          [36m>[39m
+                            [0m▼[0m
+                          [36m</button>[39m
+                          [0m  [0m
+                          [36m<button[39m
+                            [33mclass[39m=[32m"btn btn-primary"[39m
+                            [33mtype[39m=[32m"button"[39m
+                          [36m>[39m
+                            [0mEdit[0m
+                          [36m</button>[39m
+                          [0m  [0m
+                          [36m<button[39m
+                            [33mclass[39m=[32m"btn btn-primary"[39m
+                            [33mstyle[39m=[32m"background-color: red; outline-color: slategray;"[39m
+                            [33mtype[39m=[32m"button"[39m
+                          [36m>[39m
+                            [0mDelete[0m
+                          [36m</button>[39m
+                        [36m</div>[39m
+                      [36m</div>[39m
+                    [36m</div>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<div>[39m
+                  [36m<div[39m
+                    [33mstyle[39m=[32m"margin: 10px 20px 10px 20px; border-color: darkslategray; background-color: rgb(237, 237, 237); border-radius: 5px; border-width: 1px; border-style: solid;"[39m
+                  [36m>[39m
+                    [36m<div[39m
+                      [33mstyle[39m=[32m"text-align: left;"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"row"[39m
+                      [36m>[39m
+                        [36m<div[39m
+                          [33mclass[39m=[32m"col"[39m
+                          [33mstyle[39m=[32m"margin-left: 20px;"[39m
+                        [36m>[39m
+                          [36m<h4[39m
+                            [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
+                          [36m>[39m
+                            [36m<strong>[39m
+                              [0m3[0m
+                            [36m</strong>[39m
+                          [36m</h4>[39m
+                          [36m<h5[39m
+                            [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
+                          [36m>[39m
+                            [0mCourse4[0m
+                          [36m</h5>[39m
+                          [36m<p[39m
+                            [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
+                          [36m>[39m
+                            [0m20[0m
+                            [0m Credits[0m
+                          [36m</p>[39m
+                          [36m<strong>[39m
+                            [0mPrerequisites: [0m
+                          [36m</strong>[39m
+                          [0mNone[0m
+                          [36m<br />[39m
+                        [36m</div>[39m
+                        [36m<div[39m
+                          [33mclass[39m=[32m"col"[39m
+                          [33mstyle[39m=[32m"text-align: right; margin-right: 20px; margin-top: 20px;"[39m
+                        [36m>[39m
+                          [36m<button[39m
+                            [33mclass[39m=[32m"btn btn-primary"[39m
+                            [33mtype[39m=[32m"button"[39m
+                          [36m>[39m
+                            [0m▲[0m
+                          [36m</button>[39m
+                          [0m  [0m
+                          [36m<button[39m
+                            [33mclass[39m=[32m"btn btn-primary"[39m
+                            [33mtype[39m=[32m"button"[39m
+                          [36m>[39m
+                            [0m▼[0m
+                          [36m</button>[39m
+                          [0m  [0m
+                          [36m<button[39m
+                            [33mclass[39m=[32m"btn btn-primary"[39m
+                            [33mtype[39m=[32m"button"[39m
+                          [36m>[39m
+                            [0mEdit[0m
+                          [36m</button>[39m
+                          [0m  [0m
+                          [36m<button[39m
+                            [33mclass[39m=[32m"btn btn-primary"[39m
+                            [33mstyle[39m=[32m"background-color: red; outline-color: slategray;"[39m
+                            [33mtype[39m=[32m"button"[39m
+                          [36m>[39m
+                            [0mDelete[0m
+                          [36m</button>[39m
+                        [36m</div>[39m
+                      [36m</div>[39m
+                    [36m</div>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mstyle[39m=[32m"margin-left: 20px; margin-right: 20px; margin-bottom: 10px; border-color: darkslategray; border-width: 1px; border-style: solid; border-radius: 5px;"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"row"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"col"[39m
+                [36m>[39m
+                  [36m<h2[39m
+                    [33mstyle[39m=[32m"text-align: left; margin-left: 20px; margin-top: 5px;"[39m
+                  [36m>[39m
+                    [0mfake-semester-2  2022[0m
+                  [36m</h2>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"col"[39m
+                  [33mstyle[39m=[32m"text-align: right; margin-top: 10px; margin-right: 20px;"[39m
+                [36m>[39m
+                  [36m<button[39m
+                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mtype[39m=[32m"button"[39m
+                  [36m>[39m
+                    [0m Insert Course [0m
+                  [36m</button>[39m
+                  [0m [0m
+                  [36m<button[39m
+                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mtype[39m=[32m"button"[39m
+                  [36m>[39m
+                    [0m Clear Semester [0m
+                  [36m</button>[39m
+                  [0m [0m
+                  [36m<button[39m
+                    [33mclass[39m=[32m"btn btn-primary"[39m
+                    [33mtype[39m=[32m"button"[39m
+                  [36m>[39m
+                    [0mShow/Hide[0m
+                  [36m</button>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+              [36m<div>[39m
+                [36m<div>[39m
+                  [36m<div[39m
+                    [33mstyle[39m=[32m"margin: 10px 20px 10px 20px; border-color: darkslategray; background-color: rgb(237, 237, 237); border-radius: 5px; border-width: 1px; border-style: solid;"[39m
+                  [36m>[39m
+                    [36m<div[39m
+                      [33mstyle[39m=[32m"text-align: left;"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"row"[39m
+                      [36m>[39m
+                        [36m<div[39m
+                          [33mclass[39m=[32m"col"[39m
+                          [33mstyle[39m=[32m"margin-left: 20px;"[39m
+                        [36m>[39m
+                          [36m<h4[39m
+                            [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
+                          [36m>[39m
+                            [36m<strong>[39m
+                              [0m0[0m
+                            [36m</strong>[39m
+                          [36m</h4>[39m
+                          [36m<h5[39m
+                            [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
+                          [36m>[39m
+                            [0mCourse1[0m
+                          [36m</h5>[39m
+                          [36m<p[39m
+                            [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
+                          [36m>[39m
+                            [0m1000[0m
+                            [0m Credits[0m
+                          [36m</p>[39m
+                          [36m<strong>[39m
+                            [0mPrerequisites: [0m
+                          [36m</strong>[39m
+                          [0mNone[0m
+                          [36m<br />[39m
+                        [36m</div>[39m
+                        [36m<div[39m
+                          [33mclass[39m=[32m"col"[39m
+                          [33mstyle[39m=[32m"text-align: right; margin-right: 20px; margin-top: 20px;"[39m
+                        [36m>[39m
+                          [36m<button[39m
+                            [33mclass[39m=[32m"btn btn-primary"[39m
+                            [33mtype[39m=[32m"button"[39m
+                          [36m>[39m
+                            [0m▲[0m
+                          [36m</button>[39m
+                          [0m  [0m
+                          [36m<button[39m
+                            [33mclass[39m=[32m"btn btn-primary"[39m
+                            [33mtype[39m=[32m"button"[39m
+                          [36m>[39m
+                            [0m▼[0m
+                          [36m</button>[39m
+                          [0m  [0m
+                          [36m<button[39m
+                            [33mclass[39m=[32m"btn btn-primary"[39m
+                            [33mtype[39m=[32m"button"[39m
+                          [36m>[39m
+                            [0mEdit[0m
+                          [36m</button>[39m
+                          [0m  [0m
+                          [36m<button[39m
+                            [33mclass[39m=[32m"btn btn-primary"[39m
+                            [33mstyle[39m=[32m"background-color: red; outline-color: slategray;"[39m
+                            [33mtype[39m=[32m"button"[39m
+                          [36m>[39m
+                            [0mDelete[0m
+                          [36m</button>[39m
+                        [36m</div>[39m
+                      [36m</div>[39m
+                    [36m</div>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</body>[39m
 
        5 | test("renders the course name somewhere", () => {
        6 |     render(<App />);
@@ -192,18 +538,20 @@ FAIL src/App.test.tsx
 ---------------------|---------|----------|---------|---------|-------------------
 File                 | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ---------------------|---------|----------|---------|---------|-------------------
-All files            |   41.93 |    44.44 |   33.33 |   41.93 |                   
+All files            |   41.17 |    33.33 |      36 |   41.17 |                   
  src                 |     100 |      100 |     100 |     100 |                   
   App.tsx            |     100 |      100 |     100 |     100 |                   
- src/components      |   37.93 |    44.44 |   23.07 |   37.93 |                   
-  CourseViewer.tsx   |   36.84 |     37.5 |    12.5 |   36.84 | 22-48,106         
-  SemesterViewer.tsx |      40 |      100 |      40 |      40 | 19-31,68          
+ src/components      |      40 |    33.33 |   33.33 |      40 |                   
+  CourseViewer.tsx   |   24.13 |       25 |    8.33 |   24.13 | 35-87,145         
+  PlanViewer.tsx     |   88.88 |      100 |   83.33 |   88.88 | 70                
+  SemesterViewer.tsx |   41.66 |      100 |   33.33 |   41.66 | 20-37,74          
  src/templates       |       0 |        0 |       0 |       0 |                   
   course.ts          |       0 |        0 |       0 |       0 |                   
+  plan.ts            |       0 |        0 |       0 |       0 |                   
   semester.ts        |       0 |        0 |       0 |       0 |                   
 ---------------------|---------|----------|---------|---------|-------------------
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        2.265 s
+Time:        2.319 s
 Ran all test suites.
