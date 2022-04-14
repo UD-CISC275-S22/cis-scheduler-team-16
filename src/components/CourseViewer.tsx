@@ -6,7 +6,17 @@ type ChangeEvent = React.ChangeEvent<
     HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
 >;
 
-export function CourseViewer({ course }: { course: Course }): JSX.Element {
+interface CourseViewerProps {
+    course: Course;
+    courseArray: Course[];
+    changeCourses: (newCourses: Course[]) => void;
+}
+
+export function CourseViewer({
+    course,
+    courseArray,
+    changeCourses
+}: CourseViewerProps): JSX.Element {
     const [editMode, setEditMode] = useState<boolean>(false);
     const [courseID, setCourseId] = useState<string>(course.courseId);
     const [courseName, setCourseName] = useState<string>(course.name);
@@ -17,6 +27,35 @@ export function CourseViewer({ course }: { course: Course }): JSX.Element {
     const [requirements, setRequirements] = useState<string[]>(
         course.satisfied_requirements
     );
+
+    {
+        /** Creates an updated array of Course objects that gets passed up to Semester Viewer */
+    }
+    function updateCourse() {
+        const newCourse = {
+            courseId: courseID,
+            name: courseName,
+            prereqs: prerequisites.split(", "),
+            credithours: creditHours,
+            satisfied_requirements: requirements
+        };
+        const newArray = [...courseArray];
+        const newCourseIndex = newArray.findIndex(
+            /** THIS COMPARISON SHOULD BE CHANGED LATER ON TO USE THE BACKUP ID LATER ON!!!!!!!! */
+            (course: Course): boolean => course.courseId === newCourse.courseId
+        );
+        newArray.splice(newCourseIndex, 1, newCourse);
+        changeCourses(newArray);
+    }
+
+    function deleteCourse() {
+        const newArray = [...courseArray];
+        const filteredArray = newArray.filter(
+            (filterCourse: Course): boolean =>
+                filterCourse.courseId !== course.courseId
+        );
+        changeCourses(filteredArray);
+    }
 
     function updateCourseId(event: ChangeEvent) {
         setCourseId(event.target.value);
@@ -112,6 +151,7 @@ export function CourseViewer({ course }: { course: Course }): JSX.Element {
                                 backgroundColor: "red",
                                 outlineColor: "slategray"
                             }}
+                            onClick={deleteCourse}
                         >
                             Delete
                         </Button>
@@ -320,6 +360,16 @@ export function CourseViewer({ course }: { course: Course }): JSX.Element {
 
                     {/** Revert Back to Original State */}
                     <div style={{ textAlign: "right", marginBottom: "20px" }}>
+                        <Button
+                            style={{
+                                backgroundColor: "green",
+                                borderColor: "lightslategray"
+                            }}
+                            onClick={updateCourse}
+                        >
+                            Save
+                        </Button>
+                        {"  "}
                         <Button
                             style={{
                                 backgroundColor: "slategray",

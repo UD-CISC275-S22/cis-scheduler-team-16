@@ -1,3 +1,12 @@
+/** This is an interface that will be used to preserve the original data for a course */
+export interface CourseBackup {
+    courseId: string;
+    name: string;
+    prereqs: string[];
+    credithours: number;
+    satisfied_requirements: string[];
+}
+
 /***
  * A representation of a course that can be taken
  */
