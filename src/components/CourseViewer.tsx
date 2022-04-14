@@ -5,17 +5,24 @@ import { Course } from "../templates/course";
 type ChangeEvent = React.ChangeEvent<
     HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
 >;
-
-interface CourseViewerProps {
+type CourseViewerProps = {
     course: Course;
-    courseArray: Course[];
-    changeCourses: (newCourses: Course[]) => void;
-}
+    deleteCourse: (semesterIndex: number, courseIndex: number) => void;
+    updateCourse: (
+        course: Course,
+        semesterIndex: number,
+        courseIndex: number
+    ) => void;
+    semesterIndex: number;
+    courseIndex: number;
+};
 
 export function CourseViewer({
     course,
-    courseArray,
-    changeCourses
+    deleteCourse,
+    updateCourse,
+    semesterIndex,
+    courseIndex
 }: CourseViewerProps): JSX.Element {
     const [editMode, setEditMode] = useState<boolean>(false);
     const [courseID, setCourseId] = useState<string>(course.courseId);
@@ -31,6 +38,7 @@ export function CourseViewer({
     {
         /** Creates an updated array of Course objects that gets passed up to Semester Viewer */
     }
+    /*
     function updateCourse() {
         const newCourse = {
             courseId: courseID,
@@ -41,7 +49,6 @@ export function CourseViewer({
         };
         const newArray = [...courseArray];
         const newCourseIndex = newArray.findIndex(
-            /** THIS COMPARISON SHOULD BE CHANGED LATER ON TO USE THE BACKUP ID LATER ON!!!!!!!! */
             (course: Course): boolean => course.courseId === newCourse.courseId
         );
         newArray.splice(newCourseIndex, 1, newCourse);
@@ -56,6 +63,7 @@ export function CourseViewer({
         );
         changeCourses(filteredArray);
     }
+    */
 
     function updateCourseId(event: ChangeEvent) {
         setCourseId(event.target.value);
@@ -142,8 +150,27 @@ export function CourseViewer({
                         {"  "}
                         <Button>▼</Button>
                         {"  "}
-                        <Button onClick={() => setEditMode(!editMode)}>
-                            {editMode ? "Close" : "Edit"}
+                        <Button
+                            onClick={() => {
+                                if (editMode) {
+                                    // update
+                                    updateCourse(
+                                        {
+                                            courseId: courseID,
+                                            name: courseName,
+                                            prereqs: prerequisites.split(", "),
+                                            credithours: creditHours,
+                                            satisfied_requirements: requirements
+                                        },
+                                        semesterIndex,
+                                        courseIndex
+                                    );
+                                } else {
+                                    setEditMode(!editMode);
+                                }
+                            }}
+                        >
+                            {editMode ? "Update" : "Edit"}
                         </Button>
                         {"  "}
                         <Button
@@ -151,7 +178,9 @@ export function CourseViewer({
                                 backgroundColor: "red",
                                 outlineColor: "slategray"
                             }}
-                            onClick={deleteCourse}
+                            onClick={() =>
+                                deleteCourse(semesterIndex, courseIndex)
+                            }
                         >
                             Delete
                         </Button>
@@ -365,7 +394,6 @@ export function CourseViewer({
                                 backgroundColor: "green",
                                 borderColor: "lightslategray"
                             }}
-                            onClick={updateCourse}
                         >
                             Save
                         </Button>
