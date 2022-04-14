@@ -4,6 +4,7 @@ import { Course } from "./templates/course";
 import { CourseViewer } from "./components/CourseViewer";
 import headerImage from "./media/banner.png";
 import { SemesterViewer } from "./components/SemesterViewer";
+import { PlanViewer } from "./components/PlanViewer";
 import { Semester } from "./templates/semester";
 import semesterList from "./templates/Semesters.json";
 
@@ -48,11 +49,12 @@ function App(): JSX.Element {
                 graduate, we will always be there for you with a 24 hour website
                 dedicated to labelling your scholarly journey.
             </p>
+            <PlanViewer></PlanViewer>
             <CourseViewer course={myCourse1}></CourseViewer>
             <CourseViewer course={myCourse}></CourseViewer>
             <div>
-                {semesterList.map((semester: Semester) => (
-                    <div key={Date.now()}>
+                {semesterList.map((semester: Semester, ind: number) => (
+                    <div key={ind}>
                         {" "}
                         {/*Our semester type doesnt have an ID, so I think this should suffice for now.. */}
                         <SemesterViewer semester={semester}></SemesterViewer>
