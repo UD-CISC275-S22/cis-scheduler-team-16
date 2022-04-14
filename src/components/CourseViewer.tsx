@@ -52,6 +52,7 @@ export function CourseViewer({
         const newArray = [...courseArray];
         const filteredArray = newArray.filter(
             (filterCourse: Course): boolean =>
+                /** THIS COMPARISON SHOULD BE CHANGED LATER ON TO USE THE BACKUP ID LATER ON!!!!!!!! */
                 filterCourse.courseId !== course.courseId
         );
         changeCourses(filteredArray);
