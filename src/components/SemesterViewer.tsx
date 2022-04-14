@@ -27,6 +27,11 @@ export const SemesterViewer = ({ semester }: { semester: Semester }) => {
         const newCourses = [...courses, newCourse];
         setCourses(newCourses);
     }
+
+    function changeCourses(newCourses: Course[]): void {
+        setCourses(newCourses);
+    }
+
     function clearSem(): void {
         const clearCourses: Course[] = [];
         setCourses(clearCourses);
@@ -78,7 +83,11 @@ export const SemesterViewer = ({ semester }: { semester: Semester }) => {
                     {courses.map(
                         (course: Course): JSX.Element => (
                             <div key={course.courseId}>
-                                <CourseViewer course={course}></CourseViewer>
+                                <CourseViewer
+                                    course={course}
+                                    courseArray={courses}
+                                    changeCourses={changeCourses}
+                                ></CourseViewer>
                             </div>
                         )
                     )}
