@@ -12,12 +12,29 @@ export function PlanViewer(): JSX.Element {
         {
             name: "myPlan1",
             id: "0",
-            semesters: []
+            semesters: [
+                {
+                    term: "fake-semester-1",
+                    year: 2022,
+                    courses: []
+                },
+                {
+                    term: "fake-semester-2",
+                    year: 2022,
+                    courses: []
+                }
+            ]
         },
         {
             name: "myPlan2",
             id: "1",
-            semesters: []
+            semesters: [
+                {
+                    term: "fake-semester-1",
+                    year: 2022,
+                    courses: []
+                }
+            ]
         },
         {
             name: "myPlan3",
@@ -28,7 +45,7 @@ export function PlanViewer(): JSX.Element {
 
     // This is the State
     const [allPlans, setAllPlans] = useState<Plan[]>(plans);
-    const [curPlan, setCurPlan] = useState<Plan>(allPlans[0]);
+    const [curPlan, setCurPlan] = useState<Plan>(allPlans[2]);
 
     //This is the Control
 
@@ -48,10 +65,10 @@ export function PlanViewer(): JSX.Element {
                     <option value="2">Plan 3</option>
                 </Form.Select>
             </Form.Group>
+            {/* The user is at <>/*{curPlan.name}</></>. */}
             {curPlan.semesters.map((eachSemester: Semester, ind: number) => {
                 return <SemesterViewer semester={eachSemester} key={ind} />;
             })}
-            The user is at <>{curPlan.name}</>.
         </div>
     );
 }

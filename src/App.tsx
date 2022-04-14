@@ -50,17 +50,15 @@ function App(): JSX.Element {
                 dedicated to labelling your scholarly journey.
             </p>
             <PlanViewer></PlanViewer>
-            <CourseViewer course={myCourse1}></CourseViewer>
-            <CourseViewer course={myCourse}></CourseViewer>
-            <div>
+
+            {/**             <div>
                 {semesterList.map((semester: Semester, ind: number) => (
                     <div key={ind}>
                         {" "}
-                        {/*Our semester type doesnt have an ID, so I think this should suffice for now.. */}
                         <SemesterViewer semester={semester}></SemesterViewer>
                     </div>
                 ))}
-            </div>
+            </div> */}
         </div>
     );
 }
