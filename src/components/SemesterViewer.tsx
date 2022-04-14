@@ -4,11 +4,12 @@ import { Semester } from "../templates/semester";
 import { CourseViewer } from "../components/CourseViewer";
 import { Course } from "../templates/course";
 
-export function SemesterViewer({
-    semester
-}: {
-    semester: Semester;
-}): JSX.Element {
+export const SemesterViewer = ({ semester }: { semester: Semester }) => {
+    // export function SemesterViewer({
+    //     semester
+    // }: {
+    //     semester: Semester;
+    // }): JSX.Element {
     //State View
     const [courses, setCourses] = useState<Course[]>(semester.courses);
     const [visible, setVisible] = useState<boolean>(true);
@@ -85,4 +86,4 @@ export function SemesterViewer({
             )}
         </div>
     );
-}
+};
