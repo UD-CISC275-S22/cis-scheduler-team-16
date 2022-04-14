@@ -6,7 +6,25 @@ type ChangeEvent = React.ChangeEvent<
     HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
 >;
 
-export function CourseViewer({ course }: { course: Course }): JSX.Element {
+type CourseViewerProps = {
+    course: Course;
+    deleteCourse: (semesterIndex: number, courseIndex: number) => void;
+    updateCourse: (
+        course: Course,
+        semesterIndex: number,
+        courseIndex: number
+    ) => void;
+    semesterIndex: number;
+    courseIndex: number;
+};
+
+export function CourseViewer({
+    course,
+    deleteCourse,
+    updateCourse,
+    semesterIndex,
+    courseIndex
+}: CourseViewerProps): JSX.Element {
     const [editMode, setEditMode] = useState<boolean>(false);
     const [courseID, setCourseId] = useState<string>(course.courseId);
     const [courseName, setCourseName] = useState<string>(course.name);
@@ -103,8 +121,27 @@ export function CourseViewer({ course }: { course: Course }): JSX.Element {
                         {"  "}
                         <Button>▼</Button>
                         {"  "}
-                        <Button onClick={() => setEditMode(!editMode)}>
-                            {editMode ? "Close" : "Edit"}
+                        <Button
+                            onClick={() => {
+                                if (editMode) {
+                                    // update
+                                    updateCourse(
+                                        {
+                                            courseId: courseID,
+                                            name: courseName,
+                                            prereqs: prerequisites.split(", "),
+                                            credithours: creditHours,
+                                            satisfied_requirements: requirements
+                                        },
+                                        semesterIndex,
+                                        courseIndex
+                                    );
+                                } else {
+                                    setEditMode(!editMode);
+                                }
+                            }}
+                        >
+                            {editMode ? "Update" : "Edit"}
                         </Button>
                         {"  "}
                         <Button
@@ -112,6 +149,9 @@ export function CourseViewer({ course }: { course: Course }): JSX.Element {
                                 backgroundColor: "red",
                                 outlineColor: "slategray"
                             }}
+                            onClick={() =>
+                                deleteCourse(semesterIndex, courseIndex)
+                            }
                         >
                             Delete
                         </Button>

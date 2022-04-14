@@ -4,18 +4,40 @@ import { Semester } from "../templates/semester";
 import { CourseViewer } from "../components/CourseViewer";
 import { Course } from "../templates/course";
 
-export const SemesterViewer = ({ semester }: { semester: Semester }) => {
+type SemesterViewerProps = {
+    semester: Semester;
+    courses: Course[];
+    addCourse: (course: Course, semesterIndex: number) => void;
+    deleteCourse: (semesterIndex: number, courseIndex: number) => void;
+    updateCourse: (
+        course: Course,
+        semesterIndex: number,
+        courseIndex: number
+    ) => void;
+    semesterIndex: number;
+};
+
+export const SemesterViewer = ({
+    semester,
+    courses,
+    addCourse,
+    deleteCourse,
+    updateCourse,
+    semesterIndex
+}: SemesterViewerProps) => {
     // export function SemesterViewer({
     //     semester
     // }: {
     //     semester: Semester;
     // }): JSX.Element {
     //State View
-    const [courses, setCourses] = useState<Course[]>(semester.courses);
+    // const [courses, setCourses] = useState<Course[]>(courses);
     const [visible, setVisible] = useState<boolean>(true);
 
+    console.log("courses = ", courses);
+
     //Component View
-    function addCourse(): void {
+    function addCoursev2(): void {
         //adds a blank course to the semesters course list
         const newCourse: Course = {
             courseId: "Blank ID",
@@ -25,11 +47,11 @@ export const SemesterViewer = ({ semester }: { semester: Semester }) => {
             satisfied_requirements: []
         };
         const newCourses = [...courses, newCourse];
-        setCourses(newCourses);
+        // setCourses(newCourses);
     }
     function clearSem(): void {
         const clearCourses: Course[] = [];
-        setCourses(clearCourses);
+        // setCourses(clearCourses);
     }
     //Return View
     return (
@@ -64,7 +86,23 @@ export const SemesterViewer = ({ semester }: { semester: Semester }) => {
                         marginRight: "20px"
                     }}
                 >
-                    <Button onClick={addCourse}> Insert Course </Button>{" "}
+                    <Button
+                        onClick={() =>
+                            addCourse(
+                                {
+                                    name: "Blank Name",
+                                    prereqs: [],
+                                    credithours: 3,
+                                    satisfied_requirements: [],
+                                    courseId: "Blank Id"
+                                },
+                                semesterIndex
+                            )
+                        }
+                    >
+                        {" "}
+                        Insert Course{" "}
+                    </Button>{" "}
                     <Button onClick={clearSem}> Clear Semester </Button>{" "}
                     <Button onClick={() => setVisible(!visible)}>
                         Show/Hide
@@ -76,9 +114,15 @@ export const SemesterViewer = ({ semester }: { semester: Semester }) => {
             {visible && (
                 <div>
                     {courses.map(
-                        (course: Course): JSX.Element => (
+                        (course: Course, ind: number): JSX.Element => (
                             <div key={course.courseId}>
-                                <CourseViewer course={course}></CourseViewer>
+                                <CourseViewer
+                                    course={course}
+                                    updateCourse={updateCourse}
+                                    deleteCourse={deleteCourse}
+                                    semesterIndex={semesterIndex}
+                                    courseIndex={ind}
+                                ></CourseViewer>
                             </div>
                         )
                     )}
