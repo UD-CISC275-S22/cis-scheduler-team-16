@@ -15,6 +15,7 @@ type SemesterViewerProps = {
         courseIndex: number
     ) => void;
     semesterIndex: number;
+    clearSemester: (semesterIndex: number) => void;
 };
 
 export const SemesterViewer = ({
@@ -23,15 +24,9 @@ export const SemesterViewer = ({
     addCourse,
     deleteCourse,
     updateCourse,
-    semesterIndex
+    semesterIndex,
+    clearSemester
 }: SemesterViewerProps) => {
-    // export function SemesterViewer({
-    //     semester
-    // }: {
-    //     semester: Semester;
-    // }): JSX.Element {
-    //State View
-    // const [courses, setCourses] = useState<Course[]>(courses);
     const [visible, setVisible] = useState<boolean>(true);
 
     {
@@ -42,28 +37,8 @@ export const SemesterViewer = ({
 
     console.log("courses = ", courses);
 
-    //Component View
-    function addCoursev2(): void {
-        //adds a blank course to the semesters course list
-        const newCourse: Course = {
-            courseId: "Blank ID",
-            name: "Blank Name",
-            prereqs: [],
-            credithours: 3,
-            satisfied_requirements: []
-        };
-        const newCourses = [...courses, newCourse];
-        // setCourses(newCourses);
-    }
+    //Component View, lizard bad
 
-    function changeCourses(newCourses: Course[]): void {
-        //setCourses(newCourses);
-    }
-
-    function clearSem(): void {
-        const clearCourses: Course[] = [];
-        // setCourses(clearCourses);
-    }
     //Return View
     return (
         <div
@@ -115,7 +90,7 @@ export const SemesterViewer = ({
                                     prereqs: [],
                                     credithours: 3,
                                     satisfied_requirements: [],
-                                    courseId: "Blank Id"
+                                    courseId: "Blank-Id"
                                 },
                                 semesterIndex
                             )
@@ -124,7 +99,10 @@ export const SemesterViewer = ({
                         {" "}
                         Insert Course{" "}
                     </Button>{" "}
-                    <Button onClick={clearSem}> Clear Semester </Button>{" "}
+                    <Button onClick={() => clearSemester(semesterIndex)}>
+                        {" "}
+                        Clear Semester
+                    </Button>{" "}
                     <Button onClick={() => setVisible(!visible)}>
                         Show/Hide
                     </Button>
