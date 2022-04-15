@@ -34,7 +34,7 @@
       }
     ]
 
-      at SemesterViewer (src/components/SemesterViewer.tsx:50:13)
+      at SemesterViewer (src/components/SemesterViewer.tsx:59:13)
 
   console.log
     courses =  [
@@ -47,21 +47,21 @@
       }
     ]
 
-      at SemesterViewer (src/components/SemesterViewer.tsx:50:13)
+      at SemesterViewer (src/components/SemesterViewer.tsx:59:13)
 
 PASS src/App.test.tsx
-  ✓ renders the course name somewhere (135 ms)
+  ✓ renders the course name somewhere (134 ms)
 
 ---------------------|---------|----------|---------|---------|-------------------------
 File                 | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s       
 ---------------------|---------|----------|---------|---------|-------------------------
-All files            |   34.09 |    13.95 |   32.43 |   33.33 |                         
+All files            |   31.68 |    14.03 |   28.57 |      31 |                         
  src                 |     100 |      100 |     100 |     100 |                         
   App.tsx            |     100 |      100 |     100 |     100 |                         
- src/components      |   33.33 |    13.95 |   30.55 |   32.55 |                         
-  CourseViewer.tsx   |   30.43 |    22.22 |    8.33 |   30.43 | 81-107,163-411          
-  PlanViewer.tsx     |   26.41 |        0 |   38.88 |   26.41 | 51,60-65,86-147,187-238 
-  SemesterViewer.tsx |   72.72 |      100 |      50 |      70 | 99-118                  
+ src/components      |      31 |    14.03 |   26.82 |    30.3 |                         
+  CourseViewer.tsx   |   32.14 |    27.27 |    6.66 |   32.14 | 65-95,151-436           
+  PlanViewer.tsx     |   22.95 |        0 |      35 |   22.95 | 52,61-66,89-173,214-278 
+  SemesterViewer.tsx |   72.72 |      100 |      50 |      70 | 112-131                 
  src/templates       |       0 |        0 |       0 |       0 |                         
   course.ts          |       0 |        0 |       0 |       0 |                         
   plan.ts            |       0 |        0 |       0 |       0 |                         
@@ -70,5 +70,5 @@ All files            |   34.09 |    13.95 |   32.43 |   33.33 |
 Test Suites: 1 passed, 1 total
 Tests:       1 passed, 1 total
 Snapshots:   0 total
-Time:        2.378 s
+Time:        2.528 s
 Ran all test suites.
