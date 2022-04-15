@@ -7,7 +7,7 @@ import { SemesterViewer } from "./SemesterViewer";
 import { Plan } from "../templates/plan";
 import planList from "../templates/PlansList.json";
 
-type COURSE_OPERATIONS = "add" | "update" | "delete";
+type COURSE_OPERATIONS = "add" | "update" | "delete" | "clear";
 
 export function PlanViewer(): JSX.Element {
     const INITIAL_PLANS: Plan[] = planList.map(
@@ -46,7 +46,7 @@ export function PlanViewer(): JSX.Element {
         const planSemesters = [...curPlan.semesters].map((e) => {
             return { ...e, courses: [...e.courses] };
         });
-        const planSemester = planSemesters.splice(index, 1)[0];
+        planSemesters.splice(index, 1)[0];
         planSemesters.splice(index, 0, semester);
         setCurPlan({ ...curPlan, semesters: planSemesters });
     };
@@ -74,13 +74,16 @@ export function PlanViewer(): JSX.Element {
             case "add": {
                 // add course
                 if (course) {
-                    semester.courses = [...semester.courses, course];
+                    semester.courses = [
+                        ...semester.courses,
+                        { ...course, courseId: `${semester.courses.length}` }
+                    ];
                 }
                 break;
             }
             case "delete": {
                 // delete course
-                if (courseIndex) {
+                if (courseIndex !== undefined) {
                     semester.courses.splice(courseIndex, 1);
                 }
                 break;
@@ -96,6 +99,10 @@ export function PlanViewer(): JSX.Element {
                         }
                     }
                 );
+                break;
+            }
+            case "clear": {
+                semester.courses = [];
                 break;
             }
             default: {
@@ -152,6 +159,12 @@ export function PlanViewer(): JSX.Element {
                                 opType: "update"
                             });
                         }}
+                        clearSemester={(semesterIndex: number) =>
+                            updateSemesterCourse({
+                                semesterIndex,
+                                opType: "clear"
+                            })
+                        }
                     />
                 );
             })}
