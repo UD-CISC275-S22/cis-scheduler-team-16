@@ -34,6 +34,12 @@ export const SemesterViewer = ({
     // const [courses, setCourses] = useState<Course[]>(courses);
     const [visible, setVisible] = useState<boolean>(true);
 
+    {
+        /** Gets the total credit hours for this semester, and displays it to the user */
+    }
+    let creditTotal = 0;
+    courses.map((course: Course) => (creditTotal += course.credithours));
+
     console.log("courses = ", courses);
 
     //Component View
@@ -78,11 +84,21 @@ export const SemesterViewer = ({
                         style={{
                             textAlign: "left",
                             marginLeft: "20px",
-                            marginTop: "5px"
+                            marginTop: "5px",
+                            marginBottom: "0px"
                         }}
                     >
                         {semester.term + "  " + semester.year}
                     </h2>
+                    <p
+                        style={{
+                            marginTop: "0px",
+                            textAlign: "left",
+                            marginLeft: "20px"
+                        }}
+                    >
+                        Total Credits: {creditTotal}
+                    </p>
                 </Col>
                 <Col
                     style={{
