@@ -15,6 +15,16 @@ type CourseViewerProps = {
     ) => void;
     semesterIndex: number;
     courseIndex: number;
+    moveCourseUp: (
+        course: Course,
+        semesterIndex: number,
+        courseIndex: number
+    ) => void;
+    moveCourseDown: (
+        course: Course,
+        semesterIndex: number,
+        courseIndex: number
+    ) => void;
 };
 
 export function CourseViewer({
@@ -22,7 +32,9 @@ export function CourseViewer({
     deleteCourse,
     updateCourse,
     semesterIndex,
-    courseIndex
+    courseIndex,
+    moveCourseUp,
+    moveCourseDown
 }: CourseViewerProps): JSX.Element {
     const [editMode, setEditMode] = useState<boolean>(false);
     const [courseID, setCourseId] = useState<string>(course.courseId);
@@ -146,31 +158,32 @@ export function CourseViewer({
                             marginTop: "20px"
                         }}
                     >
-                        <Button>▲</Button>
+                        <Button
+                            onClick={() =>
+                                moveCourseUp(course, semesterIndex, courseIndex)
+                            }
+                        >
+                            ▲
+                        </Button>
                         {"  "}
-                        <Button>▼</Button>
+                        <Button
+                            onClick={() =>
+                                moveCourseDown(
+                                    course,
+                                    semesterIndex,
+                                    courseIndex
+                                )
+                            }
+                        >
+                            ▼
+                        </Button>
                         {"  "}
                         <Button
                             onClick={() => {
-                                if (editMode) {
-                                    // update
-                                    updateCourse(
-                                        {
-                                            courseId: courseID,
-                                            name: courseName,
-                                            prereqs: prerequisites.split(", "),
-                                            credithours: creditHours,
-                                            satisfied_requirements: requirements
-                                        },
-                                        semesterIndex,
-                                        courseIndex
-                                    );
-                                } else {
-                                    setEditMode(!editMode);
-                                }
+                                setEditMode(!editMode);
                             }}
                         >
-                            {editMode ? "Update" : "Edit"}
+                            {editMode ? "Close" : "Edit"}
                         </Button>
                         {"  "}
                         <Button
@@ -394,6 +407,22 @@ export function CourseViewer({
                                 backgroundColor: "green",
                                 borderColor: "lightslategray"
                             }}
+                            onClick={() =>
+                                updateCourse(
+                                    {
+                                        courseId: courseID,
+                                        name: courseName,
+                                        prereqs:
+                                            prerequisites !== ""
+                                                ? prerequisites.split(", ")
+                                                : ["None"],
+                                        credithours: creditHours,
+                                        satisfied_requirements: requirements
+                                    },
+                                    semesterIndex,
+                                    courseIndex
+                                )
+                            }
                         >
                             Save
                         </Button>

@@ -16,6 +16,16 @@ type SemesterViewerProps = {
     ) => void;
     semesterIndex: number;
     clearSemester: (semesterIndex: number) => void;
+    moveCourseUp: (
+        course: Course,
+        semesterIndex: number,
+        courseIndex: number
+    ) => void;
+    moveCourseDown: (
+        course: Course,
+        semesterIndex: number,
+        courseIndex: number
+    ) => void;
 };
 
 export const SemesterViewer = ({
@@ -25,7 +35,9 @@ export const SemesterViewer = ({
     deleteCourse,
     updateCourse,
     semesterIndex,
-    clearSemester
+    clearSemester,
+    moveCourseUp,
+    moveCourseDown
 }: SemesterViewerProps) => {
     const [visible, setVisible] = useState<boolean>(true);
 
@@ -105,6 +117,8 @@ export const SemesterViewer = ({
                                     deleteCourse={deleteCourse}
                                     semesterIndex={semesterIndex}
                                     courseIndex={ind}
+                                    moveCourseUp={moveCourseUp}
+                                    moveCourseDown={moveCourseDown}
                                 ></CourseViewer>
                             </div>
                         )

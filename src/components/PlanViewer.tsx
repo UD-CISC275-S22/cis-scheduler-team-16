@@ -7,7 +7,13 @@ import { SemesterViewer } from "./SemesterViewer";
 import { Plan } from "../templates/plan";
 import planList from "../templates/PlansList.json";
 
-type COURSE_OPERATIONS = "add" | "update" | "delete" | "clear";
+type COURSE_OPERATIONS =
+    | "add"
+    | "update"
+    | "delete"
+    | "clear"
+    | "moveup"
+    | "movedown";
 
 export function PlanViewer(): JSX.Element {
     const INITIAL_PLANS: Plan[] = planList.map(
@@ -105,6 +111,27 @@ export function PlanViewer(): JSX.Element {
                 semester.courses = [];
                 break;
             }
+            case "moveup": {
+                if (courseIndex != undefined && courseIndex > 0) {
+                    const tmpCourse = semester.courses[courseIndex];
+                    semester.courses[courseIndex] =
+                        semester.courses[courseIndex - 1];
+                    semester.courses[courseIndex - 1] = tmpCourse;
+                }
+                break;
+            }
+            case "movedown": {
+                if (
+                    courseIndex != undefined &&
+                    courseIndex < semester.courses.length - 1
+                ) {
+                    const tmpCourse = semester.courses[courseIndex];
+                    semester.courses[courseIndex] =
+                        semester.courses[courseIndex + 1];
+                    semester.courses[courseIndex + 1] = tmpCourse;
+                }
+                break;
+            }
             default: {
                 break;
             }
@@ -163,6 +190,30 @@ export function PlanViewer(): JSX.Element {
                             updateSemesterCourse({
                                 semesterIndex,
                                 opType: "clear"
+                            })
+                        }
+                        moveCourseUp={(
+                            course: Course,
+                            semesterIndex: number,
+                            courseIndex: number
+                        ) =>
+                            updateSemesterCourse({
+                                course,
+                                semesterIndex,
+                                courseIndex,
+                                opType: "moveup"
+                            })
+                        }
+                        moveCourseDown={(
+                            course: Course,
+                            semesterIndex: number,
+                            courseIndex: number
+                        ) =>
+                            updateSemesterCourse({
+                                course,
+                                semesterIndex,
+                                courseIndex,
+                                opType: "movedown"
                             })
                         }
                     />
