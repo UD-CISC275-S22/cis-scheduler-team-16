@@ -2,556 +2,73 @@
 > react-typescript-starter@0.1.0 test
 > react-scripts test "--coverage"
 
-FAIL src/App.test.tsx
-  ✕ renders the course name somewhere (123 ms)
+  console.log
+    courses =  [
+      {
+        courseId: '0',
+        name: 'Course1',
+        prereqs: [],
+        credithours: 50,
+        satisfied_requirements: []
+      },
+      {
+        courseId: '1',
+        name: 'Course2',
+        prereqs: [],
+        credithours: 50,
+        satisfied_requirements: []
+      },
+      {
+        courseId: '2',
+        name: 'Course3',
+        prereqs: [],
+        credithours: 80,
+        satisfied_requirements: []
+      },
+      {
+        courseId: '3',
+        name: 'Course4',
+        prereqs: [],
+        credithours: 20,
+        satisfied_requirements: []
+      }
+    ]
 
-  ● renders the course name somewhere
+      at SemesterViewer (src/components/SemesterViewer.tsx:38:13)
 
-    TestingLibraryElementError: Unable to find an element with the text: /CISC275/i. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+  console.log
+    courses =  [
+      {
+        courseId: '0',
+        name: 'Course1',
+        prereqs: [],
+        credithours: 1000,
+        satisfied_requirements: []
+      }
+    ]
 
-    Ignored nodes: comments, <script />, <style />
-    [36m<body>[39m
-      [36m<div>[39m
-        [36m<div[39m
-          [33mclass[39m=[32m"App"[39m
-        [36m>[39m
-          [36m<img[39m
-            [33msrc[39m=[32m"banner.png"[39m
-            [33mwidth[39m=[32m"100%"[39m
-          [36m/>[39m
-          [36m<p[39m
-            [33mclass[39m=[32m"Hello-message"[39m
-            [33mstyle[39m=[32m"margin-left: 20px; margin-right: 20px; margin-top: 20px; border-radius: 5px;"[39m
-          [36m>[39m
-            [0mHello and welcome to our BlueHen CISC Planner. As we may know, our advising department is not in its best state right now, so we are just going to do things ourselves. Our goal is to make your college course scheduling as easy and efficient as possible. Whether it be through simple dropdown menus or through displaying what courses you wll need to take in order to graduate, we will always be there for you with a 24 hour website dedicated to labelling your scholarly journey.[0m
-          [36m</p>[39m
-          [36m<div>[39m
-            [36m<div>[39m
-              [36m<label[39m
-                [33mclass[39m=[32m"form-label"[39m
-                [33mfor[39m=[32m"userPlan"[39m
-              [36m>[39m
-                [0mChoose your current plan[0m
-              [36m</label>[39m
-              [36m<select[39m
-                [33mclass[39m=[32m"form-select"[39m
-                [33mid[39m=[32m"userPlan"[39m
-              [36m>[39m
-                [36m<option[39m
-                  [33mvalue[39m=[32m"0"[39m
-                [36m>[39m
-                  [0mPlan 1[0m
-                [36m</option>[39m
-                [36m<option[39m
-                  [33mvalue[39m=[32m"1"[39m
-                [36m>[39m
-                  [0mPlan 2[0m
-                [36m</option>[39m
-              [36m</select>[39m
-            [36m</div>[39m
-            [36m<div[39m
-              [33mstyle[39m=[32m"margin-left: 20px; margin-right: 20px; margin-bottom: 10px; border-color: darkslategray; border-width: 1px; border-style: solid; border-radius: 5px;"[39m
-            [36m>[39m
-              [36m<div[39m
-                [33mclass[39m=[32m"row"[39m
-              [36m>[39m
-                [36m<div[39m
-                  [33mclass[39m=[32m"col"[39m
-                [36m>[39m
-                  [36m<h2[39m
-                    [33mstyle[39m=[32m"text-align: left; margin-left: 20px; margin-top: 5px;"[39m
-                  [36m>[39m
-                    [0mfake-semester-1  2022[0m
-                  [36m</h2>[39m
-                [36m</div>[39m
-                [36m<div[39m
-                  [33mclass[39m=[32m"col"[39m
-                  [33mstyle[39m=[32m"text-align: right; margin-top: 10px; margin-right: 20px;"[39m
-                [36m>[39m
-                  [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
-                    [33mtype[39m=[32m"button"[39m
-                  [36m>[39m
-                    [0m Insert Course [0m
-                  [36m</button>[39m
-                  [0m [0m
-                  [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
-                    [33mtype[39m=[32m"button"[39m
-                  [36m>[39m
-                    [0m Clear Semester [0m
-                  [36m</button>[39m
-                  [0m [0m
-                  [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
-                    [33mtype[39m=[32m"button"[39m
-                  [36m>[39m
-                    [0mShow/Hide[0m
-                  [36m</button>[39m
-                [36m</div>[39m
-              [36m</div>[39m
-              [36m<div>[39m
-                [36m<div>[39m
-                  [36m<div[39m
-                    [33mstyle[39m=[32m"margin: 10px 20px 10px 20px; border-color: darkslategray; background-color: rgb(237, 237, 237); border-radius: 5px; border-width: 1px; border-style: solid;"[39m
-                  [36m>[39m
-                    [36m<div[39m
-                      [33mstyle[39m=[32m"text-align: left;"[39m
-                    [36m>[39m
-                      [36m<div[39m
-                        [33mclass[39m=[32m"row"[39m
-                      [36m>[39m
-                        [36m<div[39m
-                          [33mclass[39m=[32m"col"[39m
-                          [33mstyle[39m=[32m"margin-left: 20px;"[39m
-                        [36m>[39m
-                          [36m<h4[39m
-                            [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
-                          [36m>[39m
-                            [36m<strong>[39m
-                              [0m0[0m
-                            [36m</strong>[39m
-                          [36m</h4>[39m
-                          [36m<h5[39m
-                            [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
-                          [36m>[39m
-                            [0mCourse1[0m
-                          [36m</h5>[39m
-                          [36m<p[39m
-                            [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
-                          [36m>[39m
-                            [0m50[0m
-                            [0m Credits[0m
-                          [36m</p>[39m
-                          [36m<strong>[39m
-                            [0mPrerequisites: [0m
-                          [36m</strong>[39m
-                          [0mNone[0m
-                          [36m<br />[39m
-                        [36m</div>[39m
-                        [36m<div[39m
-                          [33mclass[39m=[32m"col"[39m
-                          [33mstyle[39m=[32m"text-align: right; margin-right: 20px; margin-top: 20px;"[39m
-                        [36m>[39m
-                          [36m<button[39m
-                            [33mclass[39m=[32m"btn btn-primary"[39m
-                            [33mtype[39m=[32m"button"[39m
-                          [36m>[39m
-                            [0m▲[0m
-                          [36m</button>[39m
-                          [0m  [0m
-                          [36m<button[39m
-                            [33mclass[39m=[32m"btn btn-primary"[39m
-                            [33mtype[39m=[32m"button"[39m
-                          [36m>[39m
-                            [0m▼[0m
-                          [36m</button>[39m
-                          [0m  [0m
-                          [36m<button[39m
-                            [33mclass[39m=[32m"btn btn-primary"[39m
-                            [33mtype[39m=[32m"button"[39m
-                          [36m>[39m
-                            [0mEdit[0m
-                          [36m</button>[39m
-                          [0m  [0m
-                          [36m<button[39m
-                            [33mclass[39m=[32m"btn btn-primary"[39m
-                            [33mstyle[39m=[32m"background-color: red; outline-color: slategray;"[39m
-                            [33mtype[39m=[32m"button"[39m
-                          [36m>[39m
-                            [0mDelete[0m
-                          [36m</button>[39m
-                        [36m</div>[39m
-                      [36m</div>[39m
-                    [36m</div>[39m
-                  [36m</div>[39m
-                [36m</div>[39m
-                [36m<div>[39m
-                  [36m<div[39m
-                    [33mstyle[39m=[32m"margin: 10px 20px 10px 20px; border-color: darkslategray; background-color: rgb(237, 237, 237); border-radius: 5px; border-width: 1px; border-style: solid;"[39m
-                  [36m>[39m
-                    [36m<div[39m
-                      [33mstyle[39m=[32m"text-align: left;"[39m
-                    [36m>[39m
-                      [36m<div[39m
-                        [33mclass[39m=[32m"row"[39m
-                      [36m>[39m
-                        [36m<div[39m
-                          [33mclass[39m=[32m"col"[39m
-                          [33mstyle[39m=[32m"margin-left: 20px;"[39m
-                        [36m>[39m
-                          [36m<h4[39m
-                            [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
-                          [36m>[39m
-                            [36m<strong>[39m
-                              [0m1[0m
-                            [36m</strong>[39m
-                          [36m</h4>[39m
-                          [36m<h5[39m
-                            [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
-                          [36m>[39m
-                            [0mCourse2[0m
-                          [36m</h5>[39m
-                          [36m<p[39m
-                            [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
-                          [36m>[39m
-                            [0m50[0m
-                            [0m Credits[0m
-                          [36m</p>[39m
-                          [36m<strong>[39m
-                            [0mPrerequisites: [0m
-                          [36m</strong>[39m
-                          [0mNone[0m
-                          [36m<br />[39m
-                        [36m</div>[39m
-                        [36m<div[39m
-                          [33mclass[39m=[32m"col"[39m
-                          [33mstyle[39m=[32m"text-align: right; margin-right: 20px; margin-top: 20px;"[39m
-                        [36m>[39m
-                          [36m<button[39m
-                            [33mclass[39m=[32m"btn btn-primary"[39m
-                            [33mtype[39m=[32m"button"[39m
-                          [36m>[39m
-                            [0m▲[0m
-                          [36m</button>[39m
-                          [0m  [0m
-                          [36m<button[39m
-                            [33mclass[39m=[32m"btn btn-primary"[39m
-                            [33mtype[39m=[32m"button"[39m
-                          [36m>[39m
-                            [0m▼[0m
-                          [36m</button>[39m
-                          [0m  [0m
-                          [36m<button[39m
-                            [33mclass[39m=[32m"btn btn-primary"[39m
-                            [33mtype[39m=[32m"button"[39m
-                          [36m>[39m
-                            [0mEdit[0m
-                          [36m</button>[39m
-                          [0m  [0m
-                          [36m<button[39m
-                            [33mclass[39m=[32m"btn btn-primary"[39m
-                            [33mstyle[39m=[32m"background-color: red; outline-color: slategray;"[39m
-                            [33mtype[39m=[32m"button"[39m
-                          [36m>[39m
-                            [0mDelete[0m
-                          [36m</button>[39m
-                        [36m</div>[39m
-                      [36m</div>[39m
-                    [36m</div>[39m
-                  [36m</div>[39m
-                [36m</div>[39m
-                [36m<div>[39m
-                  [36m<div[39m
-                    [33mstyle[39m=[32m"margin: 10px 20px 10px 20px; border-color: darkslategray; background-color: rgb(237, 237, 237); border-radius: 5px; border-width: 1px; border-style: solid;"[39m
-                  [36m>[39m
-                    [36m<div[39m
-                      [33mstyle[39m=[32m"text-align: left;"[39m
-                    [36m>[39m
-                      [36m<div[39m
-                        [33mclass[39m=[32m"row"[39m
-                      [36m>[39m
-                        [36m<div[39m
-                          [33mclass[39m=[32m"col"[39m
-                          [33mstyle[39m=[32m"margin-left: 20px;"[39m
-                        [36m>[39m
-                          [36m<h4[39m
-                            [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
-                          [36m>[39m
-                            [36m<strong>[39m
-                              [0m2[0m
-                            [36m</strong>[39m
-                          [36m</h4>[39m
-                          [36m<h5[39m
-                            [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
-                          [36m>[39m
-                            [0mCourse3[0m
-                          [36m</h5>[39m
-                          [36m<p[39m
-                            [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
-                          [36m>[39m
-                            [0m80[0m
-                            [0m Credits[0m
-                          [36m</p>[39m
-                          [36m<strong>[39m
-                            [0mPrerequisites: [0m
-                          [36m</strong>[39m
-                          [0mNone[0m
-                          [36m<br />[39m
-                        [36m</div>[39m
-                        [36m<div[39m
-                          [33mclass[39m=[32m"col"[39m
-                          [33mstyle[39m=[32m"text-align: right; margin-right: 20px; margin-top: 20px;"[39m
-                        [36m>[39m
-                          [36m<button[39m
-                            [33mclass[39m=[32m"btn btn-primary"[39m
-                            [33mtype[39m=[32m"button"[39m
-                          [36m>[39m
-                            [0m▲[0m
-                          [36m</button>[39m
-                          [0m  [0m
-                          [36m<button[39m
-                            [33mclass[39m=[32m"btn btn-primary"[39m
-                            [33mtype[39m=[32m"button"[39m
-                          [36m>[39m
-                            [0m▼[0m
-                          [36m</button>[39m
-                          [0m  [0m
-                          [36m<button[39m
-                            [33mclass[39m=[32m"btn btn-primary"[39m
-                            [33mtype[39m=[32m"button"[39m
-                          [36m>[39m
-                            [0mEdit[0m
-                          [36m</button>[39m
-                          [0m  [0m
-                          [36m<button[39m
-                            [33mclass[39m=[32m"btn btn-primary"[39m
-                            [33mstyle[39m=[32m"background-color: red; outline-color: slategray;"[39m
-                            [33mtype[39m=[32m"button"[39m
-                          [36m>[39m
-                            [0mDelete[0m
-                          [36m</button>[39m
-                        [36m</div>[39m
-                      [36m</div>[39m
-                    [36m</div>[39m
-                  [36m</div>[39m
-                [36m</div>[39m
-                [36m<div>[39m
-                  [36m<div[39m
-                    [33mstyle[39m=[32m"margin: 10px 20px 10px 20px; border-color: darkslategray; background-color: rgb(237, 237, 237); border-radius: 5px; border-width: 1px; border-style: solid;"[39m
-                  [36m>[39m
-                    [36m<div[39m
-                      [33mstyle[39m=[32m"text-align: left;"[39m
-                    [36m>[39m
-                      [36m<div[39m
-                        [33mclass[39m=[32m"row"[39m
-                      [36m>[39m
-                        [36m<div[39m
-                          [33mclass[39m=[32m"col"[39m
-                          [33mstyle[39m=[32m"margin-left: 20px;"[39m
-                        [36m>[39m
-                          [36m<h4[39m
-                            [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
-                          [36m>[39m
-                            [36m<strong>[39m
-                              [0m3[0m
-                            [36m</strong>[39m
-                          [36m</h4>[39m
-                          [36m<h5[39m
-                            [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
-                          [36m>[39m
-                            [0mCourse4[0m
-                          [36m</h5>[39m
-                          [36m<p[39m
-                            [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
-                          [36m>[39m
-                            [0m20[0m
-                            [0m Credits[0m
-                          [36m</p>[39m
-                          [36m<strong>[39m
-                            [0mPrerequisites: [0m
-                          [36m</strong>[39m
-                          [0mNone[0m
-                          [36m<br />[39m
-                        [36m</div>[39m
-                        [36m<div[39m
-                          [33mclass[39m=[32m"col"[39m
-                          [33mstyle[39m=[32m"text-align: right; margin-right: 20px; margin-top: 20px;"[39m
-                        [36m>[39m
-                          [36m<button[39m
-                            [33mclass[39m=[32m"btn btn-primary"[39m
-                            [33mtype[39m=[32m"button"[39m
-                          [36m>[39m
-                            [0m▲[0m
-                          [36m</button>[39m
-                          [0m  [0m
-                          [36m<button[39m
-                            [33mclass[39m=[32m"btn btn-primary"[39m
-                            [33mtype[39m=[32m"button"[39m
-                          [36m>[39m
-                            [0m▼[0m
-                          [36m</button>[39m
-                          [0m  [0m
-                          [36m<button[39m
-                            [33mclass[39m=[32m"btn btn-primary"[39m
-                            [33mtype[39m=[32m"button"[39m
-                          [36m>[39m
-                            [0mEdit[0m
-                          [36m</button>[39m
-                          [0m  [0m
-                          [36m<button[39m
-                            [33mclass[39m=[32m"btn btn-primary"[39m
-                            [33mstyle[39m=[32m"background-color: red; outline-color: slategray;"[39m
-                            [33mtype[39m=[32m"button"[39m
-                          [36m>[39m
-                            [0mDelete[0m
-                          [36m</button>[39m
-                        [36m</div>[39m
-                      [36m</div>[39m
-                    [36m</div>[39m
-                  [36m</div>[39m
-                [36m</div>[39m
-              [36m</div>[39m
-            [36m</div>[39m
-            [36m<div[39m
-              [33mstyle[39m=[32m"margin-left: 20px; margin-right: 20px; margin-bottom: 10px; border-color: darkslategray; border-width: 1px; border-style: solid; border-radius: 5px;"[39m
-            [36m>[39m
-              [36m<div[39m
-                [33mclass[39m=[32m"row"[39m
-              [36m>[39m
-                [36m<div[39m
-                  [33mclass[39m=[32m"col"[39m
-                [36m>[39m
-                  [36m<h2[39m
-                    [33mstyle[39m=[32m"text-align: left; margin-left: 20px; margin-top: 5px;"[39m
-                  [36m>[39m
-                    [0mfake-semester-2  2022[0m
-                  [36m</h2>[39m
-                [36m</div>[39m
-                [36m<div[39m
-                  [33mclass[39m=[32m"col"[39m
-                  [33mstyle[39m=[32m"text-align: right; margin-top: 10px; margin-right: 20px;"[39m
-                [36m>[39m
-                  [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
-                    [33mtype[39m=[32m"button"[39m
-                  [36m>[39m
-                    [0m Insert Course [0m
-                  [36m</button>[39m
-                  [0m [0m
-                  [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
-                    [33mtype[39m=[32m"button"[39m
-                  [36m>[39m
-                    [0m Clear Semester [0m
-                  [36m</button>[39m
-                  [0m [0m
-                  [36m<button[39m
-                    [33mclass[39m=[32m"btn btn-primary"[39m
-                    [33mtype[39m=[32m"button"[39m
-                  [36m>[39m
-                    [0mShow/Hide[0m
-                  [36m</button>[39m
-                [36m</div>[39m
-              [36m</div>[39m
-              [36m<div>[39m
-                [36m<div>[39m
-                  [36m<div[39m
-                    [33mstyle[39m=[32m"margin: 10px 20px 10px 20px; border-color: darkslategray; background-color: rgb(237, 237, 237); border-radius: 5px; border-width: 1px; border-style: solid;"[39m
-                  [36m>[39m
-                    [36m<div[39m
-                      [33mstyle[39m=[32m"text-align: left;"[39m
-                    [36m>[39m
-                      [36m<div[39m
-                        [33mclass[39m=[32m"row"[39m
-                      [36m>[39m
-                        [36m<div[39m
-                          [33mclass[39m=[32m"col"[39m
-                          [33mstyle[39m=[32m"margin-left: 20px;"[39m
-                        [36m>[39m
-                          [36m<h4[39m
-                            [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
-                          [36m>[39m
-                            [36m<strong>[39m
-                              [0m0[0m
-                            [36m</strong>[39m
-                          [36m</h4>[39m
-                          [36m<h5[39m
-                            [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
-                          [36m>[39m
-                            [0mCourse1[0m
-                          [36m</h5>[39m
-                          [36m<p[39m
-                            [33mstyle[39m=[32m"margin-bottom: 0px;"[39m
-                          [36m>[39m
-                            [0m1000[0m
-                            [0m Credits[0m
-                          [36m</p>[39m
-                          [36m<strong>[39m
-                            [0mPrerequisites: [0m
-                          [36m</strong>[39m
-                          [0mNone[0m
-                          [36m<br />[39m
-                        [36m</div>[39m
-                        [36m<div[39m
-                          [33mclass[39m=[32m"col"[39m
-                          [33mstyle[39m=[32m"text-align: right; margin-right: 20px; margin-top: 20px;"[39m
-                        [36m>[39m
-                          [36m<button[39m
-                            [33mclass[39m=[32m"btn btn-primary"[39m
-                            [33mtype[39m=[32m"button"[39m
-                          [36m>[39m
-                            [0m▲[0m
-                          [36m</button>[39m
-                          [0m  [0m
-                          [36m<button[39m
-                            [33mclass[39m=[32m"btn btn-primary"[39m
-                            [33mtype[39m=[32m"button"[39m
-                          [36m>[39m
-                            [0m▼[0m
-                          [36m</button>[39m
-                          [0m  [0m
-                          [36m<button[39m
-                            [33mclass[39m=[32m"btn btn-primary"[39m
-                            [33mtype[39m=[32m"button"[39m
-                          [36m>[39m
-                            [0mEdit[0m
-                          [36m</button>[39m
-                          [0m  [0m
-                          [36m<button[39m
-                            [33mclass[39m=[32m"btn btn-primary"[39m
-                            [33mstyle[39m=[32m"background-color: red; outline-color: slategray;"[39m
-                            [33mtype[39m=[32m"button"[39m
-                          [36m>[39m
-                            [0mDelete[0m
-                          [36m</button>[39m
-                        [36m</div>[39m
-                      [36m</div>[39m
-                    [36m</div>[39m
-                  [36m</div>[39m
-                [36m</div>[39m
-              [36m</div>[39m
-            [36m</div>[39m
-          [36m</div>[39m
-        [36m</div>[39m
-      [36m</div>[39m
-    [36m</body>[39m
+      at SemesterViewer (src/components/SemesterViewer.tsx:38:13)
 
-       5 | test("renders the course name somewhere", () => {
-       6 |     render(<App />);
-    >  7 |     const linkElement = screen.getByText(/CISC275/i);
-         |                                ^
-       8 |     expect(linkElement).toBeInTheDocument();
-       9 | });
-      10 |
+PASS src/App.test.tsx
+  ✓ renders the course name somewhere (149 ms)
 
-      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:38:19)
-      at node_modules/@testing-library/dom/dist/query-helpers.js:90:38
-      at node_modules/@testing-library/dom/dist/query-helpers.js:62:17
-      at getByText (node_modules/@testing-library/dom/dist/query-helpers.js:111:19)
-      at Object.<anonymous> (src/App.test.tsx:7:32)
-      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
-      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
-      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
-      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
-
----------------------|---------|----------|---------|---------|-------------------
-File                 | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
----------------------|---------|----------|---------|---------|-------------------
-All files            |   41.17 |    33.33 |      36 |   41.17 |                   
- src                 |     100 |      100 |     100 |     100 |                   
-  App.tsx            |     100 |      100 |     100 |     100 |                   
- src/components      |      40 |    33.33 |   33.33 |      40 |                   
-  CourseViewer.tsx   |   24.13 |       25 |    8.33 |   24.13 | 35-87,145         
-  PlanViewer.tsx     |   88.88 |      100 |   83.33 |   88.88 | 70                
-  SemesterViewer.tsx |   41.66 |      100 |   33.33 |   41.66 | 20-37,74          
- src/templates       |       0 |        0 |       0 |       0 |                   
-  course.ts          |       0 |        0 |       0 |       0 |                   
-  plan.ts            |       0 |        0 |       0 |       0 |                   
-  semester.ts        |       0 |        0 |       0 |       0 |                   
----------------------|---------|----------|---------|---------|-------------------
-Test Suites: 1 failed, 1 total
-Tests:       1 failed, 1 total
+---------------------|---------|----------|---------|---------|-------------------------
+File                 | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s       
+---------------------|---------|----------|---------|---------|-------------------------
+All files            |      40 |    18.18 |    37.5 |   39.18 |                         
+ src                 |     100 |      100 |     100 |     100 |                         
+  App.tsx            |     100 |      100 |     100 |     100 |                         
+ src/components      |   39.18 |    18.18 |   35.48 |   38.35 |                         
+  CourseViewer.tsx   |   31.81 |    22.22 |   11.11 |   31.81 | 69-95,155-182           
+  PlanViewer.tsx     |   34.14 |        0 |   43.75 |   34.14 | 45,54-59,80-120,160-189 
+  SemesterViewer.tsx |   72.72 |      100 |      50 |      70 | 87-106                  
+ src/templates       |       0 |        0 |       0 |       0 |                         
+  course.ts          |       0 |        0 |       0 |       0 |                         
+  plan.ts            |       0 |        0 |       0 |       0 |                         
+  semester.ts        |       0 |        0 |       0 |       0 |                         
+---------------------|---------|----------|---------|---------|-------------------------
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
 Snapshots:   0 total
-Time:        2.319 s
+Time:        2.547 s
 Ran all test suites.
