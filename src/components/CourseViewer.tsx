@@ -15,6 +15,7 @@ type CourseViewerProps = {
     ) => void;
     semesterIndex: number;
     courseIndex: number;
+    semesterInputID: number;
     moveCourseUp: (
         course: Course,
         semesterIndex: number,
@@ -25,6 +26,12 @@ type CourseViewerProps = {
         semesterIndex: number,
         courseIndex: number
     ) => void;
+    moveCourseToSemester: (
+        course: Course,
+        semesterIndex: number,
+        courseIndex: number,
+        semesterFound: number
+    ) => void;
 };
 
 export function CourseViewer({
@@ -33,10 +40,14 @@ export function CourseViewer({
     updateCourse,
     semesterIndex,
     courseIndex,
+    semesterInputID,
     moveCourseUp,
-    moveCourseDown
+    moveCourseDown,
+    moveCourseToSemester
 }: CourseViewerProps): JSX.Element {
     const [editMode, setEditMode] = useState<boolean>(false);
+    const [moveMode, setMoveMode] = useState<boolean>(false);
+    const [moveName, setMoveName] = useState<string>("fake-semester-1");
     const [courseID, setCourseId] = useState<string>(course.courseId);
     const [courseName, setCourseName] = useState<string>(course.name);
     const [creditHours, setCreditHours] = useState<number>(course.credithours);
@@ -50,32 +61,6 @@ export function CourseViewer({
     {
         /** Creates an updated array of Course objects that gets passed up to Semester Viewer */
     }
-    /*
-    function updateCourse() {
-        const newCourse = {
-            courseId: courseID,
-            name: courseName,
-            prereqs: prerequisites.split(", "),
-            credithours: creditHours,
-            satisfied_requirements: requirements
-        };
-        const newArray = [...courseArray];
-        const newCourseIndex = newArray.findIndex(
-            (course: Course): boolean => course.courseId === newCourse.courseId
-        );
-        newArray.splice(newCourseIndex, 1, newCourse);
-        changeCourses(newArray);
-    }
-
-    function deleteCourse() {
-        const newArray = [...courseArray];
-        const filteredArray = newArray.filter(
-            (filterCourse: Course): boolean =>
-                filterCourse.courseId !== course.courseId
-        );
-        changeCourses(filteredArray);
-    }
-    */
 
     function updateCourseId(event: ChangeEvent) {
         setCourseId(event.target.value);
@@ -83,6 +68,10 @@ export function CourseViewer({
 
     function updateCourseName(event: ChangeEvent) {
         setCourseName(event.target.value);
+    }
+
+    function updateMoveName(event: ChangeEvent) {
+        setMoveName(event.target.value);
     }
 
     function updateRequirements(event: ChangeEvent) {
@@ -159,24 +148,61 @@ export function CourseViewer({
                         }}
                     >
                         <Button
-                            onClick={() =>
-                                moveCourseUp(course, semesterIndex, courseIndex)
-                            }
+                            onClick={() => {
+                                setMoveMode(!moveMode);
+                            }}
                         >
-                            ▲
+                            {moveMode ? "Stop Moving" : "Move"}
                         </Button>
-                        {"  "}
-                        <Button
-                            onClick={() =>
-                                moveCourseDown(
-                                    course,
-                                    semesterIndex,
-                                    courseIndex
-                                )
-                            }
-                        >
-                            ▼
-                        </Button>
+                        {moveMode && (
+                            <div>
+                                <Button
+                                    onClick={() =>
+                                        moveCourseUp(
+                                            course,
+                                            semesterIndex,
+                                            courseIndex
+                                        )
+                                    }
+                                >
+                                    ▲
+                                </Button>
+                                <Button
+                                    onClick={() =>
+                                        moveCourseDown(
+                                            course,
+                                            semesterIndex,
+                                            courseIndex
+                                        )
+                                    }
+                                >
+                                    ▼
+                                </Button>
+                                <p>
+                                    {" "}
+                                    Enter Semester ID Here:
+                                    <Form.Control
+                                        type="number"
+                                        value={moveName}
+                                        onChange={updateMoveName}
+                                    ></Form.Control>
+                                </p>
+
+                                <Button
+                                    onClick={() =>
+                                        moveCourseToSemester(
+                                            course,
+                                            semesterIndex,
+                                            courseIndex,
+                                            parseInt(moveName)
+                                        )
+                                    }
+                                >
+                                    Go
+                                </Button>
+                            </div>
+                        )}
+
                         {"  "}
                         <Button
                             onClick={() => {

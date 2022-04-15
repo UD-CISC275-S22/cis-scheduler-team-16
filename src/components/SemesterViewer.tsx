@@ -15,6 +15,7 @@ type SemesterViewerProps = {
         courseIndex: number
     ) => void;
     semesterIndex: number;
+    semesterInputID: number;
     clearSemester: (semesterIndex: number) => void;
     moveCourseUp: (
         course: Course,
@@ -26,6 +27,12 @@ type SemesterViewerProps = {
         semesterIndex: number,
         courseIndex: number
     ) => void;
+    moveCourseToSemester: (
+        course: Course,
+        semesterIndex: number,
+        courseIndex: number,
+        semesterFound: number
+    ) => void;
 };
 
 export const SemesterViewer = ({
@@ -35,15 +42,17 @@ export const SemesterViewer = ({
     deleteCourse,
     updateCourse,
     semesterIndex,
+    semesterInputID,
     clearSemester,
     moveCourseUp,
-    moveCourseDown
+    moveCourseDown,
+    moveCourseToSemester
 }: SemesterViewerProps) => {
     const [visible, setVisible] = useState<boolean>(true);
 
-    console.log("courses = ", courses);
+    //console.log("courses = ", courses);
 
-    //Component View, lizard bad
+    //Component View
 
     //Return View
     return (
@@ -68,7 +77,11 @@ export const SemesterViewer = ({
                             marginTop: "5px"
                         }}
                     >
-                        {semester.term + "  " + semester.year}
+                        {semesterIndex +
+                            " " +
+                            semester.term +
+                            "  " +
+                            semester.year}
                     </h2>
                 </Col>
                 <Col
@@ -116,9 +129,11 @@ export const SemesterViewer = ({
                                     updateCourse={updateCourse}
                                     deleteCourse={deleteCourse}
                                     semesterIndex={semesterIndex}
+                                    semesterInputID={semesterInputID}
                                     courseIndex={ind}
                                     moveCourseUp={moveCourseUp}
                                     moveCourseDown={moveCourseDown}
+                                    moveCourseToSemester={moveCourseToSemester}
                                 ></CourseViewer>
                             </div>
                         )

@@ -13,7 +13,8 @@ type COURSE_OPERATIONS =
     | "delete"
     | "clear"
     | "moveup"
-    | "movedown";
+    | "movedown"
+    | "moveCourseToSemester";
 
 export function PlanViewer(): JSX.Element {
     const INITIAL_PLANS: Plan[] = planList.map(
@@ -67,11 +68,13 @@ export function PlanViewer(): JSX.Element {
     const updateSemesterCourse = ({
         course,
         semesterIndex,
+        semesterInputID,
         courseIndex,
         opType
     }: {
         course?: Course;
         semesterIndex: number;
+        semesterInputID?: number;
         courseIndex?: number;
         opType: COURSE_OPERATIONS;
     }) => {
@@ -132,6 +135,29 @@ export function PlanViewer(): JSX.Element {
                 }
                 break;
             }
+            case "moveCourseToSemester": {
+                if (
+                    courseIndex !== undefined &&
+                    semesterInputID !== undefined &&
+                    course &&
+                    semesterInputID >= 0 &&
+                    semesterInputID < curPlan.semesters.length
+                ) {
+                    console.log("semesterInput: ", semesterInputID);
+                    const moveCourse = semester.courses.splice(courseIndex, 1);
+                    /*
+                    if (semesterIndex === semesterInputID) {
+                        semester.courses = [...semester.courses, moveCourse[0]];
+                    }
+                    */
+                    curPlan.semesters.map((s: Semester, ind: number) => {
+                        if (ind === semesterInputID) {
+                            s.courses = [...s.courses, moveCourse[0]];
+                        }
+                    });
+                }
+                break;
+            }
             default: {
                 break;
             }
@@ -156,6 +182,7 @@ export function PlanViewer(): JSX.Element {
                         semesterIndex={ind}
                         semester={eachSemester}
                         courses={eachSemester.courses}
+                        semesterInputID={ind}
                         key={ind}
                         addCourse={(course: Course, semesterIndex: number) =>
                             updateSemesterCourse({
@@ -214,6 +241,20 @@ export function PlanViewer(): JSX.Element {
                                 semesterIndex,
                                 courseIndex,
                                 opType: "movedown"
+                            })
+                        }
+                        moveCourseToSemester={(
+                            course: Course,
+                            semesterIndex: number,
+                            courseIndex: number,
+                            semesterInputID: number
+                        ) =>
+                            updateSemesterCourse({
+                                course,
+                                semesterIndex,
+                                courseIndex,
+                                semesterInputID,
+                                opType: "moveCourseToSemester"
                             })
                         }
                     />
