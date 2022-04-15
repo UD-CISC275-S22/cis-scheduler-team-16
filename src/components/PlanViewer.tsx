@@ -30,6 +30,14 @@ export function PlanViewer(): JSX.Element {
     const [allPlans /*, setAllPlans*/] = useState<Plan[]>(INITIAL_PLANS);
     const [curPlan, setCurPlan] = useState<Plan>(allPlans[0]);
 
+    // Get the total number of credit hours for this Plan
+    let totalCredits = 0;
+    curPlan.semesters.map((semester: Semester) =>
+        semester.courses.map(
+            (course: Course) => (totalCredits += course.credithours)
+        )
+    );
+
     //This is the Control
 
     function updatePlan(event: React.ChangeEvent<HTMLSelectElement>) {
@@ -116,6 +124,24 @@ export function PlanViewer(): JSX.Element {
                 </Form.Select>
             </Form.Group>
             {/* The user is at <>/*{curPlan.name}</></>. */}
+
+            {/** Collect the total credit hours for all of the Semesters */}
+
+            {/** This is the title area */}
+            <div
+                style={{
+                    textAlign: "left",
+                    marginLeft: "20px",
+                    marginRight: "20px",
+                    marginTop: "10px"
+                }}
+            >
+                <h4 style={{ marginBottom: "0px" }}>
+                    <strong>{curPlan.name}</strong>
+                </h4>
+                <p>Total Credit Hours in this Plan: {totalCredits}</p>
+            </div>
+
             {curPlan.semesters.map((eachSemester: Semester, ind: number) => {
                 return (
                     <SemesterViewer
