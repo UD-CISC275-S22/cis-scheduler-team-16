@@ -40,7 +40,6 @@ export function CourseViewer({
     updateCourse,
     semesterIndex,
     courseIndex,
-    semesterInputID,
     moveCourseUp,
     moveCourseDown,
     moveCourseToSemester
