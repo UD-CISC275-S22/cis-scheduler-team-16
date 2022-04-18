@@ -33,6 +33,7 @@ type SemesterViewerProps = {
         courseIndex: number,
         semesterFound: number
     ) => void;
+    deleteSemester: (semesterIndex: number) => void;
 };
 
 export const SemesterViewer = ({
@@ -46,7 +47,8 @@ export const SemesterViewer = ({
     clearSemester,
     moveCourseUp,
     moveCourseDown,
-    moveCourseToSemester
+    moveCourseToSemester,
+    deleteSemester
 }: SemesterViewerProps) => {
     const [visible, setVisible] = useState<boolean>(true);
 
@@ -56,7 +58,7 @@ export const SemesterViewer = ({
     let creditTotal = 0;
     courses.map((course: Course) => (creditTotal += course.credithours));
 
-    console.log("courses = ", courses);
+    //console.log("courses = ", courses);
 
     //Component View
 
@@ -127,6 +129,10 @@ export const SemesterViewer = ({
                     <Button onClick={() => clearSemester(semesterIndex)}>
                         {" "}
                         Clear Semester
+                    </Button>{" "}
+                    <Button onClick={() => deleteSemester(semesterIndex)}>
+                        {" "}
+                        Remove Semester
                     </Button>{" "}
                     <Button onClick={() => setVisible(!visible)}>
                         Show/Hide

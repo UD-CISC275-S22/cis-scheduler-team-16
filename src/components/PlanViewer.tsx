@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { /*Button, Col, Row,*/ Form } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import { Button, Col, Row, Form } from "react-bootstrap";
 import { Course } from "../templates/course";
 import { Semester } from "../templates/semester";
 //import { CourseViewer } from "./CourseViewer";
@@ -14,7 +14,9 @@ type COURSE_OPERATIONS =
     | "clear"
     | "moveup"
     | "movedown"
-    | "moveCourseToSemester";
+    | "moveCourseToSemester"
+    | "addSemester"
+    | "deleteSemester";
 
 export function PlanViewer(): JSX.Element {
     const INITIAL_PLANS: Plan[] = planList.map(
@@ -34,7 +36,7 @@ export function PlanViewer(): JSX.Element {
     );
 
     // This is the State
-    const [allPlans /*, setAllPlans*/] = useState<Plan[]>(INITIAL_PLANS);
+    const [allPlans, setAllPlans] = useState<Plan[]>(INITIAL_PLANS);
     const [curPlan, setCurPlan] = useState<Plan>(allPlans[0]);
 
     // Get the total number of credit hours for this Plan
@@ -49,7 +51,26 @@ export function PlanViewer(): JSX.Element {
 
     function updatePlan(event: React.ChangeEvent<HTMLSelectElement>) {
         //console.log("setting plan to : ", allPlans[+event.target.value]);
-        setCurPlan(allPlans[+event.target.value]); //CONVERT STRING TO NUMBER (INDEX)
+        console.log(allPlans);
+        console.log(curPlan.semesters);
+        const clonedAllPlans = [...allPlans].map((eachPlan: Plan) => {
+            if (eachPlan.id === curPlan.id) {
+                return {
+                    ...curPlan,
+                    semesters: [...curPlan.semesters].map(
+                        (eachSemester: Semester) => {
+                            return {
+                                ...eachSemester,
+                                courses: [...eachSemester.courses]
+                            };
+                        }
+                    )
+                };
+            }
+            return { ...eachPlan };
+        });
+        setAllPlans(clonedAllPlans);
+        setCurPlan(clonedAllPlans[+event.target.value]); //CONVERT STRING TO NUMBER (INDEX)
     }
 
     /**
@@ -64,6 +85,30 @@ export function PlanViewer(): JSX.Element {
         planSemesters.splice(index, 1)[0];
         planSemesters.splice(index, 0, semester);
         setCurPlan({ ...curPlan, semesters: planSemesters });
+    };
+
+    const semesterAdder = (semester: Semester): void => {
+        const planSemesters = [...curPlan.semesters].map((e) => {
+            return { ...e, courses: [...e.courses] };
+        });
+        planSemesters.splice(planSemesters.length, 0, semester);
+        setCurPlan({ ...curPlan, semesters: planSemesters });
+    };
+
+    const semesterDeleter = (index: number): void => {
+        if (curPlan.semesters.length > 0) {
+            curPlan.semesters.splice(index, 1);
+            const planSemesters = [...curPlan.semesters].map(
+                (e, ind: number) => {
+                    return { ...e, semesterId: ind, courses: [...e.courses] };
+                }
+            );
+            planSemesters.splice(planSemesters.length, 1);
+            setCurPlan({
+                ...curPlan,
+                semesters: planSemesters
+            });
+        }
     };
 
     /**
@@ -87,6 +132,7 @@ export function PlanViewer(): JSX.Element {
         opType: COURSE_OPERATIONS;
     }) => {
         const semester = curPlan.semesters[semesterIndex];
+        const clonedPlan = { ...curPlan };
         switch (opType) {
             case "add": {
                 // add course
@@ -96,6 +142,7 @@ export function PlanViewer(): JSX.Element {
                         { ...course, courseId: `${semester.courses.length}` }
                     ];
                 }
+                planSetter(semesterIndex, semester);
                 break;
             }
             case "delete": {
@@ -103,6 +150,7 @@ export function PlanViewer(): JSX.Element {
                 if (courseIndex !== undefined) {
                     semester.courses.splice(courseIndex, 1);
                 }
+                planSetter(semesterIndex, semester);
                 break;
             }
             case "update": {
@@ -116,10 +164,12 @@ export function PlanViewer(): JSX.Element {
                         }
                     }
                 );
+                planSetter(semesterIndex, semester);
                 break;
             }
             case "clear": {
                 semester.courses = [];
+                planSetter(semesterIndex, semester);
                 break;
             }
             case "moveup": {
@@ -129,6 +179,7 @@ export function PlanViewer(): JSX.Element {
                         semester.courses[courseIndex - 1];
                     semester.courses[courseIndex - 1] = tmpCourse;
                 }
+                planSetter(semesterIndex, semester);
                 break;
             }
             case "movedown": {
@@ -141,6 +192,7 @@ export function PlanViewer(): JSX.Element {
                         semester.courses[courseIndex + 1];
                     semester.courses[courseIndex + 1] = tmpCourse;
                 }
+                planSetter(semesterIndex, semester);
                 break;
             }
             case "moveCourseToSemester": {
@@ -151,7 +203,7 @@ export function PlanViewer(): JSX.Element {
                     semesterInputID >= 0 &&
                     semesterInputID < curPlan.semesters.length
                 ) {
-                    console.log("semesterInput: ", semesterInputID);
+                    //console.log("semesterInput: ", semesterInputID);
                     const moveCourse = semester.courses.splice(courseIndex, 1);
                     /*
                     if (semesterIndex === semesterInputID) {
@@ -164,16 +216,38 @@ export function PlanViewer(): JSX.Element {
                         }
                     });
                 }
+                planSetter(semesterIndex, semester);
+                break;
+            }
+            case "addSemester": {
+                // add course
+                if (semester) {
+                    //console.log("Assembly Guy");
+                    const newSemester = {
+                        term: "Blank Semester",
+                        courses: [],
+                        year: 3,
+                        id: `${clonedPlan.semesters.length}`
+                    };
+                    //console.log("newSem length: ", newSemesters.length);
+                    semesterAdder(newSemester);
+                }
+                break;
+            }
+            case "deleteSemester": {
+                // delete course
+                if (semesterIndex !== undefined) {
+                    console.log("semesterIndex: ", semesterIndex);
+                    semesterDeleter(semesterIndex);
+                }
                 break;
             }
             default: {
                 break;
             }
         }
-        planSetter(semesterIndex, semester);
     };
-
-    // This is the View
+    // This is the Return View
     return (
         <div>
             <Form.Group controlId="userPlan">
@@ -196,9 +270,35 @@ export function PlanViewer(): JSX.Element {
                     marginTop: "10px"
                 }}
             >
-                <h4 style={{ marginBottom: "0px" }}>
-                    <strong>{curPlan.name}</strong>
-                </h4>
+                <Form.Group as={Row} style={{ marginBottom: "0px" }}>
+                    <Col style={{ textAlign: "left", marginBottom: "0px" }}>
+                        <h4 style={{ marginBottom: "0px" }}>
+                            <strong>{curPlan.name}</strong>
+                        </h4>
+                    </Col>
+                    <Col
+                        style={{
+                            textAlign: "right",
+                            marginRight: "20px",
+                            marginBottom: "0px"
+                        }}
+                    >
+                        <Button
+                            onClick={() =>
+                                updateSemesterCourse({
+                                    course: undefined,
+                                    semesterIndex: 0,
+                                    courseIndex: 0,
+                                    opType: "addSemester"
+                                })
+                            }
+                        >
+                            Add Semester
+                        </Button>
+                        {"   "}
+                    </Col>
+                </Form.Group>
+
                 <p>Total Credit Hours in this Plan: {totalCredits}</p>
             </div>
 
@@ -281,6 +381,12 @@ export function PlanViewer(): JSX.Element {
                                 courseIndex,
                                 semesterInputID,
                                 opType: "moveCourseToSemester"
+                            })
+                        }
+                        deleteSemester={(semesterIndex: number) =>
+                            updateSemesterCourse({
+                                semesterIndex,
+                                opType: "deleteSemester"
                             })
                         }
                     />
