@@ -6,6 +6,7 @@ import { Semester } from "../templates/semester";
 import { SemesterViewer } from "./SemesterViewer";
 import { Plan } from "../templates/plan";
 import planList from "../templates/PlansList.json";
+import { checkPlan } from "./utility/PlanTester";
 
 type COURSE_OPERATIONS =
     | "add"
@@ -176,6 +177,9 @@ export function PlanViewer(): JSX.Element {
     // This is the View
     return (
         <div>
+            {checkPlan(curPlan)}
+            {/** This is where the new code for checking correctness is going to go */}
+
             <Form.Group controlId="userPlan">
                 <Form.Label>Choose your current plan</Form.Label>
                 <Form.Select value={curPlan.id} onChange={updatePlan}>
