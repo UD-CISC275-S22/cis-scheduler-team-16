@@ -2,73 +2,26 @@
 > react-typescript-starter@0.1.0 test
 > react-scripts test "--coverage"
 
-  console.log
-    courses =  [
-      {
-        courseId: '0',
-        name: 'Course1',
-        prereqs: [],
-        credithours: 50,
-        satisfied_requirements: []
-      },
-      {
-        courseId: '1',
-        name: 'Course2',
-        prereqs: [],
-        credithours: 50,
-        satisfied_requirements: []
-      },
-      {
-        courseId: '2',
-        name: 'Course3',
-        prereqs: [],
-        credithours: 80,
-        satisfied_requirements: []
-      },
-      {
-        courseId: '3',
-        name: 'Course4',
-        prereqs: [],
-        credithours: 20,
-        satisfied_requirements: []
-      }
-    ]
-
-      at SemesterViewer (src/components/SemesterViewer.tsx:59:13)
-
-  console.log
-    courses =  [
-      {
-        courseId: '0',
-        name: 'Course1',
-        prereqs: [],
-        credithours: 1000,
-        satisfied_requirements: []
-      }
-    ]
-
-      at SemesterViewer (src/components/SemesterViewer.tsx:59:13)
-
 PASS src/App.test.tsx
-  ✓ renders the course name somewhere (134 ms)
+  ✓ renders the course name somewhere (159 ms)
 
----------------------|---------|----------|---------|---------|-------------------------
-File                 | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s       
----------------------|---------|----------|---------|---------|-------------------------
-All files            |   31.68 |    14.03 |   28.57 |      31 |                         
- src                 |     100 |      100 |     100 |     100 |                         
-  App.tsx            |     100 |      100 |     100 |     100 |                         
- src/components      |      31 |    14.03 |   26.82 |    30.3 |                         
-  CourseViewer.tsx   |   32.14 |    27.27 |    6.66 |   32.14 | 65-95,151-436           
-  PlanViewer.tsx     |   22.95 |        0 |      35 |   22.95 | 52,61-66,89-173,214-278 
-  SemesterViewer.tsx |   72.72 |      100 |      50 |      70 | 112-131                 
- src/templates       |       0 |        0 |       0 |       0 |                         
-  course.ts          |       0 |        0 |       0 |       0 |                         
-  plan.ts            |       0 |        0 |       0 |       0 |                         
-  semester.ts        |       0 |        0 |       0 |       0 |                         
----------------------|---------|----------|---------|---------|-------------------------
+---------------------|---------|----------|---------|---------|----------------------------------------------
+File                 | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                            
+---------------------|---------|----------|---------|---------|----------------------------------------------
+All files            |   24.08 |    11.94 |   23.52 |   23.52 |                                              
+ src                 |     100 |      100 |     100 |     100 |                                              
+  App.tsx            |     100 |      100 |     100 |     100 |                                              
+ src/components      |   23.52 |    11.94 |      22 |   22.96 |                                              
+  CourseViewer.tsx   |   32.14 |    27.27 |    6.66 |   32.14 | 65-95,151-436                                
+  PlanViewer.tsx     |   16.49 |        0 |      25 |   16.49 | 54-73,82-87,91-95,99-107,134-246,288,314-387 
+  SemesterViewer.tsx |   63.63 |      100 |   42.85 |      60 | 114-137                                      
+ src/templates       |       0 |        0 |       0 |       0 |                                              
+  course.ts          |       0 |        0 |       0 |       0 |                                              
+  plan.ts            |       0 |        0 |       0 |       0 |                                              
+  semester.ts        |       0 |        0 |       0 |       0 |                                              
+---------------------|---------|----------|---------|---------|----------------------------------------------
 Test Suites: 1 passed, 1 total
 Tests:       1 passed, 1 total
 Snapshots:   0 total
-Time:        2.528 s
+Time:        3.457 s
 Ran all test suites.
