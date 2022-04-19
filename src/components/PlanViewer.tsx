@@ -264,7 +264,6 @@ export function PlanViewer(): JSX.Element {
             }
             case "addPlan": {
                 // add course
-                //console.log("Assembly Guy");
                 const newPlan = {
                     name: "New Plan " + `${allPlans.length + 1}`,
                     semesters: [],
