@@ -86,12 +86,16 @@ export const SemesterViewer = ({
                             marginBottom: "0px"
                         }}
                     >
-                        {+semesterIndex +
+                        {/**
+                         * {+semesterIndex +
                             1 +
                             " " +
                             semester.term +
                             "  " +
                             semester.year}
+                         * 
+                         */}
+                        {semester.term + "  " + semester.year}
                     </h2>
                     <p
                         style={{
