@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { /*Button, Col, Row,*/ Form } from "react-bootstrap";
+import { /*Button, Col, Row,*/ Col, Form, Row } from "react-bootstrap";
 import { Course } from "../templates/course";
 import { Semester } from "../templates/semester";
 //import { CourseViewer } from "./CourseViewer";
@@ -37,6 +37,9 @@ export function PlanViewer(): JSX.Element {
     // This is the State
     const [allPlans /*, setAllPlans*/] = useState<Plan[]>(INITIAL_PLANS);
     const [curPlan, setCurPlan] = useState<Plan>(allPlans[0]);
+    const [currentConcentration, setCurrentConcentration] = useState<string>(
+        "Traditional Computer Science (BS)"
+    );
 
     // Get the total number of credit hours for this Plan
     let totalCredits = 0;
@@ -51,6 +54,12 @@ export function PlanViewer(): JSX.Element {
     function updatePlan(event: React.ChangeEvent<HTMLSelectElement>) {
         //console.log("setting plan to : ", allPlans[+event.target.value]);
         setCurPlan(allPlans[+event.target.value]); //CONVERT STRING TO NUMBER (INDEX)
+    }
+
+    function updateCurrentConcentration(
+        event: React.ChangeEvent<HTMLSelectElement>
+    ) {
+        setCurrentConcentration(event.target.value);
     }
 
     /**
@@ -177,20 +186,57 @@ export function PlanViewer(): JSX.Element {
     // This is the View
     return (
         <div>
-            {checkPlan(curPlan)}
             {/** This is where the new code for checking correctness is going to go */}
-
-            <Form.Group controlId="userPlan">
-                <Form.Label>Choose your current plan</Form.Label>
-                <Form.Select value={curPlan.id} onChange={updatePlan}>
-                    <option value="0">Plan 1</option>
-                    <option value="1">Plan 2</option>
-                </Form.Select>
+            <Form.Group controlId="userPlan" as={Row}>
+                <Col>
+                    <Form.Label>Choose your current plan</Form.Label>
+                </Col>
+                <Col>
+                    <Form.Select value={curPlan.id} onChange={updatePlan}>
+                        <option value="0">Plan 1</option>
+                        <option value="1">Plan 2</option>
+                    </Form.Select>
+                </Col>
             </Form.Group>
+            <Form.Group as={Row}>
+                <Col>
+                    <Form.Label>Choose your planned concentration</Form.Label>
+                </Col>
+                <Col>
+                    <Form.Select
+                        value={currentConcentration}
+                        onChange={updateCurrentConcentration}
+                    >
+                        <option value="Artificial Intelligence">
+                            Artificial Intelligence
+                        </option>
+                        <option value="Bioinformatics">Bioinformatics</option>
+                        <option value="Cybersecurity">Cybersecurity</option>
+                        <option value="Data Science">Data Science</option>
+                        <option value="High Performance Computing (Data Track)">
+                            High Performance Computing (Data Track)
+                        </option>
+                        <option value="High Performance Computing (Math Track)">
+                            High Performance Computing (Math Track)
+                        </option>
+                        <option value="Systems and Networking">
+                            Systems and Networking
+                        </option>
+                        <option value="Theory and Computation (Discrete Track)">
+                            Theory and Computation (Discrete Track)
+                        </option>
+                        <option value="Theory and Computation (Continuous Track)">
+                            Theory and Computation (Continuous Track)
+                        </option>
+                        <option value="Traditional Computer Science (BS)">
+                            Traditional Computer Science (BS)
+                        </option>
+                    </Form.Select>
+                </Col>
+            </Form.Group>
+            {checkPlan(curPlan, currentConcentration)}
             {/* The user is at <>/*{curPlan.name}</></>. */}
-
             {/** Collect the total credit hours for all of the Semesters */}
-
             {/** This is the title area */}
             <div
                 style={{
@@ -205,7 +251,6 @@ export function PlanViewer(): JSX.Element {
                 </h4>
                 <p>Total Credit Hours in this Plan: {totalCredits}</p>
             </div>
-
             {curPlan.semesters.map((eachSemester: Semester, ind: number) => {
                 return (
                     <SemesterViewer
