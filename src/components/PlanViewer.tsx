@@ -293,57 +293,62 @@ export function PlanViewer(): JSX.Element {
     // This is the Return View
     return (
         <div>
-            {/** This is where the new code for checking correctness is going to go */}
-            <Form.Group controlId="userPlan">
-                <Form.Label>Choose your current plan</Form.Label>
-                <Form.Select value={curPlan.id} onChange={updatePlan}>
-                    {allPlans.map(
-                        (plan: Plan, ind: number): JSX.Element => (
-                            <option key={ind} value={ind}>
-                                {" "}
-                                {plan.name}{" "}
-                            </option>
-                        )
-                    )}
-                </Form.Select>
-            </Form.Group>
-            <Form.Group as={Row}>
-                <Col>
-                    <Form.Label>Choose your planned concentration</Form.Label>
-                </Col>
-                <Col>
-                    <Form.Select
-                        value={currentConcentration}
-                        onChange={updateCurrentConcentration}
-                    >
-                        <option value="Artificial Intelligence">
-                            Artificial Intelligence
-                        </option>
-                        <option value="Bioinformatics">Bioinformatics</option>
-                        <option value="Cybersecurity">Cybersecurity</option>
-                        <option value="Data Science">Data Science</option>
-                        <option value="High Performance Computing (Data Track)">
-                            High Performance Computing (Data Track)
-                        </option>
-                        <option value="High Performance Computing (Math Track)">
-                            High Performance Computing (Math Track)
-                        </option>
-                        <option value="Systems and Networking">
-                            Systems and Networking
-                        </option>
-                        <option value="Theory and Computation (Discrete Track)">
-                            Theory and Computation (Discrete Track)
-                        </option>
-                        <option value="Theory and Computation (Continuous Track)">
-                            Theory and Computation (Continuous Track)
-                        </option>
-                        <option value="Traditional Computer Science (BS)">
-                            Traditional Computer Science (BS)
-                        </option>
+            <div style={{ marginLeft: "20px", marginRight: "20px" }}>
+                {/** This is where the new code for checking correctness is going to go */}
+                <Form.Group controlId="userPlan">
+                    <Form.Label>Choose your current plan</Form.Label>
+                    <Form.Select value={curPlan.id} onChange={updatePlan}>
+                        {allPlans.map(
+                            (plan: Plan, ind: number): JSX.Element => (
+                                <option key={ind} value={ind}>
+                                    {" "}
+                                    {plan.name}{" "}
+                                </option>
+                            )
+                        )}
                     </Form.Select>
-                </Col>
-            </Form.Group>
-            {checkPlan(curPlan, currentConcentration)}
+                </Form.Group>
+                <Form.Group as={Row}>
+                    <Col>
+                        <Form.Label>
+                            Choose your planned concentration
+                        </Form.Label>
+                    </Col>
+                    <Col>
+                        <Form.Select
+                            value={currentConcentration}
+                            onChange={updateCurrentConcentration}
+                        >
+                            <option value="Artificial Intelligence">
+                                Artificial Intelligence
+                            </option>
+                            <option value="Bioinformatics">
+                                Bioinformatics
+                            </option>
+                            <option value="Cybersecurity">Cybersecurity</option>
+                            <option value="Data Science">Data Science</option>
+                            <option value="High Performance Computing (Data Track)">
+                                High Performance Computing (Data Track)
+                            </option>
+                            <option value="High Performance Computing (Math Track)">
+                                High Performance Computing (Math Track)
+                            </option>
+                            <option value="Systems and Networking">
+                                Systems and Networking
+                            </option>
+                            <option value="Theory and Computation (Discrete Track)">
+                                Theory and Computation (Discrete Track)
+                            </option>
+                            <option value="Theory and Computation (Continuous Track)">
+                                Theory and Computation (Continuous Track)
+                            </option>
+                            <option value="Traditional Computer Science (BS)">
+                                Traditional Computer Science (BS)
+                            </option>
+                        </Form.Select>
+                    </Col>
+                </Form.Group>
+            </div>
             {/* The user is at <>/*{curPlan.name}</></>. */}
             {/** Collect the total credit hours for all of the Semesters */}
             {/** This is the title area */}
@@ -387,7 +392,7 @@ export function PlanViewer(): JSX.Element {
                         Discard Plan
                     </Button>
                 </div>
-
+                <hr></hr>
                 <Form.Group as={Row} style={{ marginBottom: "0px" }}>
                     <Col style={{ textAlign: "left", marginBottom: "0px" }}>
                         <h4 style={{ marginBottom: "0px" }}>
@@ -417,6 +422,9 @@ export function PlanViewer(): JSX.Element {
                     </Col>
                 </Form.Group>
                 <p>Total Credit Hours in this Plan: {totalCredits}</p>
+                <div style={{ marginBottom: "20px" }}>
+                    {checkPlan(curPlan, currentConcentration)}
+                </div>
             </div>
             {curPlan.semesters.map((eachSemester: Semester, ind: number) => {
                 return (
