@@ -314,6 +314,7 @@ export function CourseViewer({
                      *   - Capstone Experience
                      *   - Upper Level Credit
                      *   - Career and Professional Preparation
+                     *   - College of Engineering Upper Level Breadth
                      *
                      */}
                     <Form.Group as={Row}>
@@ -420,6 +421,15 @@ export function CourseViewer({
                                 name={`requirements-${courseID}`}
                                 value="cpp"
                                 checked={requirements.includes("cpp")}
+                                onChange={updateRequirements}
+                            />
+                            <Form.Check
+                                type="checkbox"
+                                id="requirements-upp"
+                                label="College of Engineering Upper Level Breadth"
+                                name={`requirements-${courseID}`}
+                                value="upp"
+                                checked={requirements.includes("upp")}
                                 onChange={updateRequirements}
                             />
                         </Col>
