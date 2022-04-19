@@ -16,7 +16,9 @@ type COURSE_OPERATIONS =
     | "movedown"
     | "moveCourseToSemester"
     | "addSemester"
-    | "deleteSemester";
+    | "deleteSemester"
+    | "addPlan"
+    | "deletePlan";
 
 export function PlanViewer(): JSX.Element {
     const INITIAL_PLANS: Plan[] = planList.map(
@@ -95,6 +97,14 @@ export function PlanViewer(): JSX.Element {
         setCurPlan({ ...curPlan, semesters: planSemesters });
     };
 
+    const planAdder = (newPlan: Plan): void => {
+        const newPlans = [...allPlans];
+        newPlans.splice(allPlans.length, 0, newPlan);
+        setAllPlans(newPlans);
+        console.log("Add Plan: ", newPlans);
+        console.log("Add Plan: ", allPlans);
+    };
+
     const semesterDeleter = (index: number): void => {
         if (curPlan.semesters.length > 0) {
             curPlan.semesters.splice(index, 1);
@@ -108,6 +118,15 @@ export function PlanViewer(): JSX.Element {
                 ...curPlan,
                 semesters: planSemesters
             });
+        }
+    };
+
+    const planDeleter = (): void => {
+        if (allPlans.length > 0) {
+            const newPlans = [...allPlans];
+            newPlans.splice(parseInt(curPlan.id), 1);
+            setCurPlan(newPlans[0]);
+            setAllPlans(newPlans);
         }
     };
 
@@ -221,17 +240,15 @@ export function PlanViewer(): JSX.Element {
             }
             case "addSemester": {
                 // add course
-                if (semester) {
-                    //console.log("Assembly Guy");
-                    const newSemester = {
-                        term: "Blank Semester",
-                        courses: [],
-                        year: 3,
-                        id: `${clonedPlan.semesters.length}`
-                    };
-                    //console.log("newSem length: ", newSemesters.length);
-                    semesterAdder(newSemester);
-                }
+                //console.log("Assembly Guy");
+                const newSemester = {
+                    term: "Blank Semester",
+                    courses: [],
+                    year: 3,
+                    id: `${clonedPlan.semesters.length}`
+                };
+                //console.log("newSem length: ", newSemesters.length);
+                semesterAdder(newSemester);
                 break;
             }
             case "deleteSemester": {
@@ -245,6 +262,23 @@ export function PlanViewer(): JSX.Element {
             default: {
                 break;
             }
+            case "addPlan": {
+                // add course
+                //console.log("Assembly Guy");
+                const newPlan = {
+                    name: "New Plan " + `${allPlans.length + 1}`,
+                    semesters: [],
+                    id: `${allPlans.length}`
+                };
+                //console.log("newSem length: ", newSemesters.length);
+                planAdder(newPlan);
+                break;
+            }
+            case "deletePlan": {
+                // delete course
+                planDeleter();
+                break;
+            }
         }
     };
     // This is the Return View
@@ -253,8 +287,14 @@ export function PlanViewer(): JSX.Element {
             <Form.Group controlId="userPlan">
                 <Form.Label>Choose your current plan</Form.Label>
                 <Form.Select value={curPlan.id} onChange={updatePlan}>
-                    <option value="0">Plan 1</option>
-                    <option value="1">Plan 2</option>
+                    {allPlans.map(
+                        (plan: Plan, ind: number): JSX.Element => (
+                            <option key={ind} value={ind}>
+                                {" "}
+                                {plan.name}{" "}
+                            </option>
+                        )
+                    )}
                 </Form.Select>
             </Form.Group>
             {/* The user is at <>/*{curPlan.name}</></>. */}
@@ -270,6 +310,39 @@ export function PlanViewer(): JSX.Element {
                     marginTop: "10px"
                 }}
             >
+                <div
+                    style={{
+                        textAlign: "center",
+                        marginRight: "20px",
+                        marginBottom: "0px"
+                    }}
+                >
+                    <Button
+                        onClick={() =>
+                            updateSemesterCourse({
+                                course: undefined,
+                                semesterIndex: 0,
+                                courseIndex: 0,
+                                opType: "addPlan"
+                            })
+                        }
+                    >
+                        New Plan
+                    </Button>
+                    <Button
+                        onClick={() =>
+                            updateSemesterCourse({
+                                course: undefined,
+                                semesterIndex: 0,
+                                courseIndex: 0,
+                                opType: "deletePlan"
+                            })
+                        }
+                    >
+                        Discard Plan
+                    </Button>
+                </div>
+
                 <Form.Group as={Row} style={{ marginBottom: "0px" }}>
                     <Col style={{ textAlign: "left", marginBottom: "0px" }}>
                         <h4 style={{ marginBottom: "0px" }}>
@@ -298,7 +371,6 @@ export function PlanViewer(): JSX.Element {
                         {"   "}
                     </Col>
                 </Form.Group>
-
                 <p>Total Credit Hours in this Plan: {totalCredits}</p>
             </div>
 

@@ -119,7 +119,7 @@ export function CourseViewer({
                 <Form.Group as={Row}>
                     <Col style={{ marginLeft: "20px" }}>
                         <h4 style={{ marginBottom: "0px" }}>
-                            <strong>{course.courseId}</strong>
+                            <strong>{+course.courseId + 1}</strong>
                         </h4>
                         <h5 style={{ marginBottom: "0px" }}>{course.name}</h5>
                         <p style={{ marginBottom: "0px" }}>
