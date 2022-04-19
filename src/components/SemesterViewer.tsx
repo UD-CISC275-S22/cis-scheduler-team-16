@@ -86,7 +86,8 @@ export const SemesterViewer = ({
                             marginBottom: "0px"
                         }}
                     >
-                        {semesterIndex +
+                        {+semesterIndex +
+                            1 +
                             " " +
                             semester.term +
                             "  " +
