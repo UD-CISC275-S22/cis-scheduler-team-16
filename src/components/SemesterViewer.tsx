@@ -74,10 +74,11 @@ export const SemesterViewer = ({
                 borderStyle: "solid",
                 borderRadius: "5px"
             }}
+            data-testID="fullSemester-div"
         >
             {/** Title and Top Level Buttons for Semester component */}
-            <Form.Group as={Row}>
-                <Col>
+            <Form.Group as={Row} data-testID="semesterTop-Group">
+                <Col data-testID="info-col">
                     <h2
                         style={{
                             textAlign: "left",
@@ -85,6 +86,7 @@ export const SemesterViewer = ({
                             marginTop: "5px",
                             marginBottom: "0px"
                         }}
+                        data-testID="semesterInfo-Header"
                     >
                         {+semesterIndex +
                             1 +
@@ -99,6 +101,7 @@ export const SemesterViewer = ({
                             textAlign: "left",
                             marginLeft: "20px"
                         }}
+                        data-testID="semesterCredits-para"
                     >
                         Total Credits: {creditTotal}
                     </p>
@@ -109,6 +112,7 @@ export const SemesterViewer = ({
                         marginTop: "10px",
                         marginRight: "20px"
                     }}
+                    data-testID="Buttons-col"
                 >
                     <Button
                         onClick={() =>
@@ -123,19 +127,29 @@ export const SemesterViewer = ({
                                 semesterIndex
                             )
                         }
+                        data-testID="addCourse-button"
                     >
                         {" "}
                         Insert Course{" "}
                     </Button>{" "}
-                    <Button onClick={() => clearSemester(semesterIndex)}>
+                    <Button
+                        onClick={() => clearSemester(semesterIndex)}
+                        data-testID="clearSemester-button"
+                    >
                         {" "}
                         Clear Semester
                     </Button>{" "}
-                    <Button onClick={() => deleteSemester(semesterIndex)}>
+                    <Button
+                        onClick={() => deleteSemester(semesterIndex)}
+                        data-testID="deleteSemester-button"
+                    >
                         {" "}
                         Remove Semester
                     </Button>{" "}
-                    <Button onClick={() => setVisible(!visible)}>
+                    <Button
+                        onClick={() => setVisible(!visible)}
+                        data-testID="show/hide-button"
+                    >
                         Show/Hide
                     </Button>
                 </Col>
@@ -143,10 +157,13 @@ export const SemesterViewer = ({
 
             {/** Shows the SemesterView Component when not hidden */}
             {visible && (
-                <div>
+                <div data-testID="courseList-div">
                     {courses.map(
                         (course: Course, ind: number): JSX.Element => (
-                            <div key={course.courseId}>
+                            <div
+                                key={course.courseId}
+                                data-testID="courseViewer-div"
+                            >
                                 <CourseViewer
                                     course={course}
                                     updateCourse={updateCourse}
