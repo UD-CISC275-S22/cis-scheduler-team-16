@@ -5,7 +5,7 @@
         "semesters": [
             {
                 "id": "0",
-                "term": "fake-semester-1",
+                "term": "Spring",
                 "year": 2022,
                 "courses": [
                     {
@@ -40,7 +40,7 @@
             },
             {
                 "id": "1",
-                "term": "fake-semester-2",
+                "term": "Fall",
                 "year": 2022,
                 "courses": [
                     {
@@ -60,7 +60,7 @@
          "semesters": [
              {
                  "id": "0",
-                 "term": "real-semester-1",
+                 "term": "Spring",
                  "year": 2022,
                  "courses": [
                      {
@@ -81,7 +81,7 @@
              },
              {
                  "id": "1",
-                 "term": "real-semester-2",
+                 "term": "Fall",
                  "year": 2022,
                  "courses": [
                      {
