@@ -4,7 +4,8 @@
         "id": "0",
         "semesters": [
             {
-                "term": "fake-semester-1",
+                "id": "0",
+                "term": "Fall",
                 "year": 2022,
                 "courses": [
                     {
@@ -38,8 +39,9 @@
                 ]
             },
             {
-                "term": "fake-semester-2",
-                "year": 2022,
+                "id": "1",
+                "term": "Spring",
+                "year": 2023,
                 "courses": [
                     {
                         "courseId": "0",
@@ -52,45 +54,45 @@
             }
         ]
     },
-     {
-         "name": "My Plan 2",
-         "id": "1",
-         "semesters": [
-             {
-                 "term": "real-semester-1",
-                 "year": 2022,
-                 "courses": [
-                     {
-                         "courseId": "0",
-                         "name": "Course11",
-                         "prereqs": [],
-                         "credithours": 9999,
-                         "satisfied_requirements": []
-                     },
-                     {
-                         "courseId": "1",
-                         "name": "Course21",
-                         "prereqs": [],
-                         "credithours": 50,
-                         "satisfied_requirements": []
-                     }
-                 ]
-             },
-             {
-                 "term": "real-semester-2",
-                 "year": 2022,
-                 "courses": [
-                     {
-                         "courseId": "0",
-                         "name": "Course21",
-                         "prereqs": [],
-                         "credithours": 1000,
-                         "satisfied_requirements": []
-                     }
-                 ]
-             }
-         ]
-     }
-
-
+    {
+        "name": "My Plan 2",
+        "id": "1",
+        "semesters": [
+            {
+                "id": "0",
+                "term": "Fall",
+                "year": 2022,
+                "courses": [
+                    {
+                        "courseId": "0",
+                        "name": "Course11",
+                        "prereqs": [],
+                        "credithours": 9999,
+                        "satisfied_requirements": []
+                    },
+                    {
+                        "courseId": "1",
+                        "name": "Course21",
+                        "prereqs": [],
+                        "credithours": 50,
+                        "satisfied_requirements": []
+                    }
+                ]
+            },
+            {
+                "id": "1",
+                "term": "Spring",
+                "year": 2023,
+                "courses": [
+                    {
+                        "courseId": "0",
+                        "name": "Course21",
+                        "prereqs": [],
+                        "credithours": 1000,
+                        "satisfied_requirements": []
+                    }
+                ]
+            }
+        ]
+    }
 ]

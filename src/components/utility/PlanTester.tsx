@@ -229,8 +229,6 @@ export function checkPlan(plan: Plan, concentration: string): JSX.Element {
                         borderRadius: "5px",
                         borderWidth: "2px",
                         borderStyle: "solid",
-                        marginLeft: "20px",
-                        marginRight: "20px",
                         textAlign: "left",
                         backgroundColor: "#FAA0A0",
                         borderColor: "darkred"
@@ -245,7 +243,9 @@ export function checkPlan(plan: Plan, concentration: string): JSX.Element {
                         <h4 style={{ marginBottom: "0px" }}>
                             <strong>There are problems with this plan</strong>
                         </h4>
-                        <strong>Please correct the following issues:</strong>
+                        <strong>
+                            Please correct the following issues: {concentration}
+                        </strong>
                         <ul>
                             {creditCount < 124 && (
                                 <li>Fewer than 124 credit hours in plan</li>
