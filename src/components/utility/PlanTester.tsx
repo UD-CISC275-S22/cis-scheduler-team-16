@@ -2,6 +2,8 @@ import React from "react";
 import { Course } from "../../templates/course";
 import { Semester } from "../../templates/semester";
 import { Plan } from "../../templates/plan";
+import { ConcentrationCheck } from "../../templates/ConcentrationCheck";
+import { testAIRequirements } from "./ArtificialIntelligenceTester";
 
 export function checkPlan(plan: Plan, concentration: string): JSX.Element {
     const planCourseNames: string[] = [];
@@ -16,6 +18,18 @@ export function checkPlan(plan: Plan, concentration: string): JSX.Element {
             planCourseNames.push(course.courseId.toLowerCase());
             planCourses.push(course);
             creditCount = creditCount + course.credithours;
+        });
+    });
+
+    /** Check to make sure core prerequisites are being met */
+    const seenCourse: string[] = [];
+    const prereqFailCourses: string[] = [];
+    planCourses.map((course: Course) => {
+        seenCourse.push(course.courseId);
+        course.prereqs.map((prerequisite: string) => {
+            if (!seenCourse.includes(prerequisite)) {
+                prereqFailCourses.push(course.courseId);
+            }
         });
     });
 
@@ -157,10 +171,21 @@ export function checkPlan(plan: Plan, concentration: string): JSX.Element {
         checkTWR &&
         checkCORE;
 
+    const concentrationResults: ConcentrationCheck = testAIRequirements(
+        planCourseNames,
+        planCourses
+    );
+
+    console.log(concentrationResults.errorMessages);
+
     return (
         <div>
             {concentration}
             <hr></hr>
+            <strong>
+                Dont forget to check for prerequisites and concentration
+                requirements
+            </strong>
             {isValid && (
                 <div
                     style={{
@@ -286,6 +311,25 @@ export function checkPlan(plan: Plan, concentration: string): JSX.Element {
                                 <li>
                                     Computer Science core requirements not
                                     fulfilled
+                                </li>
+                            )}
+                            {prereqFailCourses.length > 0 && (
+                                <li>
+                                    {
+                                        "The following courses have not had all their prerequirements met:"
+                                    }
+
+                                    <ul>
+                                        {prereqFailCourses.map(
+                                            (course: string) => (
+                                                <li
+                                                    key={`prereq-fail-${course}`}
+                                                >
+                                                    {course}
+                                                </li>
+                                            )
+                                        )}
+                                    </ul>
                                 </li>
                             )}
                         </ul>
