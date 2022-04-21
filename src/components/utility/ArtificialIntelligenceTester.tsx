@@ -111,7 +111,7 @@ export function testAIRequirements(
     if (!checkRestReq) {
         checkResults.errorMessages.push(
             "Concentration Requirement: Fewer than 12 restricted elective credits in plan, " +
-                { totalRestCreditCount } +
+                totalRestCreditCount +
                 " found"
         );
     }

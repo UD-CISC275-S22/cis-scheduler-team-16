@@ -27,7 +27,7 @@ export function checkPlan(plan: Plan, concentration: string): JSX.Element {
     planCourses.map((course: Course) => {
         seenCourse.push(course.courseId);
         course.prereqs.map((prerequisite: string) => {
-            if (!seenCourse.includes(prerequisite)) {
+            if (!seenCourse.includes(prerequisite) && prerequisite !== "None") {
                 prereqFailCourses.push(course.courseId);
             }
         });
@@ -176,8 +176,6 @@ export function checkPlan(plan: Plan, concentration: string): JSX.Element {
         planCourses
     );
 
-    console.log(concentrationResults.errorMessages);
-
     return (
         <div>
             {concentration}
@@ -244,7 +242,6 @@ export function checkPlan(plan: Plan, concentration: string): JSX.Element {
                             {!checkENGL110 && (
                                 <li>ENGL110 not in course plan</li>
                             )}
-
                             {!checkCapstone && (
                                 <li>
                                     Capstone series not included (CISC498/499 or
@@ -331,6 +328,13 @@ export function checkPlan(plan: Plan, concentration: string): JSX.Element {
                                         )}
                                     </ul>
                                 </li>
+                            )}
+                            {concentrationResults.errorMessages.map(
+                                (error: string) => (
+                                    <li key={`concentration-fail-${error}`}>
+                                        {error}
+                                    </li>
+                                )
                             )}
                         </ul>
                     </div>
