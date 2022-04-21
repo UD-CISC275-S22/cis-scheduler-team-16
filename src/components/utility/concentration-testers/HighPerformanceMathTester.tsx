@@ -122,7 +122,9 @@ export function testHPMathRequirements(
     const checkTrackReq = totalTrackReq >= 5;
     if (!checkTrackReq) {
         checkResults.errorMessages.push(
-            "Concentration Requirement: Applied Math Track Electives not satisfied"
+            "Concentration Requirement: Applied Math Track Electives not satisfied, 5 expected " +
+                totalTrackReq +
+                " found"
         );
     }
 
