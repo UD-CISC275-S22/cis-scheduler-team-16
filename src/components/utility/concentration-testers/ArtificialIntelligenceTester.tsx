@@ -1,5 +1,5 @@
-import { Course } from "../../templates/course";
-import { ConcentrationCheck } from "../../templates/ConcentrationCheck";
+import { Course } from "../../../templates/course";
+import { ConcentrationCheck } from "../../../templates/ConcentrationCheck";
 
 export function testAIRequirements(
     planCourseNames: string[],
@@ -112,6 +112,30 @@ export function testAIRequirements(
         checkResults.errorMessages.push(
             "Concentration Requirement: Fewer than 12 restricted elective credits in plan, " +
                 totalRestCreditCount +
+                " found"
+        );
+    }
+
+    /** Check if Restricted Elective requirement is met */
+    let totalUpperLevelCISC = 0;
+    planCourses.map((course: Course) => {
+        if (
+            course.courseId.toLowerCase().startsWith("cisc3") ||
+            course.courseId.toLowerCase().startsWith("cisc4") ||
+            course.courseId.toLowerCase().startsWith("cisc5") ||
+            course.courseId.toLowerCase().startsWith("cisc6") ||
+            course.courseId.toLowerCase().startsWith("cisc7") ||
+            course.courseId.toLowerCase().startsWith("cisc8") ||
+            course.courseId.toLowerCase().startsWith("cisc9")
+        ) {
+            totalUpperLevelCISC += course.credithours;
+        }
+    });
+    const checkUpperLevelCISC = totalUpperLevelCISC >= 3;
+    if (!checkUpperLevelCISC) {
+        checkResults.errorMessages.push(
+            "Concentration Requirement: Fewer than 3 upper level CISC credits in plan, " +
+                totalUpperLevelCISC +
                 " found"
         );
     }

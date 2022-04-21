@@ -3,7 +3,8 @@ import { Course } from "../../templates/course";
 import { Semester } from "../../templates/semester";
 import { Plan } from "../../templates/plan";
 import { ConcentrationCheck } from "../../templates/ConcentrationCheck";
-import { testAIRequirements } from "./ArtificialIntelligenceTester";
+import { testAIRequirements } from "./concentration-testers/ArtificialIntelligenceTester";
+import { testBioinformaticsRequirements } from "./concentration-testers/BioinformaticsTester";
 
 export function checkPlan(plan: Plan, concentration: string): JSX.Element {
     const planCourseNames: string[] = [];
@@ -34,7 +35,10 @@ export function checkPlan(plan: Plan, concentration: string): JSX.Element {
     });
 
     /** Check to see if English requirement is fulfilled */
-    const checkENGL110 = planCourseNames.includes("engl110");
+    const englCourses = planCourses.filter((course: Course) =>
+        course.satisfied_requirements.includes("sem")
+    );
+    const checkSEM = englCourses.length > 0;
 
     /** Check to see if there are any courses that satisfy the multicultural requirement */
     const multiCourses = planCourses.filter((course: Course) =>
@@ -157,7 +161,7 @@ export function checkPlan(plan: Plan, concentration: string): JSX.Element {
     /** Checks to see if all the requirements pass */
     const isValid =
         creditCount > 124 &&
-        checkENGL110 &&
+        checkSEM &&
         checkMulticultural &&
         checkCapstone &&
         checkDLE &&
@@ -171,10 +175,17 @@ export function checkPlan(plan: Plan, concentration: string): JSX.Element {
         checkTWR &&
         checkCORE;
 
-    const concentrationResults: ConcentrationCheck = testAIRequirements(
-        planCourseNames,
-        planCourses
-    );
+    /** Check to see if the concentrationr requirements are being met */
+    let concentrationResults: ConcentrationCheck;
+
+    if (concentration === "Artificial Intelligence") {
+        concentrationResults = testAIRequirements(planCourseNames, planCourses);
+    } else {
+        concentrationResults = testBioinformaticsRequirements(
+            planCourseNames,
+            planCourses
+        );
+    }
 
     return (
         <div>
@@ -239,8 +250,11 @@ export function checkPlan(plan: Plan, concentration: string): JSX.Element {
                             {creditCount < 124 && (
                                 <li>Fewer than 124 credit hours in plan</li>
                             )}
-                            {!checkENGL110 && (
-                                <li>ENGL110 not in course plan</li>
+                            {!checkSEM && (
+                                <li>
+                                    First Year Writing Seminar requirement not
+                                    fulfilled
+                                </li>
                             )}
                             {!checkCapstone && (
                                 <li>
