@@ -2,8 +2,31 @@
 > react-typescript-starter@0.1.0 test
 > react-scripts test "--coverage"
 
+  console.error
+    Warning: React does not recognize the `data-testID` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `data-testid` instead. If you accidentally passed it from a parent component, remove it from the DOM element.
+        at h2
+        at div
+        at /home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/node_modules/react-bootstrap/cjs/Col.js:72:8
+        at div
+        at /home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/node_modules/react-bootstrap/cjs/Row.js:22:3
+        at /home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/node_modules/react-bootstrap/cjs/FormGroup.js:19:3
+        at div
+        at SemesterViewer (/home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/src/components/SemesterViewer.tsx:40:5)
+        at div
+        at PlanViewer (/home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/src/components/PlanViewer.tsx:42:37)
+        at div
+        at App
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:67:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:43:5)
+      at validateProperty$1 (node_modules/react-dom/cjs/react-dom.development.js:3513:7)
+      at warnUnknownProperties (node_modules/react-dom/cjs/react-dom.development.js:3559:21)
+      at validateProperties$2 (node_modules/react-dom/cjs/react-dom.development.js:3583:3)
+      at validatePropertiesInDevelopment (node_modules/react-dom/cjs/react-dom.development.js:8765:5)
+      at setInitialProperties (node_modules/react-dom/cjs/react-dom.development.js:9041:5)
+
 PASS src/App.test.tsx
-  ✓ renders the course name somewhere (125 ms)
+  ✓ renders the course name somewhere (161 ms)
 
 ------------------------|---------|----------|---------|---------|---------------------------------------------------------------------
 File                    | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                                                   
@@ -14,7 +37,7 @@ All files               |   39.33 |    35.15 |   35.29 |   39.04 |
  src/components         |   22.92 |    11.59 |   21.42 |   22.43 |                                                                     
   CourseViewer.tsx      |   32.14 |    27.27 |    6.66 |   32.14 | 65-95,151-446                                                       
   PlanViewer.tsx        |   16.94 |        0 |   23.52 |   16.94 | 60-85,94-99,103-107,111-115,119-127,135-139,163-289,372-411,438-511 
-  SemesterViewer.tsx    |   63.63 |      100 |   42.85 |      60 | 115-138                                                             
+  SemesterViewer.tsx    |   63.63 |      100 |   42.85 |      60 | 119-150                                                             
  src/components/utility |   86.79 |    52.08 |     100 |   86.79 |                                                                     
   PlanTester.tsx        |   86.79 |    52.08 |     100 |   86.79 | 35,48,57,66,75,84,119                                               
  src/templates          |       0 |        0 |       0 |       0 |                                                                     
@@ -26,5 +49,5 @@ All files               |   39.33 |    35.15 |   35.29 |   39.04 |
 Test Suites: 1 passed, 1 total
 Tests:       1 passed, 1 total
 Snapshots:   0 total
-Time:        2.928 s
+Time:        2.835 s
 Ran all test suites.
