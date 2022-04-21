@@ -2,20 +2,21 @@
 > react-typescript-starter@0.1.0 test
 > react-scripts test "--coverage"
 
-  console.error
-    Warning: React does not recognize the `data-testID` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `data-testid` instead. If you accidentally passed it from a parent component, remove it from the DOM element.
-        at h2
-        at div
-        at /home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/node_modules/react-bootstrap/cjs/Col.js:72:8
-        at div
-        at /home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/node_modules/react-bootstrap/cjs/Row.js:22:3
-        at /home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/node_modules/react-bootstrap/cjs/FormGroup.js:19:3
-        at div
-        at SemesterViewer (/home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/src/components/SemesterViewer.tsx:40:5)
-        at div
-        at PlanViewer (/home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/src/components/PlanViewer.tsx:42:37)
-        at div
-        at App
+PASS src/tests/PlanViewer.test.tsx
+  ● Console
+
+    console.error
+      Warning: React does not recognize the `data-testID` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `data-testid` instead. If you accidentally passed it from a parent component, remove it from the DOM element.
+          at h2
+          at div
+          at /home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/node_modules/react-bootstrap/cjs/Col.js:72:8
+          at div
+          at /home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/node_modules/react-bootstrap/cjs/Row.js:22:3
+          at /home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/node_modules/react-bootstrap/cjs/FormGroup.js:19:3
+          at div
+          at SemesterViewer (/home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/src/components/SemesterViewer.tsx:40:5)
+          at div
+          at PlanViewer (/home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/src/components/PlanViewer.tsx:42:37)
 
       at printWarning (node_modules/react-dom/cjs/react-dom.development.js:67:30)
       at error (node_modules/react-dom/cjs/react-dom.development.js:43:5)
@@ -24,9 +25,34 @@
       at validateProperties$2 (node_modules/react-dom/cjs/react-dom.development.js:3583:3)
       at validatePropertiesInDevelopment (node_modules/react-dom/cjs/react-dom.development.js:8765:5)
       at setInitialProperties (node_modules/react-dom/cjs/react-dom.development.js:9041:5)
+      at finalizeInitialChildren (node_modules/react-dom/cjs/react-dom.development.js:10201:3)
 
 PASS src/App.test.tsx
-  ✓ renders the course name somewhere (161 ms)
+  ● Console
+
+    console.error
+      Warning: React does not recognize the `data-testID` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `data-testid` instead. If you accidentally passed it from a parent component, remove it from the DOM element.
+          at h2
+          at div
+          at /home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/node_modules/react-bootstrap/cjs/Col.js:72:8
+          at div
+          at /home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/node_modules/react-bootstrap/cjs/Row.js:22:3
+          at /home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/node_modules/react-bootstrap/cjs/FormGroup.js:19:3
+          at div
+          at SemesterViewer (/home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/src/components/SemesterViewer.tsx:40:5)
+          at div
+          at PlanViewer (/home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/src/components/PlanViewer.tsx:42:37)
+          at div
+          at App
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:67:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:43:5)
+      at validateProperty$1 (node_modules/react-dom/cjs/react-dom.development.js:3513:7)
+      at warnUnknownProperties (node_modules/react-dom/cjs/react-dom.development.js:3559:21)
+      at validateProperties$2 (node_modules/react-dom/cjs/react-dom.development.js:3583:3)
+      at validatePropertiesInDevelopment (node_modules/react-dom/cjs/react-dom.development.js:8765:5)
+      at setInitialProperties (node_modules/react-dom/cjs/react-dom.development.js:9041:5)
+      at finalizeInitialChildren (node_modules/react-dom/cjs/react-dom.development.js:10201:3)
 
 ------------------------|---------|----------|---------|---------|---------------------------------------------------------------------
 File                    | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                                                   
@@ -46,8 +72,9 @@ All files               |   39.33 |    35.15 |   35.29 |   39.04 |
   plan.ts               |       0 |        0 |       0 |       0 |                                                                     
   semester.ts           |       0 |        0 |       0 |       0 |                                                                     
 ------------------------|---------|----------|---------|---------|---------------------------------------------------------------------
-Test Suites: 1 passed, 1 total
-Tests:       1 passed, 1 total
+
+Test Suites: 2 passed, 2 total
+Tests:       3 passed, 3 total
 Snapshots:   0 total
-Time:        2.835 s
+Time:        3.284 s
 Ran all test suites.
