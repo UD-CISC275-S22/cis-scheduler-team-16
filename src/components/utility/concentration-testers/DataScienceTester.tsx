@@ -1,7 +1,7 @@
 import { Course } from "../../../templates/course";
 import { ConcentrationCheck } from "../../../templates/ConcentrationCheck";
 
-export function testCyberRequirements(
+export function testDataScienceRequirements(
     planCourseNames: string[],
     planCourses: Course[]
 ): ConcentrationCheck {
@@ -10,11 +10,11 @@ export function testCyberRequirements(
         errorMessages: []
     };
 
-    /** Check if CISC361 is included */
-    const checkCISC361 = planCourseNames.includes("cisc361");
-    if (!checkCISC361) {
+    /** Check if CISC304 is included */
+    const checkCISC304 = planCourseNames.includes("cisc304");
+    if (!checkCISC304) {
         checkResults.errorMessages.push(
-            "Concentration Requirement: CISC361 not in plan"
+            "Concentration Requirement: CISC304 not in plan"
         );
         checkResults.meetsConcentrationRequirements = false;
     }
@@ -28,70 +28,90 @@ export function testCyberRequirements(
         checkResults.meetsConcentrationRequirements = false;
     }
 
-    /** Check if CISC450 is included */
-    const checkCISC450 = planCourseNames.includes("cisc450");
-    if (!checkCISC450) {
+    /** Check if CISC437 is included */
+    const checkCISC437 = planCourseNames.includes("cisc437");
+    if (!checkCISC437) {
         checkResults.errorMessages.push(
-            "Concentration Requirement: CISC450 not in plan"
+            "Concentration Requirement: CISC437 not in plan"
         );
         checkResults.meetsConcentrationRequirements = false;
     }
 
-    /** Check if CISC464 is included */
-    const checkCISC464 = planCourseNames.includes("cisc464");
-    if (!checkCISC464) {
+    /** Check if CISC481 is included */
+    const checkCISC481 = planCourseNames.includes("cisc481");
+    if (!checkCISC481) {
         checkResults.errorMessages.push(
-            "Concentration Requirement: CISC464 not in plan"
+            "Concentration Requirement: CISC481 not in plan"
         );
         checkResults.meetsConcentrationRequirements = false;
     }
 
-    /** Check if CPEG465 is included */
-    const checkCPEG465 = planCourseNames.includes("cpeg465");
-    if (!checkCPEG465) {
+    /** Check if MATH205 is included */
+    const checkMATH205 = planCourseNames.includes("math205");
+    if (!checkMATH205) {
         checkResults.errorMessages.push(
-            "Concentration Requirement: CPEG465 not in plan"
+            "Concentration Requirement: MATH205 not in plan"
         );
         checkResults.meetsConcentrationRequirements = false;
     }
 
-    /** Check if CPEG494 is included */
-    const checkCPEG494 = planCourseNames.includes("cpeg494");
-    if (!checkCPEG494) {
+    /** Check if MATH242 is included */
+    const checkMATH242 = planCourseNames.includes("math242");
+    if (!checkMATH242) {
         checkResults.errorMessages.push(
-            "Concentration Requirement: CPEG494 not in plan"
+            "Concentration Requirement: MATH242 not in plan"
         );
         checkResults.meetsConcentrationRequirements = false;
     }
 
-    /** Check if Probability/Statistics requirement is met */
-    const checkProbReq =
-        planCourseNames.includes("math205") ||
-        planCourseNames.includes("math350");
-    if (!checkProbReq) {
+    /** Check if MATH243 is included */
+    const checkMATH243 = planCourseNames.includes("math243");
+    if (!checkMATH243) {
         checkResults.errorMessages.push(
-            "Concentration Requirement: Probability/Statistics requirement not met (MATH205 or MATH350)"
+            "Concentration Requirement: MATH243 not in plan"
         );
         checkResults.meetsConcentrationRequirements = false;
     }
 
-    /** Check if Advanced Cybersecurity requirement is met */
-    const cyberCourses: string[] = [];
+    /** Check if MATH349 is included */
+    const checkMATH349 = planCourseNames.includes("math349");
+    if (!checkMATH349) {
+        checkResults.errorMessages.push(
+            "Concentration Requirement: MATH349 not in plan"
+        );
+        checkResults.meetsConcentrationRequirements = false;
+    }
+
+    /** Check if Advanced Data Science requirement is met */
+    const advDataCourses: string[] = [];
     planCourseNames.map((course: string) => {
-        if (
-            course === "cpeg472" ||
-            course === "cpeg473" ||
-            course === "cpeg475" ||
-            course === "cpeg476" ||
-            course === "cpeg495"
-        ) {
-            cyberCourses.push(course);
+        if (course === "cisc483" || course === "cisc484") {
+            advDataCourses.push(course);
         }
     });
-    const checkCyberReq = cyberCourses.length >= 2;
-    if (!checkCyberReq) {
+    const checkAdvDataReq = advDataCourses.length >= 1;
+    if (!checkAdvDataReq) {
         checkResults.errorMessages.push(
-            "Concentration Requirement: Advanced Cybersecurity requirement not met"
+            "Concentration Requirement: Advanced Data Science requirement not met (CISC483 or CISC484)"
+        );
+        checkResults.meetsConcentrationRequirements = false;
+    }
+
+    /** Check if Advanced Math requirement is met */
+    const advMathCourses: string[] = [];
+    planCourseNames.map((course: string) => {
+        if (
+            course === "math302" ||
+            course === "math350" ||
+            course === "math426"
+        ) {
+            advMathCourses.push(course);
+        }
+    });
+    const checkAdvMathReq = advMathCourses.length >= 1;
+    if (!checkAdvMathReq) {
+        checkResults.errorMessages.push(
+            "Concentration Requirement: Advanced Math requirement not met (MATH302, MATH350, or MATH426)"
         );
         checkResults.meetsConcentrationRequirements = false;
     }
@@ -100,37 +120,29 @@ export function testCyberRequirements(
     let totalRestCreditCount = 0;
     planCourses.map((course: Course) => {
         if (
-            course.courseId === "math242" ||
-            course.courseId === "math349" ||
-            course.courseId === "math549" ||
-            course.courseId === "cisc304" ||
+            course.courseId === "cisc361" ||
+            course.courseId === "cisc410" ||
             course.courseId === "cisc436" ||
-            course.courseId === "cisc437" ||
             course.courseId === "cisc440" ||
             course.courseId === "cisc442" ||
             course.courseId === "cisc449" ||
-            course.courseId === "cisc453" ||
-            course.courseId === "cisc459" ||
-            course.courseId === "cisc481" ||
+            course.courseId === "cisc450" ||
+            course.courseId === "cisc471" ||
+            course.courseId === "cisc474" ||
             course.courseId === "cisc483" ||
             course.courseId === "cisc484" ||
-            course.courseId === "cisc474" ||
-            course.courseId === "cpeg470" ||
-            course.courseId === "cpeg471" ||
-            course.courseId === "cpeg472" ||
-            course.courseId === "cpeg473" ||
-            course.courseId === "cpeg474" ||
-            course.courseId === "cpeg475" ||
-            course.courseId === "cpeg476" ||
-            course.courseId === "cpeg494" ||
-            course.courseId === "cpeg495" ||
+            course.courseId === "cisc489" ||
             course.courseId === "eleg387" ||
-            course.courseId === "eleg487"
+            course.courseId === "eleg487" ||
+            course.courseId === "math302" ||
+            course.courseId === "math350" ||
+            course.courseId === "math428" ||
+            course.courseId === "math450"
         ) {
             totalRestCreditCount += course.credithours;
         }
     });
-    const checkRestReq = totalRestCreditCount >= 6;
+    const checkRestReq = totalRestCreditCount >= 3;
     if (!checkRestReq) {
         checkResults.errorMessages.push(
             "Concentration Requirement: Fewer than 6 restricted elective credits in plan, " +

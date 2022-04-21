@@ -6,6 +6,7 @@ import { ConcentrationCheck } from "../../templates/ConcentrationCheck";
 import { testAIRequirements } from "./concentration-testers/ArtificialIntelligenceTester";
 import { testBioinformaticsRequirements } from "./concentration-testers/BioinformaticsTester";
 import { testCyberRequirements } from "./concentration-testers/CybersecurityTester";
+import { testDataScienceRequirements } from "./concentration-testers/DataScienceTester";
 
 export function checkPlan(plan: Plan, concentration: string): JSX.Element {
     const planCourseNames: string[] = [];
@@ -188,6 +189,11 @@ export function checkPlan(plan: Plan, concentration: string): JSX.Element {
         );
     } else if (concentration === "Cybersecurity") {
         concentrationResults = testCyberRequirements(
+            planCourseNames,
+            planCourses
+        );
+    } else if (concentration === "Data Science") {
+        concentrationResults = testDataScienceRequirements(
             planCourseNames,
             planCourses
         );
