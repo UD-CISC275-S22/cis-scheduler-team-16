@@ -16,7 +16,7 @@ PASS src/tests/PlanViewer.test.tsx
           at div
           at SemesterViewer (/home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/src/components/SemesterViewer.tsx:40:5)
           at div
-          at PlanViewer (/home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/src/components/PlanViewer.tsx:42:37)
+          at PlanViewer (/home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/src/components/PlanViewer.tsx:44:37)
 
       at printWarning (node_modules/react-dom/cjs/react-dom.development.js:67:30)
       at error (node_modules/react-dom/cjs/react-dom.development.js:43:5)
@@ -41,7 +41,7 @@ PASS src/App.test.tsx
           at div
           at SemesterViewer (/home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/src/components/SemesterViewer.tsx:40:5)
           at div
-          at PlanViewer (/home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/src/components/PlanViewer.tsx:42:37)
+          at PlanViewer (/home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/src/components/PlanViewer.tsx:44:37)
           at div
           at App
 
@@ -54,27 +54,27 @@ PASS src/App.test.tsx
       at setInitialProperties (node_modules/react-dom/cjs/react-dom.development.js:9041:5)
       at finalizeInitialChildren (node_modules/react-dom/cjs/react-dom.development.js:10201:3)
 
-------------------------|---------|----------|---------|---------|---------------------------------------------------------------------
-File                    | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                                                   
-------------------------|---------|----------|---------|---------|---------------------------------------------------------------------
-All files               |   39.33 |    36.36 |   35.29 |   39.04 |                                                                     
- src                    |     100 |      100 |     100 |     100 |                                                                     
-  App.tsx               |     100 |      100 |     100 |     100 |                                                                     
- src/components         |   22.92 |    11.59 |   21.42 |   22.43 |                                                                     
-  CourseViewer.tsx      |   32.14 |    27.27 |    6.66 |   32.14 | 65-95,151-446                                                       
-  PlanViewer.tsx        |   16.94 |        0 |   23.52 |   16.94 | 60-85,94-99,103-107,111-115,119-127,135-139,163-289,372-411,438-511 
-  SemesterViewer.tsx    |   63.63 |      100 |   42.85 |      60 | 119-150                                                             
- src/components/utility |   86.79 |    54.16 |     100 |   86.79 |                                                                     
-  PlanTester.tsx        |   86.79 |    54.16 |     100 |   86.79 | 35,48,57,66,75,84,119                                               
- src/templates          |       0 |        0 |       0 |       0 |                                                                     
-  PlanReport.ts         |       0 |        0 |       0 |       0 |                                                                     
-  course.ts             |       0 |        0 |       0 |       0 |                                                                     
-  plan.ts               |       0 |        0 |       0 |       0 |                                                                     
-  semester.ts           |       0 |        0 |       0 |       0 |                                                                     
-------------------------|---------|----------|---------|---------|---------------------------------------------------------------------
+------------------------|---------|----------|---------|---------|-----------------------------------------------------------------------
+File                    | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                                                     
+------------------------|---------|----------|---------|---------|-----------------------------------------------------------------------
+All files               |   39.36 |    36.09 |   32.87 |   39.09 |                                                                       
+ src                    |     100 |      100 |     100 |     100 |                                                                       
+  App.tsx               |     100 |      100 |     100 |     100 |                                                                       
+ src/components         |   23.95 |    12.32 |   19.67 |   23.49 |                                                                       
+  CourseViewer.tsx      |   32.14 |    27.27 |    6.66 |   32.14 | 65-95,151-446                                                         
+  PlanViewer.tsx        |   18.75 |     2.04 |   20.51 |   18.75 | 65-93,102-107,111-116,120-124,128-136,144-148,172-298,381-464,484-557 
+  SemesterViewer.tsx    |   63.63 |      100 |   42.85 |      60 | 119-150                                                               
+ src/components/utility |   86.79 |    54.16 |     100 |   86.79 |                                                                       
+  PlanTester.tsx        |   86.79 |    54.16 |     100 |   86.79 | 35,48,57,66,75,84,119                                                 
+ src/templates          |       0 |        0 |       0 |       0 |                                                                       
+  PlanReport.ts         |       0 |        0 |       0 |       0 |                                                                       
+  course.ts             |       0 |        0 |       0 |       0 |                                                                       
+  plan.ts               |       0 |        0 |       0 |       0 |                                                                       
+  semester.ts           |       0 |        0 |       0 |       0 |                                                                       
+------------------------|---------|----------|---------|---------|-----------------------------------------------------------------------
 
 Test Suites: 2 passed, 2 total
 Tests:       3 passed, 3 total
 Snapshots:   0 total
-Time:        4.176 s
+Time:        3.26 s
 Ran all test suites.
