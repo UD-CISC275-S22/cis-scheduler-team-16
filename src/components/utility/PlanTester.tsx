@@ -197,6 +197,11 @@ export function checkPlan(plan: Plan, concentration: string): JSX.Element {
             planCourseNames,
             planCourses
         );
+    } else if (concentration === "High Performance Computing (Data Track)") {
+        concentrationResults = testDataScienceRequirements(
+            planCourseNames,
+            planCourses
+        );
     } else {
         concentrationResults = {
             meetsConcentrationRequirements: true,
