@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import { PlanViewer } from "../components/PlanViewer";
 
-describe("Quizzer Tests", () => {
+describe("Planner Tests", () => {
     beforeEach(() => {
         render(<PlanViewer />);
     });
