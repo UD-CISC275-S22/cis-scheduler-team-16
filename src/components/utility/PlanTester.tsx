@@ -8,6 +8,7 @@ import { testBioinformaticsRequirements } from "./concentration-testers/Bioinfor
 import { testCyberRequirements } from "./concentration-testers/CybersecurityTester";
 import { testDataScienceRequirements } from "./concentration-testers/DataScienceTester";
 import { testHPMathRequirements } from "./concentration-testers/HighPerformanceMathTester";
+import { testHPDataRequirements } from "./concentration-testers/HighPerformanceDataTester";
 
 export function checkPlan(plan: Plan, concentration: string): JSX.Element {
     const planCourseNames: string[] = [];
@@ -195,6 +196,11 @@ export function checkPlan(plan: Plan, concentration: string): JSX.Element {
         );
     } else if (concentration === "Data Science") {
         concentrationResults = testDataScienceRequirements(
+            planCourseNames,
+            planCourses
+        );
+    } else if (concentration === "High Performance Computing (Data Track)") {
+        concentrationResults = testHPDataRequirements(
             planCourseNames,
             planCourses
         );
