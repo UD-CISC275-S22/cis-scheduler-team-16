@@ -7,6 +7,7 @@ import { testAIRequirements } from "./concentration-testers/ArtificialIntelligen
 import { testBioinformaticsRequirements } from "./concentration-testers/BioinformaticsTester";
 import { testCyberRequirements } from "./concentration-testers/CybersecurityTester";
 import { testDataScienceRequirements } from "./concentration-testers/DataScienceTester";
+import { testHPMathRequirements } from "./concentration-testers/HighPerformanceMathTester";
 
 export function checkPlan(plan: Plan, concentration: string): JSX.Element {
     const planCourseNames: string[] = [];
@@ -197,8 +198,8 @@ export function checkPlan(plan: Plan, concentration: string): JSX.Element {
             planCourseNames,
             planCourses
         );
-    } else if (concentration === "High Performance Computing (Data Track)") {
-        concentrationResults = testDataScienceRequirements(
+    } else if (concentration === "High Performance Computing (Math Track)") {
+        concentrationResults = testHPMathRequirements(
             planCourseNames,
             planCourses
         );

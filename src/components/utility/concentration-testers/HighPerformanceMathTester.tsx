@@ -1,7 +1,7 @@
 import { Course } from "../../../templates/course";
 import { ConcentrationCheck } from "../../../templates/ConcentrationCheck";
 
-export function testHPDataRequirements(
+export function testHPMathRequirements(
     planCourseNames: string[],
     planCourses: Course[]
 ): ConcentrationCheck {
