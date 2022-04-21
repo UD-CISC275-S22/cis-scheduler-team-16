@@ -9,29 +9,29 @@
                 "year": 2022,
                 "courses": [
                     {
-                        "courseId": "0",
-                        "name": "Course1",
+                        "courseId": "ENGL110",
+                        "name": "Introductory English",
                         "prereqs": [],
                         "credithours": 50,
                         "satisfied_requirements": []
                     },
                     {
-                        "courseId": "1",
-                        "name": "Course2",
+                        "courseId": "MATH210",
+                        "name": "Discrete Mathematics",
                         "prereqs": [],
                         "credithours": 50,
                         "satisfied_requirements": []
                     },
                     {
-                        "courseId": "2",
-                        "name": "Course3",
+                        "courseId": "CISC108",
+                        "name": "Introduction to Computer Science",
                         "prereqs": [],
                         "credithours": 80,
                         "satisfied_requirements": []
                     },
                     {
-                        "courseId": "3",
-                        "name": "Course4",
+                        "courseId": "CISC181",
+                        "name": "Introduction to Computer Science 2",
                         "prereqs": [],
                         "credithours": 20,
                         "satisfied_requirements": []
@@ -44,8 +44,8 @@
                 "year": 2022,
                 "courses": [
                     {
-                        "courseId": "0",
-                        "name": "Course1",
+                        "courseId": "CISC220",
+                        "name": "Data Structures",
                         "prereqs": [],
                         "credithours": 1000,
                         "satisfied_requirements": []
