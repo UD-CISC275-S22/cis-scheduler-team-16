@@ -5,6 +5,7 @@ import { Plan } from "../../templates/plan";
 import { ConcentrationCheck } from "../../templates/ConcentrationCheck";
 import { testAIRequirements } from "./concentration-testers/ArtificialIntelligenceTester";
 import { testBioinformaticsRequirements } from "./concentration-testers/BioinformaticsTester";
+import { testCyberRequirements } from "./concentration-testers/CybersecurityTester";
 
 export function checkPlan(plan: Plan, concentration: string): JSX.Element {
     const planCourseNames: string[] = [];
@@ -180,21 +181,26 @@ export function checkPlan(plan: Plan, concentration: string): JSX.Element {
 
     if (concentration === "Artificial Intelligence") {
         concentrationResults = testAIRequirements(planCourseNames, planCourses);
-    } else {
+    } else if (concentration === "Bioinformatics") {
         concentrationResults = testBioinformaticsRequirements(
             planCourseNames,
             planCourses
         );
+    } else if (concentration === "Cybersecurity") {
+        concentrationResults = testCyberRequirements(
+            planCourseNames,
+            planCourses
+        );
+    } else {
+        concentrationResults = {
+            meetsConcentrationRequirements: true,
+            errorMessages: ["Fatal Error: Invalid Concentration Selected"]
+        };
     }
 
     return (
         <div>
-            {concentration}
             <hr></hr>
-            <strong>
-                Dont forget to check for prerequisites and concentration
-                requirements
-            </strong>
             {isValid && (
                 <div
                     style={{
