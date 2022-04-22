@@ -432,6 +432,15 @@ export function CourseViewer({
                                 checked={requirements.includes("upp")}
                                 onChange={updateRequirements}
                             />
+                            <Form.Check
+                                type="checkbox"
+                                id={`requirements-caf-${courseID}`}
+                                label="Traditional Computer Science Custom Area of Focus Requirement"
+                                name={`requirements-${courseID}`}
+                                value="caf"
+                                checked={requirements.includes("caf")}
+                                onChange={updateRequirements}
+                            />
                         </Col>
                     </Form.Group>
 

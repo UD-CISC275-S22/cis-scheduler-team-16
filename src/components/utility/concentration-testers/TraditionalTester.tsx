@@ -39,39 +39,6 @@ export function testTraditionalRequirements(
         checkResults.meetsConcentrationRequirements = false;
     }
 
-    /** Check if Restricted Elective requirement is met */
-    let totalRestCreditCount = 0;
-    planCourses.map((course: Course) => {
-        if (
-            course.courseId === "cisc372" ||
-            course.courseId === "cisc404" ||
-            course.courseId === "cisc410" ||
-            course.courseId === "cisc414" ||
-            course.courseId === "cisc471" ||
-            course.courseId === "cisc481" ||
-            course.courseId === "eleg387" ||
-            course.courseId === "eleg487" ||
-            course.courseId === "math243" ||
-            course.courseId === "math245" ||
-            course.courseId === "math302" ||
-            course.courseId === "math315" ||
-            course.courseId === "math350" ||
-            course.courseId === "math428" ||
-            course.courseId === "math450" ||
-            course.courseId === "math451"
-        ) {
-            totalRestCreditCount += course.credithours;
-        }
-    });
-    const checkRestReq = totalRestCreditCount >= 6;
-    if (!checkRestReq) {
-        checkResults.errorMessages.push(
-            "Concentration Requirement: Fewer than 6 restricted elective credits in plan, " +
-                totalRestCreditCount +
-                " found"
-        );
-    }
-
     /** Check if Upper Level CISC requirement is met */
     let totalUpperLevelCISC = 0;
     planCourses.map((course: Course) => {
@@ -99,6 +66,22 @@ export function testTraditionalRequirements(
             "Concentration Requirement: Fewer than 3 upper level CISC credits in plan, " +
                 totalUpperLevelCISC +
                 " found (Excludes CISC355, CISC356, CISC357, CISC465, CISC366, and CISC466)"
+        );
+    }
+
+    /** Check if Restricted Elective requirement is met */
+    let totalRestCreditCount = 0;
+    planCourses.map((course: Course) => {
+        if (course.satisfied_requirements.includes("caf")) {
+            totalRestCreditCount += course.credithours;
+        }
+    });
+    const checkRestReq = totalRestCreditCount >= 12;
+    if (!checkRestReq) {
+        checkResults.errorMessages.push(
+            "Concentration Requirement: Fewer than 12 credits in custom area of focus, " +
+                totalRestCreditCount +
+                " found"
         );
     }
 
