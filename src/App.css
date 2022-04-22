@@ -30,6 +30,8 @@
     align-items: center;
     justify-content: center;
     border: 4px dotted #00539f;
+    border-left-color: yellow;
+    border-right-color: yellow;
 }
 
 .App-link {

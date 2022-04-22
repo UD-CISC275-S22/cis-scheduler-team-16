@@ -457,7 +457,7 @@ export function PlanViewer(): JSX.Element {
                         style={{
                             borderStyle: "dotted",
                             borderWidth: "4px",
-                            borderColor: "blue"
+                            borderColor: "blue yellow" //rgb(0, 32, 62) //#00539f
                         }}
                     >
                         <Container>
