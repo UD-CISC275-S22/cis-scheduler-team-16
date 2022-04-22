@@ -54,27 +54,37 @@ PASS src/App.test.tsx
       at setInitialProperties (node_modules/react-dom/cjs/react-dom.development.js:9041:5)
       at finalizeInitialChildren (node_modules/react-dom/cjs/react-dom.development.js:10201:3)
 
-------------------------|---------|----------|---------|---------|-----------------------------------------------------------------------
-File                    | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                                                     
-------------------------|---------|----------|---------|---------|-----------------------------------------------------------------------
-All files               |   39.36 |    36.09 |   32.87 |   39.09 |                                                                       
- src                    |     100 |      100 |     100 |     100 |                                                                       
-  App.tsx               |     100 |      100 |     100 |     100 |                                                                       
- src/components         |   23.95 |    12.32 |   19.67 |   23.49 |                                                                       
-  CourseViewer.tsx      |   32.14 |    27.27 |    6.66 |   32.14 | 65-95,151-446                                                         
-  PlanViewer.tsx        |   18.75 |     2.04 |   20.51 |   18.75 | 65-93,102-107,111-116,120-124,128-136,144-148,172-298,381-470,490-563 
-  SemesterViewer.tsx    |   63.63 |      100 |   42.85 |      60 | 119-150                                                               
- src/components/utility |   86.79 |    54.16 |     100 |   86.79 |                                                                       
-  PlanTester.tsx        |   86.79 |    54.16 |     100 |   86.79 | 35,48,57,66,75,84,119                                                 
- src/templates          |       0 |        0 |       0 |       0 |                                                                       
-  PlanReport.ts         |       0 |        0 |       0 |       0 |                                                                       
-  course.ts             |       0 |        0 |       0 |       0 |                                                                       
-  plan.ts               |       0 |        0 |       0 |       0 |                                                                       
-  semester.ts           |       0 |        0 |       0 |       0 |                                                                       
-------------------------|---------|----------|---------|---------|-----------------------------------------------------------------------
+----------------------------------------------|---------|----------|---------|---------|-----------------------------------------------------------------------
+File                                          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                                                     
+----------------------------------------------|---------|----------|---------|---------|-----------------------------------------------------------------------
+All files                                     |   20.37 |    15.44 |   28.03 |   20.25 |                                                                       
+ src                                          |     100 |      100 |     100 |     100 |                                                                       
+  App.tsx                                     |     100 |      100 |     100 |     100 |                                                                       
+ src/components                               |   23.95 |    12.32 |   19.67 |   23.49 |                                                                       
+  CourseViewer.tsx                            |   32.14 |    27.27 |    6.66 |   32.14 | 65-95,151-455                                                         
+  PlanViewer.tsx                              |   18.75 |     2.04 |   20.51 |   18.75 | 65-93,102-107,111-116,120-124,128-136,144-148,172-298,381-470,490-563 
+  SemesterViewer.tsx                          |   63.63 |      100 |   42.85 |      60 | 123-154                                                               
+ src/components/utility                       |   79.78 |    55.94 |    87.5 |   79.78 |                                                                       
+  PlanTester.tsx                              |   79.78 |    55.94 |    87.5 |   79.78 | 38-39,60,73,82,91,100,109,144,183,185,190,195,200,205,210,215,225,399 
+ src/components/utility/concentration-testers |    5.97 |     3.44 |   10.34 |    5.97 |                                                                       
+  ArtificialIntelligenceTester.tsx            |       0 |        0 |       0 |       0 | 8-143                                                                 
+  BioinformaticsTester.tsx                    |       0 |        0 |       0 |       0 | 8-181                                                                 
+  CybersecurityTester.tsx                     |       0 |        0 |       0 |       0 | 8-166                                                                 
+  DataScienceTester.tsx                       |       0 |        0 |       0 |       0 | 8-178                                                                 
+  HighPerformanceDataTester.tsx               |       0 |        0 |       0 |       0 | 8-79                                                                  
+  HighPerformanceMathTester.tsx               |       0 |        0 |       0 |       0 | 8-131                                                                 
+  SystemsNetworkTester.tsx                    |       0 |        0 |       0 |       0 | 8-189                                                                 
+  TheoryCompDiscreteTester.tsx                |       0 |        0 |       0 |       0 | 8-153                                                                 
+  TraditionalTester.tsx                       |   92.85 |    55.17 |     100 |   92.85 | 60,76                                                                 
+ src/templates                                |       0 |        0 |       0 |       0 |                                                                       
+  ConcentrationCheck.ts                       |       0 |        0 |       0 |       0 |                                                                       
+  course.ts                                   |       0 |        0 |       0 |       0 |                                                                       
+  plan.ts                                     |       0 |        0 |       0 |       0 |                                                                       
+  semester.ts                                 |       0 |        0 |       0 |       0 |                                                                       
+----------------------------------------------|---------|----------|---------|---------|-----------------------------------------------------------------------
 
 Test Suites: 2 passed, 2 total
 Tests:       3 passed, 3 total
 Snapshots:   0 total
-Time:        3.446 s
+Time:        4.009 s
 Ran all test suites.
