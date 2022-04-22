@@ -2,6 +2,16 @@ import React from "react";
 import { Course } from "../../templates/course";
 import { Semester } from "../../templates/semester";
 import { Plan } from "../../templates/plan";
+import { ConcentrationCheck } from "../../templates/ConcentrationCheck";
+import { testAIRequirements } from "./concentration-testers/ArtificialIntelligenceTester";
+import { testBioinformaticsRequirements } from "./concentration-testers/BioinformaticsTester";
+import { testCyberRequirements } from "./concentration-testers/CybersecurityTester";
+import { testDataScienceRequirements } from "./concentration-testers/DataScienceTester";
+import { testHPMathRequirements } from "./concentration-testers/HighPerformanceMathTester";
+import { testHPDataRequirements } from "./concentration-testers/HighPerformanceDataTester";
+import { testSystemNetworkRequirements } from "./concentration-testers/SystemsNetworkTester";
+import { testTheoryDiscreteRequirements } from "./concentration-testers/TheoryCompDiscreteTester";
+import { testTraditionalRequirements } from "./concentration-testers/TraditionalTester";
 
 export function checkPlan(plan: Plan, concentration: string): JSX.Element {
     const planCourseNames: string[] = [];
@@ -19,8 +29,23 @@ export function checkPlan(plan: Plan, concentration: string): JSX.Element {
         });
     });
 
+    /** Check to make sure core prerequisites are being met */
+    const seenCourse: string[] = [];
+    const prereqFailCourses: string[] = [];
+    planCourses.map((course: Course) => {
+        seenCourse.push(course.courseId);
+        course.prereqs.map((prerequisite: string) => {
+            if (!seenCourse.includes(prerequisite) && prerequisite !== "None") {
+                prereqFailCourses.push(course.courseId);
+            }
+        });
+    });
+
     /** Check to see if English requirement is fulfilled */
-    const checkENGL110 = planCourseNames.includes("engl110");
+    const englCourses = planCourses.filter((course: Course) =>
+        course.satisfied_requirements.includes("sem")
+    );
+    const checkSEM = englCourses.length > 0;
 
     /** Check to see if there are any courses that satisfy the multicultural requirement */
     const multiCourses = planCourses.filter((course: Course) =>
@@ -127,23 +152,86 @@ export function checkPlan(plan: Plan, concentration: string): JSX.Element {
         planCourseNames.includes("engl410");
 
     /** Check to see if the course contains all the required CISC courses */
+    const checkCISC108 = planCourseNames.includes("cisc108");
+    const checkCISC181 = planCourseNames.includes("cisc181");
+    const checkCISC210 = planCourseNames.includes("cisc210");
+    const checkCISC220 = planCourseNames.includes("cisc220");
+    const checkCISC260 = planCourseNames.includes("cisc260");
+    const checkCISC275 = planCourseNames.includes("cisc275");
+    const checkCISC303 = planCourseNames.includes("cisc303");
+    const checkCISC320 = planCourseNames.includes("cisc320");
+    const checkCISC355 = planCourseNames.includes("cisc355");
+    const checkMATH210 = planCourseNames.includes("math210");
+    const checkMATH241 = planCourseNames.includes("math241");
     const checkCORE =
-        planCourseNames.includes("cisc108") &&
-        planCourseNames.includes("cisc181") &&
-        planCourseNames.includes("cisc210") &&
-        planCourseNames.includes("cisc220") &&
-        planCourseNames.includes("cisc260") &&
-        planCourseNames.includes("cisc275") &&
-        planCourseNames.includes("cisc303") &&
-        planCourseNames.includes("cisc320") &&
-        planCourseNames.includes("cisc355") &&
-        planCourseNames.includes("math205") &&
-        planCourseNames.includes("math210");
+        checkCISC108 &&
+        checkCISC181 &&
+        checkCISC210 &&
+        checkCISC220 &&
+        checkCISC260 &&
+        checkCISC275 &&
+        checkCISC303 &&
+        checkCISC320 &&
+        checkCISC355 &&
+        checkMATH210 &&
+        checkMATH241;
+
+    /** Check to see if the concentrationr requirements are being met */
+    let concentrationResults: ConcentrationCheck;
+
+    if (concentration === "Artificial Intelligence") {
+        concentrationResults = testAIRequirements(planCourseNames, planCourses);
+    } else if (concentration === "Bioinformatics") {
+        concentrationResults = testBioinformaticsRequirements(
+            planCourseNames,
+            planCourses
+        );
+    } else if (concentration === "Cybersecurity") {
+        concentrationResults = testCyberRequirements(
+            planCourseNames,
+            planCourses
+        );
+    } else if (concentration === "Data Science") {
+        concentrationResults = testDataScienceRequirements(
+            planCourseNames,
+            planCourses
+        );
+    } else if (concentration === "High Performance Computing (Data Track)") {
+        concentrationResults = testHPDataRequirements(
+            planCourseNames,
+            planCourses
+        );
+    } else if (concentration === "High Performance Computing (Math Track)") {
+        concentrationResults = testHPMathRequirements(
+            planCourseNames,
+            planCourses
+        );
+    } else if (concentration === "Systems and Networking") {
+        concentrationResults = testSystemNetworkRequirements(
+            planCourseNames,
+            planCourses
+        );
+    } else if (concentration === "Theory and Computation (Discrete Track)") {
+        concentrationResults = testTheoryDiscreteRequirements(
+            planCourseNames,
+            planCourses
+        );
+    } else if (concentration === "Traditional Computer Science (BS)") {
+        concentrationResults = testTraditionalRequirements(
+            planCourseNames,
+            planCourses
+        );
+    } else {
+        concentrationResults = {
+            meetsConcentrationRequirements: false,
+            errorMessages: ["Fatal Error: Invalid Concentration Selected"]
+        };
+    }
 
     /** Checks to see if all the requirements pass */
     const isValid =
         creditCount > 124 &&
-        checkENGL110 &&
+        checkSEM &&
         checkMulticultural &&
         checkCapstone &&
         checkDLE &&
@@ -155,10 +243,12 @@ export function checkPlan(plan: Plan, concentration: string): JSX.Element {
         checkLOWER &&
         checkUPP &&
         checkTWR &&
-        checkCORE;
+        checkCORE &&
+        concentrationResults.meetsConcentrationRequirements;
 
     return (
         <div>
+            <hr></hr>
             {isValid && (
                 <div
                     style={{
@@ -207,17 +297,17 @@ export function checkPlan(plan: Plan, concentration: string): JSX.Element {
                         <h4 style={{ marginBottom: "0px" }}>
                             <strong>There are problems with this plan</strong>
                         </h4>
-                        <strong>
-                            Please correct the following issues: {concentration}
-                        </strong>
+                        <strong>Please correct the following issues:</strong>
                         <ul>
                             {creditCount < 124 && (
                                 <li>Fewer than 124 credit hours in plan</li>
                             )}
-                            {!checkENGL110 && (
-                                <li>ENGL110 not in course plan</li>
+                            {!checkSEM && (
+                                <li>
+                                    First Year Writing Seminar requirement not
+                                    fulfilled
+                                </li>
                             )}
-
                             {!checkCapstone && (
                                 <li>
                                     Capstone series not included (CISC498/499 or
@@ -282,9 +372,46 @@ export function checkPlan(plan: Plan, concentration: string): JSX.Element {
                             )}
                             {!checkCORE && (
                                 <li>
-                                    Computer Science core requirements not
-                                    fulfilled
+                                    The following core CISC requirements have
+                                    not been fulfilled:
+                                    <ul>{!checkCISC108 && <li>CISC108</li>}</ul>
+                                    <ul>{!checkCISC181 && <li>CISC181</li>}</ul>
+                                    <ul>{!checkCISC210 && <li>CISC210</li>}</ul>
+                                    <ul>{!checkCISC220 && <li>CISC220</li>}</ul>
+                                    <ul>{!checkCISC260 && <li>CISC260</li>}</ul>
+                                    <ul>{!checkCISC275 && <li>CISC275</li>}</ul>
+                                    <ul>{!checkCISC303 && <li>CISC303</li>}</ul>
+                                    <ul>{!checkCISC320 && <li>CISC320</li>}</ul>
+                                    <ul>{!checkCISC355 && <li>CISC355</li>}</ul>
+                                    <ul>{!checkMATH210 && <li>MATH210</li>}</ul>
+                                    <ul>{!checkMATH241 && <li>MATH241</li>}</ul>
                                 </li>
+                            )}
+                            {prereqFailCourses.length > 0 && (
+                                <li>
+                                    {
+                                        "The following courses have not had all their prerequirements met:"
+                                    }
+
+                                    <ul>
+                                        {prereqFailCourses.map(
+                                            (course: string) => (
+                                                <li
+                                                    key={`prereq-fail-${course}`}
+                                                >
+                                                    {course}
+                                                </li>
+                                            )
+                                        )}
+                                    </ul>
+                                </li>
+                            )}
+                            {concentrationResults.errorMessages.map(
+                                (error: string) => (
+                                    <li key={`concentration-fail-${error}`}>
+                                        {error}
+                                    </li>
+                                )
                             )}
                         </ul>
                     </div>

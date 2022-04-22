@@ -88,12 +88,16 @@ export const SemesterViewer = ({
                         }}
                         data-testID="semesterInfo-Header"
                     >
-                        {+semesterIndex +
+                        {/**
+                         * {+semesterIndex +
                             1 +
                             " " +
                             semester.term +
                             "  " +
                             semester.year}
+                         * 
+                         */}
+                        {semester.term + "  " + semester.year}
                     </h2>
                     <p
                         style={{
