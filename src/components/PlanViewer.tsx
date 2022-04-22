@@ -302,25 +302,45 @@ export function PlanViewer(): JSX.Element {
     // This is the Return View
     return (
         <div>
+            <hr></hr>
             <div style={{ marginLeft: "20px", marginRight: "20px" }}>
                 {/** This is where the new code for checking correctness is going to go */}
-                <Form.Group controlId="userPlan">
-                    <Form.Label>Choose your current plan</Form.Label>
-                    <Form.Select value={curPlan.id} onChange={updatePlan}>
-                        {allPlans.map(
-                            (plan: Plan, ind: number): JSX.Element => (
-                                <option key={ind} value={ind}>
-                                    {" "}
-                                    {plan.name}{" "}
-                                </option>
-                            )
-                        )}
-                    </Form.Select>
-                </Form.Group>
-                <Form.Group as={Row}>
-                    <Col>
+                <Form.Group
+                    controlId="userPlan"
+                    as={Row}
+                    style={{ marginRight: "10%", marginLeft: "10%" }}
+                >
+                    <Col style={{ textAlign: "left" }}>
                         <Form.Label>
-                            Choose your planned concentration
+                            <h5>
+                                <strong>Choose your current plan</strong>
+                            </h5>
+                        </Form.Label>
+                    </Col>
+                    <Col>
+                        <Form.Select value={curPlan.id} onChange={updatePlan}>
+                            {allPlans.map(
+                                (plan: Plan, ind: number): JSX.Element => (
+                                    <option key={ind} value={ind}>
+                                        {" "}
+                                        {plan.name}{" "}
+                                    </option>
+                                )
+                            )}
+                        </Form.Select>
+                    </Col>
+                </Form.Group>
+                <Form.Group
+                    as={Row}
+                    style={{ marginRight: "10%", marginLeft: "10%" }}
+                >
+                    <Col style={{ textAlign: "left" }}>
+                        <Form.Label>
+                            <h5>
+                                <strong>
+                                    Choose your planned concentration
+                                </strong>
+                            </h5>
                         </Form.Label>
                     </Col>
                     <Col>
@@ -376,30 +396,36 @@ export function PlanViewer(): JSX.Element {
                         marginBottom: "0px"
                     }}
                 >
-                    <Button
-                        onClick={() =>
-                            updateSemesterCourse({
-                                course: undefined,
-                                semesterIndex: 0,
-                                courseIndex: 0,
-                                opType: "addPlan"
-                            })
-                        }
-                    >
-                        New Plan
-                    </Button>
-                    <Button
-                        onClick={() =>
-                            updateSemesterCourse({
-                                course: undefined,
-                                semesterIndex: 0,
-                                courseIndex: 0,
-                                opType: "deletePlan"
-                            })
-                        }
-                    >
-                        Discard Plan
-                    </Button>
+                    <Form.Group as={Row}>
+                        <Col></Col>
+                        <Col style={{ textAlign: "left", marginLeft: "20px" }}>
+                            <Button
+                                onClick={() =>
+                                    updateSemesterCourse({
+                                        course: undefined,
+                                        semesterIndex: 0,
+                                        courseIndex: 0,
+                                        opType: "addPlan"
+                                    })
+                                }
+                            >
+                                New Plan
+                            </Button>
+                            {"   "}
+                            <Button
+                                onClick={() =>
+                                    updateSemesterCourse({
+                                        course: undefined,
+                                        semesterIndex: 0,
+                                        courseIndex: 0,
+                                        opType: "deletePlan"
+                                    })
+                                }
+                            >
+                                Discard Plan
+                            </Button>
+                        </Col>
+                    </Form.Group>
                 </div>
                 <hr></hr>
                 <Form.Group as={Row} style={{ marginBottom: "0px" }}>
