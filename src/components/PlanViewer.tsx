@@ -8,6 +8,8 @@ import { Plan } from "../templates/plan";
 import planList from "../templates/PlansList.json";
 import { checkPlan } from "./utility/PlanTester";
 
+const termList: string[] = ["Summer", "Fall", "Winter", "Spring"]; //list of diff terms
+
 type COURSE_OPERATIONS =
     | "add"
     | "update"
@@ -44,6 +46,9 @@ export function PlanViewer(): JSX.Element {
     const [currentConcentration, setCurrentConcentration] = useState<string>(
         "Traditional Computer Science (BS)"
     );
+    const [editSem, setEditSem] = useState<boolean>(false); //boolean state for editable state
+    const [term, setTerm] = useState<string>("Fall"); //term to set a new semester to
+    const [year, setYear] = useState<number>(0); //year to set a new semester to
 
     // Get the total number of credit hours for this Plan
     let totalCredits = 0;
@@ -84,6 +89,9 @@ export function PlanViewer(): JSX.Element {
     ) {
         setCurrentConcentration(event.target.value);
     }
+    function updateTerm(event: React.ChangeEvent<HTMLSelectElement>) {
+        setTerm(event.target.value);
+    }
 
     /**
      * This function takes a index, and a semester which we use to update the plan's semester at that index
@@ -105,6 +113,7 @@ export function PlanViewer(): JSX.Element {
         });
         planSemesters.splice(planSemesters.length, 0, semester);
         setCurPlan({ ...curPlan, semesters: planSemesters });
+        setEditSem(!editSem); //added to close semester edit when saved
     };
 
     const planAdder = (newPlan: Plan): void => {
@@ -252,9 +261,9 @@ export function PlanViewer(): JSX.Element {
                 // add course
                 //console.log("Assembly Guy");
                 const newSemester = {
-                    term: "Blank Semester",
+                    term: term, //changed from "Blank Semester"
                     courses: [],
-                    year: 3,
+                    year: year, //changed from "3"
                     id: `${clonedPlan.semesters.length}`
                 };
                 //console.log("newSem length: ", newSemesters.length);
@@ -407,6 +416,41 @@ export function PlanViewer(): JSX.Element {
                         }}
                     >
                         <Button
+                            //() => updateSemesterCourse({course: undefined, semesterIndex: 0, courseIndex: 0, opType: "addSemester"})
+                            onClick={() => setEditSem(!editSem)}
+                        >
+                            Add Semester
+                        </Button>
+                        {"   "}
+                    </Col>
+                </Form.Group>
+                {editSem && (
+                    <div data-testID="editSem-div">
+                        <Form.Group controlId="userEmotions">
+                            <Form.Label>
+                                {" "}
+                                Pick your term and year for your new semester{" "}
+                            </Form.Label>
+                            <Form.Select value={term} onChange={updateTerm}>
+                                {termList.map((term: string) => (
+                                    <option key={term} value={term}>
+                                        {term}
+                                    </option>
+                                ))}
+                            </Form.Select>
+                            <Form.Control
+                                type="number"
+                                value={year}
+                                onChange={(
+                                    event: React.ChangeEvent<HTMLInputElement>
+                                ) => setYear(parseInt(event.target.value) || 0)}
+                            />
+                        </Form.Group>
+                        <Button
+                            data-testId="saveSem-button"
+                            style={{
+                                backgroundColor: "green"
+                            }}
                             onClick={() =>
                                 updateSemesterCourse({
                                     course: undefined,
@@ -416,11 +460,19 @@ export function PlanViewer(): JSX.Element {
                                 })
                             }
                         >
-                            Add Semester
+                            Save
                         </Button>
-                        {"   "}
-                    </Col>
-                </Form.Group>
+                        <Button
+                            data-testID="cancelSem-button"
+                            style={{
+                                backgroundColor: "red"
+                            }}
+                            onClick={() => setEditSem(!editSem)}
+                        >
+                            cancel
+                        </Button>
+                    </div>
+                )}
                 <p>Total Credit Hours in this Plan: {totalCredits}</p>
                 <div style={{ marginBottom: "20px" }}>
                     {checkPlan(curPlan, currentConcentration)}
