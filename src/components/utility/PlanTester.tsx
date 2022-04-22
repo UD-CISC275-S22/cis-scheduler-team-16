@@ -11,6 +11,7 @@ import { testHPMathRequirements } from "./concentration-testers/HighPerformanceM
 import { testHPDataRequirements } from "./concentration-testers/HighPerformanceDataTester";
 import { testSystemNetworkRequirements } from "./concentration-testers/SystemsNetworkTester";
 import { testTheoryDiscreteRequirements } from "./concentration-testers/TheoryCompDiscreteTester";
+import { testTraditionalRequirements } from "./concentration-testers/TraditionalTester";
 
 export function checkPlan(plan: Plan, concentration: string): JSX.Element {
     const planCourseNames: string[] = [];
@@ -161,8 +162,8 @@ export function checkPlan(plan: Plan, concentration: string): JSX.Element {
         planCourseNames.includes("cisc303") &&
         planCourseNames.includes("cisc320") &&
         planCourseNames.includes("cisc355") &&
-        planCourseNames.includes("math205") &&
-        planCourseNames.includes("math210");
+        planCourseNames.includes("math210") &&
+        planCourseNames.includes("math242");
 
     /** Checks to see if all the requirements pass */
     const isValid =
@@ -218,6 +219,11 @@ export function checkPlan(plan: Plan, concentration: string): JSX.Element {
         );
     } else if (concentration === "Theory and Computation (Discrete Track)") {
         concentrationResults = testTheoryDiscreteRequirements(
+            planCourseNames,
+            planCourses
+        );
+    } else if (concentration === "Traditional Computer Science (BS)") {
+        concentrationResults = testTraditionalRequirements(
             planCourseNames,
             planCourses
         );
