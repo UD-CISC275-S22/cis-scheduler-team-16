@@ -442,7 +442,7 @@ export function PlanViewer(): JSX.Element {
                         }}
                     >
                         <Button
-                            //() => updateSemesterCourse({course: undefined, semesterIndex: 0, courseIndex: 0, opType: "addSemester"})
+                            data-testID="addSem-button"
                             onClick={() => setEditSem(!editSem)}
                         >
                             Add Semester
@@ -467,6 +467,7 @@ export function PlanViewer(): JSX.Element {
                                     <Form.Select
                                         value={term}
                                         onChange={updateTerm}
+                                        data-testID="term-dropdown"
                                     >
                                         {termList.map((term: string) => (
                                             <option key={term} value={term}>
@@ -486,11 +487,11 @@ export function PlanViewer(): JSX.Element {
                                                     0
                                             )
                                         }
+                                        data-testID="year-textbox"
                                     />
                                 </Col>
                             </Row>
                             <Button
-                                data-testId="saveSem-button"
                                 style={{
                                     backgroundColor: "green"
                                 }}
@@ -502,6 +503,7 @@ export function PlanViewer(): JSX.Element {
                                         opType: "addSemester"
                                     })
                                 }
+                                data-testID="insertSem-button"
                             >
                                 insert
                             </Button>
