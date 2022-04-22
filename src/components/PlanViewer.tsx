@@ -448,6 +448,9 @@ export function PlanViewer(): JSX.Element {
                         </Form.Group>
                         <Button
                             data-testId="saveSem-button"
+                            style={{
+                                backgroundColor: "green"
+                            }}
                             onClick={() =>
                                 updateSemesterCourse({
                                     course: undefined,
@@ -461,6 +464,9 @@ export function PlanViewer(): JSX.Element {
                         </Button>
                         <Button
                             data-testID="cancelSem-button"
+                            style={{
+                                backgroundColor: "red"
+                            }}
                             onClick={() => setEditSem(!editSem)}
                         >
                             cancel
