@@ -450,8 +450,16 @@ export function PlanViewer(): JSX.Element {
                         {"   "}
                     </Col>
                 </Form.Group>
+                <p> </p>
                 {editSem && (
-                    <div data-testID="editSem-div">
+                    <div
+                        data-testID="editSem-div"
+                        style={{
+                            borderStyle: "dotted",
+                            borderWidth: "4px",
+                            borderColor: "blue"
+                        }}
+                    >
                         <Container>
                             <Form.Label> Pick term and year </Form.Label>
                             <Row>
@@ -508,28 +516,7 @@ export function PlanViewer(): JSX.Element {
                                 cancel
                             </Button>
                         </Container>
-
-                        {/*
-                        <Form.Group controlId="SemEditTerm">
-                            <Form.Label>
-                                {" "}
-                                Pick your term and year for your new semester{" "}
-                            </Form.Label>
-                            <Form.Select value={term} onChange={updateTerm}>
-                                {termList.map((term: string) => (
-                                    <option key={term} value={term}>
-                                        {term}
-                                    </option>
-                                ))}
-                            </Form.Select>
-                            <Form.Control
-                                value={year}
-                                onChange={(
-                                    event: React.ChangeEvent<HTMLInputElement>
-                                ) => setYear(parseInt(event.target.value) || 0)}
-                            />
-                        </Form.Group>
-                                */}
+                        <p> </p>
                     </div>
                 )}
                 <p>Total Credit Hours in this Plan: {totalCredits}</p>
