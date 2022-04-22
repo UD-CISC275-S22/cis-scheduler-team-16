@@ -10,6 +10,7 @@ import { testDataScienceRequirements } from "./concentration-testers/DataScience
 import { testHPMathRequirements } from "./concentration-testers/HighPerformanceMathTester";
 import { testHPDataRequirements } from "./concentration-testers/HighPerformanceDataTester";
 import { testSystemNetworkRequirements } from "./concentration-testers/SystemsNetworkTester";
+import { testTheoryDiscreteRequirements } from "./concentration-testers/TheoryCompDiscreteTester";
 
 export function checkPlan(plan: Plan, concentration: string): JSX.Element {
     const planCourseNames: string[] = [];
@@ -212,6 +213,11 @@ export function checkPlan(plan: Plan, concentration: string): JSX.Element {
         );
     } else if (concentration === "Systems and Networking") {
         concentrationResults = testSystemNetworkRequirements(
+            planCourseNames,
+            planCourses
+        );
+    } else if (concentration === "Theory and Computation (Discrete Track)") {
+        concentrationResults = testTheoryDiscreteRequirements(
             planCourseNames,
             planCourses
         );
