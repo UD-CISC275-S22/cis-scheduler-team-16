@@ -152,35 +152,29 @@ export function checkPlan(plan: Plan, concentration: string): JSX.Element {
         planCourseNames.includes("engl410");
 
     /** Check to see if the course contains all the required CISC courses */
+    const checkCISC108 = planCourseNames.includes("cisc108");
+    const checkCISC181 = planCourseNames.includes("cisc181");
+    const checkCISC210 = planCourseNames.includes("cisc210");
+    const checkCISC220 = planCourseNames.includes("cisc220");
+    const checkCISC260 = planCourseNames.includes("cisc260");
+    const checkCISC275 = planCourseNames.includes("cisc275");
+    const checkCISC303 = planCourseNames.includes("cisc303");
+    const checkCISC320 = planCourseNames.includes("cisc320");
+    const checkCISC355 = planCourseNames.includes("cisc355");
+    const checkMATH210 = planCourseNames.includes("math210");
+    const checkMATH241 = planCourseNames.includes("math241");
     const checkCORE =
-        planCourseNames.includes("cisc108") &&
-        planCourseNames.includes("cisc181") &&
-        planCourseNames.includes("cisc210") &&
-        planCourseNames.includes("cisc220") &&
-        planCourseNames.includes("cisc260") &&
-        planCourseNames.includes("cisc275") &&
-        planCourseNames.includes("cisc303") &&
-        planCourseNames.includes("cisc320") &&
-        planCourseNames.includes("cisc355") &&
-        planCourseNames.includes("math210") &&
-        planCourseNames.includes("math242");
-
-    /** Checks to see if all the requirements pass */
-    const isValid =
-        creditCount > 124 &&
-        checkSEM &&
-        checkMulticultural &&
-        checkCapstone &&
-        checkDLE &&
-        checkCAH &&
-        checkHCC &&
-        checkSBS &&
-        checkMNT &&
-        checkLabScience &&
-        checkLOWER &&
-        checkUPP &&
-        checkTWR &&
-        checkCORE;
+        checkCISC108 &&
+        checkCISC181 &&
+        checkCISC210 &&
+        checkCISC220 &&
+        checkCISC260 &&
+        checkCISC275 &&
+        checkCISC303 &&
+        checkCISC320 &&
+        checkCISC355 &&
+        checkMATH210 &&
+        checkMATH241;
 
     /** Check to see if the concentrationr requirements are being met */
     let concentrationResults: ConcentrationCheck;
@@ -229,10 +223,28 @@ export function checkPlan(plan: Plan, concentration: string): JSX.Element {
         );
     } else {
         concentrationResults = {
-            meetsConcentrationRequirements: true,
+            meetsConcentrationRequirements: false,
             errorMessages: ["Fatal Error: Invalid Concentration Selected"]
         };
     }
+
+    /** Checks to see if all the requirements pass */
+    const isValid =
+        creditCount > 124 &&
+        checkSEM &&
+        checkMulticultural &&
+        checkCapstone &&
+        checkDLE &&
+        checkCAH &&
+        checkHCC &&
+        checkSBS &&
+        checkMNT &&
+        checkLabScience &&
+        checkLOWER &&
+        checkUPP &&
+        checkTWR &&
+        checkCORE &&
+        concentrationResults.meetsConcentrationRequirements;
 
     return (
         <div>
@@ -362,8 +374,19 @@ export function checkPlan(plan: Plan, concentration: string): JSX.Element {
                             )}
                             {!checkCORE && (
                                 <li>
-                                    Computer Science core requirements not
-                                    fulfilled
+                                    The following core CISC requirements have
+                                    not been fulfilled:
+                                    <ul>{!checkCISC108 && <li>CISC108</li>}</ul>
+                                    <ul>{!checkCISC181 && <li>CISC181</li>}</ul>
+                                    <ul>{!checkCISC210 && <li>CISC210</li>}</ul>
+                                    <ul>{!checkCISC220 && <li>CISC220</li>}</ul>
+                                    <ul>{!checkCISC260 && <li>CISC260</li>}</ul>
+                                    <ul>{!checkCISC275 && <li>CISC275</li>}</ul>
+                                    <ul>{!checkCISC303 && <li>CISC303</li>}</ul>
+                                    <ul>{!checkCISC320 && <li>CISC320</li>}</ul>
+                                    <ul>{!checkCISC355 && <li>CISC355</li>}</ul>
+                                    <ul>{!checkMATH210 && <li>MATH210</li>}</ul>
+                                    <ul>{!checkMATH241 && <li>MATH241</li>}</ul>
                                 </li>
                             )}
                             {prereqFailCourses.length > 0 && (
