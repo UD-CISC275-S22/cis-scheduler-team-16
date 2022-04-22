@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Col, Row, Form } from "react-bootstrap";
+import { Button, Col, Row, Form, Container } from "react-bootstrap";
 import { Course } from "../templates/course";
 import { Semester } from "../templates/semester";
 //import { CourseViewer } from "./CourseViewer";
@@ -452,7 +452,65 @@ export function PlanViewer(): JSX.Element {
                 </Form.Group>
                 {editSem && (
                     <div data-testID="editSem-div">
-                        <Form.Group controlId="userEmotions">
+                        <Container>
+                            <Form.Label> Pick term and year </Form.Label>
+                            <Row>
+                                <Col>
+                                    <Form.Select
+                                        value={term}
+                                        onChange={updateTerm}
+                                    >
+                                        {termList.map((term: string) => (
+                                            <option key={term} value={term}>
+                                                {term}
+                                            </option>
+                                        ))}
+                                    </Form.Select>
+                                </Col>
+                                <Col>
+                                    <Form.Control
+                                        value={year}
+                                        onChange={(
+                                            event: React.ChangeEvent<HTMLInputElement>
+                                        ) =>
+                                            setYear(
+                                                parseInt(event.target.value) ||
+                                                    0
+                                            )
+                                        }
+                                    />
+                                </Col>
+                            </Row>
+                            <Button
+                                data-testId="saveSem-button"
+                                style={{
+                                    backgroundColor: "green"
+                                }}
+                                onClick={() =>
+                                    updateSemesterCourse({
+                                        course: undefined,
+                                        semesterIndex: 0,
+                                        courseIndex: 0,
+                                        opType: "addSemester"
+                                    })
+                                }
+                            >
+                                insert
+                            </Button>
+                            {"  "}
+                            <Button
+                                data-testID="cancelSem-button"
+                                style={{
+                                    backgroundColor: "red"
+                                }}
+                                onClick={() => setEditSem(!editSem)}
+                            >
+                                cancel
+                            </Button>
+                        </Container>
+
+                        {/*
+                        <Form.Group controlId="SemEditTerm">
                             <Form.Label>
                                 {" "}
                                 Pick your term and year for your new semester{" "}
@@ -465,38 +523,13 @@ export function PlanViewer(): JSX.Element {
                                 ))}
                             </Form.Select>
                             <Form.Control
-                                type="number"
                                 value={year}
                                 onChange={(
                                     event: React.ChangeEvent<HTMLInputElement>
                                 ) => setYear(parseInt(event.target.value) || 0)}
                             />
                         </Form.Group>
-                        <Button
-                            data-testId="saveSem-button"
-                            style={{
-                                backgroundColor: "green"
-                            }}
-                            onClick={() =>
-                                updateSemesterCourse({
-                                    course: undefined,
-                                    semesterIndex: 0,
-                                    courseIndex: 0,
-                                    opType: "addSemester"
-                                })
-                            }
-                        >
-                            Save
-                        </Button>
-                        <Button
-                            data-testID="cancelSem-button"
-                            style={{
-                                backgroundColor: "red"
-                            }}
-                            onClick={() => setEditSem(!editSem)}
-                        >
-                            cancel
-                        </Button>
+                                */}
                     </div>
                 )}
                 <p>Total Credit Hours in this Plan: {totalCredits}</p>
