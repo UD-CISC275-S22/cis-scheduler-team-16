@@ -177,7 +177,10 @@ export function PlanViewer(): JSX.Element {
                 if (course) {
                     semester.courses = [
                         ...semester.courses,
-                        { ...course, courseId: `${semester.courses.length}` }
+                        {
+                            ...course,
+                            courseId: "COUR0" + `${semester.courses.length + 1}`
+                        }
                     ];
                 }
                 planSetter(semesterIndex, semester);
@@ -306,7 +309,7 @@ export function PlanViewer(): JSX.Element {
             case "addPlan": {
                 // add course
                 const newPlan = {
-                    name: "New Plan " + `${allPlans.length + 1}`,
+                    name: "My Plan " + `${allPlans.length + 1}`,
                     semesters: [],
                     id: `${allPlans.length}`
                 };
@@ -340,7 +343,11 @@ export function PlanViewer(): JSX.Element {
                         </Form.Label>
                     </Col>
                     <Col>
-                        <Form.Select value={curPlan.id} onChange={updatePlan}>
+                        <Form.Select
+                            value={curPlan.id}
+                            onChange={updatePlan}
+                            data-testID="plan-dropdown"
+                        >
                             {allPlans.map(
                                 (plan: Plan, ind: number): JSX.Element => (
                                     <option key={ind} value={ind}>
@@ -369,6 +376,7 @@ export function PlanViewer(): JSX.Element {
                         <Form.Select
                             value={currentConcentration}
                             onChange={updateCurrentConcentration}
+                            data-testID="concentration-dropdown"
                         >
                             <option value="Artificial Intelligence">
                                 Artificial Intelligence
@@ -430,6 +438,7 @@ export function PlanViewer(): JSX.Element {
                                         opType: "addPlan"
                                     })
                                 }
+                                data-testID="add-plan-button"
                             >
                                 New Plan
                             </Button>
@@ -443,6 +452,7 @@ export function PlanViewer(): JSX.Element {
                                         opType: "deletePlan"
                                     })
                                 }
+                                data-testID="delete-plan-button"
                             >
                                 Discard Plan
                             </Button>

@@ -122,11 +122,11 @@ export const SemesterViewer = ({
                         onClick={() =>
                             addCourse(
                                 {
-                                    name: "Blank Name",
+                                    name: "Introduction to Planning",
                                     prereqs: [],
                                     credithours: 3,
                                     satisfied_requirements: [],
-                                    courseId: "Blank-Id"
+                                    courseId: "PLAN000"
                                 },
                                 semesterIndex
                             )
