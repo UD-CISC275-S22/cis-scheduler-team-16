@@ -253,7 +253,7 @@ export function PlanViewer(): JSX.Element {
                     );
                     console.log("semesterFound", semesterFound);
 
-                    if (semesterFound != null) {
+                    if (semesterFound !== undefined) {
                         curPlan.semesters.map((s: Semester) => {
                             if (s.term + " " + s.year === semesterInputID) {
                                 console.log(
@@ -275,14 +275,21 @@ export function PlanViewer(): JSX.Element {
             case "addSemester": {
                 // add course
                 //console.log("Assembly Guy");
+
                 const newSemester = {
                     term: term, //changed from "Blank Semester"
                     courses: [],
                     year: year, //changed from "3"
                     id: `${clonedPlan.semesters.length}`
                 };
+                const semesterDuplicateFound = curPlan.semesters.find(
+                    (s) =>
+                        s.term + " " + s.year ===
+                        newSemester.term + " " + newSemester.year
+                );
                 //console.log("newSem length: ", newSemesters.length);
-                semesterAdder(newSemester);
+                if (semesterDuplicateFound === undefined)
+                    semesterAdder(newSemester);
                 break;
             }
             case "deleteSemester": {
