@@ -328,7 +328,7 @@ export function CourseViewer({
                         <Col>
                             <Form.Check
                                 type="checkbox"
-                                id="requirements-sem"
+                                id={`requirements-sem-${courseID}`}
                                 label="Seminar in Composition (ENGL110)"
                                 name={`requirements-${courseID}`}
                                 value="sem"
@@ -337,7 +337,7 @@ export function CourseViewer({
                             />
                             <Form.Check
                                 type="checkbox"
-                                id="requirements-fys"
+                                id={`requirements-fys-${courseID}`}
                                 label="First Year Seminar (FYS)"
                                 name={`requirements-${courseID}`}
                                 value="fys"
@@ -346,7 +346,7 @@ export function CourseViewer({
                             />
                             <Form.Check
                                 type="checkbox"
-                                id="requirements-dle"
+                                id={`requirements-dle-${courseID}`}
                                 label="Discovery Learning Experience (DLE)"
                                 name={`requirements-${courseID}`}
                                 value="dle"
@@ -355,7 +355,7 @@ export function CourseViewer({
                             />
                             <Form.Check
                                 type="checkbox"
-                                id="requirements-mul"
+                                id={`requirements-mul-${courseID}`}
                                 label="Multicultural"
                                 name={`requirements-${courseID}`}
                                 value="mul"
@@ -364,7 +364,7 @@ export function CourseViewer({
                             />
                             <Form.Check
                                 type="checkbox"
-                                id="requirements-cah"
+                                id={`requirements-cah-${courseID}`}
                                 label="Creative Arts and Humanities"
                                 name={`requirements-${courseID}`}
                                 value="cah"
@@ -373,7 +373,7 @@ export function CourseViewer({
                             />
                             <Form.Check
                                 type="checkbox"
-                                id="requirements-hcc"
+                                id={`requirements-hcc-${courseID}`}
                                 label="History and Cultural Change"
                                 name={`requirements-${courseID}`}
                                 value="hcc"
@@ -382,7 +382,7 @@ export function CourseViewer({
                             />
                             <Form.Check
                                 type="checkbox"
-                                id="requirements-sbs"
+                                id={`requirements-sbs-${courseID}`}
                                 label="Social and Behavioral Changes"
                                 name={`requirements-${courseID}`}
                                 value="sbs"
@@ -391,7 +391,7 @@ export function CourseViewer({
                             />
                             <Form.Check
                                 type="checkbox"
-                                id="requirements-mnt"
+                                id={`requirements-mnt-${courseID}`}
                                 label="Mathematics, Natural Sciences, and Technology"
                                 name={`requirements-${courseID}`}
                                 value="mnt"
@@ -400,7 +400,7 @@ export function CourseViewer({
                             />
                             <Form.Check
                                 type="checkbox"
-                                id="requirements-cap"
+                                id={`requirements-cap-${courseID}`}
                                 label="Capstone Experience"
                                 name={`requirements-${courseID}`}
                                 value="cap"
@@ -409,7 +409,7 @@ export function CourseViewer({
                             />
                             <Form.Check
                                 type="checkbox"
-                                id="requirements-ulc"
+                                id={`requirements-ulc-${courseID}`}
                                 label="Upper Level Credit"
                                 name={`requirements-${courseID}`}
                                 value="ulc"
@@ -418,7 +418,7 @@ export function CourseViewer({
                             />
                             <Form.Check
                                 type="checkbox"
-                                id="requirements-cpp"
+                                id={`requirements-cpp-${courseID}`}
                                 label="Career and Professional Preparation"
                                 name={`requirements-${courseID}`}
                                 value="cpp"
@@ -427,11 +427,20 @@ export function CourseViewer({
                             />
                             <Form.Check
                                 type="checkbox"
-                                id="requirements-upp"
+                                id={`requirements-upp-${courseID}`}
                                 label="College of Engineering Upper Level Breadth"
                                 name={`requirements-${courseID}`}
                                 value="upp"
                                 checked={requirements.includes("upp")}
+                                onChange={updateRequirements}
+                            />
+                            <Form.Check
+                                type="checkbox"
+                                id={`requirements-caf-${courseID}`}
+                                label="Traditional Computer Science Custom Area of Focus Requirement"
+                                name={`requirements-${courseID}`}
+                                value="caf"
+                                checked={requirements.includes("caf")}
                                 onChange={updateRequirements}
                             />
                         </Col>
