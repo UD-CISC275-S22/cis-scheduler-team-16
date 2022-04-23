@@ -165,7 +165,7 @@ export function PlanViewer(): JSX.Element {
     }: {
         course?: Course;
         semesterIndex: number;
-        semesterInputID?: number;
+        semesterInputID?: string;
         courseIndex?: number;
         opType: COURSE_OPERATIONS;
     }) => {
@@ -238,21 +238,36 @@ export function PlanViewer(): JSX.Element {
                     courseIndex !== undefined &&
                     semesterInputID !== undefined &&
                     course &&
-                    semesterInputID >= 0 &&
-                    semesterInputID < curPlan.semesters.length
+                    semesterInputID != ""
                 ) {
                     //console.log("semesterInput: ", semesterInputID);
-                    const moveCourse = semester.courses.splice(courseIndex, 1);
+                    console.log("semesterInputID", semesterInputID);
+
                     /*
                     if (semesterIndex === semesterInputID) {
                         semester.courses = [...semester.courses, moveCourse[0]];
                     }
                     */
-                    curPlan.semesters.map((s: Semester, ind: number) => {
-                        if (ind === semesterInputID) {
-                            s.courses = [...s.courses, moveCourse[0]];
-                        }
-                    });
+                    const semesterFound = curPlan.semesters.find(
+                        (s) => s.term + " " + s.year === semesterInputID
+                    );
+                    console.log("semesterFound", semesterFound);
+
+                    if (semesterFound !== undefined) {
+                        curPlan.semesters.map((s: Semester) => {
+                            if (s.term + " " + s.year === semesterInputID) {
+                                console.log(
+                                    "semester term and year",
+                                    semester.term + " " + semester.year
+                                );
+                                const moveCourse = semester.courses.splice(
+                                    courseIndex,
+                                    1
+                                );
+                                s.courses = [...s.courses, moveCourse[0]];
+                            }
+                        });
+                    }
                 }
                 planSetter(semesterIndex, semester);
                 break;
@@ -260,14 +275,21 @@ export function PlanViewer(): JSX.Element {
             case "addSemester": {
                 // add course
                 //console.log("Assembly Guy");
+
                 const newSemester = {
                     term: term, //changed from "Blank Semester"
                     courses: [],
                     year: year, //changed from "3"
                     id: `${clonedPlan.semesters.length}`
                 };
+                const semesterDuplicateFound = curPlan.semesters.find(
+                    (s) =>
+                        s.term + " " + s.year ===
+                        newSemester.term + " " + newSemester.year
+                );
                 //console.log("newSem length: ", newSemesters.length);
-                semesterAdder(newSemester);
+                if (semesterDuplicateFound === undefined)
+                    semesterAdder(newSemester);
                 break;
             }
             case "deleteSemester": {
@@ -532,7 +554,7 @@ export function PlanViewer(): JSX.Element {
                         semesterIndex={ind}
                         semester={eachSemester}
                         courses={eachSemester.courses}
-                        semesterInputID={ind}
+                        semesterInputID={""}
                         key={ind}
                         addCourse={(course: Course, semesterIndex: number) =>
                             updateSemesterCourse({
@@ -597,7 +619,7 @@ export function PlanViewer(): JSX.Element {
                             course: Course,
                             semesterIndex: number,
                             courseIndex: number,
-                            semesterInputID: number
+                            semesterInputID: string
                         ) =>
                             updateSemesterCourse({
                                 course,
