@@ -15,7 +15,7 @@ type SemesterViewerProps = {
         courseIndex: number
     ) => void;
     semesterIndex: number;
-    semesterInputID: number;
+    semesterInputID: string;
     clearSemester: (semesterIndex: number) => void;
     moveCourseUp: (
         course: Course,
@@ -31,7 +31,7 @@ type SemesterViewerProps = {
         course: Course,
         semesterIndex: number,
         courseIndex: number,
-        semesterFound: number
+        semesterFound: string
     ) => void;
     deleteSemester: (semesterIndex: number) => void;
 };

@@ -15,7 +15,7 @@ type CourseViewerProps = {
     ) => void;
     semesterIndex: number;
     courseIndex: number;
-    semesterInputID: number;
+    semesterInputID: string;
     moveCourseUp: (
         course: Course,
         semesterIndex: number,
@@ -30,7 +30,7 @@ type CourseViewerProps = {
         course: Course,
         semesterIndex: number,
         courseIndex: number,
-        semesterFound: number
+        semesterFound: string
     ) => void;
 };
 
@@ -179,9 +179,11 @@ export function CourseViewer({
                                 </Button>
                                 <p>
                                     {" "}
-                                    Enter Semester ID Here:
+                                    <h4>Move Course to another Semester:</h4>
+                                    Enter the term and the year of your semester
+                                    here:
+                                    <p>(ex: Spring 2022)</p>
                                     <Form.Control
-                                        type="number"
                                         value={moveName}
                                         onChange={updateMoveName}
                                     ></Form.Control>
@@ -193,7 +195,7 @@ export function CourseViewer({
                                             course,
                                             semesterIndex,
                                             courseIndex,
-                                            parseInt(moveName)
+                                            moveName
                                         )
                                     }
                                 >
