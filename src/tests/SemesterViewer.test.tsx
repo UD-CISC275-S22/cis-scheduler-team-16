@@ -21,7 +21,7 @@ describe("Semester Tests", () => {
         insSem.click();
         const addCor = screen.getAllByTestId("addCourse-button");
         addCor[0].click();
-        const title = screen.queryByText("Blank Name");
+        const title = screen.queryByText("COUR05");
         expect(title).toBeInTheDocument();
     });
     test("Adding two courses render within the semester", () => {
@@ -31,10 +31,10 @@ describe("Semester Tests", () => {
         insSem.click();
         const addCor = screen.getAllByTestId("addCourse-button");
         addCor[1].click();
-        const title = screen.queryByText("Blank Name");
+        const title = screen.queryByText("COUR02");
         expect(title).toBeInTheDocument();
         addCor[1].click();
-        const title2 = screen.queryByText("2");
+        const title2 = screen.queryByText("COUR03");
         expect(title2).toBeInTheDocument();
     });
     test("Clear semester button exists", () => {
@@ -52,7 +52,7 @@ describe("Semester Tests", () => {
         insSem.click();
         const addCor = screen.getAllByTestId("addCourse-button");
         addCor[0].click();
-        const title = screen.queryByText("Blank Name");
+        const title = screen.queryByText("COUR05");
         expect(title).toBeInTheDocument();
         const clearSem = screen.getAllByTestId("clearSemester-button");
         clearSem[0].click();
