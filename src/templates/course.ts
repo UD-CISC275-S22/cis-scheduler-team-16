@@ -21,4 +21,6 @@ export interface Course {
     credithours: number;
     /** What kinds of school requirements this will fulfill */
     satisfied_requirements: string[];
+    /** Backup of the original course information */
+    backup: CourseBackup;
 }

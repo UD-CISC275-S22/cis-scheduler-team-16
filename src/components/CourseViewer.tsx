@@ -486,7 +486,8 @@ export function CourseViewer({
                                                 ? prerequisites.split(", ")
                                                 : ["None"],
                                         credithours: creditHours,
-                                        satisfied_requirements: requirements
+                                        satisfied_requirements: requirements,
+                                        backup: course.backup
                                     },
                                     semesterIndex,
                                     courseIndex
