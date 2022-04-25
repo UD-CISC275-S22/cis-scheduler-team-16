@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Col, Row, Form, Container } from "react-bootstrap";
-import { Course } from "../templates/course";
+import { Course, CourseBackup } from "../templates/course";
 import { Semester } from "../templates/semester";
 //import { CourseViewer } from "./CourseViewer";
 import { SemesterViewer } from "./SemesterViewer";
@@ -32,7 +32,8 @@ export function PlanViewer(): JSX.Element {
                     ...semester,
                     courses: semester.courses.map(
                         (course): Course => ({
-                            ...course
+                            ...course,
+                            backup: course.backup as CourseBackup
                         })
                     )
                 })
