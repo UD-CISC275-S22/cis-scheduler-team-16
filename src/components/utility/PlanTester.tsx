@@ -33,6 +33,11 @@ export function checkPlan(plan: Plan, concentration: string): JSX.Element {
     const seenCourse: string[] = [];
     const prereqFailCourses: string[] = [];
     let semesterCourses: string[] = [];
+
+    /** This can't use the planCourses or planCourseNames array since we need to have access to
+     *  the other classes that are in the semester (ie. if a course's prerequisite is being taken
+     *  in the same semester it can't count as satisfying that prereq requirement)
+     */
     plan.semesters.map((semester: Semester) => {
         semesterCourses = [];
         semester.courses.map((course: Course) =>
@@ -55,17 +60,6 @@ export function checkPlan(plan: Plan, concentration: string): JSX.Element {
             });
         });
     });
-
-    /** ORIGINAL PREREQUISITE CHECKING CODE
-    planCourses.map((course: Course) => {
-        seenCourse.push(course.courseId);
-        course.prereqs.map((prerequisite: string) => {
-            if ((!seenCourse.includes(prerequisite) && prerequisite !== "None") || ()) {
-                prereqFailCourses.push(course.courseId);
-            }
-        });
-    });
-     */
 
     /** Check to see if English requirement is fulfilled */
     const englCourses = planCourses.filter((course: Course) =>
