@@ -32,14 +32,40 @@ export function checkPlan(plan: Plan, concentration: string): JSX.Element {
     /** Check to make sure core prerequisites are being met */
     const seenCourse: string[] = [];
     const prereqFailCourses: string[] = [];
+    let semesterCourses: string[] = [];
+    plan.semesters.map((semester: Semester) => {
+        semesterCourses = [];
+        semester.courses.map((course: Course) =>
+            semesterCourses.push(course.courseId.toLowerCase())
+        );
+        semester.courses.map((course: Course) => {
+            seenCourse.push(course.courseId.toLowerCase());
+            course.prereqs.map((prerequisite: string) => {
+                /** If the prerequisite course has not been seen yet, or the prerequisite is being taken
+                 *  in the same semester, flag the course as not having its prerequirements met yet.
+                 */
+                if (
+                    (!seenCourse.includes(prerequisite) &&
+                        prerequisite !== "None") ||
+                    (semesterCourses.includes(course.courseId.toLowerCase()) &&
+                        semesterCourses.includes(prerequisite))
+                ) {
+                    prereqFailCourses.push(course.courseId);
+                }
+            });
+        });
+    });
+
+    /** ORIGINAL PREREQUISITE CHECKING CODE
     planCourses.map((course: Course) => {
         seenCourse.push(course.courseId);
         course.prereqs.map((prerequisite: string) => {
-            if (!seenCourse.includes(prerequisite) && prerequisite !== "None") {
+            if ((!seenCourse.includes(prerequisite) && prerequisite !== "None") || ()) {
                 prereqFailCourses.push(course.courseId);
             }
         });
     });
+     */
 
     /** Check to see if English requirement is fulfilled */
     const englCourses = planCourses.filter((course: Course) =>
