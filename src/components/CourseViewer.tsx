@@ -57,9 +57,7 @@ export function CourseViewer({
         course.satisfied_requirements
     );
 
-    {
-        /** Creates an updated array of Course objects that gets passed up to Semester Viewer */
-    }
+    /** Creates an updated array of Course objects that gets passed up to Semester Viewer */
 
     function updateCourseId(event: ChangeEvent) {
         setCourseId(event.target.value);
