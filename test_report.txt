@@ -16,7 +16,7 @@ PASS src/tests/PlanViewer.test.tsx
           at /home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/node_modules/react-bootstrap/cjs/FormGroup.js:19:3
           at div
           at div
-          at PlanViewer (/home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/src/components/PlanViewer.tsx:44:37)
+          at PlanViewer (/home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/src/components/PlanViewer.tsx:45:37)
 
       at printWarning (node_modules/react-dom/cjs/react-dom.development.js:67:30)
       at error (node_modules/react-dom/cjs/react-dom.development.js:43:5)
@@ -33,7 +33,7 @@ PASS src/tests/PlanViewer.test.tsx
         { name: 'My Plan 2', id: '1', semesters: [ [Object], [Object] ] }
       ]
 
-      at updatePlan (src/components/PlanViewer.tsx:65:17)
+      at updatePlan (src/components/PlanViewer.tsx:66:17)
 
     console.log
       [
@@ -46,33 +46,33 @@ PASS src/tests/PlanViewer.test.tsx
         { id: '1', term: 'Fall', year: 2022, courses: [ [Object] ] }
       ]
 
-      at updatePlan (src/components/PlanViewer.tsx:66:17)
+      at updatePlan (src/components/PlanViewer.tsx:67:17)
 
     console.log
       Add Plan:  [
         { name: 'My Plan 1', id: '0', semesters: [ [Object], [Object] ] },
         { name: 'My Plan 2', id: '1', semesters: [ [Object], [Object] ] },
         { name: 'My Plan 3', semesters: [], id: '2' }
-      ]
-
-      at planAdder (src/components/PlanViewer.tsx:123:17)
-
-    console.log
-      Add Plan:  [
-        { name: 'My Plan 1', id: '0', semesters: [ [Object], [Object] ] },
-        { name: 'My Plan 2', id: '1', semesters: [ [Object], [Object] ] }
       ]
 
       at planAdder (src/components/PlanViewer.tsx:124:17)
 
     console.log
+      Add Plan:  [
+        { name: 'My Plan 1', id: '0', semesters: [ [Object], [Object] ] },
+        { name: 'My Plan 2', id: '1', semesters: [ [Object], [Object] ] }
+      ]
+
+      at planAdder (src/components/PlanViewer.tsx:125:17)
+
+    console.log
       [
         { name: 'My Plan 1', id: '0', semesters: [ [Object], [Object] ] },
         { name: 'My Plan 2', id: '1', semesters: [ [Object], [Object] ] },
         { name: 'My Plan 3', semesters: [], id: '2' }
       ]
 
-      at updatePlan (src/components/PlanViewer.tsx:65:17)
+      at updatePlan (src/components/PlanViewer.tsx:66:17)
 
     console.log
       [
@@ -85,7 +85,7 @@ PASS src/tests/PlanViewer.test.tsx
         { id: '1', term: 'Fall', year: 2022, courses: [ [Object] ] }
       ]
 
-      at updatePlan (src/components/PlanViewer.tsx:66:17)
+      at updatePlan (src/components/PlanViewer.tsx:67:17)
 
     console.log
       [
@@ -93,7 +93,7 @@ PASS src/tests/PlanViewer.test.tsx
         { name: 'My Plan 2', id: '1', semesters: [ [Object], [Object] ] }
       ]
 
-      at updatePlan (src/components/PlanViewer.tsx:65:17)
+      at updatePlan (src/components/PlanViewer.tsx:66:17)
 
     console.log
       [
@@ -106,33 +106,33 @@ PASS src/tests/PlanViewer.test.tsx
         { id: '1', term: 'Fall', year: 2022, courses: [ [Object] ] }
       ]
 
-      at updatePlan (src/components/PlanViewer.tsx:66:17)
+      at updatePlan (src/components/PlanViewer.tsx:67:17)
 
     console.log
       Add Plan:  [
         { name: 'My Plan 1', id: '0', semesters: [ [Object], [Object] ] },
         { name: 'My Plan 2', id: '1', semesters: [ [Object], [Object] ] },
         { name: 'My Plan 3', semesters: [], id: '2' }
-      ]
-
-      at planAdder (src/components/PlanViewer.tsx:123:17)
-
-    console.log
-      Add Plan:  [
-        { name: 'My Plan 1', id: '0', semesters: [ [Object], [Object] ] },
-        { name: 'My Plan 2', id: '1', semesters: [ [Object], [Object] ] }
       ]
 
       at planAdder (src/components/PlanViewer.tsx:124:17)
 
     console.log
+      Add Plan:  [
+        { name: 'My Plan 1', id: '0', semesters: [ [Object], [Object] ] },
+        { name: 'My Plan 2', id: '1', semesters: [ [Object], [Object] ] }
+      ]
+
+      at planAdder (src/components/PlanViewer.tsx:125:17)
+
+    console.log
       [
         { name: 'My Plan 1', id: '0', semesters: [ [Object], [Object] ] },
         { name: 'My Plan 2', id: '1', semesters: [ [Object], [Object] ] },
         { name: 'My Plan 3', semesters: [], id: '2' }
       ]
 
-      at updatePlan (src/components/PlanViewer.tsx:65:17)
+      at updatePlan (src/components/PlanViewer.tsx:66:17)
 
     console.log
       [
@@ -145,7 +145,7 @@ PASS src/tests/PlanViewer.test.tsx
         { id: '1', term: 'Fall', year: 2022, courses: [ [Object] ] }
       ]
 
-      at updatePlan (src/components/PlanViewer.tsx:66:17)
+      at updatePlan (src/components/PlanViewer.tsx:67:17)
 
 PASS src/tests/SemesterViewer.test.tsx
   ● Console
@@ -161,7 +161,7 @@ PASS src/tests/SemesterViewer.test.tsx
           at /home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/node_modules/react-bootstrap/cjs/FormGroup.js:19:3
           at div
           at div
-          at PlanViewer (/home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/src/components/PlanViewer.tsx:44:37)
+          at PlanViewer (/home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/src/components/PlanViewer.tsx:45:37)
 
       at printWarning (node_modules/react-dom/cjs/react-dom.development.js:67:30)
       at error (node_modules/react-dom/cjs/react-dom.development.js:43:5)
@@ -202,7 +202,7 @@ PASS src/App.test.tsx
           at /home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/node_modules/react-bootstrap/cjs/FormGroup.js:19:3
           at div
           at div
-          at PlanViewer (/home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/src/components/PlanViewer.tsx:44:37)
+          at PlanViewer (/home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/src/components/PlanViewer.tsx:45:37)
           at div
           at App
 
@@ -218,15 +218,15 @@ PASS src/App.test.tsx
 ----------------------------------------------|---------|----------|---------|---------|------------------------------------------------------------
 File                                          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                                          
 ----------------------------------------------|---------|----------|---------|---------|------------------------------------------------------------
-All files                                     |   84.95 |    67.29 |   71.17 |   84.92 |                                                            
+All files                                     |   84.95 |    67.15 |   71.17 |   84.92 |                                                            
  src                                          |     100 |      100 |     100 |     100 |                                                            
   App.tsx                                     |     100 |      100 |     100 |     100 |                                                            
  src/components                               |   56.81 |    26.31 |   52.38 |   56.57 |                                                            
   CourseViewer.tsx                            |   32.14 |    27.27 |    6.66 |   32.14 | 63-93,150-480                                              
-  PlanViewer.tsx                              |   59.85 |    23.07 |   65.85 |   59.85 | 93,128-136,191-209,217-276,300-307,531,563,595-606,624-658 
-  SemesterViewer.tsx                          |   81.81 |      100 |   71.42 |      80 | 147-154                                                    
- src/components/utility                       |   88.88 |    64.13 |   88.88 |   88.88 |                                                            
-  PlanTester.tsx                              |   88.88 |    64.13 |   88.88 |   88.88 | 52-58,80,93,102,111,120,129,164,245,419                    
+  PlanViewer.tsx                              |   59.85 |    23.07 |   65.85 |   59.85 | 94,129-137,192-210,218-277,301-308,532,564,596-607,625-659 
+  SemesterViewer.tsx                          |   81.81 |      100 |   71.42 |      80 | 154-161                                                    
+ src/components/utility                       |   88.88 |    63.44 |   88.88 |   88.88 |                                                            
+  PlanTester.tsx                              |   88.88 |    63.44 |   88.88 |   88.88 | 52-58,80,93,102,111,120,129,164,245,419                    
  src/components/utility/concentration-testers |    95.4 |       75 |     100 |    95.4 |                                                            
   ArtificialIntelligenceTester.tsx            |   95.45 |       80 |     100 |   95.45 | 107,131                                                    
   BioinformaticsTester.tsx                    |   98.46 |    68.42 |     100 |   98.46 | 169                                                        
@@ -247,5 +247,5 @@ All files                                     |   84.95 |    67.29 |   71.17 |  
 Test Suites: 3 passed, 3 total
 Tests:       14 passed, 14 total
 Snapshots:   0 total
-Time:        6.087 s
+Time:        6.925 s
 Ran all test suites.
