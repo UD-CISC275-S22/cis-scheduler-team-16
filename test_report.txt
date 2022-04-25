@@ -223,7 +223,7 @@ All files                                     |   84.95 |    67.29 |   71.17 |  
   App.tsx                                     |     100 |      100 |     100 |     100 |                                                            
  src/components                               |   56.81 |    26.31 |   52.38 |   56.57 |                                                            
   CourseViewer.tsx                            |   32.14 |    27.27 |    6.66 |   32.14 | 65-95,151-457                                              
-  PlanViewer.tsx                              |   59.85 |    23.07 |   65.85 |   59.85 | 93,128-136,191-209,217-276,300-307,517,548,580-591,609-643 
+  PlanViewer.tsx                              |   59.85 |    23.07 |   65.85 |   59.85 | 93,128-136,191-209,217-276,300-307,531,563,595-606,624-658 
   SemesterViewer.tsx                          |   81.81 |      100 |   71.42 |      80 | 147-154                                                    
  src/components/utility                       |   88.88 |    64.13 |   88.88 |   88.88 |                                                            
   PlanTester.tsx                              |   88.88 |    64.13 |   88.88 |   88.88 | 52-58,80,93,102,111,120,129,164,245,419                    
@@ -247,5 +247,5 @@ All files                                     |   84.95 |    67.29 |   71.17 |  
 Test Suites: 3 passed, 3 total
 Tests:       14 passed, 14 total
 Snapshots:   0 total
-Time:        6.177 s
+Time:        6.199 s
 Ran all test suites.
