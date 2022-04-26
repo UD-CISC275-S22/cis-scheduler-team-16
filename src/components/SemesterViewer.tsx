@@ -126,7 +126,14 @@ export const SemesterViewer = ({
                                     prereqs: [],
                                     credithours: 3,
                                     satisfied_requirements: [],
-                                    courseId: "PLAN000"
+                                    courseId: "PLAN000",
+                                    backup: {
+                                        name: "",
+                                        prereqs: [],
+                                        credithours: 3,
+                                        satisfied_requirements: [],
+                                        courseId: "PLAN000"
+                                    }
                                 },
                                 semesterIndex
                             )

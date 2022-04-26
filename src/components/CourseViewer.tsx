@@ -46,7 +46,7 @@ export function CourseViewer({
 }: CourseViewerProps): JSX.Element {
     const [editMode, setEditMode] = useState<boolean>(false);
     const [moveMode, setMoveMode] = useState<boolean>(false);
-    const [moveName, setMoveName] = useState<string>("fake-semester-1");
+    const [moveName, setMoveName] = useState<string>("");
     const [courseID, setCourseId] = useState<string>(course.courseId);
     const [courseName, setCourseName] = useState<string>(course.name);
     const [creditHours, setCreditHours] = useState<number>(course.credithours);
@@ -57,9 +57,7 @@ export function CourseViewer({
         course.satisfied_requirements
     );
 
-    {
-        /** Creates an updated array of Course objects that gets passed up to Semester Viewer */
-    }
+    /** Creates an updated array of Course objects that gets passed up to Semester Viewer */
 
     function updateCourseId(event: ChangeEvent) {
         setCourseId(event.target.value);
@@ -147,6 +145,7 @@ export function CourseViewer({
                         }}
                     >
                         <Button
+                            data-testID="move-course-button"
                             onClick={() => {
                                 setMoveMode(!moveMode);
                             }}
@@ -156,6 +155,7 @@ export function CourseViewer({
                         {moveMode && (
                             <div>
                                 <Button
+                                    data-testID="move-course-up-button"
                                     onClick={() =>
                                         moveCourseUp(
                                             course,
@@ -167,6 +167,7 @@ export function CourseViewer({
                                     ▲
                                 </Button>
                                 <Button
+                                    data-testID="move-course-down-button"
                                     onClick={() =>
                                         moveCourseDown(
                                             course,
@@ -184,12 +185,14 @@ export function CourseViewer({
                                     here:
                                     <p>(ex: Spring 2022)</p>
                                     <Form.Control
+                                        data-testID="change-semester-box"
                                         value={moveName}
                                         onChange={updateMoveName}
                                     ></Form.Control>
                                 </p>
 
                                 <Button
+                                    data-testID="change-semester-button"
                                     onClick={() =>
                                         moveCourseToSemester(
                                             course,
@@ -206,6 +209,7 @@ export function CourseViewer({
 
                         {"  "}
                         <Button
+                            data-testID="course-edit-button"
                             onClick={() => {
                                 setEditMode(!editMode);
                             }}
@@ -214,6 +218,7 @@ export function CourseViewer({
                         </Button>
                         {"  "}
                         <Button
+                            data-testID="course-delete-button"
                             style={{
                                 backgroundColor: "red",
                                 outlineColor: "slategray"
@@ -255,6 +260,7 @@ export function CourseViewer({
                         </Col>
                         <Col>
                             <Form.Control
+                                data-testID="change-course-name-box"
                                 value={courseName}
                                 onChange={updateCourseName}
                             ></Form.Control>
@@ -268,6 +274,7 @@ export function CourseViewer({
                         </Col>
                         <Col>
                             <Form.Control
+                                data-testID="change-course-id-box"
                                 value={courseID}
                                 onChange={updateCourseId}
                             ></Form.Control>
@@ -281,6 +288,7 @@ export function CourseViewer({
                         </Col>
                         <Col>
                             <Form.Control
+                                data-testID="change-course-credits-box"
                                 type="number"
                                 value={creditHours}
                                 onChange={updateCreditHours}
@@ -295,6 +303,7 @@ export function CourseViewer({
                         </Col>
                         <Col>
                             <Form.Control
+                                data-testID="change-course-prereqs-box"
                                 value={prerequisites}
                                 onChange={updatePrerequisites}
                             ></Form.Control>
@@ -327,6 +336,7 @@ export function CourseViewer({
                         </Col>
                         <Col>
                             <Form.Check
+                                data-testID="sem-radio-button"
                                 type="checkbox"
                                 id={`requirements-sem-${courseID}`}
                                 label="Seminar in Composition (ENGL110)"
@@ -336,6 +346,7 @@ export function CourseViewer({
                                 onChange={updateRequirements}
                             />
                             <Form.Check
+                                data-testID="fys-radio-button"
                                 type="checkbox"
                                 id={`requirements-fys-${courseID}`}
                                 label="First Year Seminar (FYS)"
@@ -345,6 +356,7 @@ export function CourseViewer({
                                 onChange={updateRequirements}
                             />
                             <Form.Check
+                                data-testID="dle-radio-button"
                                 type="checkbox"
                                 id={`requirements-dle-${courseID}`}
                                 label="Discovery Learning Experience (DLE)"
@@ -354,6 +366,7 @@ export function CourseViewer({
                                 onChange={updateRequirements}
                             />
                             <Form.Check
+                                data-testID="mul-radio-button"
                                 type="checkbox"
                                 id={`requirements-mul-${courseID}`}
                                 label="Multicultural"
@@ -363,6 +376,7 @@ export function CourseViewer({
                                 onChange={updateRequirements}
                             />
                             <Form.Check
+                                data-testID="cah-radio-button"
                                 type="checkbox"
                                 id={`requirements-cah-${courseID}`}
                                 label="Creative Arts and Humanities"
@@ -372,6 +386,7 @@ export function CourseViewer({
                                 onChange={updateRequirements}
                             />
                             <Form.Check
+                                data-testID="hcc-radio-button"
                                 type="checkbox"
                                 id={`requirements-hcc-${courseID}`}
                                 label="History and Cultural Change"
@@ -381,6 +396,7 @@ export function CourseViewer({
                                 onChange={updateRequirements}
                             />
                             <Form.Check
+                                data-testID="sbs-radio-button"
                                 type="checkbox"
                                 id={`requirements-sbs-${courseID}`}
                                 label="Social and Behavioral Changes"
@@ -390,6 +406,7 @@ export function CourseViewer({
                                 onChange={updateRequirements}
                             />
                             <Form.Check
+                                data-testID="mnt-radio-button"
                                 type="checkbox"
                                 id={`requirements-mnt-${courseID}`}
                                 label="Mathematics, Natural Sciences, and Technology"
@@ -399,6 +416,7 @@ export function CourseViewer({
                                 onChange={updateRequirements}
                             />
                             <Form.Check
+                                data-testID="cap-radio-button"
                                 type="checkbox"
                                 id={`requirements-cap-${courseID}`}
                                 label="Capstone Experience"
@@ -408,6 +426,7 @@ export function CourseViewer({
                                 onChange={updateRequirements}
                             />
                             <Form.Check
+                                data-testID="ulc-radio-button"
                                 type="checkbox"
                                 id={`requirements-ulc-${courseID}`}
                                 label="Upper Level Credit"
@@ -417,6 +436,7 @@ export function CourseViewer({
                                 onChange={updateRequirements}
                             />
                             <Form.Check
+                                data-testID="cpp-radio-button"
                                 type="checkbox"
                                 id={`requirements-cpp-${courseID}`}
                                 label="Career and Professional Preparation"
@@ -426,6 +446,7 @@ export function CourseViewer({
                                 onChange={updateRequirements}
                             />
                             <Form.Check
+                                data-testID="upp-radio-button"
                                 type="checkbox"
                                 id={`requirements-upp-${courseID}`}
                                 label="College of Engineering Upper Level Breadth"
@@ -435,6 +456,7 @@ export function CourseViewer({
                                 onChange={updateRequirements}
                             />
                             <Form.Check
+                                data-testID="caf-radio-button"
                                 type="checkbox"
                                 id={`requirements-caf-${courseID}`}
                                 label="Traditional Computer Science Custom Area of Focus Requirement"
@@ -449,6 +471,7 @@ export function CourseViewer({
                     {/** Revert Back to Original State */}
                     <div style={{ textAlign: "right", marginBottom: "20px" }}>
                         <Button
+                            data-testID="save-course-edit-button"
                             style={{
                                 backgroundColor: "green",
                                 borderColor: "lightslategray"
@@ -463,7 +486,8 @@ export function CourseViewer({
                                                 ? prerequisites.split(", ")
                                                 : ["None"],
                                         credithours: creditHours,
-                                        satisfied_requirements: requirements
+                                        satisfied_requirements: requirements,
+                                        backup: course.backup
                                     },
                                     semesterIndex,
                                     courseIndex
@@ -474,6 +498,7 @@ export function CourseViewer({
                         </Button>
                         {"  "}
                         <Button
+                            data-testID="restore-default-properties-button"
                             style={{
                                 backgroundColor: "slategray",
                                 borderColor: "darkgray"

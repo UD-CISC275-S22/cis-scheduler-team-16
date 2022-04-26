@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Col, Row, Form, Container } from "react-bootstrap";
-import { Course } from "../templates/course";
+import { Course, CourseBackup } from "../templates/course";
 import { Semester } from "../templates/semester";
 //import { CourseViewer } from "./CourseViewer";
 import { SemesterViewer } from "./SemesterViewer";
@@ -32,7 +32,8 @@ export function PlanViewer(): JSX.Element {
                     ...semester,
                     courses: semester.courses.map(
                         (course): Course => ({
-                            ...course
+                            ...course,
+                            backup: course.backup as CourseBackup
                         })
                     )
                 })
@@ -487,13 +488,27 @@ export function PlanViewer(): JSX.Element {
                     <div
                         data-testID="editSem-div"
                         style={{
+                            marginLeft: "20px",
+                            marginRight: "20px",
+                            borderColor: "darkslategray",
+                            backgroundColor: "#EDEDED",
+                            borderRadius: "5px",
+                            borderWidth: "1px",
+                            borderStyle: "solid"
+                        }}
+                        /*
+                        style={{
                             borderStyle: "dotted",
                             borderWidth: "4px",
                             borderColor: "blue yellow" //rgb(0, 32, 62) //#00539f
                         }}
+                        */
                     >
                         <Container>
-                            <Form.Label> Pick term and year </Form.Label>
+                            <Form.Label>
+                                {" "}
+                                <strong> Pick a term and year </strong>{" "}
+                            </Form.Label>
                             <Row>
                                 <Col>
                                     <Form.Select
@@ -523,6 +538,7 @@ export function PlanViewer(): JSX.Element {
                                     />
                                 </Col>
                             </Row>
+                            <p> </p>
                             <Button
                                 style={{
                                     backgroundColor: "green"

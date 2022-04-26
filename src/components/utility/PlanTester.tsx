@@ -32,12 +32,32 @@ export function checkPlan(plan: Plan, concentration: string): JSX.Element {
     /** Check to make sure core prerequisites are being met */
     const seenCourse: string[] = [];
     const prereqFailCourses: string[] = [];
-    planCourses.map((course: Course) => {
-        seenCourse.push(course.courseId);
-        course.prereqs.map((prerequisite: string) => {
-            if (!seenCourse.includes(prerequisite) && prerequisite !== "None") {
-                prereqFailCourses.push(course.courseId);
-            }
+    let semesterCourses: string[] = [];
+
+    /** This can't use the planCourses or planCourseNames array since we need to have access to
+     *  the other classes that are in the semester (ie. if a course's prerequisite is being taken
+     *  in the same semester it can't count as satisfying that prereq requirement)
+     */
+    plan.semesters.map((semester: Semester) => {
+        semesterCourses = [];
+        semester.courses.map((course: Course) =>
+            semesterCourses.push(course.courseId.toLowerCase())
+        );
+        semester.courses.map((course: Course) => {
+            seenCourse.push(course.courseId.toLowerCase());
+            course.prereqs.map((prerequisite: string) => {
+                /** If the prerequisite course has not been seen yet, or the prerequisite is being taken
+                 *  in the same semester, flag the course as not having its prerequirements met yet.
+                 */
+                if (
+                    (!seenCourse.includes(prerequisite) &&
+                        prerequisite !== "None") ||
+                    (semesterCourses.includes(course.courseId.toLowerCase()) &&
+                        semesterCourses.includes(prerequisite))
+                ) {
+                    prereqFailCourses.push(course.courseId);
+                }
+            });
         });
     });
 
