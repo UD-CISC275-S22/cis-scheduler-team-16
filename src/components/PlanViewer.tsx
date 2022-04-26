@@ -7,6 +7,7 @@ import { SemesterViewer } from "./SemesterViewer";
 import { Plan } from "../templates/plan";
 import planList from "../templates/PlansList.json";
 import { checkPlan } from "./utility/PlanTester";
+import { CSVLink } from "react-csv";
 
 const termList: string[] = ["Summer", "Fall", "Winter", "Spring"]; //list of diff terms
 
@@ -59,8 +60,24 @@ export function PlanViewer(): JSX.Element {
         )
     );
 
-    //This is the Control
+    const headers = [
+        {
+            label: "Spring",
+            key: "spring"
+        },
+        {
+            label: "Fall",
+            key: "fall"
+        }
+    ];
 
+    const csvData = {
+        filename: curPlan.name,
+        header: headers,
+        data: curPlan.semesters
+    };
+    
+    //This is the Control
     function updatePlan(event: React.ChangeEvent<HTMLSelectElement>) {
         //console.log("setting plan to : ", allPlans[+event.target.value]);
         console.log(allPlans);
@@ -457,6 +474,7 @@ export function PlanViewer(): JSX.Element {
                             >
                                 Discard Plan
                             </Button>
+                            <CSVLink {...csvData}>Download me</CSVLink>;
                         </Col>
                     </Form.Group>
                 </div>
@@ -497,12 +515,12 @@ export function PlanViewer(): JSX.Element {
                             borderStyle: "solid"
                         }}
                         /*
-                        style={{
-                            borderStyle: "dotted",
-                            borderWidth: "4px",
-                            borderColor: "blue yellow" //rgb(0, 32, 62) //#00539f
-                        }}
-                        */
+                    style={{
+                        borderStyle: "dotted",
+                        borderWidth: "4px",
+                        borderColor: "blue yellow" //rgb(0, 32, 62) //#00539f
+                    }}
+                    */
                     >
                         <Container>
                             <Form.Label>
