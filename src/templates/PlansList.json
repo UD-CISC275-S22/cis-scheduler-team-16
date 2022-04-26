@@ -12,22 +12,43 @@
                         "courseId": "ENGL110",
                         "name": "Introductory English",
                         "prereqs": [],
-                        "credithours": 50,
-                        "satisfied_requirements": []
+                        "credithours": 3,
+                        "satisfied_requirements": [],
+                        "backup": {
+                            "courseId": "ENGL110",
+                            "name": "Introductory English",
+                            "prereqs": [],
+                            "credithours": 3,
+                            "satisfied_requirements": []
+                        }
                     },
                     {
                         "courseId": "MATH210",
                         "name": "Discrete Mathematics",
                         "prereqs": [],
-                        "credithours": 50,
-                        "satisfied_requirements": []
+                        "credithours": 3,
+                        "satisfied_requirements": [],
+                        "backup": {
+                            "courseId": "MATH210",
+                            "name": "Discrete Mathematics",
+                            "prereqs": [],
+                            "credithours": 3,
+                            "satisfied_requirements": []
+                        }
                     },
                     {
                         "courseId": "CISC108",
                         "name": "Introduction to Computer Science",
                         "prereqs": [],
-                        "credithours": 80,
-                        "satisfied_requirements": []
+                        "credithours": 3,
+                        "satisfied_requirements": [],
+                        "backup": {
+                            "courseId": "CISC108",
+                            "name": "Introduction to Computer Science",
+                            "prereqs": [],
+                            "credithours": 3,
+                            "satisfied_requirements": []
+                        }
                     },
                     {
                         "courseId": "CISC181",
@@ -47,52 +68,80 @@
                         "courseId": "CISC220",
                         "name": "Data Structures",
                         "prereqs": [],
-                        "credithours": 1000,
-                        "satisfied_requirements": []
+                        "credithours": 3,
+                        "satisfied_requirements": [],
+                        "backup": {
+                            "courseId": "CISC220",
+                            "name": "Data Structures",
+                            "prereqs": [],
+                            "credithours": 3,
+                            "satisfied_requirements": []
+                        }
                     }
                 ]
             }
         ]
     },
-     {
-         "name": "My Plan 2",
-         "id": "1",
-         "semesters": [
-             {
-                 "id": "0",
-                 "term": "Spring",
-                 "year": 2022,
-                 "courses": [
-                     {
-                         "courseId": "0",
-                         "name": "Course11",
-                         "prereqs": [],
-                         "credithours": 9999,
-                         "satisfied_requirements": []
-                     },
-                     {
-                         "courseId": "1",
-                         "name": "Course21",
-                         "prereqs": [],
-                         "credithours": 50,
-                         "satisfied_requirements": []
-                     }
-                 ]
-             },
-             {
-                 "id": "1",
-                 "term": "Fall",
-                 "year": 2022,
-                 "courses": [
-                     {
-                         "courseId": "0",
-                         "name": "Course21",
-                         "prereqs": [],
-                         "credithours": 1000,
-                         "satisfied_requirements": []
-                     }
-                 ]
-             }
-         ]
-     }
+    {
+        "name": "My Plan 2",
+        "id": "1",
+        "semesters": [
+            {
+                "id": "0",
+                "term": "Spring",
+                "year": 2022,
+                "courses": [
+                    {
+                        "courseId": "0",
+                        "name": "Course11",
+                        "prereqs": [],
+                        "credithours": 3,
+                        "satisfied_requirements": [],
+                        "backup": {
+                            "courseId": "0",
+                            "name": "Course11",
+                            "prereqs": [],
+                            "credithours": 3,
+                            "satisfied_requirements": []
+                        }
+                    },
+                    {
+                        "courseId": "1",
+                        "name": "Course21",
+                        "prereqs": [],
+                        "credithours": 3,
+                        "satisfied_requirements": [],
+                        "backup": {
+                            "courseId": "1",
+                            "name": "Course21",
+                            "prereqs": [],
+                            "credithours": 3,
+                            "satisfied_requirements": []
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "1",
+                "term": "Fall",
+                "year": 2022,
+                "courses": [
+                    {
+                        "courseId": "0",
+                        "name": "Course21",
+                        "prereqs": [],
+                        "credithours": 3,
+                        "satisfied_requirements": [],
+                        "backup": {
+                            "courseId": "0",
+                            "name": "Course21",
+                            "prereqs": [],
+                            "credithours": 3,
+                            "satisfied_requirements": []
+                        }
+                    }
+                ]
+            }
+        ]
+    }
 ]

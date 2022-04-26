@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Button, Col, Row, Form } from "react-bootstrap";
-import { Course } from "../templates/course";
+import { Button, Col, Row, Form, Container } from "react-bootstrap";
+import { Course, CourseBackup } from "../templates/course";
 import { Semester } from "../templates/semester";
 //import { CourseViewer } from "./CourseViewer";
 import { SemesterViewer } from "./SemesterViewer";
@@ -32,7 +32,8 @@ export function PlanViewer(): JSX.Element {
                     ...semester,
                     courses: semester.courses.map(
                         (course): Course => ({
-                            ...course
+                            ...course,
+                            backup: course.backup as CourseBackup
                         })
                     )
                 })
@@ -165,7 +166,7 @@ export function PlanViewer(): JSX.Element {
     }: {
         course?: Course;
         semesterIndex: number;
-        semesterInputID?: number;
+        semesterInputID?: string;
         courseIndex?: number;
         opType: COURSE_OPERATIONS;
     }) => {
@@ -177,7 +178,10 @@ export function PlanViewer(): JSX.Element {
                 if (course) {
                     semester.courses = [
                         ...semester.courses,
-                        { ...course, courseId: `${semester.courses.length}` }
+                        {
+                            ...course,
+                            courseId: "COUR0" + `${semester.courses.length + 1}`
+                        }
                     ];
                 }
                 planSetter(semesterIndex, semester);
@@ -238,21 +242,36 @@ export function PlanViewer(): JSX.Element {
                     courseIndex !== undefined &&
                     semesterInputID !== undefined &&
                     course &&
-                    semesterInputID >= 0 &&
-                    semesterInputID < curPlan.semesters.length
+                    semesterInputID != ""
                 ) {
                     //console.log("semesterInput: ", semesterInputID);
-                    const moveCourse = semester.courses.splice(courseIndex, 1);
+                    console.log("semesterInputID", semesterInputID);
+
                     /*
                     if (semesterIndex === semesterInputID) {
                         semester.courses = [...semester.courses, moveCourse[0]];
                     }
                     */
-                    curPlan.semesters.map((s: Semester, ind: number) => {
-                        if (ind === semesterInputID) {
-                            s.courses = [...s.courses, moveCourse[0]];
-                        }
-                    });
+                    const semesterFound = curPlan.semesters.find(
+                        (s) => s.term + " " + s.year === semesterInputID
+                    );
+                    console.log("semesterFound", semesterFound);
+
+                    if (semesterFound !== undefined) {
+                        curPlan.semesters.map((s: Semester) => {
+                            if (s.term + " " + s.year === semesterInputID) {
+                                console.log(
+                                    "semester term and year",
+                                    semester.term + " " + semester.year
+                                );
+                                const moveCourse = semester.courses.splice(
+                                    courseIndex,
+                                    1
+                                );
+                                s.courses = [...s.courses, moveCourse[0]];
+                            }
+                        });
+                    }
                 }
                 planSetter(semesterIndex, semester);
                 break;
@@ -260,14 +279,21 @@ export function PlanViewer(): JSX.Element {
             case "addSemester": {
                 // add course
                 //console.log("Assembly Guy");
+
                 const newSemester = {
                     term: term, //changed from "Blank Semester"
                     courses: [],
                     year: year, //changed from "3"
                     id: `${clonedPlan.semesters.length}`
                 };
+                const semesterDuplicateFound = curPlan.semesters.find(
+                    (s) =>
+                        s.term + " " + s.year ===
+                        newSemester.term + " " + newSemester.year
+                );
                 //console.log("newSem length: ", newSemesters.length);
-                semesterAdder(newSemester);
+                if (semesterDuplicateFound === undefined)
+                    semesterAdder(newSemester);
                 break;
             }
             case "deleteSemester": {
@@ -284,7 +310,7 @@ export function PlanViewer(): JSX.Element {
             case "addPlan": {
                 // add course
                 const newPlan = {
-                    name: "New Plan " + `${allPlans.length + 1}`,
+                    name: "My Plan " + `${allPlans.length + 1}`,
                     semesters: [],
                     id: `${allPlans.length}`
                 };
@@ -302,31 +328,56 @@ export function PlanViewer(): JSX.Element {
     // This is the Return View
     return (
         <div>
+            <hr></hr>
             <div style={{ marginLeft: "20px", marginRight: "20px" }}>
                 {/** This is where the new code for checking correctness is going to go */}
-                <Form.Group controlId="userPlan">
-                    <Form.Label>Choose your current plan</Form.Label>
-                    <Form.Select value={curPlan.id} onChange={updatePlan}>
-                        {allPlans.map(
-                            (plan: Plan, ind: number): JSX.Element => (
-                                <option key={ind} value={ind}>
-                                    {" "}
-                                    {plan.name}{" "}
-                                </option>
-                            )
-                        )}
-                    </Form.Select>
-                </Form.Group>
-                <Form.Group as={Row}>
-                    <Col>
+                <Form.Group
+                    controlId="userPlan"
+                    as={Row}
+                    style={{ marginRight: "10%", marginLeft: "10%" }}
+                >
+                    <Col style={{ textAlign: "left" }}>
                         <Form.Label>
-                            Choose your planned concentration
+                            <h5>
+                                <strong>Choose your current plan</strong>
+                            </h5>
+                        </Form.Label>
+                    </Col>
+                    <Col>
+                        <Form.Select
+                            value={curPlan.id}
+                            onChange={updatePlan}
+                            data-testID="plan-dropdown"
+                        >
+                            {allPlans.map(
+                                (plan: Plan, ind: number): JSX.Element => (
+                                    <option key={ind} value={ind}>
+                                        {" "}
+                                        {plan.name}{" "}
+                                    </option>
+                                )
+                            )}
+                        </Form.Select>
+                    </Col>
+                </Form.Group>
+                <Form.Group
+                    as={Row}
+                    style={{ marginRight: "10%", marginLeft: "10%" }}
+                >
+                    <Col style={{ textAlign: "left" }}>
+                        <Form.Label>
+                            <h5>
+                                <strong>
+                                    Choose your planned concentration
+                                </strong>
+                            </h5>
                         </Form.Label>
                     </Col>
                     <Col>
                         <Form.Select
                             value={currentConcentration}
                             onChange={updateCurrentConcentration}
+                            data-testID="concentration-dropdown"
                         >
                             <option value="Artificial Intelligence">
                                 Artificial Intelligence
@@ -376,30 +427,38 @@ export function PlanViewer(): JSX.Element {
                         marginBottom: "0px"
                     }}
                 >
-                    <Button
-                        onClick={() =>
-                            updateSemesterCourse({
-                                course: undefined,
-                                semesterIndex: 0,
-                                courseIndex: 0,
-                                opType: "addPlan"
-                            })
-                        }
-                    >
-                        New Plan
-                    </Button>
-                    <Button
-                        onClick={() =>
-                            updateSemesterCourse({
-                                course: undefined,
-                                semesterIndex: 0,
-                                courseIndex: 0,
-                                opType: "deletePlan"
-                            })
-                        }
-                    >
-                        Discard Plan
-                    </Button>
+                    <Form.Group as={Row}>
+                        <Col></Col>
+                        <Col style={{ textAlign: "left", marginLeft: "20px" }}>
+                            <Button
+                                onClick={() =>
+                                    updateSemesterCourse({
+                                        course: undefined,
+                                        semesterIndex: 0,
+                                        courseIndex: 0,
+                                        opType: "addPlan"
+                                    })
+                                }
+                                data-testID="add-plan-button"
+                            >
+                                New Plan
+                            </Button>
+                            {"   "}
+                            <Button
+                                onClick={() =>
+                                    updateSemesterCourse({
+                                        course: undefined,
+                                        semesterIndex: 0,
+                                        courseIndex: 0,
+                                        opType: "deletePlan"
+                                    })
+                                }
+                                data-testID="delete-plan-button"
+                            >
+                                Discard Plan
+                            </Button>
+                        </Col>
+                    </Form.Group>
                 </div>
                 <hr></hr>
                 <Form.Group as={Row} style={{ marginBottom: "0px" }}>
@@ -416,7 +475,7 @@ export function PlanViewer(): JSX.Element {
                         }}
                     >
                         <Button
-                            //() => updateSemesterCourse({course: undefined, semesterIndex: 0, courseIndex: 0, opType: "addSemester"})
+                            data-testID="addSem-button"
                             onClick={() => setEditSem(!editSem)}
                         >
                             Add Semester
@@ -424,53 +483,90 @@ export function PlanViewer(): JSX.Element {
                         {"   "}
                     </Col>
                 </Form.Group>
+                <p> </p>
                 {editSem && (
-                    <div data-testID="editSem-div">
-                        <Form.Group controlId="userEmotions">
+                    <div
+                        data-testID="editSem-div"
+                        style={{
+                            marginLeft: "20px",
+                            marginRight: "20px",
+                            borderColor: "darkslategray",
+                            backgroundColor: "#EDEDED",
+                            borderRadius: "5px",
+                            borderWidth: "1px",
+                            borderStyle: "solid"
+                        }}
+                        /*
+                        style={{
+                            borderStyle: "dotted",
+                            borderWidth: "4px",
+                            borderColor: "blue yellow" //rgb(0, 32, 62) //#00539f
+                        }}
+                        */
+                    >
+                        <Container>
                             <Form.Label>
                                 {" "}
-                                Pick your term and year for your new semester{" "}
+                                <strong> Pick a term and year </strong>{" "}
                             </Form.Label>
-                            <Form.Select value={term} onChange={updateTerm}>
-                                {termList.map((term: string) => (
-                                    <option key={term} value={term}>
-                                        {term}
-                                    </option>
-                                ))}
-                            </Form.Select>
-                            <Form.Control
-                                type="number"
-                                value={year}
-                                onChange={(
-                                    event: React.ChangeEvent<HTMLInputElement>
-                                ) => setYear(parseInt(event.target.value) || 0)}
-                            />
-                        </Form.Group>
-                        <Button
-                            data-testId="saveSem-button"
-                            style={{
-                                backgroundColor: "green"
-                            }}
-                            onClick={() =>
-                                updateSemesterCourse({
-                                    course: undefined,
-                                    semesterIndex: 0,
-                                    courseIndex: 0,
-                                    opType: "addSemester"
-                                })
-                            }
-                        >
-                            Save
-                        </Button>
-                        <Button
-                            data-testID="cancelSem-button"
-                            style={{
-                                backgroundColor: "red"
-                            }}
-                            onClick={() => setEditSem(!editSem)}
-                        >
-                            cancel
-                        </Button>
+                            <Row>
+                                <Col>
+                                    <Form.Select
+                                        value={term}
+                                        onChange={updateTerm}
+                                        data-testID="term-dropdown"
+                                    >
+                                        {termList.map((term: string) => (
+                                            <option key={term} value={term}>
+                                                {term}
+                                            </option>
+                                        ))}
+                                    </Form.Select>
+                                </Col>
+                                <Col>
+                                    <Form.Control
+                                        value={year}
+                                        onChange={(
+                                            event: React.ChangeEvent<HTMLInputElement>
+                                        ) =>
+                                            setYear(
+                                                parseInt(event.target.value) ||
+                                                    0
+                                            )
+                                        }
+                                        data-testID="year-textbox"
+                                    />
+                                </Col>
+                            </Row>
+                            <p> </p>
+                            <Button
+                                style={{
+                                    backgroundColor: "green"
+                                }}
+                                onClick={() =>
+                                    updateSemesterCourse({
+                                        course: undefined,
+                                        semesterIndex: 0,
+                                        courseIndex: 0,
+                                        opType: "addSemester"
+                                    })
+                                }
+                                data-testID="insertSem-button"
+                            >
+                                insert
+                            </Button>
+                            {"  "}
+                            <Button
+                                data-testID="cancelSem-button"
+                                style={{
+                                    backgroundColor: "red"
+                                }}
+                                onClick={() => setEditSem(!editSem)}
+                            >
+                                cancel
+                            </Button>
+                        </Container>
+                        <p> </p>
                     </div>
                 )}
                 <p>Total Credit Hours in this Plan: {totalCredits}</p>
@@ -484,7 +580,7 @@ export function PlanViewer(): JSX.Element {
                         semesterIndex={ind}
                         semester={eachSemester}
                         courses={eachSemester.courses}
-                        semesterInputID={ind}
+                        semesterInputID={""}
                         key={ind}
                         addCourse={(course: Course, semesterIndex: number) =>
                             updateSemesterCourse({
@@ -549,7 +645,7 @@ export function PlanViewer(): JSX.Element {
                             course: Course,
                             semesterIndex: number,
                             courseIndex: number,
-                            semesterInputID: number
+                            semesterInputID: string
                         ) =>
                             updateSemesterCourse({
                                 course,

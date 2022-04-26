@@ -15,7 +15,7 @@ type SemesterViewerProps = {
         courseIndex: number
     ) => void;
     semesterIndex: number;
-    semesterInputID: number;
+    semesterInputID: string;
     clearSemester: (semesterIndex: number) => void;
     moveCourseUp: (
         course: Course,
@@ -31,7 +31,7 @@ type SemesterViewerProps = {
         course: Course,
         semesterIndex: number,
         courseIndex: number,
-        semesterFound: number
+        semesterFound: string
     ) => void;
     deleteSemester: (semesterIndex: number) => void;
 };
@@ -122,11 +122,18 @@ export const SemesterViewer = ({
                         onClick={() =>
                             addCourse(
                                 {
-                                    name: "Blank Name",
+                                    name: "Introduction to Planning",
                                     prereqs: [],
                                     credithours: 3,
                                     satisfied_requirements: [],
-                                    courseId: "Blank-Id"
+                                    courseId: "PLAN000",
+                                    backup: {
+                                        name: "",
+                                        prereqs: [],
+                                        credithours: 3,
+                                        satisfied_requirements: [],
+                                        courseId: "PLAN000"
+                                    }
                                 },
                                 semesterIndex
                             )
