@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
-import { cursorTo } from "readline";
 import { Course } from "../templates/course";
 
 type ChangeEvent = React.ChangeEvent<
