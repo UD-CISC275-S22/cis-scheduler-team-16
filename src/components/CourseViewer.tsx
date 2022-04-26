@@ -444,7 +444,7 @@ export function CourseViewer({
                         </Col>
                     </Form.Group>
 
-                    {/** Revert Back to Original State */}
+                    {/** Save Changes */}
                     <div style={{ textAlign: "right", marginBottom: "20px" }}>
                         <Button
                             style={{
