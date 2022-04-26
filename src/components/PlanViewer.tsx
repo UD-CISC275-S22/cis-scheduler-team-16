@@ -7,7 +7,6 @@ import { SemesterViewer } from "./SemesterViewer";
 import { Plan } from "../templates/plan";
 import planList from "../templates/PlansList.json";
 import { checkPlan } from "./utility/PlanTester";
-import { CSVLink } from "react-csv";
 
 const termList: string[] = ["Summer", "Fall", "Winter", "Spring"]; //list of diff terms
 
@@ -60,23 +59,10 @@ export function PlanViewer(): JSX.Element {
         )
     );
 
-    const headers = [
-        {
-            label: "Spring",
-            key: "spring"
-        },
-        {
-            label: "Fall",
-            key: "fall"
-        }
+    const CSVdata: string[][] = [
+        ["Semesters", "Years", "Courses", "Credits", "Prereqs", "Requirements"]
     ];
 
-    const csvData = {
-        filename: curPlan.name,
-        header: headers,
-        data: curPlan.semesters
-    };
-    
     //This is the Control
     function updatePlan(event: React.ChangeEvent<HTMLSelectElement>) {
         //console.log("setting plan to : ", allPlans[+event.target.value]);
@@ -474,7 +460,68 @@ export function PlanViewer(): JSX.Element {
                             >
                                 Discard Plan
                             </Button>
-                            <CSVLink {...csvData}>Download me</CSVLink>;
+                            {"   "}
+                            <Button
+                                data-testid="export-csv-button"
+                                onClick={() => {
+                                    for (
+                                        let i = 0;
+                                        i < curPlan.semesters.length;
+                                        i++
+                                    ) {
+                                        const courses =
+                                            curPlan.semesters[i].courses;
+                                        const semesterName =
+                                            curPlan.semesters[i].term;
+                                        const semesterYear =
+                                            curPlan.semesters[
+                                                i
+                                            ].year.toString();
+
+                                        for (const eachcourse of courses) {
+                                            const courseName = eachcourse.name;
+                                            const credits =
+                                                eachcourse.credithours.toString();
+
+                                            let prereqs = eachcourse.prereqs
+                                                .join()
+                                                .toString();
+                                            if (
+                                                eachcourse.prereqs.join() === ""
+                                            )
+                                                prereqs = "None";
+                                            let reqs =
+                                                eachcourse.satisfied_requirements.join();
+                                            if (
+                                                eachcourse.satisfied_requirements.join() ===
+                                                ""
+                                            )
+                                                reqs = "None";
+
+                                            CSVdata.push([
+                                                semesterName,
+                                                semesterYear,
+                                                courseName,
+                                                credits,
+                                                prereqs,
+                                                reqs
+                                            ]);
+                                        }
+                                    }
+                                    const csvContent = `data:text/csv;charset=utf-8,${CSVdata.map(
+                                        (e) => e.join(",")
+                                    ).join("\n")}`;
+
+                                    const encodedUri = encodeURI(csvContent);
+                                    const link = document.createElement("a");
+                                    link.setAttribute("href", encodedUri);
+                                    link.setAttribute("download", curPlan.name);
+                                    document.body.appendChild(link);
+                                    link.click();
+                                }}
+                            >
+                                Export CSV
+                            </Button>
                         </Col>
                     </Form.Group>
                 </div>
