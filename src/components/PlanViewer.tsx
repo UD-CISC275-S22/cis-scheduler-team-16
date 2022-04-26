@@ -59,8 +59,11 @@ export function PlanViewer(): JSX.Element {
         )
     );
 
-    //This is the Control
+    const CSVdata: string[][] = [
+        ["Semesters", "Years", "Courses", "Credits", "Prereqs", "Requirements"]
+    ];
 
+    //This is the Control
     function updatePlan(event: React.ChangeEvent<HTMLSelectElement>) {
         //console.log("setting plan to : ", allPlans[+event.target.value]);
         console.log(allPlans);
@@ -457,6 +460,68 @@ export function PlanViewer(): JSX.Element {
                             >
                                 Discard Plan
                             </Button>
+                            {"   "}
+                            <Button
+                                data-testid="export-csv-button"
+                                onClick={() => {
+                                    for (
+                                        let i = 0;
+                                        i < curPlan.semesters.length;
+                                        i++
+                                    ) {
+                                        const courses =
+                                            curPlan.semesters[i].courses;
+                                        const semesterName =
+                                            curPlan.semesters[i].term;
+                                        const semesterYear =
+                                            curPlan.semesters[
+                                                i
+                                            ].year.toString();
+
+                                        for (const eachcourse of courses) {
+                                            const courseName = eachcourse.name;
+                                            const credits =
+                                                eachcourse.credithours.toString();
+
+                                            let prereqs = eachcourse.prereqs
+                                                .join()
+                                                .toString();
+                                            if (
+                                                eachcourse.prereqs.join() === ""
+                                            )
+                                                prereqs = "None";
+                                            let reqs =
+                                                eachcourse.satisfied_requirements.join();
+                                            if (
+                                                eachcourse.satisfied_requirements.join() ===
+                                                ""
+                                            )
+                                                reqs = "None";
+
+                                            CSVdata.push([
+                                                semesterName,
+                                                semesterYear,
+                                                courseName,
+                                                credits,
+                                                prereqs,
+                                                reqs
+                                            ]);
+                                        }
+                                    }
+                                    const csvContent = `data:text/csv;charset=utf-8,${CSVdata.map(
+                                        (e) => e.join(",")
+                                    ).join("\n")}`;
+
+                                    const encodedUri = encodeURI(csvContent);
+                                    const link = document.createElement("a");
+                                    link.setAttribute("href", encodedUri);
+                                    link.setAttribute("download", curPlan.name);
+                                    document.body.appendChild(link);
+                                    link.click();
+                                }}
+                            >
+                                Export CSV
+                            </Button>
                         </Col>
                     </Form.Group>
                 </div>
@@ -497,12 +562,12 @@ export function PlanViewer(): JSX.Element {
                             borderStyle: "solid"
                         }}
                         /*
-                        style={{
-                            borderStyle: "dotted",
-                            borderWidth: "4px",
-                            borderColor: "blue yellow" //rgb(0, 32, 62) //#00539f
-                        }}
-                        */
+                    style={{
+                        borderStyle: "dotted",
+                        borderWidth: "4px",
+                        borderColor: "blue yellow" //rgb(0, 32, 62) //#00539f
+                    }}
+                    */
                     >
                         <Container>
                             <Form.Label>
