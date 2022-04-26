@@ -33,7 +33,7 @@ PASS src/tests/PlanViewer.test.tsx
         { name: 'My Plan 2', id: '1', semesters: [ [Object], [Object] ] }
       ]
 
-      at updatePlan (src/components/PlanViewer.tsx:66:17)
+      at updatePlan (src/components/PlanViewer.tsx:69:17)
 
     console.log
       [
@@ -46,7 +46,7 @@ PASS src/tests/PlanViewer.test.tsx
         { id: '1', term: 'Fall', year: 2022, courses: [ [Object] ] }
       ]
 
-      at updatePlan (src/components/PlanViewer.tsx:67:17)
+      at updatePlan (src/components/PlanViewer.tsx:70:17)
 
     console.log
       Add Plan:  [
@@ -55,67 +55,7 @@ PASS src/tests/PlanViewer.test.tsx
         { name: 'My Plan 3', semesters: [], id: '2' }
       ]
 
-      at planAdder (src/components/PlanViewer.tsx:124:17)
-
-    console.log
-      Add Plan:  [
-        { name: 'My Plan 1', id: '0', semesters: [ [Object], [Object] ] },
-        { name: 'My Plan 2', id: '1', semesters: [ [Object], [Object] ] }
-      ]
-
-      at planAdder (src/components/PlanViewer.tsx:125:17)
-
-    console.log
-      [
-        { name: 'My Plan 1', id: '0', semesters: [ [Object], [Object] ] },
-        { name: 'My Plan 2', id: '1', semesters: [ [Object], [Object] ] },
-        { name: 'My Plan 3', semesters: [], id: '2' }
-      ]
-
-      at updatePlan (src/components/PlanViewer.tsx:66:17)
-
-    console.log
-      [
-        {
-          id: '0',
-          term: 'Spring',
-          year: 2022,
-          courses: [ [Object], [Object], [Object], [Object] ]
-        },
-        { id: '1', term: 'Fall', year: 2022, courses: [ [Object] ] }
-      ]
-
-      at updatePlan (src/components/PlanViewer.tsx:67:17)
-
-    console.log
-      [
-        { name: 'My Plan 1', id: '0', semesters: [ [Object], [Object] ] },
-        { name: 'My Plan 2', id: '1', semesters: [ [Object], [Object] ] }
-      ]
-
-      at updatePlan (src/components/PlanViewer.tsx:66:17)
-
-    console.log
-      [
-        {
-          id: '0',
-          term: 'Spring',
-          year: 2022,
-          courses: [ [Object], [Object], [Object], [Object] ]
-        },
-        { id: '1', term: 'Fall', year: 2022, courses: [ [Object] ] }
-      ]
-
-      at updatePlan (src/components/PlanViewer.tsx:67:17)
-
-    console.log
-      Add Plan:  [
-        { name: 'My Plan 1', id: '0', semesters: [ [Object], [Object] ] },
-        { name: 'My Plan 2', id: '1', semesters: [ [Object], [Object] ] },
-        { name: 'My Plan 3', semesters: [], id: '2' }
-      ]
-
-      at planAdder (src/components/PlanViewer.tsx:124:17)
+      at planAdder (src/components/PlanViewer.tsx:127:17)
 
     console.log
       Add Plan:  [
@@ -123,7 +63,7 @@ PASS src/tests/PlanViewer.test.tsx
         { name: 'My Plan 2', id: '1', semesters: [ [Object], [Object] ] }
       ]
 
-      at planAdder (src/components/PlanViewer.tsx:125:17)
+      at planAdder (src/components/PlanViewer.tsx:128:17)
 
     console.log
       [
@@ -132,7 +72,7 @@ PASS src/tests/PlanViewer.test.tsx
         { name: 'My Plan 3', semesters: [], id: '2' }
       ]
 
-      at updatePlan (src/components/PlanViewer.tsx:66:17)
+      at updatePlan (src/components/PlanViewer.tsx:69:17)
 
     console.log
       [
@@ -145,7 +85,67 @@ PASS src/tests/PlanViewer.test.tsx
         { id: '1', term: 'Fall', year: 2022, courses: [ [Object] ] }
       ]
 
-      at updatePlan (src/components/PlanViewer.tsx:67:17)
+      at updatePlan (src/components/PlanViewer.tsx:70:17)
+
+    console.log
+      [
+        { name: 'My Plan 1', id: '0', semesters: [ [Object], [Object] ] },
+        { name: 'My Plan 2', id: '1', semesters: [ [Object], [Object] ] }
+      ]
+
+      at updatePlan (src/components/PlanViewer.tsx:69:17)
+
+    console.log
+      [
+        {
+          id: '0',
+          term: 'Spring',
+          year: 2022,
+          courses: [ [Object], [Object], [Object], [Object] ]
+        },
+        { id: '1', term: 'Fall', year: 2022, courses: [ [Object] ] }
+      ]
+
+      at updatePlan (src/components/PlanViewer.tsx:70:17)
+
+    console.log
+      Add Plan:  [
+        { name: 'My Plan 1', id: '0', semesters: [ [Object], [Object] ] },
+        { name: 'My Plan 2', id: '1', semesters: [ [Object], [Object] ] },
+        { name: 'My Plan 3', semesters: [], id: '2' }
+      ]
+
+      at planAdder (src/components/PlanViewer.tsx:127:17)
+
+    console.log
+      Add Plan:  [
+        { name: 'My Plan 1', id: '0', semesters: [ [Object], [Object] ] },
+        { name: 'My Plan 2', id: '1', semesters: [ [Object], [Object] ] }
+      ]
+
+      at planAdder (src/components/PlanViewer.tsx:128:17)
+
+    console.log
+      [
+        { name: 'My Plan 1', id: '0', semesters: [ [Object], [Object] ] },
+        { name: 'My Plan 2', id: '1', semesters: [ [Object], [Object] ] },
+        { name: 'My Plan 3', semesters: [], id: '2' }
+      ]
+
+      at updatePlan (src/components/PlanViewer.tsx:69:17)
+
+    console.log
+      [
+        {
+          id: '0',
+          term: 'Spring',
+          year: 2022,
+          courses: [ [Object], [Object], [Object], [Object] ]
+        },
+        { id: '1', term: 'Fall', year: 2022, courses: [ [Object] ] }
+      ]
+
+      at updatePlan (src/components/PlanViewer.tsx:70:17)
 
 PASS src/tests/SemesterViewer.test.tsx
   ● Console
@@ -215,37 +215,37 @@ PASS src/App.test.tsx
       at setInitialProperties (node_modules/react-dom/cjs/react-dom.development.js:9041:5)
       at finalizeInitialChildren (node_modules/react-dom/cjs/react-dom.development.js:10201:3)
 
-----------------------------------------------|---------|----------|---------|---------|------------------------------------------------------------
-File                                          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                                          
-----------------------------------------------|---------|----------|---------|---------|------------------------------------------------------------
-All files                                     |   84.83 |    67.15 |   70.53 |   84.81 |                                                            
- src                                          |     100 |      100 |     100 |     100 |                                                            
-  App.tsx                                     |     100 |      100 |     100 |     100 |                                                            
- src/components                               |   56.49 |    26.31 |   51.56 |   56.25 |                                                            
-  CourseViewer.tsx                            |   31.03 |    27.27 |    6.25 |   31.03 | 63-93,150-507                                              
-  PlanViewer.tsx                              |   59.85 |    23.07 |   65.85 |   59.85 | 94,129-137,192-210,218-277,301-308,532,564,596-607,625-659 
-  SemesterViewer.tsx                          |   81.81 |      100 |   71.42 |      80 | 154-161                                                    
- src/components/utility                       |   88.88 |    63.44 |   88.88 |   88.88 |                                                            
-  PlanTester.tsx                              |   88.88 |    63.44 |   88.88 |   88.88 | 52-58,80,93,102,111,120,129,164,245,419                    
- src/components/utility/concentration-testers |    95.4 |       75 |     100 |    95.4 |                                                            
-  ArtificialIntelligenceTester.tsx            |   95.45 |       80 |     100 |   95.45 | 107,131                                                    
-  BioinformaticsTester.tsx                    |   98.46 |    68.42 |     100 |   98.46 | 169                                                        
-  CybersecurityTester.tsx                     |   94.23 |     80.3 |     100 |   94.23 | 88,130,154                                                 
-  DataScienceTester.tsx                       |   93.75 |    74.19 |     100 |   93.75 | 89,108,142,166                                             
-  HighPerformanceDataTester.tsx               |      96 |       76 |     100 |      96 | 67                                                         
-  HighPerformanceMathTester.tsx               |   97.95 |    65.71 |     100 |   97.95 | 119                                                        
-  SystemsNetworkTester.tsx                    |   92.85 |    83.33 |     100 |   92.85 | 81,106,153,177                                             
-  TheoryCompDiscreteTester.tsx                |   96.15 |     74.5 |     100 |   96.15 | 117,141                                                    
-  TraditionalTester.tsx                       |   92.85 |    55.17 |     100 |   92.85 | 60,76                                                      
- src/templates                                |       0 |        0 |       0 |       0 |                                                            
-  ConcentrationCheck.ts                       |       0 |        0 |       0 |       0 |                                                            
-  course.ts                                   |       0 |        0 |       0 |       0 |                                                            
-  plan.ts                                     |       0 |        0 |       0 |       0 |                                                            
-  semester.ts                                 |       0 |        0 |       0 |       0 |                                                            
-----------------------------------------------|---------|----------|---------|---------|------------------------------------------------------------
+----------------------------------------------|---------|----------|---------|---------|--------------------------------------------------------------------
+File                                          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                                                  
+----------------------------------------------|---------|----------|---------|---------|--------------------------------------------------------------------
+All files                                     |    82.2 |    66.76 |   69.29 |   82.17 |                                                                    
+ src                                          |     100 |      100 |     100 |     100 |                                                                    
+  App.tsx                                     |     100 |      100 |     100 |     100 |                                                                    
+ src/components                               |   50.24 |       25 |      50 |      50 |                                                                    
+  CourseViewer.tsx                            |   31.03 |    27.27 |    6.25 |   31.03 | 63-93,150-507                                                      
+  PlanViewer.tsx                              |   51.55 |    21.42 |   62.79 |   51.55 | 97,132-140,195-213,221-280,304-311,467-520,597,629,661-672,690-724 
+  SemesterViewer.tsx                          |   81.81 |      100 |   71.42 |      80 | 154-161                                                            
+ src/components/utility                       |   88.88 |    63.44 |   88.88 |   88.88 |                                                                    
+  PlanTester.tsx                              |   88.88 |    63.44 |   88.88 |   88.88 | 52-58,80,93,102,111,120,129,164,245,419                            
+ src/components/utility/concentration-testers |    95.4 |       75 |     100 |    95.4 |                                                                    
+  ArtificialIntelligenceTester.tsx            |   95.45 |       80 |     100 |   95.45 | 107,131                                                            
+  BioinformaticsTester.tsx                    |   98.46 |    68.42 |     100 |   98.46 | 169                                                                
+  CybersecurityTester.tsx                     |   94.23 |     80.3 |     100 |   94.23 | 88,130,154                                                         
+  DataScienceTester.tsx                       |   93.75 |    74.19 |     100 |   93.75 | 89,108,142,166                                                     
+  HighPerformanceDataTester.tsx               |      96 |       76 |     100 |      96 | 67                                                                 
+  HighPerformanceMathTester.tsx               |   97.95 |    65.71 |     100 |   97.95 | 119                                                                
+  SystemsNetworkTester.tsx                    |   92.85 |    83.33 |     100 |   92.85 | 81,106,153,177                                                     
+  TheoryCompDiscreteTester.tsx                |   96.15 |     74.5 |     100 |   96.15 | 117,141                                                            
+  TraditionalTester.tsx                       |   92.85 |    55.17 |     100 |   92.85 | 60,76                                                              
+ src/templates                                |       0 |        0 |       0 |       0 |                                                                    
+  ConcentrationCheck.ts                       |       0 |        0 |       0 |       0 |                                                                    
+  course.ts                                   |       0 |        0 |       0 |       0 |                                                                    
+  plan.ts                                     |       0 |        0 |       0 |       0 |                                                                    
+  semester.ts                                 |       0 |        0 |       0 |       0 |                                                                    
+----------------------------------------------|---------|----------|---------|---------|--------------------------------------------------------------------
 
 Test Suites: 3 passed, 3 total
 Tests:       14 passed, 14 total
 Snapshots:   0 total
-Time:        5.884 s
+Time:        6.424 s
 Ran all test suites.
