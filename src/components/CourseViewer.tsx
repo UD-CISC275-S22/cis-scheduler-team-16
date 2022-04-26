@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
+import { cursorTo } from "readline";
 import { Course } from "../templates/course";
 
 type ChangeEvent = React.ChangeEvent<
@@ -468,7 +469,7 @@ export function CourseViewer({
                         </Col>
                     </Form.Group>
 
-                    {/** Revert Back to Original State */}
+                    {/** Save Changes */}
                     <div style={{ textAlign: "right", marginBottom: "20px" }}>
                         <Button
                             data-testID="save-course-edit-button"
@@ -503,6 +504,22 @@ export function CourseViewer({
                                 backgroundColor: "slategray",
                                 borderColor: "darkgray"
                             }}
+                            onClick={() =>
+                                updateCourse(
+                                    {
+                                        courseId: course.backup.courseId,
+                                        name: course.backup.name,
+                                        prereqs: course.backup.prereqs,
+                                        credithours: course.backup.credithours,
+                                        satisfied_requirements:
+                                            course.backup
+                                                .satisfied_requirements,
+                                        backup: course.backup
+                                    },
+                                    semesterIndex,
+                                    courseIndex
+                                )
+                            }
                         >
                             Restore to Defaults
                         </Button>
