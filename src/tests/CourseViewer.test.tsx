@@ -34,10 +34,12 @@ describe("Planner Tests", () => {
             "move-course-down-button"
         );
         const initialMoveBox = screen.queryByTestId("change-semester-box");
+
         expect(initialMoveHeader).not.toBeInTheDocument();
         expect(initialMoveUpButton).not.toBeInTheDocument();
         expect(initialMoveDownButton).not.toBeInTheDocument();
         expect(initialMoveBox).not.toBeInTheDocument();
+
         const moveButtons = screen.getAllByTestId("move-course-button");
         moveButtons[0].click();
         const afterMoveHeader = screen.queryByText(
@@ -51,6 +53,7 @@ describe("Planner Tests", () => {
             "move-course-down-button"
         );
         const afterMoveBox = screen.queryByTestId("change-semester-box");
+
         expect(afterMoveHeader).toBeInTheDocument();
         expect(afterMoveBody).toBeInTheDocument();
         expect(afterMoveUpButton).toBeInTheDocument();
@@ -64,11 +67,38 @@ describe("Planner Tests", () => {
         const initTitleBox = screen.queryByTestId("change-course-name-box");
         const initCredBox = screen.queryByTestId("change-course-credits-box");
         const initPrereqBox = screen.queryByTestId("change-course-prereqs-box");
+        const semBox = screen.queryByTestId("sem-radio-button");
+        const fysBox = screen.queryByTestId("fys-radio-button");
+        const dleBox = screen.queryByTestId("dle-radio-button");
+        const mulBox = screen.queryByTestId("mul-radio-button");
+        const cahBox = screen.queryByTestId("cah-radio-button");
+        const hccBox = screen.queryByTestId("hcc-radio-button");
+        const sbsBox = screen.queryByTestId("sbs-radio-button");
+        const mntBox = screen.queryByTestId("mnt-radio-button");
+        const capBox = screen.queryByTestId("cap-radio-button");
+        const ulcBox = screen.queryByTestId("ulc-radio-button");
+        const cppBox = screen.queryByTestId("cpp-radio-button");
+        const uppBox = screen.queryByTestId("upp-radio-button");
+        const cafBox = screen.queryByTestId("caf-radio-button");
+
         expect(initHeader).not.toBeInTheDocument();
         expect(initIDBox).not.toBeInTheDocument();
         expect(initTitleBox).not.toBeInTheDocument();
         expect(initCredBox).not.toBeInTheDocument();
         expect(initPrereqBox).not.toBeInTheDocument();
+        expect(semBox).not.toBeInTheDocument();
+        expect(fysBox).not.toBeInTheDocument();
+        expect(dleBox).not.toBeInTheDocument();
+        expect(mulBox).not.toBeInTheDocument();
+        expect(cahBox).not.toBeInTheDocument();
+        expect(hccBox).not.toBeInTheDocument();
+        expect(sbsBox).not.toBeInTheDocument();
+        expect(mntBox).not.toBeInTheDocument();
+        expect(capBox).not.toBeInTheDocument();
+        expect(ulcBox).not.toBeInTheDocument();
+        expect(cppBox).not.toBeInTheDocument();
+        expect(uppBox).not.toBeInTheDocument();
+        expect(cafBox).not.toBeInTheDocument();
     });
     test("Check to see if the edit mode options show once the edit button is clicked", () => {
         const editModeButtons = screen.queryAllByTestId("course-edit-button");
@@ -79,11 +109,38 @@ describe("Planner Tests", () => {
         const initTitleBox = screen.queryByTestId("change-course-name-box");
         const initCredBox = screen.queryByTestId("change-course-credits-box");
         const initPrereqBox = screen.queryByTestId("change-course-prereqs-box");
+        const semBox2 = screen.queryByTestId("sem-radio-button");
+        const fysBox2 = screen.queryByTestId("fys-radio-button");
+        const dleBox2 = screen.queryByTestId("dle-radio-button");
+        const mulBox2 = screen.queryByTestId("mul-radio-button");
+        const cahBox2 = screen.queryByTestId("cah-radio-button");
+        const hccBox2 = screen.queryByTestId("hcc-radio-button");
+        const sbsBox2 = screen.queryByTestId("sbs-radio-button");
+        const mntBox2 = screen.queryByTestId("mnt-radio-button");
+        const capBox2 = screen.queryByTestId("cap-radio-button");
+        const ulcBox2 = screen.queryByTestId("ulc-radio-button");
+        const cppBox2 = screen.queryByTestId("cpp-radio-button");
+        const uppBox2 = screen.queryByTestId("upp-radio-button");
+        const cafBox2 = screen.queryByTestId("caf-radio-button");
+
         expect(initHeader).toBeInTheDocument();
         expect(initIDBox).toBeInTheDocument();
         expect(initTitleBox).toBeInTheDocument();
         expect(initCredBox).toBeInTheDocument();
         expect(initPrereqBox).toBeInTheDocument();
+        expect(semBox2).toBeInTheDocument();
+        expect(fysBox2).toBeInTheDocument();
+        expect(dleBox2).toBeInTheDocument();
+        expect(mulBox2).toBeInTheDocument();
+        expect(cahBox2).toBeInTheDocument();
+        expect(hccBox2).toBeInTheDocument();
+        expect(sbsBox2).toBeInTheDocument();
+        expect(mntBox2).toBeInTheDocument();
+        expect(capBox2).toBeInTheDocument();
+        expect(ulcBox2).toBeInTheDocument();
+        expect(cppBox2).toBeInTheDocument();
+        expect(uppBox2).toBeInTheDocument();
+        expect(cafBox2).toBeInTheDocument();
     });
     test("Check to see if the edit mode options start with the right data", () => {
         const editModeButtons = screen.queryAllByTestId("course-edit-button");
@@ -169,5 +226,232 @@ describe("Planner Tests", () => {
         const finalValue2 = screen.queryAllByText("Prerequisite1");
         expect(finalValue.length).toBe(4);
         expect(finalValue2.length).toBe(1);
+    });
+    test("Check to see if using the Seminar in Composition box updates the satisfied requirements", () => {
+        const initValue = screen.queryByText("sem");
+        expect(initValue).not.toBeInTheDocument();
+
+        const editModeButtons = screen.queryAllByTestId("course-edit-button");
+        editModeButtons[0].click();
+
+        const semBox = screen.getByTestId("sem-radio-button");
+        semBox.click();
+
+        const saveButton = screen.getByTestId("save-course-edit-button");
+        saveButton.click();
+
+        const finalValue = screen.queryByText("sem");
+        expect(finalValue).toBeInTheDocument();
+    });
+    test("Check to see if using the First Year Seminar box updates the satisfied requirements", () => {
+        const initValue = screen.queryByText("fys");
+        expect(initValue).not.toBeInTheDocument();
+
+        const editModeButtons = screen.queryAllByTestId("course-edit-button");
+        editModeButtons[0].click();
+
+        const fysBox = screen.getByTestId("fys-radio-button");
+        fysBox.click();
+
+        const saveButton = screen.getByTestId("save-course-edit-button");
+        saveButton.click();
+
+        const finalValue = screen.queryByText("fys");
+        expect(finalValue).toBeInTheDocument();
+    });
+    test("Check to see if using the Discovery Learning Experience box updates the satisfied requirements", () => {
+        const initValue = screen.queryByText("dle");
+        expect(initValue).not.toBeInTheDocument();
+
+        const editModeButtons = screen.queryAllByTestId("course-edit-button");
+        editModeButtons[0].click();
+
+        const dleBox = screen.getByTestId("dle-radio-button");
+        dleBox.click();
+
+        const saveButton = screen.getByTestId("save-course-edit-button");
+        saveButton.click();
+
+        const finalValue = screen.queryByText("dle");
+        expect(finalValue).toBeInTheDocument();
+    });
+    test("Check to see if using the Multicultural box updates the satisfied requirements", () => {
+        const initValue = screen.queryByText("mul");
+        expect(initValue).not.toBeInTheDocument();
+
+        const editModeButtons = screen.queryAllByTestId("course-edit-button");
+        editModeButtons[0].click();
+
+        const mulBox = screen.getByTestId("mul-radio-button");
+        mulBox.click();
+
+        const saveButton = screen.getByTestId("save-course-edit-button");
+        saveButton.click();
+
+        const finalValue = screen.queryByText("mul");
+        expect(finalValue).toBeInTheDocument();
+    });
+    test("Check to see if using the Creative Arts and Humanities box updates the satisfied requirements", () => {
+        const initValue = screen.queryByText("cah");
+        expect(initValue).not.toBeInTheDocument();
+
+        const editModeButtons = screen.queryAllByTestId("course-edit-button");
+        editModeButtons[0].click();
+
+        const mulBox = screen.getByTestId("cah-radio-button");
+        mulBox.click();
+
+        const saveButton = screen.getByTestId("save-course-edit-button");
+        saveButton.click();
+
+        const finalValue = screen.queryByText("cah");
+        expect(finalValue).toBeInTheDocument();
+    });
+    test("Check to see if using the History and Cultural Change box updates the satisfied requirements", () => {
+        const initValue = screen.queryByText("hcc");
+        expect(initValue).not.toBeInTheDocument();
+
+        const editModeButtons = screen.queryAllByTestId("course-edit-button");
+        editModeButtons[0].click();
+
+        const mulBox = screen.getByTestId("hcc-radio-button");
+        mulBox.click();
+
+        const saveButton = screen.getByTestId("save-course-edit-button");
+        saveButton.click();
+
+        const finalValue = screen.queryByText("hcc");
+        expect(finalValue).toBeInTheDocument();
+    });
+    test("Check to see if using the Social and Behavioral Changes box updates the satisfied requirements", () => {
+        const initValue = screen.queryByText("sbs");
+        expect(initValue).not.toBeInTheDocument();
+
+        const editModeButtons = screen.queryAllByTestId("course-edit-button");
+        editModeButtons[0].click();
+
+        const mulBox = screen.getByTestId("sbs-radio-button");
+        mulBox.click();
+
+        const saveButton = screen.getByTestId("save-course-edit-button");
+        saveButton.click();
+
+        const finalValue = screen.queryByText("sbs");
+        expect(finalValue).toBeInTheDocument();
+    });
+    test("Check to see if using the Math, Natural Sciences, and Technology box updates the satisfied requirements", () => {
+        const initValue = screen.queryByText("mnt");
+        expect(initValue).not.toBeInTheDocument();
+
+        const editModeButtons = screen.queryAllByTestId("course-edit-button");
+        editModeButtons[0].click();
+
+        const mulBox = screen.getByTestId("mnt-radio-button");
+        mulBox.click();
+
+        const saveButton = screen.getByTestId("save-course-edit-button");
+        saveButton.click();
+
+        const finalValue = screen.queryByText("mnt");
+        expect(finalValue).toBeInTheDocument();
+    });
+    test("Check to see if using the Capstone Requirement box updates the satisfied requirements", () => {
+        const initValue = screen.queryByText("cap");
+        expect(initValue).not.toBeInTheDocument();
+
+        const editModeButtons = screen.queryAllByTestId("course-edit-button");
+        editModeButtons[0].click();
+
+        const mulBox = screen.getByTestId("cap-radio-button");
+        mulBox.click();
+
+        const saveButton = screen.getByTestId("save-course-edit-button");
+        saveButton.click();
+
+        const finalValue = screen.queryByText("cap");
+        expect(finalValue).toBeInTheDocument();
+    });
+    test("Check to see if using the Upper Level Credit box updates the satisfied requirements", () => {
+        const initValue = screen.queryByText("ulc");
+        expect(initValue).not.toBeInTheDocument();
+
+        const editModeButtons = screen.queryAllByTestId("course-edit-button");
+        editModeButtons[0].click();
+
+        const mulBox = screen.getByTestId("ulc-radio-button");
+        mulBox.click();
+
+        const saveButton = screen.getByTestId("save-course-edit-button");
+        saveButton.click();
+
+        const finalValue = screen.queryByText("ulc");
+        expect(finalValue).toBeInTheDocument();
+    });
+    test("Check to see if using the Career and Professional Preparation box updates the satisfied requirements", () => {
+        const initValue = screen.queryByText("cpp");
+        expect(initValue).not.toBeInTheDocument();
+
+        const editModeButtons = screen.queryAllByTestId("course-edit-button");
+        editModeButtons[0].click();
+
+        const mulBox = screen.getByTestId("cpp-radio-button");
+        mulBox.click();
+
+        const saveButton = screen.getByTestId("save-course-edit-button");
+        saveButton.click();
+
+        const finalValue = screen.queryByText("cpp");
+        expect(finalValue).toBeInTheDocument();
+    });
+    test("Check to see if using the College of Engineering Upper Level Breadth box updates the satisfied requirements", () => {
+        const initValue = screen.queryByText("upp");
+        expect(initValue).not.toBeInTheDocument();
+
+        const editModeButtons = screen.queryAllByTestId("course-edit-button");
+        editModeButtons[0].click();
+
+        const mulBox = screen.getByTestId("upp-radio-button");
+        mulBox.click();
+
+        const saveButton = screen.getByTestId("save-course-edit-button");
+        saveButton.click();
+
+        const finalValue = screen.queryByText("upp");
+        expect(finalValue).toBeInTheDocument();
+    });
+    test("Check to see if using the Custom Area of Focus box updates the satisfied requirements", () => {
+        const initValue = screen.queryByText("caf");
+        expect(initValue).not.toBeInTheDocument();
+
+        const editModeButtons = screen.queryAllByTestId("course-edit-button");
+        editModeButtons[0].click();
+
+        const mulBox = screen.getByTestId("caf-radio-button");
+        mulBox.click();
+
+        const saveButton = screen.getByTestId("save-course-edit-button");
+        saveButton.click();
+
+        const finalValue = screen.queryByText("caf");
+        expect(finalValue).toBeInTheDocument();
+    });
+    test("Check to see if using the Custom Area of Focus box twice removes it from the satisfied requirements", () => {
+        const initValue = screen.queryByText("caf");
+        expect(initValue).not.toBeInTheDocument();
+
+        const editModeButtons = screen.queryAllByTestId("course-edit-button");
+        editModeButtons[0].click();
+
+        const mulBox = screen.getByTestId("caf-radio-button");
+        mulBox.click();
+
+        const saveButton = screen.getByTestId("save-course-edit-button");
+        saveButton.click();
+
+        mulBox.click();
+        saveButton.click();
+
+        const finalValue = screen.queryByText("caf");
+        expect(finalValue).not.toBeInTheDocument();
     });
 });
