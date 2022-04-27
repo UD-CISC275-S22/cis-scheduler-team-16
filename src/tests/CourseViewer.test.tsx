@@ -60,7 +60,65 @@ describe("Planner Tests", () => {
         expect(afterMoveDownButton).toBeInTheDocument();
         expect(afterMoveBox).toBeInTheDocument();
     });
-    /** CHECK IN AND SEE HOW THE BEST WAY TO TEST MOVING THE COURSES WITHIN THE SEMESTERS ARE */
+    test("Check to see that the move down button is working", () => {
+        const editModeButtons = screen.queryAllByTestId("course-edit-button");
+        editModeButtons[0].click();
+        editModeButtons[1].click();
+        const textboxes = screen.getAllByRole("textbox");
+        expect(textboxes[0]).toHaveValue("Introductory English");
+        editModeButtons[0].click();
+        editModeButtons[1].click();
+
+        const moveButtons = screen.getAllByTestId("move-course-button");
+        moveButtons[0].click();
+        const moveDownButton = screen.getByTestId("move-course-down-button");
+        moveDownButton.click();
+
+        const newEditModeButtons =
+            screen.queryAllByTestId("course-edit-button");
+        newEditModeButtons[0].click();
+        newEditModeButtons[1].click();
+        const newTextboxes = screen.getAllByRole("textbox");
+        expect(newTextboxes[0]).toHaveValue("Discrete Mathematics");
+    });
+    test("Check to see that the move up button is working", () => {
+        const editModeButtons = screen.queryAllByTestId("course-edit-button");
+        editModeButtons[0].click();
+        const textboxes = screen.getAllByRole("textbox");
+        expect(textboxes[0]).toHaveValue("Introductory English");
+        editModeButtons[0].click();
+
+        const moveButtons = screen.getAllByTestId("move-course-button");
+        moveButtons[1].click();
+        const moveUpButton = screen.getByTestId("move-course-up-button");
+        moveUpButton.click();
+
+        const newEditModeButtons =
+            screen.queryAllByTestId("course-edit-button");
+        newEditModeButtons[0].click();
+        const newTextboxes = screen.getAllByRole("textbox");
+        expect(newTextboxes[1]).toHaveValue("Discrete Mathematics");
+    });
+    test("Check to see that moving to a new semester works", () => {
+        const editModeButtons = screen.queryAllByTestId("course-edit-button");
+        editModeButtons[0].click();
+        const initTextboxes = screen.getAllByRole("textbox");
+        expect(initTextboxes[0]).toHaveValue("Introductory English");
+        editModeButtons[0].click();
+
+        const moveButtons = screen.getAllByTestId("move-course-button");
+        moveButtons[0].click();
+        const moveTextbox = screen.getByRole("textbox");
+        userEvent.type(moveTextbox, "Fall 2022");
+        const selectButton = screen.getByTestId("change-semester-button");
+        selectButton.click();
+
+        const newEditModeButtons =
+            screen.queryAllByTestId("course-edit-button");
+        newEditModeButtons[4].click();
+        const finalTextboxes = screen.getAllByRole("textbox");
+        expect(finalTextboxes[0]).toHaveValue("Introductory English");
+    });
     test("Check to see if the edit mode options are initially hidden", () => {
         const initHeader = screen.queryByText("Overwrite Course Properties");
         const initIDBox = screen.queryByTestId("change-course-id-box");
@@ -453,5 +511,48 @@ describe("Planner Tests", () => {
 
         const finalValue = screen.queryByText("caf");
         expect(finalValue).not.toBeInTheDocument();
+    });
+    test("Check to see if deleting a course works", () => {
+        const initValue = screen.getByText("ENGL110");
+        expect(initValue).toBeInTheDocument();
+
+        const deleteButtons = screen.queryAllByTestId("course-delete-button");
+        deleteButtons[0].click();
+
+        const finalValue = screen.queryByText("ENGL110");
+        expect(finalValue).not.toBeInTheDocument();
+    });
+    test("Check to see if reverting back a course works", () => {
+        const initID = screen.getByText("ENGL110");
+        const initName = screen.getByText("Introductory English");
+        expect(initID).toBeInTheDocument();
+        expect(initName).toBeInTheDocument();
+
+        const editModeButtons = screen.queryAllByTestId("course-edit-button");
+        editModeButtons[0].click();
+        const textBoxes = screen.queryAllByRole("textbox");
+        userEvent.type(textBoxes[0], " (EDITED)");
+        userEvent.type(textBoxes[1], " (EDITED)");
+
+        const saveButton = screen.getByTestId("save-course-edit-button");
+        saveButton.click();
+
+        const initID2 = screen.queryByText("ENGL110");
+        const initName2 = screen.queryByText("Introductory English");
+        expect(initID2).not.toBeInTheDocument();
+        expect(initName2).not.toBeInTheDocument();
+
+        const editModeButtons2 = screen.queryAllByTestId("course-edit-button");
+        editModeButtons2[0].click();
+
+        const revertButton = screen.getByTestId(
+            "restore-default-properties-button"
+        );
+        revertButton.click();
+
+        const initID3 = screen.getByText("ENGL110");
+        const initName3 = screen.getByText("Introductory English");
+        expect(initID3).toBeInTheDocument();
+        expect(initName3).toBeInTheDocument();
     });
 });
