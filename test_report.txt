@@ -2144,7 +2144,35 @@ FAIL src/tests/CourseViewer.test.tsx
           at innerInvokeEventListeners (/home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:341:9)
           at invokeEventListeners (/home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
           at HTMLUnknownElementImpl._dispatch (/home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
-          at HTMLUnknownElementImpl.dispatchEvent (/home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
+          at HTMLUnknownElementImpl.dispatchEvent (/home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/node_----------------------------------------------|---------|----------|---------|---------|-------------------
+File                                          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+----------------------------------------------|---------|----------|---------|---------|-------------------
+All files                                     |    2.01 |     0.14 |    1.75 |    2.01 |                   
+ src                                          |     100 |      100 |     100 |     100 |                   
+  App.tsx                                     |     100 |      100 |     100 |     100 |                   
+ src/components                               |    6.63 |     1.13 |    1.51 |    6.66 |                   
+  CourseViewer.tsx                            |       0 |        0 |       0 |       0 | 47-507            
+  PlanViewer.tsx                              |     7.6 |     1.56 |    2.32 |     7.6 | 52,67-84,91-759   
+  SemesterViewer.tsx                          |    9.09 |        0 |       0 |      10 | 53-174            
+ src/components/utility                       |       0 |        0 |       0 |       0 |                   
+  PlanTester.tsx                              |       0 |        0 |       0 |       0 | 17-431            
+ src/components/utility/concentration-testers |       0 |        0 |       0 |       0 |                   
+  ArtificialIntelligenceTester.tsx            |       0 |        0 |       0 |       0 | 8-143             
+  BioinformaticsTester.tsx                    |       0 |        0 |       0 |       0 | 8-181             
+  CybersecurityTester.tsx                     |       0 |        0 |       0 |       0 | 8-166             
+  DataScienceTester.tsx                       |       0 |        0 |       0 |       0 | 8-178             
+  HighPerformanceDataTester.tsx               |       0 |        0 |       0 |       0 | 8-79              
+  HighPerformanceMathTester.tsx               |       0 |        0 |       0 |       0 | 8-131             
+  SystemsNetworkTester.tsx                    |       0 |        0 |       0 |       0 | 8-189             
+  TheoryCompDiscreteTester.tsx                |       0 |        0 |       0 |       0 | 8-153             
+  TraditionalTester.tsx                       |       0 |        0 |       0 |       0 | 8-88              
+ src/templates                                |       0 |        0 |       0 |       0 |                   
+  ConcentrationCheck.ts                       |       0 |        0 |       0 |       0 |                   
+  course.ts                                   |       0 |        0 |       0 |       0 |                   
+  plan.ts                                     |       0 |        0 |       0 |       0 |                   
+  semester.ts                                 |       0 |        0 |       0 |       0 |                   
+----------------------------------------------|---------|----------|---------|---------|-------------------
+modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
           at HTMLUnknownElement.dispatchEvent (/home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:231:34)
           at Object.invokeGuardedCallbackDev (/home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/node_modules/react-dom/cjs/react-dom.development.js:3994:16)
           at invokeGuardedCallback (/home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/node_modules/react-dom/cjs/react-dom.development.js:4056:31)
@@ -3327,35 +3355,7 @@ FAIL src/tests/CourseViewer.test.tsx
       at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom.development.js:21881:7)
       at updateContainer (node_modules/react-dom/cjs/react-dom.development.js:25482:3)
       at node_modules/react-dom/cjs/react-dom.development.js:26021:7
-      at unbatchedUpdates (node_modules/react-dom/cjs/reac----------------------------------------------|---------|----------|---------|---------|-------------------
-File                                          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
-----------------------------------------------|---------|----------|---------|---------|-------------------
-All files                                     |    2.01 |     0.14 |    1.75 |    2.01 |                   
- src                                          |     100 |      100 |     100 |     100 |                   
-  App.tsx                                     |     100 |      100 |     100 |     100 |                   
- src/components                               |    6.63 |     1.13 |    1.51 |    6.66 |                   
-  CourseViewer.tsx                            |       0 |        0 |       0 |       0 | 47-507            
-  PlanViewer.tsx                              |     7.6 |     1.56 |    2.32 |     7.6 | 52,67-84,91-759   
-  SemesterViewer.tsx                          |    9.09 |        0 |       0 |      10 | 53-174            
- src/components/utility                       |       0 |        0 |       0 |       0 |                   
-  PlanTester.tsx                              |       0 |        0 |       0 |       0 | 17-431            
- src/components/utility/concentration-testers |       0 |        0 |       0 |       0 |                   
-  ArtificialIntelligenceTester.tsx            |       0 |        0 |       0 |       0 | 8-143             
-  BioinformaticsTester.tsx                    |       0 |        0 |       0 |       0 | 8-181             
-  CybersecurityTester.tsx                     |       0 |        0 |       0 |       0 | 8-166             
-  DataScienceTester.tsx                       |       0 |        0 |       0 |       0 | 8-178             
-  HighPerformanceDataTester.tsx               |       0 |        0 |       0 |       0 | 8-79              
-  HighPerformanceMathTester.tsx               |       0 |        0 |       0 |       0 | 8-131             
-  SystemsNetworkTester.tsx                    |       0 |        0 |       0 |       0 | 8-189             
-  TheoryCompDiscreteTester.tsx                |       0 |        0 |       0 |       0 | 8-153             
-  TraditionalTester.tsx                       |       0 |        0 |       0 |       0 | 8-88              
- src/templates                                |       0 |        0 |       0 |       0 |                   
-  ConcentrationCheck.ts                       |       0 |        0 |       0 |       0 |                   
-  course.ts                                   |       0 |        0 |       0 |       0 |                   
-  plan.ts                                     |       0 |        0 |       0 |       0 |                   
-  semester.ts                                 |       0 |        0 |       0 |       0 |                   
-----------------------------------------------|---------|----------|---------|---------|-------------------
-t-dom.development.js:22431:12)
+      at unbatchedUpdates (node_modules/react-dom/cjs/react-dom.development.js:22431:12)
       at legacyRenderSubtreeIntoContainer (node_modules/react-dom/cjs/react-dom.development.js:26020:5)
       at Object.render (node_modules/react-dom/cjs/react-dom.development.js:26103:10)
       at node_modules/@testing-library/react/dist/pure.js:101:25
@@ -5517,5 +5517,5 @@ FAIL src/App.test.tsx
 Test Suites: 4 failed, 4 total
 Tests:       45 failed, 45 total
 Snapshots:   0 total
-Time:        5.926 s
+Time:        7.057 s
 Ran all test suites.
