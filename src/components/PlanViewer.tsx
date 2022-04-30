@@ -63,7 +63,7 @@ export function PlanViewer(): JSX.Element {
     const [year, setYear] = useState<number>(0); //year to set a new semester to
 
     function savePlan() {
-        //function used to save curPlan
+        // function used to save curPlan
         const oldPlan = planSave.find(
             //looking for similar saved plan if its there
             (plan: Plan): boolean => plan.id === curPlan.id
