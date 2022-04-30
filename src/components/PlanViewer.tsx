@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import { Button, Col, Row, Form, Container } from "react-bootstrap";
-import { Course, CourseBackup } from "../templates/course";
+import { Course /*, CourseBackup */ } from "../templates/course";
 import { Semester } from "../templates/semester";
 //import { CourseViewer } from "./CourseViewer";
 import { SemesterViewer } from "./SemesterViewer";
 import { Plan } from "../templates/plan";
-import planList from "../templates/PlansList.json";
+//import planList from "../templates/PlansList.json";
 import { checkPlan } from "./utility/PlanTester";
 
 const termList: string[] = ["Summer", "Fall", "Winter", "Spring"]; //list of diff terms
+
+const plansKey = "planData"; //key for saved plans array
+const previousPlans = localStorage.getItem(plansKey); //getting ahold of previous saved plans
 
 type COURSE_OPERATIONS =
     | "add"
@@ -24,6 +27,7 @@ type COURSE_OPERATIONS =
     | "deletePlan";
 
 export function PlanViewer(): JSX.Element {
+    /*
     const INITIAL_PLANS: Plan[] = planList.map(
         (plan): Plan => ({
             ...plan,
@@ -40,9 +44,16 @@ export function PlanViewer(): JSX.Element {
             )
         })
     );
+    */
+    let planSave: Plan[] = [];
+
+    // reloading previous data if it exists
+    if (previousPlans !== null) {
+        planSave = JSON.parse(previousPlans);
+    }
 
     // This is the State
-    const [allPlans, setAllPlans] = useState<Plan[]>(INITIAL_PLANS);
+    const [allPlans, setAllPlans] = useState<Plan[]>(planSave);
     const [curPlan, setCurPlan] = useState<Plan>(allPlans[0]);
     const [currentConcentration, setCurrentConcentration] = useState<string>(
         "Traditional Computer Science (BS)"
@@ -50,6 +61,29 @@ export function PlanViewer(): JSX.Element {
     const [editSem, setEditSem] = useState<boolean>(false); //boolean state for editable state
     const [term, setTerm] = useState<string>("Fall"); //term to set a new semester to
     const [year, setYear] = useState<number>(0); //year to set a new semester to
+
+    function savePlan() {
+        //function used to save curPlan
+        const oldPlan = planSave.find(
+            //looking for similar saved plan if its there
+            (plan: Plan): boolean => plan.id === curPlan.id
+        );
+        if (oldPlan !== undefined) {
+            //if the saved plan is already there, we update it
+            setAllPlans(
+                allPlans.map(
+                    (plan: Plan): Plan =>
+                        plan.id === curPlan.id ? curPlan : plan
+                )
+            );
+            localStorage.setItem(plansKey, JSON.stringify(allPlans));
+        }
+        if (oldPlan === undefined) {
+            //if its not there, we append it to the end
+            setAllPlans([...allPlans, curPlan]);
+            localStorage.setItem(plansKey, JSON.stringify(allPlans));
+        }
+    }
 
     // Get the total number of credit hours for this Plan
     let totalCredits = 0;
@@ -462,6 +496,13 @@ export function PlanViewer(): JSX.Element {
                             </Button>
                             {"   "}
                             <Button
+                                data-testid="save-plan-button"
+                                onClick={savePlan}
+                            >
+                                Save Plan
+                            </Button>
+                            {"   "}
+                            <Button
                                 data-testid="export-csv-button"
                                 onClick={() => {
                                     for (
@@ -562,13 +603,6 @@ export function PlanViewer(): JSX.Element {
                             borderWidth: "1px",
                             borderStyle: "solid"
                         }}
-                        /*
-                    style={{
-                        borderStyle: "dotted",
-                        borderWidth: "4px",
-                        borderColor: "blue yellow" //rgb(0, 32, 62) //#00539f
-                    }}
-                    */
                     >
                         <Container>
                             <Form.Label>
