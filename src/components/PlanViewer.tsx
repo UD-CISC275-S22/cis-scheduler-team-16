@@ -92,8 +92,138 @@ export function PlanViewer(): JSX.Element {
     );
 
     const CSVdata: string[][] = [
-        ["Semesters", "Years", "Courses", "Credits", "Prereqs", "Requirements"]
+        [
+            "Semesters",
+            "Years",
+            "Courses",
+            "CourseID",
+            "Credits",
+            "Prereqs",
+            "Requirements"
+        ]
     ];
+
+    const [content, setContent] = useState<string>("No file data uploaded");
+
+    function uploadFile(event: React.ChangeEvent<HTMLInputElement>) {
+        // Might have removed the file, need to check that the files exist
+        if (event.target.files && event.target.files.length) {
+            // Get the first filename
+            const filename = event.target.files[0];
+            // Create a reader
+            const reader = new FileReader();
+            // Create lambda callback to handle when we read the file
+            reader.onload = (loadEvent) => {
+                // Target might be null, so provide default error value
+                const newContent =
+                    loadEvent.target?.result || "Data was not loaded";
+                // FileReader provides string or ArrayBuffer, force it to be string
+                setContent(newContent as string);
+            };
+            // Actually read the file
+            reader.readAsText(filename);
+        }
+    }
+
+    function updatePlanCSV() {
+        //console.log("setting plan to : ", allPlans[+event.target.value]);
+        //console.log(allPlans);
+        //console.log(curPlan.semesters);
+        //const courseLookup: Record<string, string[]>;
+
+        console.log(content);
+        const CSVarray = content.substring(62).split(",");
+
+        const newSemesters: Semester[] = [];
+        let newCourses: Course[] = [];
+        console.log(CSVarray.length);
+        let prevString = "";
+        //if(CSVarray[i] + CSVarray[i + 1] === ) {}
+        for (let i = 0; i < CSVarray.length; i++) {
+            console.log(CSVarray[i].trim());
+            console.log("prevString", prevString.trim());
+
+            if (
+                (CSVarray[i].trim() === "Spring" &&
+                    CSVarray[i].trim() + CSVarray[i + 1] != prevString) ||
+                (CSVarray[i].trim() === "Summer" &&
+                    CSVarray[i].trim() + CSVarray[i + 1] != prevString) ||
+                (CSVarray[i].trim() === "Fall" &&
+                    CSVarray[i].trim() + CSVarray[i + 1] != prevString) ||
+                (CSVarray[i].trim() === "Winter" &&
+                    CSVarray[i].trim() + CSVarray[i + 1] != prevString)
+            ) {
+                console.log(
+                    "new semester with different term found adding to newSemesters array"
+                );
+                prevString = CSVarray[i].trim() + CSVarray[i + 1];
+                newCourses = [];
+                newCourses.push({
+                    name: CSVarray[i + 2],
+                    courseId: CSVarray[i + 3],
+                    credithours: +CSVarray[i + 4],
+                    prereqs: CSVarray[i + 5].split("/"),
+                    satisfied_requirements: CSVarray[i + 6].split("/"),
+                    backup: {
+                        name: CSVarray[i + 2],
+                        courseId: CSVarray[i + 3],
+                        credithours: +CSVarray[i + 4],
+                        prereqs: CSVarray[i + 5].split("/"),
+                        satisfied_requirements: CSVarray[i + 6].split("/")
+                    }
+                });
+
+                newSemesters.push({
+                    id: i + 1 + "",
+                    term: CSVarray[i].trim(),
+                    year: +CSVarray[i + 1],
+                    courses: newCourses
+                });
+            } else if (
+                CSVarray[i].trim() === "Spring" ||
+                CSVarray[i].trim() === "Summer" ||
+                CSVarray[i].trim() === "Fall" ||
+                CSVarray[i].trim() === "Winter"
+            ) {
+                console.log("duplicate found, adding to prev semester array");
+                prevString = CSVarray[i].trim() + CSVarray[i + 1];
+
+                newCourses.push({
+                    name: CSVarray[i + 2],
+                    courseId: CSVarray[i + 3],
+                    credithours: +CSVarray[i + 4],
+                    prereqs:
+                        CSVarray[i + 5] != "None"
+                            ? CSVarray[i + 5].split("/")
+                            : ["None"],
+                    satisfied_requirements:
+                        CSVarray[i + 6] != "None"
+                            ? CSVarray[i + 6].split("/")
+                            : ["None"],
+                    backup: {
+                        name: CSVarray[i + 2],
+                        courseId: CSVarray[i + 3],
+                        credithours: +CSVarray[i + 4],
+                        prereqs: CSVarray[i + 5].split("/"),
+                        satisfied_requirements: CSVarray[i + 6].split("/")
+                    }
+                });
+
+                newSemesters[newSemesters.length - 1] = {
+                    ...newSemesters[newSemesters.length - 1],
+                    courses: newCourses
+                };
+            }
+            // console.log("newSemesters in the loop", newSemesters);
+        }
+        console.log("newSemesters", newSemesters);
+
+        //next step: loop through newSemesters array and for all the semesters with the same term AND year, then combine their array of courses
+        //we can do this via pushing all of the courses we find for the semesters that are the same
+
+        const CSV_PLAN: Plan = { ...curPlan, semesters: newSemesters };
+        setCurPlan(CSV_PLAN); //CONVERT STRING TO NUMBER (INDEX)
+    }
 
     //This is the Control
     function updatePlan(event: React.ChangeEvent<HTMLSelectElement>) {
@@ -516,41 +646,53 @@ export function PlanViewer(): JSX.Element {
                                             curPlan.semesters[
                                                 i
                                             ].year.toString();
-
                                         for (const eachcourse of courses) {
-                                            const courseName =
+                                            const courseName = eachcourse.name;
+                                            const courseID =
                                                 eachcourse.courseId;
                                             const credits =
                                                 eachcourse.credithours.toString();
 
                                             let prereqs = eachcourse.prereqs
-                                                .join()
-                                                .toString();
+                                                .join("/")
+                                                .toString()
+                                                .replace(",", "/");
                                             if (
-                                                eachcourse.prereqs.join() === ""
+                                                eachcourse.prereqs.join("/") ===
+                                                ""
                                             )
                                                 prereqs = "None";
                                             let reqs =
-                                                eachcourse.satisfied_requirements.join();
+                                                eachcourse.satisfied_requirements.join(
+                                                    "/"
+                                                ) + ",";
                                             if (
-                                                eachcourse.satisfied_requirements.join() ===
-                                                ""
+                                                eachcourse.satisfied_requirements.join(
+                                                    "/"
+                                                ) === ""
+                                            )
+                                                reqs = "None,";
+                                            if (
+                                                i + 1 ===
+                                                curPlan.semesters.length
                                             )
                                                 reqs = "None";
-
                                             CSVdata.push([
                                                 semesterName,
                                                 semesterYear,
                                                 courseName,
+                                                courseID,
                                                 credits,
                                                 prereqs,
                                                 reqs
                                             ]);
                                         }
                                     }
+
                                     const csvContent = `data:text/csv;charset=utf-8,${CSVdata.map(
                                         (e) => e.join(",")
                                     ).join("\n")}`;
+                                    console.log(csvContent);
 
                                     const encodedUri = encodeURI(csvContent);
                                     const link = document.createElement("a");
@@ -562,6 +704,19 @@ export function PlanViewer(): JSX.Element {
                             >
                                 Export CSV
                             </Button>
+                            <div>
+                                Import CSV File:
+                                <Form.Group controlId="exampleForm">
+                                    <Form.Label>Upload a file</Form.Label>
+                                    <Form.Control
+                                        type="file"
+                                        onChange={uploadFile}
+                                    />
+                                </Form.Group>
+                                <Button onClick={updatePlanCSV}>
+                                    Import CSV
+                                </Button>
+                            </div>
                         </Col>
                     </Form.Group>
                 </div>
