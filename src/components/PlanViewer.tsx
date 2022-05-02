@@ -59,6 +59,7 @@ export function PlanViewer(): JSX.Element {
     const [editSem, setEditSem] = useState<boolean>(false); //boolean state for editable state
     const [term, setTerm] = useState<string>("Fall"); //term to set a new semester to
     const [year, setYear] = useState<number>(0); //year to set a new semester to
+    const [importVisible, setImportVisible] = useState<boolean>(false);
 
     function savePlan() {
         // function used to save curPlan
@@ -604,11 +605,11 @@ export function PlanViewer(): JSX.Element {
                                         opType: "addPlan"
                                     })
                                 }
+                                style={{ marginTop: "5px" }}
                                 data-testID="add-plan-button"
                             >
                                 New Plan
                             </Button>
-                            {"   "}
                             <Button
                                 onClick={() =>
                                     updateSemesterCourse({
@@ -618,20 +619,21 @@ export function PlanViewer(): JSX.Element {
                                         opType: "deletePlan"
                                     })
                                 }
+                                style={{ marginLeft: "5px", marginTop: "5px" }}
                                 data-testID="delete-plan-button"
                             >
                                 Discard Plan
                             </Button>
-                            {"   "}
                             <Button
                                 data-testid="save-plan-button"
                                 onClick={savePlan}
+                                style={{ marginLeft: "5px", marginTop: "5px" }}
                             >
                                 Save Plan
                             </Button>
-                            {"   "}
                             <Button
                                 data-testid="export-csv-button"
+                                style={{ marginLeft: "5px", marginTop: "5px" }}
                                 onClick={() => {
                                     for (
                                         let i = 0;
@@ -704,19 +706,32 @@ export function PlanViewer(): JSX.Element {
                             >
                                 Export CSV
                             </Button>
-                            <div>
-                                Import CSV File:
-                                <Form.Group controlId="exampleForm">
-                                    <Form.Label>Upload a file</Form.Label>
-                                    <Form.Control
-                                        type="file"
-                                        onChange={uploadFile}
-                                    />
-                                </Form.Group>
-                                <Button onClick={updatePlanCSV}>
-                                    Import CSV
-                                </Button>
-                            </div>
+                            <Button
+                                onClick={() => setImportVisible(!importVisible)}
+                                style={{ marginLeft: "5px", marginTop: "5px" }}
+                                data-testId="show-hide-import-button"
+                            >
+                                Import CSV
+                            </Button>
+                            {importVisible && (
+                                <div>
+                                    <Form.Group controlId="exampleForm">
+                                        <Form.Label>Upload a file</Form.Label>
+                                        <Form.Control
+                                            type="file"
+                                            onChange={uploadFile}
+                                        />
+                                    </Form.Group>
+                                    <Button
+                                        onClick={updatePlanCSV}
+                                        style={{
+                                            marginTop: "5px"
+                                        }}
+                                    >
+                                        Import
+                                    </Button>
+                                </div>
+                            )}
                         </Col>
                     </Form.Group>
                 </div>
