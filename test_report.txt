@@ -2,7 +2,7 @@
 > react-typescript-starter@0.1.0 test
 > react-scripts test "--coverage"
 
-PASS src/tests/CourseViewer.test.tsx (5.97 s)
+PASS src/tests/CourseViewer.test.tsx (6.744 s)
   ● Console
 
     console.error
@@ -14,6 +14,29 @@ PASS src/tests/CourseViewer.test.tsx (5.97 s)
           at div
           at /home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/node_modules/react-bootstrap/cjs/Row.js:22:3
           at /home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/node_modules/react-bootstrap/cjs/FormGroup.js:19:3
+          at div
+          at div
+          at PlanViewer (/home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/src/components/PlanViewer.tsx:54:37)
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:67:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:43:5)
+      at validateProperty$1 (node_modules/react-dom/cjs/react-dom.development.js:3513:7)
+      at warnUnknownProperties (node_modules/react-dom/cjs/react-dom.development.js:3559:21)
+      at validateProperties$2 (node_modules/react-dom/cjs/react-dom.development.js:3583:3)
+      at validatePropertiesInDevelopment (node_modules/react-dom/cjs/react-dom.development.js:8765:5)
+      at setInitialProperties (node_modules/react-dom/cjs/react-dom.development.js:9041:5)
+      at finalizeInitialChildren (node_modules/react-dom/cjs/react-dom.development.js:10201:3)
+
+    console.error
+      Warning: React does not recognize the `data-testId` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `data-testid` instead. If you accidentally passed it from a parent component, remove it from the DOM element.
+          at button
+          at /home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/node_modules/react-bootstrap/cjs/Button.js:28:3
+          at div
+          at /home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/node_modules/react-bootstrap/cjs/Col.js:72:8
+          at div
+          at /home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/node_modules/react-bootstrap/cjs/Row.js:22:3
+          at /home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/node_modules/react-bootstrap/cjs/FormGroup.js:19:3
+          at div
           at div
           at div
           at PlanViewer (/home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/src/components/PlanViewer.tsx:54:37)
@@ -88,7 +111,7 @@ PASS src/tests/CourseViewer.test.tsx (5.97 s)
     console.log
       semesterInputID Fall 2022
 
-      at updateSemesterCourse (src/components/PlanViewer.tsx:413:29)
+      at updateSemesterCourse (src/components/PlanViewer.tsx:414:29)
 
     console.log
       semesterFound {
@@ -107,12 +130,12 @@ PASS src/tests/CourseViewer.test.tsx (5.97 s)
         ]
       }
 
-      at updateSemesterCourse (src/components/PlanViewer.tsx:423:29)
+      at updateSemesterCourse (src/components/PlanViewer.tsx:424:29)
 
     console.log
       semester term and year Spring 2022
 
-      at map (src/components/PlanViewer.tsx:428:41)
+      at map (src/components/PlanViewer.tsx:429:41)
           at Array.map (<anonymous>)
 
 PASS src/tests/PlanViewer.test.tsx
@@ -140,13 +163,36 @@ PASS src/tests/PlanViewer.test.tsx
       at setInitialProperties (node_modules/react-dom/cjs/react-dom.development.js:9041:5)
       at finalizeInitialChildren (node_modules/react-dom/cjs/react-dom.development.js:10201:3)
 
+    console.error
+      Warning: React does not recognize the `data-testId` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `data-testid` instead. If you accidentally passed it from a parent component, remove it from the DOM element.
+          at button
+          at /home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/node_modules/react-bootstrap/cjs/Button.js:28:3
+          at div
+          at /home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/node_modules/react-bootstrap/cjs/Col.js:72:8
+          at div
+          at /home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/node_modules/react-bootstrap/cjs/Row.js:22:3
+          at /home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/node_modules/react-bootstrap/cjs/FormGroup.js:19:3
+          at div
+          at div
+          at div
+          at PlanViewer (/home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/src/components/PlanViewer.tsx:54:37)
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:67:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:43:5)
+      at validateProperty$1 (node_modules/react-dom/cjs/react-dom.development.js:3513:7)
+      at warnUnknownProperties (node_modules/react-dom/cjs/react-dom.development.js:3559:21)
+      at validateProperties$2 (node_modules/react-dom/cjs/react-dom.development.js:3583:3)
+      at validatePropertiesInDevelopment (node_modules/react-dom/cjs/react-dom.development.js:8765:5)
+      at setInitialProperties (node_modules/react-dom/cjs/react-dom.development.js:9041:5)
+      at finalizeInitialChildren (node_modules/react-dom/cjs/react-dom.development.js:10201:3)
+
     console.log
       [
         { name: 'My Plan 1', id: '0', semesters: [ [Object], [Object] ] },
         { name: 'My Plan 2', id: '1', semesters: [ [Object], [Object] ] }
       ]
 
-      at updatePlan (src/components/PlanViewer.tsx:231:17)
+      at updatePlan (src/components/PlanViewer.tsx:232:17)
 
     console.log
       [
@@ -159,33 +205,33 @@ PASS src/tests/PlanViewer.test.tsx
         { id: '1', term: 'Fall', year: 2022, courses: [ [Object] ] }
       ]
 
-      at updatePlan (src/components/PlanViewer.tsx:232:17)
+      at updatePlan (src/components/PlanViewer.tsx:233:17)
 
     console.log
       Add Plan:  [
         { name: 'My Plan 1', id: '0', semesters: [ [Object], [Object] ] },
         { name: 'My Plan 2', id: '1', semesters: [ [Object], [Object] ] },
         { name: 'My Plan 3', semesters: [], id: '2' }
-      ]
-
-      at planAdder (src/components/PlanViewer.tsx:289:17)
-
-    console.log
-      Add Plan:  [
-        { name: 'My Plan 1', id: '0', semesters: [ [Object], [Object] ] },
-        { name: 'My Plan 2', id: '1', semesters: [ [Object], [Object] ] }
       ]
 
       at planAdder (src/components/PlanViewer.tsx:290:17)
 
     console.log
+      Add Plan:  [
+        { name: 'My Plan 1', id: '0', semesters: [ [Object], [Object] ] },
+        { name: 'My Plan 2', id: '1', semesters: [ [Object], [Object] ] }
+      ]
+
+      at planAdder (src/components/PlanViewer.tsx:291:17)
+
+    console.log
       [
         { name: 'My Plan 1', id: '0', semesters: [ [Object], [Object] ] },
         { name: 'My Plan 2', id: '1', semesters: [ [Object], [Object] ] },
         { name: 'My Plan 3', semesters: [], id: '2' }
       ]
 
-      at updatePlan (src/components/PlanViewer.tsx:231:17)
+      at updatePlan (src/components/PlanViewer.tsx:232:17)
 
     console.log
       [
@@ -198,7 +244,7 @@ PASS src/tests/PlanViewer.test.tsx
         { id: '1', term: 'Fall', year: 2022, courses: [ [Object] ] }
       ]
 
-      at updatePlan (src/components/PlanViewer.tsx:232:17)
+      at updatePlan (src/components/PlanViewer.tsx:233:17)
 
     console.log
       [
@@ -206,7 +252,7 @@ PASS src/tests/PlanViewer.test.tsx
         { name: 'My Plan 2', id: '1', semesters: [ [Object], [Object] ] }
       ]
 
-      at updatePlan (src/components/PlanViewer.tsx:231:17)
+      at updatePlan (src/components/PlanViewer.tsx:232:17)
 
     console.log
       [
@@ -219,33 +265,33 @@ PASS src/tests/PlanViewer.test.tsx
         { id: '1', term: 'Fall', year: 2022, courses: [ [Object] ] }
       ]
 
-      at updatePlan (src/components/PlanViewer.tsx:232:17)
+      at updatePlan (src/components/PlanViewer.tsx:233:17)
 
     console.log
       Add Plan:  [
         { name: 'My Plan 1', id: '0', semesters: [ [Object], [Object] ] },
         { name: 'My Plan 2', id: '1', semesters: [ [Object], [Object] ] },
         { name: 'My Plan 3', semesters: [], id: '2' }
-      ]
-
-      at planAdder (src/components/PlanViewer.tsx:289:17)
-
-    console.log
-      Add Plan:  [
-        { name: 'My Plan 1', id: '0', semesters: [ [Object], [Object] ] },
-        { name: 'My Plan 2', id: '1', semesters: [ [Object], [Object] ] }
       ]
 
       at planAdder (src/components/PlanViewer.tsx:290:17)
 
     console.log
+      Add Plan:  [
+        { name: 'My Plan 1', id: '0', semesters: [ [Object], [Object] ] },
+        { name: 'My Plan 2', id: '1', semesters: [ [Object], [Object] ] }
+      ]
+
+      at planAdder (src/components/PlanViewer.tsx:291:17)
+
+    console.log
       [
         { name: 'My Plan 1', id: '0', semesters: [ [Object], [Object] ] },
         { name: 'My Plan 2', id: '1', semesters: [ [Object], [Object] ] },
         { name: 'My Plan 3', semesters: [], id: '2' }
       ]
 
-      at updatePlan (src/components/PlanViewer.tsx:231:17)
+      at updatePlan (src/components/PlanViewer.tsx:232:17)
 
     console.log
       [
@@ -258,7 +304,7 @@ PASS src/tests/PlanViewer.test.tsx
         { id: '1', term: 'Fall', year: 2022, courses: [ [Object] ] }
       ]
 
-      at updatePlan (src/components/PlanViewer.tsx:232:17)
+      at updatePlan (src/components/PlanViewer.tsx:233:17)
 
 PASS src/tests/SemesterViewer.test.tsx
   ● Console
@@ -272,6 +318,29 @@ PASS src/tests/SemesterViewer.test.tsx
           at div
           at /home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/node_modules/react-bootstrap/cjs/Row.js:22:3
           at /home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/node_modules/react-bootstrap/cjs/FormGroup.js:19:3
+          at div
+          at div
+          at PlanViewer (/home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/src/components/PlanViewer.tsx:54:37)
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:67:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:43:5)
+      at validateProperty$1 (node_modules/react-dom/cjs/react-dom.development.js:3513:7)
+      at warnUnknownProperties (node_modules/react-dom/cjs/react-dom.development.js:3559:21)
+      at validateProperties$2 (node_modules/react-dom/cjs/react-dom.development.js:3583:3)
+      at validatePropertiesInDevelopment (node_modules/react-dom/cjs/react-dom.development.js:8765:5)
+      at setInitialProperties (node_modules/react-dom/cjs/react-dom.development.js:9041:5)
+      at finalizeInitialChildren (node_modules/react-dom/cjs/react-dom.development.js:10201:3)
+
+    console.error
+      Warning: React does not recognize the `data-testId` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `data-testid` instead. If you accidentally passed it from a parent component, remove it from the DOM element.
+          at button
+          at /home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/node_modules/react-bootstrap/cjs/Button.js:28:3
+          at div
+          at /home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/node_modules/react-bootstrap/cjs/Col.js:72:8
+          at div
+          at /home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/node_modules/react-bootstrap/cjs/Row.js:22:3
+          at /home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/node_modules/react-bootstrap/cjs/FormGroup.js:19:3
+          at div
           at div
           at div
           at PlanViewer (/home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/src/components/PlanViewer.tsx:54:37)
@@ -328,15 +397,40 @@ PASS src/App.test.tsx
       at setInitialProperties (node_modules/react-dom/cjs/react-dom.development.js:9041:5)
       at finalizeInitialChildren (node_modules/react-dom/cjs/react-dom.development.js:10201:3)
 
+    console.error
+      Warning: React does not recognize the `data-testId` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `data-testid` instead. If you accidentally passed it from a parent component, remove it from the DOM element.
+          at button
+          at /home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/node_modules/react-bootstrap/cjs/Button.js:28:3
+          at div
+          at /home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/node_modules/react-bootstrap/cjs/Col.js:72:8
+          at div
+          at /home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/node_modules/react-bootstrap/cjs/Row.js:22:3
+          at /home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/node_modules/react-bootstrap/cjs/FormGroup.js:19:3
+          at div
+          at div
+          at div
+          at PlanViewer (/home/runner/work/cis-scheduler-team-16/cis-scheduler-team-16/src/components/PlanViewer.tsx:54:37)
+          at div
+          at App
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:67:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:43:5)
+      at validateProperty$1 (node_modules/react-dom/cjs/react-dom.development.js:3513:7)
+      at warnUnknownProperties (node_modules/react-dom/cjs/react-dom.development.js:3559:21)
+      at validateProperties$2 (node_modules/react-dom/cjs/react-dom.development.js:3583:3)
+      at validatePropertiesInDevelopment (node_modules/react-dom/cjs/react-dom.development.js:8765:5)
+      at setInitialProperties (node_modules/react-dom/cjs/react-dom.development.js:9041:5)
+      at finalizeInitialChildren (node_modules/react-dom/cjs/react-dom.development.js:10201:3)
+
 ----------------------------------------------|---------|----------|---------|---------|----------------------------------------------------------
 File                                          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                                        
 ----------------------------------------------|---------|----------|---------|---------|----------------------------------------------------------
-All files                                     |   86.64 |    70.75 |   86.66 |   86.73 |                                                          
+All files                                     |   86.54 |     70.7 |   85.95 |   86.64 |                                                          
  src                                          |     100 |      100 |     100 |     100 |                                                          
   App.tsx                                     |     100 |      100 |     100 |     100 |                                                          
- src/components                               |   66.13 |       50 |   77.77 |   66.26 |                                                          
+ src/components                               |      66 |       50 |   76.71 |   66.13 |                                                          
   CourseViewer.tsx                            |     100 |     90.9 |     100 |     100 | 87-88                                                    
-  PlanViewer.tsx                              |   60.66 |    39.13 |   71.42 |   60.95 | 50,65-82,110-225,259,294-302,466-473,636-702,785,817,912 
+  PlanViewer.tsx                              |   60.56 |    39.36 |      70 |   60.84 | 50,66-83,111-226,260,295-303,467-474,638-710,800,832,927 
   SemesterViewer.tsx                          |   81.81 |      100 |   71.42 |      80 | 154-161                                                  
  src/components/utility                       |   98.98 |     73.1 |     100 |   98.98 |                                                          
   PlanTester.tsx                              |   98.98 |     73.1 |     100 |   98.98 | 245                                                      
@@ -360,5 +454,5 @@ All files                                     |   86.64 |    70.75 |   86.66 |  
 Test Suites: 4 passed, 4 total
 Tests:       45 passed, 45 total
 Snapshots:   0 total
-Time:        9.381 s
+Time:        10.453 s
 Ran all test suites.
