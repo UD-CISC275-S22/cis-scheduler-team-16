@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Course } from "../../templates/course";
 import { Semester } from "../../templates/semester";
 import { Plan } from "../../templates/plan";
@@ -12,8 +12,11 @@ import { testHPDataRequirements } from "./concentration-testers/HighPerformanceD
 import { testSystemNetworkRequirements } from "./concentration-testers/SystemsNetworkTester";
 import { testTheoryDiscreteRequirements } from "./concentration-testers/TheoryCompDiscreteTester";
 import { testTraditionalRequirements } from "./concentration-testers/TraditionalTester";
+import { Button, Col, Form, Row } from "react-bootstrap";
 
 export function checkPlan(plan: Plan, concentration: string): JSX.Element {
+    const [problemsVisible, setProblemsVisible] = useState<boolean>(true);
+
     const planCourseNames: string[] = [];
     const planCourses: Course[] = [];
     let creditCount = 0;
@@ -314,126 +317,216 @@ export function checkPlan(plan: Plan, concentration: string): JSX.Element {
                             marginRight: "10px"
                         }}
                     >
-                        <h4 style={{ marginBottom: "0px" }}>
-                            <strong>There are problems with this plan</strong>
-                        </h4>
-                        <strong>Please correct the following issues:</strong>
-                        <ul>
-                            {creditCount < 124 && (
-                                <li>Fewer than 124 credit hours in plan</li>
-                            )}
-                            {!checkSEM && (
-                                <li>
-                                    First Year Writing Seminar requirement not
-                                    fulfilled
-                                </li>
-                            )}
-                            {!checkCapstone && (
-                                <li>
-                                    Capstone series not included (CISC498/499 or
-                                    UNIV401/402)
-                                </li>
-                            )}
-                            {!checkDLE && (
-                                <li>
-                                    Discovery Learning Experience requirement
-                                    not fulfilled
-                                </li>
-                            )}
-                            {!checkMulticultural && (
-                                <li>
-                                    University Multicultural breadth requirement
-                                    not fulfilled
-                                </li>
-                            )}
-                            {!checkCAH && (
-                                <li>
-                                    University Creative Arts and Humanities
-                                    breadth requirement not fulfilled
-                                </li>
-                            )}
-                            {!checkHCC && (
-                                <li>
-                                    University History and Cultural Change
-                                    breadth requirement not fulfilled
-                                </li>
-                            )}
-                            {!checkSBS && (
-                                <li>
-                                    University Social and Behavioral Sciences
-                                    breadth requirement not fulfilled
-                                </li>
-                            )}
-                            {!checkMNT && (
-                                <li>
-                                    University Math, Natural Science, and
-                                    Technology breadth requirement not fulfilled
-                                </li>
-                            )}
-                            {!checkLabScience && (
-                                <li>Lab Science series not included</li>
-                            )}
-                            {!checkLOWER && (
-                                <li>
-                                    College of Engineering non-upper level
-                                    breadth requirement not fulfilled
-                                </li>
-                            )}
-                            {!checkUPP && (
-                                <li>
-                                    College of Engineering upper level breadth
-                                    requirement not fulfilled
-                                </li>
-                            )}
-                            {!checkTWR && (
-                                <li>
-                                    Technical writing requirement not fulfilled
-                                </li>
-                            )}
-                            {!checkCORE && (
-                                <li>
-                                    The following core CISC requirements have
-                                    not been fulfilled:
-                                    <ul>{!checkCISC108 && <li>CISC108</li>}</ul>
-                                    <ul>{!checkCISC181 && <li>CISC181</li>}</ul>
-                                    <ul>{!checkCISC210 && <li>CISC210</li>}</ul>
-                                    <ul>{!checkCISC220 && <li>CISC220</li>}</ul>
-                                    <ul>{!checkCISC260 && <li>CISC260</li>}</ul>
-                                    <ul>{!checkCISC275 && <li>CISC275</li>}</ul>
-                                    <ul>{!checkCISC303 && <li>CISC303</li>}</ul>
-                                    <ul>{!checkCISC320 && <li>CISC320</li>}</ul>
-                                    <ul>{!checkCISC355 && <li>CISC355</li>}</ul>
-                                    <ul>{!checkMATH210 && <li>MATH210</li>}</ul>
-                                    <ul>{!checkMATH241 && <li>MATH241</li>}</ul>
-                                </li>
-                            )}
-                            {prereqFailCourses.length > 0 && (
-                                <li>
-                                    {
-                                        "The following courses have not had all their prerequirements met:"
+                        <Form.Group as={Row}>
+                            <Col>
+                                <h4
+                                    style={{
+                                        marginBottom: "0px",
+                                        marginTop: "5px"
+                                    }}
+                                >
+                                    <strong>
+                                        There are problems with this plan
+                                    </strong>
+                                </h4>
+                            </Col>
+                            <Col
+                                style={{
+                                    marginTop: "5px",
+                                    marginBottom: "5px",
+                                    marginRight: "5px",
+                                    textAlign: "right"
+                                }}
+                            >
+                                <Button
+                                    onClick={() =>
+                                        setProblemsVisible(!problemsVisible)
                                     }
+                                >
+                                    {!problemsVisible
+                                        ? "Expand Plan Status"
+                                        : "Contract Plan Status"}
+                                </Button>
+                            </Col>
+                        </Form.Group>
 
-                                    <ul>
-                                        {prereqFailCourses.map(
-                                            (course: string) => (
-                                                <li
-                                                    key={`prereq-fail-${course}`}
-                                                >
-                                                    {course}
-                                                </li>
-                                            )
-                                        )}
-                                    </ul>
-                                </li>
-                            )}
-                            {concentrationResults.errorMessages.map(
-                                (error: string) => (
-                                    <li key={`concentration-fail-${error}`}>
-                                        {error}
-                                    </li>
-                                )
-                            )}
-                        </ul>
+                        {problemsVisible && (
+                            <div>
+                                <strong>
+                                    Please correct the following issues:
+                                </strong>
+                                <ul>
+                                    {creditCount < 124 && (
+                                        <li>
+                                            Fewer than 124 credit hours in plan
+                                        </li>
+                                    )}
+                                    {!checkSEM && (
+                                        <li>
+                                            First Year Writing Seminar
+                                            requirement not fulfilled
+                                        </li>
+                                    )}
+                                    {!checkCapstone && (
+                                        <li>
+                                            Capstone series not included
+                                            (CISC498/499 or UNIV401/402)
+                                        </li>
+                                    )}
+                                    {!checkDLE && (
+                                        <li>
+                                            Discovery Learning Experience
+                                            requirement not fulfilled
+                                        </li>
+                                    )}
+                                    {!checkMulticultural && (
+                                        <li>
+                                            University Multicultural breadth
+                                            requirement not fulfilled
+                                        </li>
+                                    )}
+                                    {!checkCAH && (
+                                        <li>
+                                            University Creative Arts and
+                                            Humanities breadth requirement not
+                                            fulfilled
+                                        </li>
+                                    )}
+                                    {!checkHCC && (
+                                        <li>
+                                            University History and Cultural
+                                            Change breadth requirement not
+                                            fulfilled
+                                        </li>
+                                    )}
+                                    {!checkSBS && (
+                                        <li>
+                                            University Social and Behavioral
+                                            Sciences breadth requirement not
+                                            fulfilled
+                                        </li>
+                                    )}
+                                    {!checkMNT && (
+                                        <li>
+                                            University Math, Natural Science,
+                                            and Technology breadth requirement
+                                            not fulfilled
+                                        </li>
+                                    )}
+                                    {!checkLabScience && (
+                                        <li>Lab Science series not included</li>
+                                    )}
+                                    {!checkLOWER && (
+                                        <li>
+                                            College of Engineering non-upper
+                                            level breadth requirement not
+                                            fulfilled
+                                        </li>
+                                    )}
+                                    {!checkUPP && (
+                                        <li>
+                                            College of Engineering upper level
+                                            breadth requirement not fulfilled
+                                        </li>
+                                    )}
+                                    {!checkTWR && (
+                                        <li>
+                                            Technical writing requirement not
+                                            fulfilled
+                                        </li>
+                                    )}
+                                    {!checkCORE && (
+                                        <li>
+                                            The following core CISC requirements
+                                            have not been fulfilled:
+                                            <ul>
+                                                {!checkCISC108 && (
+                                                    <li>CISC108</li>
+                                                )}
+                                            </ul>
+                                            <ul>
+                                                {!checkCISC181 && (
+                                                    <li>CISC181</li>
+                                                )}
+                                            </ul>
+                                            <ul>
+                                                {!checkCISC210 && (
+                                                    <li>CISC210</li>
+                                                )}
+                                            </ul>
+                                            <ul>
+                                                {!checkCISC220 && (
+                                                    <li>CISC220</li>
+                                                )}
+                                            </ul>
+                                            <ul>
+                                                {!checkCISC260 && (
+                                                    <li>CISC260</li>
+                                                )}
+                                            </ul>
+                                            <ul>
+                                                {!checkCISC275 && (
+                                                    <li>CISC275</li>
+                                                )}
+                                            </ul>
+                                            <ul>
+                                                {!checkCISC303 && (
+                                                    <li>CISC303</li>
+                                                )}
+                                            </ul>
+                                            <ul>
+                                                {!checkCISC320 && (
+                                                    <li>CISC320</li>
+                                                )}
+                                            </ul>
+                                            <ul>
+                                                {!checkCISC355 && (
+                                                    <li>CISC355</li>
+                                                )}
+                                            </ul>
+                                            <ul>
+                                                {!checkMATH210 && (
+                                                    <li>MATH210</li>
+                                                )}
+                                            </ul>
+                                            <ul>
+                                                {!checkMATH241 && (
+                                                    <li>MATH241</li>
+                                                )}
+                                            </ul>
+                                        </li>
+                                    )}
+                                    {prereqFailCourses.length > 0 && (
+                                        <li>
+                                            {
+                                                "The following courses have not had all their prerequirements met:"
+                                            }
+
+                                            <ul>
+                                                {prereqFailCourses.map(
+                                                    (course: string) => (
+                                                        <li
+                                                            key={`prereq-fail-${course}`}
+                                                        >
+                                                            {course}
+                                                        </li>
+                                                    )
+                                                )}
+                                            </ul>
+                                        </li>
+                                    )}
+                                    {concentrationResults.errorMessages.map(
+                                        (error: string) => (
+                                            <li
+                                                key={`concentration-fail-${error}`}
+                                            >
+                                                {error}
+                                            </li>
+                                        )
+                                    )}
+                                </ul>
+                            </div>
+                        )}
                     </div>
                 </div>
             )}
