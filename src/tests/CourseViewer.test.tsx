@@ -65,7 +65,7 @@ describe("Planner Tests", () => {
         editModeButtons[0].click();
         editModeButtons[1].click();
         const textboxes = screen.getAllByRole("textbox");
-        expect(textboxes[0]).toHaveValue("Introductory English");
+        expect(textboxes[2]).toHaveValue("Introductory English");
         editModeButtons[0].click();
         editModeButtons[1].click();
 
@@ -79,13 +79,13 @@ describe("Planner Tests", () => {
         newEditModeButtons[0].click();
         newEditModeButtons[1].click();
         const newTextboxes = screen.getAllByRole("textbox");
-        expect(newTextboxes[0]).toHaveValue("Discrete Mathematics");
+        expect(newTextboxes[2]).toHaveValue("Discrete Mathematics");
     });
     test("Check to see that the move up button is working", () => {
         const editModeButtons = screen.queryAllByTestId("course-edit-button");
         editModeButtons[0].click();
         const textboxes = screen.getAllByRole("textbox");
-        expect(textboxes[0]).toHaveValue("Introductory English");
+        expect(textboxes[2]).toHaveValue("Introductory English");
         editModeButtons[0].click();
 
         const moveButtons = screen.getAllByTestId("move-course-button");
@@ -97,19 +97,19 @@ describe("Planner Tests", () => {
             screen.queryAllByTestId("course-edit-button");
         newEditModeButtons[0].click();
         const newTextboxes = screen.getAllByRole("textbox");
-        expect(newTextboxes[1]).toHaveValue("Discrete Mathematics");
+        expect(newTextboxes[3]).toHaveValue("Discrete Mathematics");
     });
     test("Check to see that moving to a new semester works", () => {
         const editModeButtons = screen.queryAllByTestId("course-edit-button");
         editModeButtons[0].click();
         const initTextboxes = screen.getAllByRole("textbox");
-        expect(initTextboxes[0]).toHaveValue("Introductory English");
+        expect(initTextboxes[2]).toHaveValue("Introductory English");
         editModeButtons[0].click();
 
         const moveButtons = screen.getAllByTestId("move-course-button");
         moveButtons[0].click();
-        const moveTextbox = screen.getByRole("textbox");
-        userEvent.type(moveTextbox, "Fall 2022");
+        const moveTextbox = screen.getAllByRole("textbox");
+        userEvent.type(moveTextbox[2], "Fall 2022");
         const selectButton = screen.getByTestId("change-semester-button");
         selectButton.click();
 
@@ -117,7 +117,7 @@ describe("Planner Tests", () => {
             screen.queryAllByTestId("course-edit-button");
         newEditModeButtons[4].click();
         const finalTextboxes = screen.getAllByRole("textbox");
-        expect(finalTextboxes[0]).toHaveValue("Introductory English");
+        expect(finalTextboxes[2]).toHaveValue("Introductory English");
     });
     test("Check to see if the edit mode options are initially hidden", () => {
         const initHeader = screen.queryByText("Overwrite Course Properties");
@@ -221,7 +221,7 @@ describe("Planner Tests", () => {
         editModeButtons[0].click();
 
         const initIDBox = screen.getAllByRole("textbox");
-        userEvent.type(initIDBox[0], " (Edited)");
+        userEvent.type(initIDBox[2], " (Edited)");
 
         const saveButton = screen.getByTestId("save-course-edit-button");
         saveButton.click();
@@ -237,7 +237,7 @@ describe("Planner Tests", () => {
         editModeButtons[0].click();
 
         const initIDBox = screen.getAllByRole("textbox");
-        userEvent.type(initIDBox[1], "X");
+        userEvent.type(initIDBox[3], "X");
 
         const saveButton = screen.getByTestId("save-course-edit-button");
         saveButton.click();
@@ -275,7 +275,7 @@ describe("Planner Tests", () => {
         editModeButtons[0].click();
 
         const initIDBox = screen.getAllByRole("textbox");
-        userEvent.type(initIDBox[2], "Prerequisite1");
+        userEvent.type(initIDBox[4], "Prerequisite1");
 
         const saveButton = screen.getByTestId("save-course-edit-button");
         saveButton.click();
@@ -531,8 +531,8 @@ describe("Planner Tests", () => {
         const editModeButtons = screen.queryAllByTestId("course-edit-button");
         editModeButtons[0].click();
         const textBoxes = screen.queryAllByRole("textbox");
-        userEvent.type(textBoxes[0], " (EDITED)");
-        userEvent.type(textBoxes[1], " (EDITED)");
+        userEvent.type(textBoxes[2], " (EDITED)");
+        userEvent.type(textBoxes[3], " (EDITED)");
 
         const saveButton = screen.getByTestId("save-course-edit-button");
         saveButton.click();

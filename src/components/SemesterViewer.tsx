@@ -139,27 +139,28 @@ export const SemesterViewer = ({
                             )
                         }
                         data-testID="addCourse-button"
+                        style={{ marginTop: "5px", marginRight: "5px" }}
                     >
-                        {" "}
-                        Insert Course{" "}
-                    </Button>{" "}
+                        Add Blank Course
+                    </Button>
                     <Button
                         onClick={() => clearSemester(semesterIndex)}
                         data-testID="clearSemester-button"
+                        style={{ marginTop: "5px", marginRight: "5px" }}
                     >
-                        {" "}
                         Clear Semester
-                    </Button>{" "}
+                    </Button>
                     <Button
                         onClick={() => deleteSemester(semesterIndex)}
                         data-testID="deleteSemester-button"
+                        style={{ marginTop: "5px", marginRight: "5px" }}
                     >
-                        {" "}
                         Remove Semester
-                    </Button>{" "}
+                    </Button>
                     <Button
                         onClick={() => setVisible(!visible)}
                         data-testID="show/hide-button"
+                        style={{ marginTop: "5px", marginRight: "5px" }}
                     >
                         Show/Hide
                     </Button>

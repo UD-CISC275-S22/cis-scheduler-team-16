@@ -7,6 +7,7 @@ import { SemesterViewer } from "./SemesterViewer";
 import { Plan } from "../templates/plan";
 import planList from "../templates/PlansList.json";
 import { checkPlan } from "./utility/PlanTester";
+import { generateCoursePool } from "./utility/GenerateCoursePool";
 
 const termList: string[] = ["Summer", "Fall", "Winter", "Spring"]; //list of diff terms
 
@@ -15,6 +16,7 @@ const previousPlans = localStorage.getItem(plansKey); //getting ahold of previou
 
 type COURSE_OPERATIONS =
     | "add"
+    | "addFromPool"
     | "update"
     | "delete"
     | "clear"
@@ -59,7 +61,13 @@ export function PlanViewer(): JSX.Element {
     const [editSem, setEditSem] = useState<boolean>(false); //boolean state for editable state
     const [term, setTerm] = useState<string>("Fall"); //term to set a new semester to
     const [year, setYear] = useState<number>(0); //year to set a new semester to
+    const [poolTerm, setPoolTerm] = useState<string>("Fall");
+    const [poolYear, setPoolYear] = useState<number>(2022);
+    const [poolEntry, setPoolEntry] = useState<string>("");
     const [importVisible, setImportVisible] = useState<boolean>(false);
+
+    //Set up the course pool for the current Plan:
+    const COURSE_POOL: Course[] = generateCoursePool(curPlan.semesters);
 
     function savePlan() {
         // function used to save curPlan
@@ -260,6 +268,36 @@ export function PlanViewer(): JSX.Element {
         setTerm(event.target.value);
     }
 
+    function updatePoolTerm(event: React.ChangeEvent<HTMLSelectElement>) {
+        setPoolTerm(event.target.value);
+    }
+
+    function addFromCoursePool() {
+        let foundCourse: Course;
+        COURSE_POOL.map((course: Course) => {
+            if (
+                course.backup.courseId.toLowerCase() === poolEntry.toLowerCase()
+            ) {
+                foundCourse = course;
+            }
+        });
+
+        curPlan.semesters.map((semester: Semester, index: number) => {
+            if (
+                semester.term.toLowerCase() === poolTerm.toLowerCase() &&
+                semester.year === poolYear
+            ) {
+                updateSemesterCourse({
+                    course: foundCourse,
+                    semesterIndex: index,
+                    opType: "addFromPool"
+                });
+            }
+        });
+
+        console.log(curPlan.semesters);
+    }
+
     /**
      * This function takes a index, and a semester which we use to update the plan's semester at that index
      * @param index The index of the semester in curPlan we are updating
@@ -347,6 +385,19 @@ export function PlanViewer(): JSX.Element {
                         {
                             ...course,
                             courseId: "COUR0" + `${semester.courses.length + 1}`
+                        }
+                    ];
+                }
+                planSetter(semesterIndex, semester);
+                break;
+            }
+            case "addFromPool": {
+                // add course
+                if (course) {
+                    semester.courses = [
+                        ...semester.courses,
+                        {
+                            ...course
                         }
                     ];
                 }
@@ -495,6 +546,7 @@ export function PlanViewer(): JSX.Element {
     return (
         <div>
             <hr></hr>
+            {/**COURSE_POOL.map((course: Course) => course.courseId + " ")*/}
             <div style={{ marginLeft: "20px", marginRight: "20px" }}>
                 {/** This is where the new code for checking correctness is going to go */}
                 <Form.Group
@@ -605,7 +657,7 @@ export function PlanViewer(): JSX.Element {
                                         opType: "addPlan"
                                     })
                                 }
-                                style={{ marginTop: "5px" }}
+                                style={{ marginTop: "5px", marginRight: "5px" }}
                                 data-testID="add-plan-button"
                             >
                                 New Plan
@@ -619,7 +671,7 @@ export function PlanViewer(): JSX.Element {
                                         opType: "deletePlan"
                                     })
                                 }
-                                style={{ marginLeft: "5px", marginTop: "5px" }}
+                                style={{ marginRight: "5px", marginTop: "5px" }}
                                 data-testID="delete-plan-button"
                             >
                                 Discard Plan
@@ -627,13 +679,13 @@ export function PlanViewer(): JSX.Element {
                             <Button
                                 data-testid="save-plan-button"
                                 onClick={savePlan}
-                                style={{ marginLeft: "5px", marginTop: "5px" }}
+                                style={{ marginRight: "5px", marginTop: "5px" }}
                             >
                                 Save Plan
                             </Button>
                             <Button
                                 data-testid="export-csv-button"
-                                style={{ marginLeft: "5px", marginTop: "5px" }}
+                                style={{ marginRight: "5px", marginTop: "5px" }}
                                 onClick={() => {
                                     for (
                                         let i = 0;
@@ -708,7 +760,7 @@ export function PlanViewer(): JSX.Element {
                             </Button>
                             <Button
                                 onClick={() => setImportVisible(!importVisible)}
-                                style={{ marginLeft: "5px", marginTop: "5px" }}
+                                style={{ marginRight: "5px", marginTop: "5px" }}
                                 data-testId="show-hide-import-button"
                             >
                                 Import CSV
@@ -735,7 +787,9 @@ export function PlanViewer(): JSX.Element {
                         </Col>
                     </Form.Group>
                 </div>
-                <hr></hr>
+                <div style={{ marginBottom: "20px", marginTop: "20px" }}>
+                    {checkPlan(curPlan, currentConcentration)}
+                </div>
                 <Form.Group as={Row} style={{ marginBottom: "0px" }}>
                     <Col style={{ textAlign: "left", marginBottom: "0px" }}>
                         <h4 style={{ marginBottom: "0px" }}>
@@ -838,9 +892,62 @@ export function PlanViewer(): JSX.Element {
                     </div>
                 )}
                 <p>Total Credit Hours in this Plan: {totalCredits}</p>
-                <div style={{ marginBottom: "20px" }}>
-                    {checkPlan(curPlan, currentConcentration)}
-                </div>
+            </div>
+            <hr></hr>
+            {/** Users can add courses from the course pool to the semester */}
+            <div style={{ marginLeft: "10%", marginRight: "10%" }}>
+                <h5>
+                    <strong>
+                        Add Course from University of Delaware Course Pool
+                    </strong>
+                </h5>
+                <Form.Label>
+                    Please enter the Course ID of your desired course
+                </Form.Label>
+                <Form.Control
+                    data-testId="course-pool-entry-box"
+                    onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                        setPoolEntry(event.target.value)
+                    }
+                ></Form.Control>
+                <Form.Label style={{ marginTop: "5px" }}>
+                    Pick a term and year
+                </Form.Label>
+                <Row>
+                    <Col style={{ marginLeft: "35%" }}>
+                        <Form.Select
+                            value={poolTerm}
+                            onChange={updatePoolTerm}
+                            data-testID="course-pool-term-dropdown"
+                        >
+                            {termList.map((newTerm: string) => (
+                                <option key={newTerm} value={newTerm}>
+                                    {newTerm}
+                                </option>
+                            ))}
+                        </Form.Select>
+                    </Col>
+                    <Col style={{ marginRight: "35%" }}>
+                        <Form.Control
+                            value={poolYear}
+                            onChange={(
+                                event: React.ChangeEvent<HTMLInputElement>
+                            ) => setPoolYear(parseInt(event.target.value) || 0)}
+                            data-testID="course-pool-year-textbox"
+                        />
+                    </Col>
+                </Row>
+                <Button
+                    style={{
+                        backgroundColor: "green",
+                        marginTop: "10px",
+                        marginBottom: "20px",
+                        borderStyle: "none"
+                    }}
+                    onClick={addFromCoursePool}
+                >
+                    Add Course
+                </Button>
             </div>
             {curPlan.semesters.map((eachSemester: Semester, ind: number) => {
                 return (
