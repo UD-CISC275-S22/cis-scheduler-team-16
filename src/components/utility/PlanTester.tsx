@@ -80,7 +80,7 @@ export function checkPlan(plan: Plan, concentration: string): JSX.Element {
     const capstoneCourses: string[] = [];
     planCourses.map((course: Course) => {
         if (course.satisfied_requirements.includes("cap")) {
-            capstoneCourses.push(course.courseId);
+            capstoneCourses.push(course.courseId.toLowerCase());
         }
     });
     const checkCapstone =
