@@ -20,8 +20,8 @@ describe("Planner Tests", () => {
         const title = screen.queryByText(/Choose your planned concentration/gi);
         expect(title).toBeInTheDocument();
     });
-    test("There are two select boxes", () => {
-        expect(screen.queryAllByRole("combobox")).toHaveLength(2);
+    test("There are three select boxes", () => {
+        expect(screen.queryAllByRole("combobox")).toHaveLength(3);
     });
     test("You can select another plan which displays it on the screen", () => {
         const select = screen.queryAllByRole("combobox");
