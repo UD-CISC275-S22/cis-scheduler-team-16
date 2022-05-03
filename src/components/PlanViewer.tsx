@@ -787,7 +787,9 @@ export function PlanViewer(): JSX.Element {
                         </Col>
                     </Form.Group>
                 </div>
-                <hr></hr>
+                <div style={{ marginBottom: "20px", marginTop: "20px" }}>
+                    {checkPlan(curPlan, currentConcentration)}
+                </div>
                 <Form.Group as={Row} style={{ marginBottom: "0px" }}>
                     <Col style={{ textAlign: "left", marginBottom: "0px" }}>
                         <h4 style={{ marginBottom: "0px" }}>
@@ -890,9 +892,6 @@ export function PlanViewer(): JSX.Element {
                     </div>
                 )}
                 <p>Total Credit Hours in this Plan: {totalCredits}</p>
-                <div style={{ marginBottom: "20px" }}>
-                    {checkPlan(curPlan, currentConcentration)}
-                </div>
             </div>
             <hr></hr>
             {/** Users can add courses from the course pool to the semester */}
@@ -942,6 +941,7 @@ export function PlanViewer(): JSX.Element {
                     style={{
                         backgroundColor: "green",
                         marginTop: "10px",
+                        marginBottom: "20px",
                         borderStyle: "none"
                     }}
                     onClick={addFromCoursePool}
@@ -949,7 +949,6 @@ export function PlanViewer(): JSX.Element {
                     Add Course
                 </Button>
             </div>
-            <hr></hr>
             {curPlan.semesters.map((eachSemester: Semester, ind: number) => {
                 return (
                     <SemesterViewer
@@ -1042,7 +1041,4 @@ export function PlanViewer(): JSX.Element {
             })}
         </div>
     );
-}
-function updatePlanSemester() {
-    throw new Error("Function not implemented.");
 }

@@ -15,7 +15,7 @@ import { testTraditionalRequirements } from "./concentration-testers/Traditional
 import { Button, Col, Form, Row } from "react-bootstrap";
 
 export function checkPlan(plan: Plan, concentration: string): JSX.Element {
-    const [problemsVisible, setProblemsVisible] = useState<boolean>(true);
+    const [problemsVisible, setProblemsVisible] = useState<boolean>(false);
 
     const planCourseNames: string[] = [];
     const planCourses: Course[] = [];
@@ -271,7 +271,6 @@ export function checkPlan(plan: Plan, concentration: string): JSX.Element {
 
     return (
         <div>
-            <hr></hr>
             {isValid && (
                 <div
                     style={{
