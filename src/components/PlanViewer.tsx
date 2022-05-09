@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Button, Col, Row, Form, Container } from "react-bootstrap";
-import { Course, CourseBackup } from "../templates/course";
+import { Course /*, CourseBackup */ } from "../templates/course";
 import { Semester } from "../templates/semester";
 //import { CourseViewer } from "./CourseViewer";
 import { SemesterViewer } from "./SemesterViewer";
 import { Plan } from "../templates/plan";
-import planList from "../templates/PlansList.json";
+//import planList from "../templates/PlansList.json";
 import { checkPlan } from "./utility/PlanTester";
 import { generateCoursePool } from "./utility/GenerateCoursePool";
 
@@ -29,6 +29,7 @@ type COURSE_OPERATIONS =
     | "deletePlan";
 
 export function PlanViewer(): JSX.Element {
+    /*
     const INITIAL_PLANS: Plan[] = planList.map(
         (plan): Plan => ({
             ...plan,
@@ -45,6 +46,7 @@ export function PlanViewer(): JSX.Element {
             )
         })
     );
+    */
     let planSave: Plan[] = [];
 
     // reloading previous data if it exists
@@ -53,7 +55,7 @@ export function PlanViewer(): JSX.Element {
     }
 
     // This is the State
-    const [allPlans, setAllPlans] = useState<Plan[]>(INITIAL_PLANS); //changed from planSave initial value
+    const [allPlans, setAllPlans] = useState<Plan[]>(planSave); //changed from planSave initial value
     const [curPlan, setCurPlan] = useState<Plan>(allPlans[0]);
     const [currentConcentration, setCurrentConcentration] = useState<string>(
         "Traditional Computer Science (BS)"
