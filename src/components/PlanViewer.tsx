@@ -940,6 +940,7 @@ export function PlanViewer(): JSX.Element {
                     </Col>
                 </Row>
                 <Button
+                    data-testID="addCourse-pool-button"
                     style={{
                         backgroundColor: "green",
                         marginTop: "10px",
