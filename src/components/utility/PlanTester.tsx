@@ -56,7 +56,8 @@ export function checkPlan(plan: Plan, concentration: string): JSX.Element {
                     (!seenCourse.includes(prerequisite) &&
                         prerequisite !== "None") ||
                     (semesterCourses.includes(course.courseId.toLowerCase()) &&
-                        semesterCourses.includes(prerequisite))
+                        semesterCourses.includes(prerequisite) &&
+                        !prereqFailCourses.includes(course.courseId))
                 ) {
                     prereqFailCourses.push(course.courseId);
                 }
