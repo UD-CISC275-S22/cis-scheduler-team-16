@@ -68,11 +68,10 @@ export function PlanViewer(): JSX.Element {
     const [importVisible, setImportVisible] = useState<boolean>(false);
     const [showMessage, setShowMessage] = useState<boolean>(false);
     const [modalMessage, setModalMessage] = useState<string>("");
+    const [modalHeader, setModalHeader] = useState<string>("");
 
     //Set up the course pool for the current Plan:
     const COURSE_POOL: Course[] = generateCoursePool(curPlan.semesters);
-
-    const hideModal = () => setShowMessage(false);
 
     function savePlan() {
         // function used to save curPlan
@@ -279,29 +278,43 @@ export function PlanViewer(): JSX.Element {
 
     function addFromCoursePool() {
         let foundCourse: Course;
+        let courseExists = false;
+
         COURSE_POOL.map((course: Course) => {
             if (
                 course.backup.courseId.toLowerCase() === poolEntry.toLowerCase()
             ) {
                 foundCourse = course;
+                courseExists = true;
             }
         });
 
-        curPlan.semesters.map((semester: Semester, index: number) => {
-            if (
-                semester.term.toLowerCase() === poolTerm.toLowerCase() &&
-                semester.year === poolYear
-            ) {
-                updateSemesterCourse({
-                    course: foundCourse,
-                    semesterIndex: index,
-                    opType: "addFromPool"
-                });
+        if (courseExists) {
+            curPlan.semesters.map((semester: Semester, index: number) => {
+                if (
+                    semester.term.toLowerCase() === poolTerm.toLowerCase() &&
+                    semester.year === poolYear
+                ) {
+                    updateSemesterCourse({
+                        course: foundCourse,
+                        semesterIndex: index,
+                        opType: "addFromPool"
+                    });
 
-                setModalMessage(poolEntry);
-                setShowMessage(true);
-            }
-        });
+                    setModalMessage(
+                        `Successfully added ${poolEntry} to ${semester.term} ${semester.year}`
+                    );
+                    setModalHeader("Action Successful");
+                    setShowMessage(true);
+                }
+            });
+        } else {
+            setModalHeader("Action Unsuccessful");
+            setModalMessage(
+                `Was unable to add ${poolEntry} to ${poolTerm} ${poolYear}. Did you spell the course code incorrectly, or is the course already in your plan?`
+            );
+            setShowMessage(true);
+        }
     }
 
     /**
@@ -556,6 +569,7 @@ export function PlanViewer(): JSX.Element {
                 <DisplayMessage
                     show={showMessage}
                     handleClose={() => setShowMessage(false)}
+                    header={modalHeader}
                     message={modalMessage}
                 ></DisplayMessage>
             )}

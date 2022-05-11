@@ -4,10 +4,12 @@ import React from "react";
 export function DisplayMessage({
     show,
     handleClose,
+    header,
     message
 }: {
     show: boolean;
     handleClose: () => void;
+    header: string;
     message: string;
 }): JSX.Element {
     return (
@@ -19,20 +21,16 @@ export function DisplayMessage({
                 fade={false}
             >
                 <Modal.Header closeButton>
-                    <Modal.Title>Action Successful</Modal.Title>
+                    <Modal.Title>{header}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    Successfully added {message} to your plan!
+                    {message}
+                    <br></br>
+                    <br></br>
+                    <div style={{ textAlign: "right" }}>
+                        <Button onClick={handleClose}>Close</Button>
+                    </div>
                 </Modal.Body>
-                <Modal.Footer>
-                    <Button
-                        type="button"
-                        className="btn btn-success"
-                        onClick={handleClose}
-                    >
-                        Close
-                    </Button>
-                </Modal.Footer>
             </Modal>
         </div>
     );
