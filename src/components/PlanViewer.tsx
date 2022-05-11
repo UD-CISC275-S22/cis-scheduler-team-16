@@ -8,6 +8,7 @@ import { Plan } from "../templates/plan";
 import planList from "../templates/PlansList.json";
 import { checkPlan } from "./utility/PlanTester";
 import { generateCoursePool } from "./utility/GenerateCoursePool";
+import { DisplayMessage } from "./utility/DisplayMessage";
 
 const termList: string[] = ["Summer", "Fall", "Winter", "Spring"]; //list of diff terms
 
@@ -65,6 +66,9 @@ export function PlanViewer(): JSX.Element {
     const [poolYear, setPoolYear] = useState<number>(2022);
     const [poolEntry, setPoolEntry] = useState<string>("");
     const [importVisible, setImportVisible] = useState<boolean>(false);
+    const [showMessage, setShowMessage] = useState<boolean>(false);
+    const [modalMessage, setModalMessage] = useState<string>("");
+    const [modalHeader, setModalHeader] = useState<string>("");
 
     //Set up the course pool for the current Plan:
     const COURSE_POOL: Course[] = generateCoursePool(curPlan.semesters);
@@ -274,28 +278,43 @@ export function PlanViewer(): JSX.Element {
 
     function addFromCoursePool() {
         let foundCourse: Course;
+        let courseExists = false;
+
         COURSE_POOL.map((course: Course) => {
             if (
                 course.backup.courseId.toLowerCase() === poolEntry.toLowerCase()
             ) {
                 foundCourse = course;
+                courseExists = true;
             }
         });
 
-        curPlan.semesters.map((semester: Semester, index: number) => {
-            if (
-                semester.term.toLowerCase() === poolTerm.toLowerCase() &&
-                semester.year === poolYear
-            ) {
-                updateSemesterCourse({
-                    course: foundCourse,
-                    semesterIndex: index,
-                    opType: "addFromPool"
-                });
-            }
-        });
+        if (courseExists) {
+            curPlan.semesters.map((semester: Semester, index: number) => {
+                if (
+                    semester.term.toLowerCase() === poolTerm.toLowerCase() &&
+                    semester.year === poolYear
+                ) {
+                    updateSemesterCourse({
+                        course: foundCourse,
+                        semesterIndex: index,
+                        opType: "addFromPool"
+                    });
 
-        console.log(curPlan.semesters);
+                    setModalMessage(
+                        `Successfully added ${poolEntry} to ${semester.term} ${semester.year}`
+                    );
+                    setModalHeader("Action Successful");
+                    setShowMessage(true);
+                }
+            });
+        } else {
+            setModalHeader("Action Unsuccessful");
+            setModalMessage(
+                `Was unable to add ${poolEntry} to ${poolTerm} ${poolYear}. Did you spell the course code incorrectly, or is the course already in your plan?`
+            );
+            setShowMessage(true);
+        }
     }
 
     /**
@@ -546,6 +565,14 @@ export function PlanViewer(): JSX.Element {
     return (
         <div>
             <hr></hr>
+            {showMessage && (
+                <DisplayMessage
+                    show={showMessage}
+                    handleClose={() => setShowMessage(false)}
+                    header={modalHeader}
+                    message={modalMessage}
+                ></DisplayMessage>
+            )}
             {/**COURSE_POOL.map((course: Course) => course.courseId + " ")*/}
             <div style={{ marginLeft: "20px", marginRight: "20px" }}>
                 {/** This is where the new code for checking correctness is going to go */}
@@ -907,7 +934,7 @@ export function PlanViewer(): JSX.Element {
                 <Form.Control
                     data-testId="course-pool-entry-box"
                     onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                        setPoolEntry(event.target.value)
+                        setPoolEntry(event.target.value.replace(" ", ""))
                     }
                 ></Form.Control>
                 <Form.Label style={{ marginTop: "5px" }}>
