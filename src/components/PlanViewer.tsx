@@ -480,18 +480,9 @@ export function PlanViewer(): JSX.Element {
                     course &&
                     semesterInputID != ""
                 ) {
-                    //console.log("semesterInput: ", semesterInputID);
-                    console.log("semesterInputID", semesterInputID);
-
-                    /*
-                    if (semesterIndex === semesterInputID) {
-                        semester.courses = [...semester.courses, moveCourse[0]];
-                    }
-                    */
                     const semesterFound = curPlan.semesters.find(
                         (s) => s.term + " " + s.year === semesterInputID
                     );
-                    console.log("semesterFound", semesterFound);
 
                     if (semesterFound !== undefined) {
                         curPlan.semesters.map((s: Semester) => {
@@ -507,6 +498,12 @@ export function PlanViewer(): JSX.Element {
                                 s.courses = [...s.courses, moveCourse[0]];
                             }
                         });
+                    } else {
+                        setShowMessage(true);
+                        setModalHeader("Uh-oh");
+                        setModalMessage(
+                            `Could not find a semester matching "${semesterInputID}"`
+                        );
                     }
                 }
                 planSetter(semesterIndex, semester);

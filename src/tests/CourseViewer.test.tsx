@@ -97,7 +97,7 @@ describe("Planner Tests", () => {
             screen.queryAllByTestId("course-edit-button");
         newEditModeButtons[0].click();
         const newTextboxes = screen.getAllByRole("textbox");
-        expect(newTextboxes[3]).toHaveValue("Discrete Mathematics");
+        expect(newTextboxes[2]).toHaveValue("Discrete Mathematics");
     });
     test("Check to see that moving to a new semester works", () => {
         const editModeButtons = screen.queryAllByTestId("course-edit-button");
