@@ -9,6 +9,7 @@ import planList from "../templates/PlansList.json";
 import { checkPlan } from "./utility/PlanTester";
 import { generateCoursePool } from "./utility/GenerateCoursePool";
 import { DisplayMessage } from "./utility/DisplayMessage";
+import { updatePlanCSV } from "./utility/UpdatePlanCSV";
 
 const termList: string[] = ["Summer", "Fall", "Winter", "Spring"]; //list of diff terms
 
@@ -69,6 +70,7 @@ export function PlanViewer(): JSX.Element {
     const [showMessage, setShowMessage] = useState<boolean>(false);
     const [modalMessage, setModalMessage] = useState<string>("");
     const [modalHeader, setModalHeader] = useState<string>("");
+    const [content, setContent] = useState<string>("No file data uploaded");
 
     //Set up the course pool for the current Plan:
     const COURSE_POOL: Course[] = generateCoursePool(curPlan.semesters);
@@ -116,8 +118,6 @@ export function PlanViewer(): JSX.Element {
         ]
     ];
 
-    const [content, setContent] = useState<string>("No file data uploaded");
-
     function uploadFile(event: React.ChangeEvent<HTMLInputElement>) {
         // Might have removed the file, need to check that the files exist
         if (event.target.files && event.target.files.length) {
@@ -136,106 +136,6 @@ export function PlanViewer(): JSX.Element {
             // Actually read the file
             reader.readAsText(filename);
         }
-    }
-
-    function updatePlanCSV() {
-        //console.log("setting plan to : ", allPlans[+event.target.value]);
-        //console.log(allPlans);
-        //console.log(curPlan.semesters);
-        //const courseLookup: Record<string, string[]>;
-
-        console.log(content);
-        const CSVarray = content.substring(62).split(",");
-
-        const newSemesters: Semester[] = [];
-        let newCourses: Course[] = [];
-        console.log(CSVarray.length);
-        let prevString = "";
-        //if(CSVarray[i] + CSVarray[i + 1] === ) {}
-        for (let i = 0; i < CSVarray.length; i++) {
-            console.log(CSVarray[i].trim());
-            console.log("prevString", prevString.trim());
-
-            if (
-                (CSVarray[i].trim() === "Spring" &&
-                    CSVarray[i].trim() + CSVarray[i + 1] != prevString) ||
-                (CSVarray[i].trim() === "Summer" &&
-                    CSVarray[i].trim() + CSVarray[i + 1] != prevString) ||
-                (CSVarray[i].trim() === "Fall" &&
-                    CSVarray[i].trim() + CSVarray[i + 1] != prevString) ||
-                (CSVarray[i].trim() === "Winter" &&
-                    CSVarray[i].trim() + CSVarray[i + 1] != prevString)
-            ) {
-                console.log(
-                    "new semester with different term found adding to newSemesters array"
-                );
-                prevString = CSVarray[i].trim() + CSVarray[i + 1];
-                newCourses = [];
-                newCourses.push({
-                    name: CSVarray[i + 2],
-                    courseId: CSVarray[i + 3],
-                    credithours: +CSVarray[i + 4],
-                    prereqs: CSVarray[i + 5].split("/"),
-                    satisfied_requirements: CSVarray[i + 6].split("/"),
-                    backup: {
-                        name: CSVarray[i + 2],
-                        courseId: CSVarray[i + 3],
-                        credithours: +CSVarray[i + 4],
-                        prereqs: CSVarray[i + 5].split("/"),
-                        satisfied_requirements: CSVarray[i + 6].split("/")
-                    }
-                });
-
-                newSemesters.push({
-                    id: i + 1 + "",
-                    term: CSVarray[i].trim(),
-                    year: +CSVarray[i + 1],
-                    courses: newCourses
-                });
-            } else if (
-                CSVarray[i].trim() === "Spring" ||
-                CSVarray[i].trim() === "Summer" ||
-                CSVarray[i].trim() === "Fall" ||
-                CSVarray[i].trim() === "Winter"
-            ) {
-                console.log("duplicate found, adding to prev semester array");
-                prevString = CSVarray[i].trim() + CSVarray[i + 1];
-
-                newCourses.push({
-                    name: CSVarray[i + 2],
-                    courseId: CSVarray[i + 3],
-                    credithours: +CSVarray[i + 4],
-                    prereqs:
-                        CSVarray[i + 5] != "None"
-                            ? CSVarray[i + 5].split("/")
-                            : ["None"],
-                    satisfied_requirements:
-                        CSVarray[i + 6] != "None"
-                            ? CSVarray[i + 6].split("/")
-                            : ["None"],
-                    backup: {
-                        name: CSVarray[i + 2],
-                        courseId: CSVarray[i + 3],
-                        credithours: +CSVarray[i + 4],
-                        prereqs: CSVarray[i + 5].split("/"),
-                        satisfied_requirements: CSVarray[i + 6].split("/")
-                    }
-                });
-
-                newSemesters[newSemesters.length - 1] = {
-                    ...newSemesters[newSemesters.length - 1],
-                    courses: newCourses
-                };
-            }
-            // console.log("newSemesters in the loop", newSemesters);
-        }
-        console.log("newSemesters", newSemesters);
-
-        //next step: loop through newSemesters array and for all the semesters with the same term AND year, then combine their array of courses
-        //we can do this via pushing all of the courses we find for the semesters that are the same
-
-        const CSV_PLAN: Plan = { ...curPlan, semesters: newSemesters };
-        setCurPlan(CSV_PLAN); //CONVERT STRING TO NUMBER (INDEX)
     }
 
     //This is the Control
@@ -480,18 +380,9 @@ export function PlanViewer(): JSX.Element {
                     course &&
                     semesterInputID != ""
                 ) {
-                    //console.log("semesterInput: ", semesterInputID);
-                    console.log("semesterInputID", semesterInputID);
-
-                    /*
-                    if (semesterIndex === semesterInputID) {
-                        semester.courses = [...semester.courses, moveCourse[0]];
-                    }
-                    */
                     const semesterFound = curPlan.semesters.find(
                         (s) => s.term + " " + s.year === semesterInputID
                     );
-                    console.log("semesterFound", semesterFound);
 
                     if (semesterFound !== undefined) {
                         curPlan.semesters.map((s: Semester) => {
@@ -507,6 +398,12 @@ export function PlanViewer(): JSX.Element {
                                 s.courses = [...s.courses, moveCourse[0]];
                             }
                         });
+                    } else {
+                        setShowMessage(true);
+                        setModalHeader("Uh-oh");
+                        setModalMessage(
+                            `Could not find a semester matching "${semesterInputID}"`
+                        );
                     }
                 }
                 planSetter(semesterIndex, semester);
@@ -802,7 +699,13 @@ export function PlanViewer(): JSX.Element {
                                         />
                                     </Form.Group>
                                     <Button
-                                        onClick={updatePlanCSV}
+                                        onClick={() =>
+                                            updatePlanCSV({
+                                                content,
+                                                curPlan,
+                                                setCurPlan
+                                            })
+                                        }
                                         style={{
                                             marginTop: "5px"
                                         }}

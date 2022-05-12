@@ -148,13 +148,40 @@ export function CourseViewer({
                             data-testID="move-course-button"
                             onClick={() => {
                                 setMoveMode(!moveMode);
+                                setEditMode(false);
                             }}
                         >
-                            {moveMode ? "Stop Moving" : "Move"}
+                            {moveMode ? "Close Move Menu" : "Move"}
                         </Button>
+
+                        {"  "}
+                        <Button
+                            data-testID="course-edit-button"
+                            onClick={() => {
+                                setEditMode(!editMode);
+                                setMoveMode(false);
+                            }}
+                        >
+                            {editMode ? "Close" : "Edit"}
+                        </Button>
+                        {"  "}
+                        <Button
+                            data-testID="course-delete-button"
+                            style={{
+                                backgroundColor: "red",
+                                outlineColor: "slategray"
+                            }}
+                            onClick={() =>
+                                deleteCourse(semesterIndex, courseIndex)
+                            }
+                        >
+                            Delete
+                        </Button>
+                        <br></br>
                         {moveMode && (
-                            <div>
+                            <div style={{ marginTop: "5px" }}>
                                 <Button
+                                    style={{ marginRight: "5px" }}
                                     data-testID="move-course-up-button"
                                     onClick={() =>
                                         moveCourseUp(
@@ -184,15 +211,22 @@ export function CourseViewer({
                                     Enter the term and the year of your semester
                                     here:
                                     <p>(ex: Spring 2022)</p>
-                                    <Form.Control
-                                        data-testID="change-semester-box"
-                                        value={moveName}
-                                        onChange={updateMoveName}
-                                    ></Form.Control>
                                 </p>
+                                <Form.Control
+                                    style={{
+                                        marginLeft: "auto",
+                                        marginRight: "0px",
+                                        marginBottom: "5px",
+                                        width: "20%"
+                                    }}
+                                    data-testID="change-semester-box"
+                                    value={moveName}
+                                    onChange={updateMoveName}
+                                ></Form.Control>
 
                                 <Button
                                     data-testID="change-semester-button"
+                                    style={{ marginBottom: "5px" }}
                                     onClick={() =>
                                         moveCourseToSemester(
                                             course,
@@ -206,29 +240,6 @@ export function CourseViewer({
                                 </Button>
                             </div>
                         )}
-
-                        {"  "}
-                        <Button
-                            data-testID="course-edit-button"
-                            onClick={() => {
-                                setEditMode(!editMode);
-                            }}
-                        >
-                            {editMode ? "Close" : "Edit"}
-                        </Button>
-                        {"  "}
-                        <Button
-                            data-testID="course-delete-button"
-                            style={{
-                                backgroundColor: "red",
-                                outlineColor: "slategray"
-                            }}
-                            onClick={() =>
-                                deleteCourse(semesterIndex, courseIndex)
-                            }
-                        >
-                            Delete
-                        </Button>
                     </Col>
                 </Form.Group>
             </div>
