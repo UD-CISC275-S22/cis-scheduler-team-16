@@ -15,6 +15,7 @@ export function updatePlanCSV({
     const newSemesters: Semester[] = [];
     let newCourses: Course[] = [];
     let prevString = "";
+    console.log("CSVarray ", CSVarray);
     for (let i = 0; i < CSVarray.length; i++) {
         if (
             (CSVarray[i].trim() === "Spring" &&
@@ -26,6 +27,7 @@ export function updatePlanCSV({
             (CSVarray[i].trim() === "Winter" &&
                 CSVarray[i].trim() + CSVarray[i + 1] != prevString)
         ) {
+            console.log("brand new semester detected, adding it to the plan");
             prevString = CSVarray[i].trim() + CSVarray[i + 1];
             newCourses = [];
             newCourses.push({

@@ -432,11 +432,6 @@ export function PlanViewer(): JSX.Element {
                                                 ) === ""
                                             )
                                                 reqs = "None,";
-                                            if (
-                                                i + 1 ===
-                                                curPlan.semesters.length
-                                            )
-                                                reqs = "None";
                                             CSVdata.push([
                                                 semesterName,
                                                 semesterYear,
