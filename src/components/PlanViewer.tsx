@@ -10,25 +10,12 @@ import { checkPlan } from "./utility/PlanTester";
 import { generateCoursePool } from "./utility/GenerateCoursePool";
 import { DisplayMessage } from "./utility/DisplayMessage";
 import { updatePlanCSV } from "./utility/UpdatePlanCSV";
+import { updateSemesterCourse } from "./utility/UpdatePlanSemesterCourses";
 
 const termList: string[] = ["Summer", "Fall", "Winter", "Spring"]; //list of diff terms
 
 const plansKey = "planData"; //key for saved plans array
 const previousPlans = localStorage.getItem(plansKey); //getting ahold of previous saved plans
-
-type COURSE_OPERATIONS =
-    | "add"
-    | "addFromPool"
-    | "update"
-    | "delete"
-    | "clear"
-    | "moveup"
-    | "movedown"
-    | "moveCourseToSemester"
-    | "addSemester"
-    | "deleteSemester"
-    | "addPlan"
-    | "deletePlan";
 
 export function PlanViewer(): JSX.Element {
     const INITIAL_PLANS: Plan[] = planList.map(
@@ -196,9 +183,15 @@ export function PlanViewer(): JSX.Element {
                     semester.year === poolYear
                 ) {
                     updateSemesterCourse({
+                        curPlan: curPlan,
+                        setCurPlan,
                         course: foundCourse,
                         semesterIndex: index,
-                        opType: "addFromPool"
+                        opType: "addFromPool",
+                        planSetter,
+                        setModalMessage,
+                        setModalHeader,
+                        setShowMessage
                     });
 
                     setModalMessage(
@@ -231,233 +224,6 @@ export function PlanViewer(): JSX.Element {
         setCurPlan({ ...curPlan, semesters: planSemesters });
     };
 
-    const semesterAdder = (semester: Semester): void => {
-        const planSemesters = [...curPlan.semesters].map((e) => {
-            return { ...e, courses: [...e.courses] };
-        });
-        planSemesters.splice(planSemesters.length, 0, semester);
-        setCurPlan({ ...curPlan, semesters: planSemesters });
-        setEditSem(!editSem); //added to close semester edit when saved
-    };
-
-    const planAdder = (newPlan: Plan): void => {
-        const newPlans = [...allPlans];
-        newPlans.splice(allPlans.length, 0, newPlan);
-        setAllPlans(newPlans);
-        console.log("Add Plan: ", newPlans);
-        console.log("Add Plan: ", allPlans);
-    };
-
-    const semesterDeleter = (index: number): void => {
-        if (curPlan.semesters.length > 0) {
-            curPlan.semesters.splice(index, 1);
-            const planSemesters = [...curPlan.semesters].map(
-                (e, ind: number) => {
-                    return { ...e, semesterId: ind, courses: [...e.courses] };
-                }
-            );
-            planSemesters.splice(planSemesters.length, 1);
-            setCurPlan({
-                ...curPlan,
-                semesters: planSemesters
-            });
-        }
-    };
-
-    const planDeleter = (): void => {
-        if (allPlans.length > 0) {
-            const newPlans = [...allPlans];
-            newPlans.splice(parseInt(curPlan.id), 1);
-            setCurPlan(newPlans[0]);
-            setAllPlans(newPlans);
-        }
-    };
-
-    /**
-     * This is a function to update the course in the semester, called in SemesterViewer
-     * @param course The course to update in the semester
-     * @param semseterIndex Which semester to update
-     * @param courseIndex Which course to delete/update
-     * @param type What operation we're doing
-     */
-    const updateSemesterCourse = ({
-        course,
-        semesterIndex,
-        semesterInputID,
-        courseIndex,
-        opType
-    }: {
-        course?: Course;
-        semesterIndex: number;
-        semesterInputID?: string;
-        courseIndex?: number;
-        opType: COURSE_OPERATIONS;
-    }) => {
-        const semester = curPlan.semesters[semesterIndex];
-        const clonedPlan = { ...curPlan };
-        switch (opType) {
-            case "add": {
-                // add course
-                if (course) {
-                    semester.courses = [
-                        ...semester.courses,
-                        {
-                            ...course,
-                            courseId: "COUR0" + `${semester.courses.length + 1}`
-                        }
-                    ];
-                }
-                planSetter(semesterIndex, semester);
-                break;
-            }
-            case "addFromPool": {
-                // add course
-                if (course) {
-                    semester.courses = [
-                        ...semester.courses,
-                        {
-                            ...course
-                        }
-                    ];
-                }
-                planSetter(semesterIndex, semester);
-                break;
-            }
-            case "delete": {
-                // delete course
-                if (courseIndex !== undefined) {
-                    semester.courses.splice(courseIndex, 1);
-                }
-                planSetter(semesterIndex, semester);
-                break;
-            }
-            case "update": {
-                // update course
-                semester.courses = [...semester.courses].map(
-                    (e: Course, ind: number) => {
-                        if (ind === courseIndex) {
-                            return course ?? e;
-                        } else {
-                            return e;
-                        }
-                    }
-                );
-                planSetter(semesterIndex, semester);
-                break;
-            }
-            case "clear": {
-                semester.courses = [];
-                planSetter(semesterIndex, semester);
-                break;
-            }
-            case "moveup": {
-                if (courseIndex != undefined && courseIndex > 0) {
-                    const tmpCourse = semester.courses[courseIndex];
-                    semester.courses[courseIndex] =
-                        semester.courses[courseIndex - 1];
-                    semester.courses[courseIndex - 1] = tmpCourse;
-                }
-                planSetter(semesterIndex, semester);
-                break;
-            }
-            case "movedown": {
-                if (
-                    courseIndex != undefined &&
-                    courseIndex < semester.courses.length - 1
-                ) {
-                    const tmpCourse = semester.courses[courseIndex];
-                    semester.courses[courseIndex] =
-                        semester.courses[courseIndex + 1];
-                    semester.courses[courseIndex + 1] = tmpCourse;
-                }
-                planSetter(semesterIndex, semester);
-                break;
-            }
-            case "moveCourseToSemester": {
-                if (
-                    courseIndex !== undefined &&
-                    semesterInputID !== undefined &&
-                    course &&
-                    semesterInputID != ""
-                ) {
-                    const semesterFound = curPlan.semesters.find(
-                        (s) => s.term + " " + s.year === semesterInputID
-                    );
-
-                    if (semesterFound !== undefined) {
-                        curPlan.semesters.map((s: Semester) => {
-                            if (s.term + " " + s.year === semesterInputID) {
-                                console.log(
-                                    "semester term and year",
-                                    semester.term + " " + semester.year
-                                );
-                                const moveCourse = semester.courses.splice(
-                                    courseIndex,
-                                    1
-                                );
-                                s.courses = [...s.courses, moveCourse[0]];
-                            }
-                        });
-                    } else {
-                        setShowMessage(true);
-                        setModalHeader("Uh-oh");
-                        setModalMessage(
-                            `Could not find a semester matching "${semesterInputID}"`
-                        );
-                    }
-                }
-                planSetter(semesterIndex, semester);
-                break;
-            }
-            case "addSemester": {
-                // add course
-                //console.log("Assembly Guy");
-
-                const newSemester = {
-                    term: term, //changed from "Blank Semester"
-                    courses: [],
-                    year: year, //changed from "3"
-                    id: `${clonedPlan.semesters.length}`
-                };
-                const semesterDuplicateFound = curPlan.semesters.find(
-                    (s) =>
-                        s.term + " " + s.year ===
-                        newSemester.term + " " + newSemester.year
-                );
-                //console.log("newSem length: ", newSemesters.length);
-                if (semesterDuplicateFound === undefined)
-                    semesterAdder(newSemester);
-                break;
-            }
-            case "deleteSemester": {
-                // delete course
-                if (semesterIndex !== undefined) {
-                    console.log("semesterIndex: ", semesterIndex);
-                    semesterDeleter(semesterIndex);
-                }
-                break;
-            }
-            default: {
-                break;
-            }
-            case "addPlan": {
-                // add course
-                const newPlan = {
-                    name: "My Plan " + `${allPlans.length + 1}`,
-                    semesters: [],
-                    id: `${allPlans.length}`
-                };
-                //console.log("newSem length: ", newSemesters.length);
-                planAdder(newPlan);
-                break;
-            }
-            case "deletePlan": {
-                // delete course
-                planDeleter();
-                break;
-            }
-        }
-    };
     // This is the Return View
     return (
         <div>
@@ -575,10 +341,18 @@ export function PlanViewer(): JSX.Element {
                             <Button
                                 onClick={() =>
                                     updateSemesterCourse({
+                                        curPlan: curPlan,
+                                        setCurPlan,
                                         course: undefined,
                                         semesterIndex: 0,
                                         courseIndex: 0,
-                                        opType: "addPlan"
+                                        allPlans: allPlans,
+                                        setAllPlans,
+                                        opType: "addPlan",
+                                        planSetter,
+                                        setModalMessage,
+                                        setModalHeader,
+                                        setShowMessage
                                     })
                                 }
                                 style={{ marginTop: "5px", marginRight: "5px" }}
@@ -589,10 +363,18 @@ export function PlanViewer(): JSX.Element {
                             <Button
                                 onClick={() =>
                                     updateSemesterCourse({
+                                        curPlan: curPlan,
+                                        setCurPlan,
                                         course: undefined,
                                         semesterIndex: 0,
                                         courseIndex: 0,
-                                        opType: "deletePlan"
+                                        allPlans: allPlans,
+                                        setAllPlans,
+                                        opType: "deletePlan",
+                                        planSetter,
+                                        setModalMessage,
+                                        setModalHeader,
+                                        setShowMessage
                                     })
                                 }
                                 style={{ marginRight: "5px", marginTop: "5px" }}
@@ -797,10 +579,18 @@ export function PlanViewer(): JSX.Element {
                                 }}
                                 onClick={() =>
                                     updateSemesterCourse({
+                                        curPlan: curPlan,
+                                        setCurPlan,
                                         course: undefined,
                                         semesterIndex: 0,
                                         courseIndex: 0,
-                                        opType: "addSemester"
+                                        opType: "addSemester",
+                                        term: term,
+                                        year: year,
+                                        planSetter,
+                                        setModalMessage,
+                                        setModalHeader,
+                                        setShowMessage
                                     })
                                 }
                                 data-testID="insertSem-button"
@@ -889,9 +679,15 @@ export function PlanViewer(): JSX.Element {
                         key={ind}
                         addCourse={(course: Course, semesterIndex: number) =>
                             updateSemesterCourse({
+                                curPlan: curPlan,
+                                setCurPlan,
                                 course,
                                 semesterIndex,
-                                opType: "add"
+                                opType: "add",
+                                planSetter,
+                                setModalMessage,
+                                setModalHeader,
+                                setShowMessage
                             })
                         }
                         deleteCourse={(
@@ -899,9 +695,15 @@ export function PlanViewer(): JSX.Element {
                             courseIndex: number
                         ) => {
                             updateSemesterCourse({
+                                curPlan: curPlan,
+                                setCurPlan,
                                 semesterIndex: semesterIndex,
                                 courseIndex: courseIndex,
-                                opType: "delete"
+                                opType: "delete",
+                                planSetter,
+                                setModalMessage,
+                                setModalHeader,
+                                setShowMessage
                             });
                         }}
                         updateCourse={(
@@ -910,16 +712,28 @@ export function PlanViewer(): JSX.Element {
                             courseIndex: number
                         ) => {
                             updateSemesterCourse({
+                                curPlan: curPlan,
+                                setCurPlan,
                                 course,
                                 semesterIndex,
                                 courseIndex,
-                                opType: "update"
+                                opType: "update",
+                                planSetter,
+                                setModalMessage,
+                                setModalHeader,
+                                setShowMessage
                             });
                         }}
                         clearSemester={(semesterIndex: number) =>
                             updateSemesterCourse({
+                                curPlan,
+                                setCurPlan,
                                 semesterIndex,
-                                opType: "clear"
+                                opType: "clear",
+                                planSetter,
+                                setModalMessage,
+                                setModalHeader,
+                                setShowMessage
                             })
                         }
                         moveCourseUp={(
@@ -928,10 +742,16 @@ export function PlanViewer(): JSX.Element {
                             courseIndex: number
                         ) =>
                             updateSemesterCourse({
+                                curPlan: curPlan,
+                                setCurPlan,
                                 course,
                                 semesterIndex,
                                 courseIndex,
-                                opType: "moveup"
+                                opType: "moveup",
+                                planSetter,
+                                setModalMessage,
+                                setModalHeader,
+                                setShowMessage
                             })
                         }
                         moveCourseDown={(
@@ -940,10 +760,16 @@ export function PlanViewer(): JSX.Element {
                             courseIndex: number
                         ) =>
                             updateSemesterCourse({
+                                curPlan: curPlan,
+                                setCurPlan,
                                 course,
                                 semesterIndex,
                                 courseIndex,
-                                opType: "movedown"
+                                opType: "movedown",
+                                planSetter,
+                                setModalMessage,
+                                setModalHeader,
+                                setShowMessage
                             })
                         }
                         moveCourseToSemester={(
@@ -953,17 +779,29 @@ export function PlanViewer(): JSX.Element {
                             semesterInputID: string
                         ) =>
                             updateSemesterCourse({
+                                curPlan: curPlan,
+                                setCurPlan,
                                 course,
                                 semesterIndex,
                                 courseIndex,
                                 semesterInputID,
-                                opType: "moveCourseToSemester"
+                                opType: "moveCourseToSemester",
+                                planSetter,
+                                setModalMessage,
+                                setModalHeader,
+                                setShowMessage
                             })
                         }
                         deleteSemester={(semesterIndex: number) =>
                             updateSemesterCourse({
+                                curPlan: curPlan,
+                                setCurPlan,
                                 semesterIndex,
-                                opType: "deleteSemester"
+                                opType: "deleteSemester",
+                                planSetter,
+                                setModalMessage,
+                                setModalHeader,
+                                setShowMessage
                             })
                         }
                     />
