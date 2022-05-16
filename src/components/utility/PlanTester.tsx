@@ -13,6 +13,7 @@ import { testSystemNetworkRequirements } from "./concentration-testers/SystemsNe
 import { testTheoryDiscreteRequirements } from "./concentration-testers/TheoryCompDiscreteTester";
 import { testTraditionalRequirements } from "./concentration-testers/TraditionalTester";
 import { Button, Col, Form, Row } from "react-bootstrap";
+import { testTheoryContinuousRequirements } from "./concentration-testers/TheoryCompContinuousTester";
 
 export function checkPlan(plan: Plan, concentration: string): JSX.Element {
     const [problemsVisible, setProblemsVisible] = useState<boolean>(false);
@@ -237,6 +238,11 @@ export function checkPlan(plan: Plan, concentration: string): JSX.Element {
         );
     } else if (concentration === "Theory and Computation (Discrete Track)") {
         concentrationResults = testTheoryDiscreteRequirements(
+            planCourseNames,
+            planCourses
+        );
+    } else if (concentration === "Theory and Computation (Continuous Track)") {
+        concentrationResults = testTheoryContinuousRequirements(
             planCourseNames,
             planCourses
         );
