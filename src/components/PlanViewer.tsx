@@ -575,7 +575,8 @@ export function PlanViewer(): JSX.Element {
                             <p> </p>
                             <Button
                                 style={{
-                                    backgroundColor: "green"
+                                    backgroundColor: "green",
+                                    borderStyle: "none"
                                 }}
                                 onClick={() =>
                                     updateSemesterCourse({
@@ -595,17 +596,18 @@ export function PlanViewer(): JSX.Element {
                                 }
                                 data-testID="insertSem-button"
                             >
-                                insert
+                                Insert
                             </Button>
                             {"  "}
                             <Button
                                 data-testID="cancelSem-button"
                                 style={{
-                                    backgroundColor: "red"
+                                    backgroundColor: "red",
+                                    borderStyle: "none"
                                 }}
                                 onClick={() => setEditSem(!editSem)}
                             >
-                                cancel
+                                Cancel
                             </Button>
                         </Container>
                         <p> </p>
@@ -664,6 +666,7 @@ export function PlanViewer(): JSX.Element {
                         marginBottom: "20px",
                         borderStyle: "none"
                     }}
+                    data-testId="submit-course-pool-button"
                     onClick={addFromCoursePool}
                 >
                     Add Course

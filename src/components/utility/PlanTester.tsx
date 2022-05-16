@@ -348,6 +348,7 @@ export function checkPlan(plan: Plan, concentration: string): JSX.Element {
                                     onClick={() =>
                                         setProblemsVisible(!problemsVisible)
                                     }
+                                    data-testId="expand-problems"
                                 >
                                     {!problemsVisible
                                         ? "Expand Plan Status"
