@@ -407,7 +407,11 @@ export function PlanViewer(): JSX.Element {
                                                 i
                                             ].year.toString();
                                         for (const eachcourse of courses) {
-                                            const courseName = eachcourse.name;
+                                            const courseName =
+                                                eachcourse.name.replace(
+                                                    ",",
+                                                    ""
+                                                );
                                             const courseID =
                                                 eachcourse.courseId;
                                             const credits =
