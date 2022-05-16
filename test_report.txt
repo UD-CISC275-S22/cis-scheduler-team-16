@@ -2,7 +2,7 @@
 > react-typescript-starter@0.1.0 test
 > react-scripts test "--coverage"
 
-PASS src/tests/CourseViewer.test.tsx (7.211 s)
+PASS src/tests/CourseViewer.test.tsx (9.212 s)
   ● Console
 
     console.error
@@ -523,7 +523,7 @@ All files                                     |   79.15 |    58.68 |   77.69 |  
   App.tsx                                     |     100 |      100 |     100 |     100 |                                                          
  src/components                               |   59.41 |    48.38 |   68.57 |   59.17 |                                                          
   CourseViewer.tsx                            |     100 |     90.9 |     100 |     100 | 87-88                                                    
-  PlanViewer.tsx                              |   47.65 |    21.05 |   57.44 |   47.65 | 41,67-84,110-124,159-209,234,396-480,561,601-625,650,791 
+  PlanViewer.tsx                              |   47.65 |    21.05 |   57.44 |   47.65 | 41,67-84,110-124,159-209,234,396-484,565,605-629,654,795 
   SemesterViewer.tsx                          |   81.81 |      100 |   71.42 |      80 | 154-161                                                  
  src/components/utility                       |   80.22 |    42.27 |   83.33 |   80.53 |                                                          
   DisplayMessage.tsx                          |     100 |      100 |     100 |     100 |                                                          
@@ -552,5 +552,5 @@ All files                                     |   79.15 |    58.68 |   77.69 |  
 Test Suites: 4 passed, 4 total
 Tests:       45 passed, 45 total
 Snapshots:   0 total
-Time:        11.524 s
+Time:        14.572 s
 Ran all test suites.
