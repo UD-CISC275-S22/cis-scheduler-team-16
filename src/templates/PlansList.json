@@ -13,13 +13,13 @@
                         "name": "Introductory English",
                         "prereqs": [],
                         "credithours": 3,
-                        "satisfied_requirements": [],
+                        "satisfied_requirements": ["sem"],
                         "backup": {
                             "courseId": "ENGL110",
                             "name": "Introductory English",
                             "prereqs": [],
                             "credithours": 3,
-                            "satisfied_requirements": []
+                            "satisfied_requirements": ["sem"]
                         }
                     },
                     {

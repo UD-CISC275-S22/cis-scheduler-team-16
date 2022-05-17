@@ -133,7 +133,45 @@ export function CourseViewer({
                         {course.satisfied_requirements.length !== 0 && (
                             <div>
                                 <strong>This Course Fulfills: </strong>
-                                {course.satisfied_requirements.join(", ")}
+                                {[...course.satisfied_requirements]
+                                    .join(", ")
+                                    .replace(
+                                        "cah",
+                                        "Creative Arts and Humanities"
+                                    )
+                                    .replace("sem", "Seminar in Composition")
+                                    .replace("fys", "First Year Seminar")
+                                    .replace(
+                                        "dle",
+                                        "Discovery Learning Experience"
+                                    )
+                                    .replace("mul", "Multicultural")
+                                    .replace(
+                                        "hcc",
+                                        "History and Cultural Change"
+                                    )
+                                    .replace(
+                                        "sbs",
+                                        "Social and Behavioral Change"
+                                    )
+                                    .replace(
+                                        "mnt",
+                                        "Mathematics, Natural Sciences, and Technology"
+                                    )
+                                    .replace("cap", "Capstone Experience")
+                                    .replace("ulc", "Upper Level Credit")
+                                    .replace(
+                                        "cpp",
+                                        "Career and Professional Preparation"
+                                    )
+                                    .replace(
+                                        "upp",
+                                        "College of Engineering Upper Level Breadth"
+                                    )
+                                    .replace(
+                                        "caf",
+                                        "Custom Area Focus Requirement"
+                                    )}
                             </div>
                         )}
                     </Col>
@@ -169,7 +207,7 @@ export function CourseViewer({
                             data-testId="course-delete-button"
                             style={{
                                 backgroundColor: "red",
-                                outlineColor: "slategray"
+                                borderColor: "darkred"
                             }}
                             onClick={() =>
                                 deleteCourse(semesterIndex, courseIndex)
@@ -514,7 +552,7 @@ export function CourseViewer({
                                 backgroundColor: "slategray",
                                 borderColor: "darkgray"
                             }}
-                            onClick={() =>
+                            onClick={() => {
                                 updateCourse(
                                     {
                                         courseId: course.backup.courseId,
@@ -528,8 +566,16 @@ export function CourseViewer({
                                     },
                                     semesterIndex,
                                     courseIndex
-                                )
-                            }
+                                );
+                                setRequirements(
+                                    course.backup.satisfied_requirements
+                                );
+                                setCourseName(course.backup.name);
+                                setCreditHours(course.backup.credithours);
+                                setPrerequisites(
+                                    course.backup.prereqs.join(", ")
+                                );
+                            }}
                         >
                             Restore to Defaults
                         </Button>

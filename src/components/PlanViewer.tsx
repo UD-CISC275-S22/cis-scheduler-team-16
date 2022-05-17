@@ -349,12 +349,17 @@ export function PlanViewer(): JSX.Element {
                             </Button>
                             <Button
                                 data-testId="save-plan-button"
-                                onClick={() =>
+                                onClick={() => {
                                     localStorage.setItem(
                                         saveDataKey,
                                         JSON.stringify(allPlans)
-                                    )
-                                }
+                                    );
+                                    setModalMessage(
+                                        "Plans will be remembered on next page load"
+                                    );
+                                    setModalHeader("Plan Saved!");
+                                    setShowMessage(true);
+                                }}
                                 style={{ marginRight: "5px", marginTop: "5px" }}
                             >
                                 Save To Browser Cache
@@ -362,12 +367,17 @@ export function PlanViewer(): JSX.Element {
                             <Button
                                 data-testId="clear-cache-button"
                                 style={{ marginRight: "5px", marginTop: "5px" }}
-                                onClick={() =>
+                                onClick={() => {
                                     localStorage.setItem(
                                         saveDataKey,
                                         JSON.stringify("")
-                                    )
-                                }
+                                    );
+                                    setModalMessage(
+                                        "Successfully cleared your plans from the browser cache. Please reload the page for these changes to take effect"
+                                    );
+                                    setModalHeader("Browser Cache Cleared");
+                                    setShowMessage(true);
+                                }}
                             >
                                 Clear Browser Cache
                             </Button>

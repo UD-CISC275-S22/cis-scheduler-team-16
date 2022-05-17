@@ -324,8 +324,8 @@ describe("Planner Tests", () => {
         expect(finalValue2.length).toBe(1);
     });
     test("Check to see if using the Seminar in Composition box updates the satisfied requirements", () => {
-        const initValue = screen.queryByText("sem");
-        expect(initValue).not.toBeInTheDocument();
+        const initValue = screen.queryByText("Seminar in Composition");
+        expect(initValue).toBeInTheDocument();
 
         const editModeButtons = screen.queryAllByTestId("course-edit-button");
         editModeButtons[0].click();
@@ -336,11 +336,11 @@ describe("Planner Tests", () => {
         const saveButton = screen.getByTestId("save-course-edit-button");
         saveButton.click();
 
-        const finalValue = screen.queryByText("sem");
-        expect(finalValue).toBeInTheDocument();
+        const finalValue = screen.queryByText("Seminar in Composition");
+        expect(finalValue).not.toBeInTheDocument();
     });
     test("Check to see if using the First Year Seminar box updates the satisfied requirements", () => {
-        const initValue = screen.queryByText("fys");
+        const initValue = screen.queryByText(/First Year Seminar/gi);
         expect(initValue).not.toBeInTheDocument();
 
         const editModeButtons = screen.queryAllByTestId("course-edit-button");
@@ -352,11 +352,12 @@ describe("Planner Tests", () => {
         const saveButton = screen.getByTestId("save-course-edit-button");
         saveButton.click();
 
-        const finalValue = screen.queryByText("fys");
+        editModeButtons[0].click();
+        const finalValue = screen.queryByText(/First Year Seminar/gi);
         expect(finalValue).toBeInTheDocument();
     });
     test("Check to see if using the Discovery Learning Experience box updates the satisfied requirements", () => {
-        const initValue = screen.queryByText("dle");
+        const initValue = screen.queryByText(/Discovery Learning Experience/gi);
         expect(initValue).not.toBeInTheDocument();
 
         const editModeButtons = screen.queryAllByTestId("course-edit-button");
@@ -368,11 +369,14 @@ describe("Planner Tests", () => {
         const saveButton = screen.getByTestId("save-course-edit-button");
         saveButton.click();
 
-        const finalValue = screen.queryByText("dle");
+        editModeButtons[0].click();
+        const finalValue = screen.queryByText(
+            /Discovery Learning Experience/gi
+        );
         expect(finalValue).toBeInTheDocument();
     });
     test("Check to see if using the Multicultural box updates the satisfied requirements", () => {
-        const initValue = screen.queryByText("mul");
+        const initValue = screen.queryByText(/Multicultural/gi);
         expect(initValue).not.toBeInTheDocument();
 
         const editModeButtons = screen.queryAllByTestId("course-edit-button");
@@ -384,11 +388,12 @@ describe("Planner Tests", () => {
         const saveButton = screen.getByTestId("save-course-edit-button");
         saveButton.click();
 
-        const finalValue = screen.queryByText("mul");
+        editModeButtons[0].click();
+        const finalValue = screen.queryByText(/Multicultural/gi);
         expect(finalValue).toBeInTheDocument();
     });
     test("Check to see if using the Creative Arts and Humanities box updates the satisfied requirements", () => {
-        const initValue = screen.queryByText("cah");
+        const initValue = screen.queryByText(/Creative Arts and Humanities/gi);
         expect(initValue).not.toBeInTheDocument();
 
         const editModeButtons = screen.queryAllByTestId("course-edit-button");
@@ -400,11 +405,12 @@ describe("Planner Tests", () => {
         const saveButton = screen.getByTestId("save-course-edit-button");
         saveButton.click();
 
-        const finalValue = screen.queryByText("cah");
+        editModeButtons[0].click();
+        const finalValue = screen.queryByText(/Creative Arts and Humanities/gi);
         expect(finalValue).toBeInTheDocument();
     });
     test("Check to see if using the History and Cultural Change box updates the satisfied requirements", () => {
-        const initValue = screen.queryByText("hcc");
+        const initValue = screen.queryByText(/History and Cultural Change/gi);
         expect(initValue).not.toBeInTheDocument();
 
         const editModeButtons = screen.queryAllByTestId("course-edit-button");
@@ -416,11 +422,12 @@ describe("Planner Tests", () => {
         const saveButton = screen.getByTestId("save-course-edit-button");
         saveButton.click();
 
-        const finalValue = screen.queryByText("hcc");
+        editModeButtons[0].click();
+        const finalValue = screen.queryByText(/History and Cultural Change/gi);
         expect(finalValue).toBeInTheDocument();
     });
     test("Check to see if using the Social and Behavioral Changes box updates the satisfied requirements", () => {
-        const initValue = screen.queryByText("sbs");
+        const initValue = screen.queryByText(/Social and Behavioral Change/gi);
         expect(initValue).not.toBeInTheDocument();
 
         const editModeButtons = screen.queryAllByTestId("course-edit-button");
@@ -432,11 +439,14 @@ describe("Planner Tests", () => {
         const saveButton = screen.getByTestId("save-course-edit-button");
         saveButton.click();
 
-        const finalValue = screen.queryByText("sbs");
+        editModeButtons[0].click();
+        const finalValue = screen.queryByText(/Social and Behavioral Change/gi);
         expect(finalValue).toBeInTheDocument();
     });
     test("Check to see if using the Math, Natural Sciences, and Technology box updates the satisfied requirements", () => {
-        const initValue = screen.queryByText("mnt");
+        const initValue = screen.queryByText(
+            /Mathematics, Natural Sciences, and Technology/gi
+        );
         expect(initValue).not.toBeInTheDocument();
 
         const editModeButtons = screen.queryAllByTestId("course-edit-button");
@@ -448,11 +458,14 @@ describe("Planner Tests", () => {
         const saveButton = screen.getByTestId("save-course-edit-button");
         saveButton.click();
 
-        const finalValue = screen.queryByText("mnt");
+        editModeButtons[0].click();
+        const finalValue = screen.queryByText(
+            /Mathematics, Natural Sciences, and Technology/gi
+        );
         expect(finalValue).toBeInTheDocument();
     });
     test("Check to see if using the Capstone Requirement box updates the satisfied requirements", () => {
-        const initValue = screen.queryByText("cap");
+        const initValue = screen.queryByText(/Capstone Experience/gi);
         expect(initValue).not.toBeInTheDocument();
 
         const editModeButtons = screen.queryAllByTestId("course-edit-button");
@@ -464,11 +477,12 @@ describe("Planner Tests", () => {
         const saveButton = screen.getByTestId("save-course-edit-button");
         saveButton.click();
 
-        const finalValue = screen.queryByText("cap");
+        editModeButtons[0].click();
+        const finalValue = screen.queryByText(/Capstone Experience/gi);
         expect(finalValue).toBeInTheDocument();
     });
     test("Check to see if using the Upper Level Credit box updates the satisfied requirements", () => {
-        const initValue = screen.queryByText("ulc");
+        const initValue = screen.queryByText(/Upper Level Credit/gi);
         expect(initValue).not.toBeInTheDocument();
 
         const editModeButtons = screen.queryAllByTestId("course-edit-button");
@@ -480,11 +494,14 @@ describe("Planner Tests", () => {
         const saveButton = screen.getByTestId("save-course-edit-button");
         saveButton.click();
 
-        const finalValue = screen.queryByText("ulc");
+        editModeButtons[0].click();
+        const finalValue = screen.queryByText(/Upper Level Credit/gi);
         expect(finalValue).toBeInTheDocument();
     });
     test("Check to see if using the Career and Professional Preparation box updates the satisfied requirements", () => {
-        const initValue = screen.queryByText("cpp");
+        const initValue = screen.queryByText(
+            /Career and Professional Preparation/gi
+        );
         expect(initValue).not.toBeInTheDocument();
 
         const editModeButtons = screen.queryAllByTestId("course-edit-button");
@@ -496,11 +513,16 @@ describe("Planner Tests", () => {
         const saveButton = screen.getByTestId("save-course-edit-button");
         saveButton.click();
 
-        const finalValue = screen.queryByText("cpp");
+        editModeButtons[0].click();
+        const finalValue = screen.queryByText(
+            /Career and Professional Preparation/gi
+        );
         expect(finalValue).toBeInTheDocument();
     });
     test("Check to see if using the College of Engineering Upper Level Breadth box updates the satisfied requirements", () => {
-        const initValue = screen.queryByText("upp");
+        const initValue = screen.queryByText(
+            /College of Engineering Upper Level Breadth/gi
+        );
         expect(initValue).not.toBeInTheDocument();
 
         const editModeButtons = screen.queryAllByTestId("course-edit-button");
@@ -512,11 +534,14 @@ describe("Planner Tests", () => {
         const saveButton = screen.getByTestId("save-course-edit-button");
         saveButton.click();
 
-        const finalValue = screen.queryByText("upp");
+        editModeButtons[0].click();
+        const finalValue = screen.queryByText(
+            /College of Engineering Upper Level Breadth/gi
+        );
         expect(finalValue).toBeInTheDocument();
     });
     test("Check to see if using the Custom Area of Focus box updates the satisfied requirements", () => {
-        const initValue = screen.queryByText("caf");
+        const initValue = screen.queryByText(/Custom Area Focus Requirement/gi);
         expect(initValue).not.toBeInTheDocument();
 
         const editModeButtons = screen.queryAllByTestId("course-edit-button");
@@ -528,7 +553,10 @@ describe("Planner Tests", () => {
         const saveButton = screen.getByTestId("save-course-edit-button");
         saveButton.click();
 
-        const finalValue = screen.queryByText("caf");
+        editModeButtons[0].click();
+        const finalValue = screen.queryByText(
+            /Custom Area Focus Requirement/gi
+        );
         expect(finalValue).toBeInTheDocument();
     });
     test("Check to see if using the Custom Area of Focus box twice removes it from the satisfied requirements", () => {

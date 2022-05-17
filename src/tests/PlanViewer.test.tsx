@@ -135,4 +135,28 @@ describe("Planner Tests", () => {
         const importButton = screen.getByTestId("import-button");
         importButton.click();
     });
+    test("Modal appears when saving plan", () => {
+        const text_init = screen.queryByText(
+            "Plans will be remembered on next page load"
+        );
+        expect(text_init).not.toBeInTheDocument();
+        const saveCourseButton = screen.getByTestId("save-plan-button");
+        saveCourseButton.click();
+        const text = screen.queryByText(
+            "Plans will be remembered on next page load"
+        );
+        expect(text).toBeInTheDocument();
+    });
+    test("Modal appears when clearing cache", () => {
+        const text_init = screen.queryByText(
+            "Successfully cleared your plans from the browser cache. Please reload the page for these changes to take effect"
+        );
+        expect(text_init).not.toBeInTheDocument();
+        const clearButton = screen.getByTestId("clear-cache-button");
+        clearButton.click();
+        const text = screen.queryByText(
+            "Successfully cleared your plans from the browser cache. Please reload the page for these changes to take effect"
+        );
+        expect(text).toBeInTheDocument();
+    });
 });
