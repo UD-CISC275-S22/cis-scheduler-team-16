@@ -54,13 +54,13 @@ export function checkPlan(plan: Plan, concentration: string): JSX.Element {
                  *  in the same semester, flag the course as not having its prerequirements met yet.
                  */
                 if (
-                    (!seenCourse.includes(prerequisite) &&
+                    (!seenCourse.includes(prerequisite.toLowerCase()) &&
                         prerequisite !== "None") ||
-                    (semesterCourses.includes(course.courseId.toLowerCase()) &&
-                        semesterCourses.includes(prerequisite) &&
-                        !prereqFailCourses.includes(course.courseId))
+                    semesterCourses.includes(prerequisite.toLowerCase())
                 ) {
-                    prereqFailCourses.push(course.courseId);
+                    if (!prereqFailCourses.includes(course.courseId)) {
+                        prereqFailCourses.push(course.courseId);
+                    }
                 }
             });
         });
