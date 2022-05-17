@@ -2,7 +2,7 @@
 > react-typescript-starter@0.1.0 test
 > react-scripts test "--coverage"
 
-PASS src/tests/CourseViewer.test.tsx (7.132 s)
+PASS src/tests/CourseViewer.test.tsx (7.475 s)
   ● Console
 
     console.error
@@ -683,43 +683,43 @@ PASS src/App.test.tsx
       at setInitialProperties (node_modules/react-dom/cjs/react-dom.development.js:9041:5)
       at finalizeInitialChildren (node_modules/react-dom/cjs/react-dom.development.js:10201:3)
 
-----------------------------------------------|---------|----------|---------|---------|---------------------
-File                                          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s   
-----------------------------------------------|---------|----------|---------|---------|---------------------
-All files                                     |   97.58 |    89.98 |    96.4 |   97.57 |                     
- src                                          |     100 |      100 |     100 |     100 |                     
-  App.tsx                                     |     100 |      100 |     100 |     100 |                     
- src/components                               |   93.16 |    75.86 |   93.93 |   93.12 |                     
-  CourseViewer.tsx                            |     100 |     90.9 |     100 |     100 | 87-88               
-  PlanViewer.tsx                              |   90.75 |     64.7 |   90.69 |   90.75 | 21,30,78-92,353-366 
-  SemesterViewer.tsx                          |     100 |      100 |     100 |     100 |                     
- src/components/utility                       |   95.78 |    72.35 |    97.5 |   95.76 |                     
-  DisplayMessage.tsx                          |     100 |      100 |     100 |     100 |                     
-  GenerateCoursePool.tsx                      |     100 |      100 |     100 |     100 |                     
-  GetInitialPlans.tsx                         |     100 |      100 |     100 |     100 |                     
-  PlanTester.tsx                              |   98.05 |    72.36 |   94.73 |   98.05 | 255,515             
-  UpdatePlanCSV.tsx                           |   57.89 |       50 |     100 |   55.55 | 36-54,66-89         
-  UpdatePlanSemesterCourses.tsx               |   99.18 |    77.77 |     100 |   99.18 | 300                 
- src/components/utility/concentration-testers |     100 |      100 |     100 |     100 |                     
-  ArtificialIntelligenceTester.tsx            |     100 |      100 |     100 |     100 |                     
-  BioinformaticsTester.tsx                    |     100 |      100 |     100 |     100 |                     
-  CybersecurityTester.tsx                     |     100 |      100 |     100 |     100 |                     
-  DataScienceTester.tsx                       |     100 |      100 |     100 |     100 |                     
-  HighPerformanceDataTester.tsx               |     100 |      100 |     100 |     100 |                     
-  HighPerformanceMathTester.tsx               |     100 |      100 |     100 |     100 |                     
-  SystemsNetworkTester.tsx                    |     100 |      100 |     100 |     100 |                     
-  TheoryCompContinuousTester.tsx              |     100 |      100 |     100 |     100 |                     
-  TheoryCompDiscreteTester.tsx                |     100 |      100 |     100 |     100 |                     
-  TraditionalTester.tsx                       |     100 |      100 |     100 |     100 |                     
- src/templates                                |       0 |        0 |       0 |       0 |                     
-  ConcentrationCheck.ts                       |       0 |        0 |       0 |       0 |                     
-  course.ts                                   |       0 |        0 |       0 |       0 |                     
-  plan.ts                                     |       0 |        0 |       0 |       0 |                     
-  semester.ts                                 |       0 |        0 |       0 |       0 |                     
-----------------------------------------------|---------|----------|---------|---------|---------------------
+----------------------------------------------|---------|----------|---------|---------|-------------------
+File                                          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+----------------------------------------------|---------|----------|---------|---------|-------------------
+All files                                     |   97.82 |     90.1 |   97.84 |   97.82 |                   
+ src                                          |     100 |      100 |     100 |     100 |                   
+  App.tsx                                     |     100 |      100 |     100 |     100 |                   
+ src/components                               |   94.73 |    77.58 |   96.96 |    94.7 |                   
+  CourseViewer.tsx                            |     100 |     90.9 |     100 |     100 | 87-88             
+  PlanViewer.tsx                              |    92.8 |    67.64 |   95.34 |    92.8 | 21,30,78-92       
+  SemesterViewer.tsx                          |     100 |      100 |     100 |     100 |                   
+ src/components/utility                       |   95.78 |    72.35 |    97.5 |   95.76 |                   
+  DisplayMessage.tsx                          |     100 |      100 |     100 |     100 |                   
+  GenerateCoursePool.tsx                      |     100 |      100 |     100 |     100 |                   
+  GetInitialPlans.tsx                         |     100 |      100 |     100 |     100 |                   
+  PlanTester.tsx                              |   98.05 |    72.36 |   94.73 |   98.05 | 255,515           
+  UpdatePlanCSV.tsx                           |   57.89 |       50 |     100 |   55.55 | 36-54,66-89       
+  UpdatePlanSemesterCourses.tsx               |   99.18 |    77.77 |     100 |   99.18 | 300               
+ src/components/utility/concentration-testers |     100 |      100 |     100 |     100 |                   
+  ArtificialIntelligenceTester.tsx            |     100 |      100 |     100 |     100 |                   
+  BioinformaticsTester.tsx                    |     100 |      100 |     100 |     100 |                   
+  CybersecurityTester.tsx                     |     100 |      100 |     100 |     100 |                   
+  DataScienceTester.tsx                       |     100 |      100 |     100 |     100 |                   
+  HighPerformanceDataTester.tsx               |     100 |      100 |     100 |     100 |                   
+  HighPerformanceMathTester.tsx               |     100 |      100 |     100 |     100 |                   
+  SystemsNetworkTester.tsx                    |     100 |      100 |     100 |     100 |                   
+  TheoryCompContinuousTester.tsx              |     100 |      100 |     100 |     100 |                   
+  TheoryCompDiscreteTester.tsx                |     100 |      100 |     100 |     100 |                   
+  TraditionalTester.tsx                       |     100 |      100 |     100 |     100 |                   
+ src/templates                                |       0 |        0 |       0 |       0 |                   
+  ConcentrationCheck.ts                       |       0 |        0 |       0 |       0 |                   
+  course.ts                                   |       0 |        0 |       0 |       0 |                   
+  plan.ts                                     |       0 |        0 |       0 |       0 |                   
+  semester.ts                                 |       0 |        0 |       0 |       0 |                   
+----------------------------------------------|---------|----------|---------|---------|-------------------
 
 Test Suites: 14 passed, 14 total
-Tests:       158 passed, 158 total
+Tests:       160 passed, 160 total
 Snapshots:   0 total
-Time:        41.542 s
+Time:        43.072 s
 Ran all test suites.
