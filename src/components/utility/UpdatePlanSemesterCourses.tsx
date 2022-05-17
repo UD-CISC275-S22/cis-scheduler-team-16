@@ -144,9 +144,11 @@ export function updateSemesterCourse({
         case "delete": {
             // delete course
             setShowMessage(true);
-            setModalHeader("Warning");
+            setModalHeader("Delete Successful");
             setModalMessage(
-                "Are you sure that you want to delete this course?"
+                `Successfully deleted ${
+                    semester.courses[courseIndex as number].courseId
+                }`
             );
             if (courseIndex !== undefined) {
                 semester.courses.splice(courseIndex, 1);
@@ -286,9 +288,9 @@ export function updateSemesterCourse({
             // delete course
             if (semesterIndex !== undefined && semesterDeleter != undefined) {
                 setShowMessage(true);
-                setModalHeader("Warning");
+                setModalHeader("Delete Successful");
                 setModalMessage(
-                    "Are you sure you want to delete this semester?"
+                    `Successfully Deleted ${semester.term} ${semester.year}`
                 );
                 semesterDeleter(semesterIndex);
             }
