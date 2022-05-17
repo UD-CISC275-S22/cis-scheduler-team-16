@@ -321,8 +321,8 @@ export function updateSemesterCourse({
             // delete course
             if (planDeleter != undefined) {
                 setShowMessage(true);
-                setModalHeader("Warning");
-                setModalMessage("Are you sure you want to delete this plan?");
+                setModalHeader("Delete Successful");
+                setModalMessage("Plan Successfully Deleted");
                 planDeleter();
             }
             break;
