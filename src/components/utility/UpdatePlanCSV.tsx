@@ -17,12 +17,13 @@ export function updatePlanCSV({
     curPlan: Plan;
     setCurPlan: (plan: Plan) => void;
 }) {
-    const CSVarray = content.substring(62).split(",");
+    const CSVarray = content.substring(62).replace(/[\r]/g, ",").split(",");
     const newSemesters: Semester[] = [];
     let newCourses: Course[] = [];
     let prevString = "";
     console.log("CSVarray ", CSVarray);
     for (let i = 0; i < CSVarray.length; i++) {
+        console.log(CSVarray[i]);
         if (
             (CSVarray[i].trim() === "Spring" &&
                 CSVarray[i].trim() + CSVarray[i + 1] != prevString) ||
@@ -46,8 +47,14 @@ export function updatePlanCSV({
                     name: CSVarray[i + 2],
                     courseId: CSVarray[i + 3],
                     credithours: +CSVarray[i + 4],
-                    prereqs: CSVarray[i + 5].split("/"),
-                    satisfied_requirements: CSVarray[i + 6].split("/")
+                    prereqs:
+                        CSVarray[i + 5] != "None"
+                            ? CSVarray[i + 5].split("/")
+                            : ["None"],
+                    satisfied_requirements:
+                        CSVarray[i + 6] != "None"
+                            ? CSVarray[i + 6].split("/")
+                            : ["None,"]
                 }
             });
 
@@ -76,7 +83,7 @@ export function updatePlanCSV({
                 satisfied_requirements:
                     CSVarray[i + 6] != "None"
                         ? CSVarray[i + 6].split("/")
-                        : ["None"],
+                        : ["None,"],
                 backup: {
                     name: CSVarray[i + 2],
                     courseId: CSVarray[i + 3],
