@@ -145,7 +145,7 @@ export function CourseViewer({
                         }}
                     >
                         <Button
-                            data-testID="move-course-button"
+                            data-testId="move-course-button"
                             onClick={() => {
                                 setMoveMode(!moveMode);
                                 setEditMode(false);
@@ -156,7 +156,7 @@ export function CourseViewer({
 
                         {"  "}
                         <Button
-                            data-testID="course-edit-button"
+                            data-testId="course-edit-button"
                             onClick={() => {
                                 setEditMode(!editMode);
                                 setMoveMode(false);
@@ -166,7 +166,7 @@ export function CourseViewer({
                         </Button>
                         {"  "}
                         <Button
-                            data-testID="course-delete-button"
+                            data-testId="course-delete-button"
                             style={{
                                 backgroundColor: "red",
                                 outlineColor: "slategray"
@@ -182,7 +182,7 @@ export function CourseViewer({
                             <div style={{ marginTop: "5px" }}>
                                 <Button
                                     style={{ marginRight: "5px" }}
-                                    data-testID="move-course-up-button"
+                                    data-testId="move-course-up-button"
                                     onClick={() =>
                                         moveCourseUp(
                                             course,
@@ -194,7 +194,7 @@ export function CourseViewer({
                                     ▲
                                 </Button>
                                 <Button
-                                    data-testID="move-course-down-button"
+                                    data-testId="move-course-down-button"
                                     onClick={() =>
                                         moveCourseDown(
                                             course,
@@ -205,13 +205,13 @@ export function CourseViewer({
                                 >
                                     ▼
                                 </Button>
-                                <p>
+                                <div>
                                     {" "}
                                     <h4>Move Course to another Semester:</h4>
                                     Enter the term and the year of your semester
                                     here:
                                     <p>(ex: Spring 2022)</p>
-                                </p>
+                                </div>
                                 <Form.Control
                                     style={{
                                         marginLeft: "auto",
@@ -219,13 +219,13 @@ export function CourseViewer({
                                         marginBottom: "5px",
                                         width: "20%"
                                     }}
-                                    data-testID="change-semester-box"
+                                    data-testId="change-semester-box"
                                     value={moveName}
                                     onChange={updateMoveName}
                                 ></Form.Control>
 
                                 <Button
-                                    data-testID="change-semester-button"
+                                    data-testId="change-semester-button"
                                     style={{ marginBottom: "5px" }}
                                     onClick={() =>
                                         moveCourseToSemester(
@@ -271,7 +271,7 @@ export function CourseViewer({
                         </Col>
                         <Col>
                             <Form.Control
-                                data-testID="change-course-name-box"
+                                data-testId="change-course-name-box"
                                 value={courseName}
                                 onChange={updateCourseName}
                             ></Form.Control>
@@ -285,7 +285,7 @@ export function CourseViewer({
                         </Col>
                         <Col>
                             <Form.Control
-                                data-testID="change-course-id-box"
+                                data-testId="change-course-id-box"
                                 value={courseID}
                                 onChange={updateCourseId}
                             ></Form.Control>
@@ -299,7 +299,7 @@ export function CourseViewer({
                         </Col>
                         <Col>
                             <Form.Control
-                                data-testID="change-course-credits-box"
+                                data-testId="change-course-credits-box"
                                 type="number"
                                 value={creditHours}
                                 onChange={updateCreditHours}
@@ -314,7 +314,7 @@ export function CourseViewer({
                         </Col>
                         <Col>
                             <Form.Control
-                                data-testID="change-course-prereqs-box"
+                                data-testId="change-course-prereqs-box"
                                 value={prerequisites}
                                 onChange={updatePrerequisites}
                             ></Form.Control>
@@ -347,7 +347,7 @@ export function CourseViewer({
                         </Col>
                         <Col>
                             <Form.Check
-                                data-testID="sem-radio-button"
+                                data-testId="sem-radio-button"
                                 type="checkbox"
                                 id={`requirements-sem-${courseID}`}
                                 label="Seminar in Composition (ENGL110)"
@@ -357,7 +357,7 @@ export function CourseViewer({
                                 onChange={updateRequirements}
                             />
                             <Form.Check
-                                data-testID="fys-radio-button"
+                                data-testId="fys-radio-button"
                                 type="checkbox"
                                 id={`requirements-fys-${courseID}`}
                                 label="First Year Seminar (FYS)"
@@ -367,7 +367,7 @@ export function CourseViewer({
                                 onChange={updateRequirements}
                             />
                             <Form.Check
-                                data-testID="dle-radio-button"
+                                data-testId="dle-radio-button"
                                 type="checkbox"
                                 id={`requirements-dle-${courseID}`}
                                 label="Discovery Learning Experience (DLE)"
@@ -377,7 +377,7 @@ export function CourseViewer({
                                 onChange={updateRequirements}
                             />
                             <Form.Check
-                                data-testID="mul-radio-button"
+                                data-testId="mul-radio-button"
                                 type="checkbox"
                                 id={`requirements-mul-${courseID}`}
                                 label="Multicultural"
@@ -387,7 +387,7 @@ export function CourseViewer({
                                 onChange={updateRequirements}
                             />
                             <Form.Check
-                                data-testID="cah-radio-button"
+                                data-testId="cah-radio-button"
                                 type="checkbox"
                                 id={`requirements-cah-${courseID}`}
                                 label="Creative Arts and Humanities"
@@ -397,7 +397,7 @@ export function CourseViewer({
                                 onChange={updateRequirements}
                             />
                             <Form.Check
-                                data-testID="hcc-radio-button"
+                                data-testId="hcc-radio-button"
                                 type="checkbox"
                                 id={`requirements-hcc-${courseID}`}
                                 label="History and Cultural Change"
@@ -407,7 +407,7 @@ export function CourseViewer({
                                 onChange={updateRequirements}
                             />
                             <Form.Check
-                                data-testID="sbs-radio-button"
+                                data-testId="sbs-radio-button"
                                 type="checkbox"
                                 id={`requirements-sbs-${courseID}`}
                                 label="Social and Behavioral Changes"
@@ -417,7 +417,7 @@ export function CourseViewer({
                                 onChange={updateRequirements}
                             />
                             <Form.Check
-                                data-testID="mnt-radio-button"
+                                data-testId="mnt-radio-button"
                                 type="checkbox"
                                 id={`requirements-mnt-${courseID}`}
                                 label="Mathematics, Natural Sciences, and Technology"
@@ -427,7 +427,7 @@ export function CourseViewer({
                                 onChange={updateRequirements}
                             />
                             <Form.Check
-                                data-testID="cap-radio-button"
+                                data-testId="cap-radio-button"
                                 type="checkbox"
                                 id={`requirements-cap-${courseID}`}
                                 label="Capstone Experience"
@@ -437,7 +437,7 @@ export function CourseViewer({
                                 onChange={updateRequirements}
                             />
                             <Form.Check
-                                data-testID="ulc-radio-button"
+                                data-testId="ulc-radio-button"
                                 type="checkbox"
                                 id={`requirements-ulc-${courseID}`}
                                 label="Upper Level Credit"
@@ -447,7 +447,7 @@ export function CourseViewer({
                                 onChange={updateRequirements}
                             />
                             <Form.Check
-                                data-testID="cpp-radio-button"
+                                data-testId="cpp-radio-button"
                                 type="checkbox"
                                 id={`requirements-cpp-${courseID}`}
                                 label="Career and Professional Preparation"
@@ -457,7 +457,7 @@ export function CourseViewer({
                                 onChange={updateRequirements}
                             />
                             <Form.Check
-                                data-testID="upp-radio-button"
+                                data-testId="upp-radio-button"
                                 type="checkbox"
                                 id={`requirements-upp-${courseID}`}
                                 label="College of Engineering Upper Level Breadth"
@@ -467,7 +467,7 @@ export function CourseViewer({
                                 onChange={updateRequirements}
                             />
                             <Form.Check
-                                data-testID="caf-radio-button"
+                                data-testId="caf-radio-button"
                                 type="checkbox"
                                 id={`requirements-caf-${courseID}`}
                                 label="Traditional Computer Science Custom Area of Focus Requirement"
@@ -482,7 +482,7 @@ export function CourseViewer({
                     {/** Save Changes */}
                     <div style={{ textAlign: "right", marginBottom: "20px" }}>
                         <Button
-                            data-testID="save-course-edit-button"
+                            data-testId="save-course-edit-button"
                             style={{
                                 backgroundColor: "green",
                                 borderColor: "lightslategray"
@@ -509,7 +509,7 @@ export function CourseViewer({
                         </Button>
                         {"  "}
                         <Button
-                            data-testID="restore-default-properties-button"
+                            data-testId="restore-default-properties-button"
                             style={{
                                 backgroundColor: "slategray",
                                 borderColor: "darkgray"
@@ -533,7 +533,6 @@ export function CourseViewer({
                         >
                             Restore to Defaults
                         </Button>
-                        {/** ADD A BUTTON HERE THAT ALLOWS THE USER TO RESTORE THE COURSE TO ITS DEFAULTS */}
                     </div>
                 </div>
             )}

@@ -120,24 +120,24 @@ export function testDataScienceRequirements(
     let totalRestCreditCount = 0;
     planCourses.map((course: Course) => {
         if (
-            course.courseId === "cisc361" ||
-            course.courseId === "cisc410" ||
-            course.courseId === "cisc436" ||
-            course.courseId === "cisc440" ||
-            course.courseId === "cisc442" ||
-            course.courseId === "cisc449" ||
-            course.courseId === "cisc450" ||
-            course.courseId === "cisc471" ||
-            course.courseId === "cisc474" ||
-            course.courseId === "cisc483" ||
-            course.courseId === "cisc484" ||
-            course.courseId === "cisc489" ||
-            course.courseId === "eleg387" ||
-            course.courseId === "eleg487" ||
-            course.courseId === "math302" ||
-            course.courseId === "math350" ||
-            course.courseId === "math428" ||
-            course.courseId === "math450"
+            course.courseId.toLowerCase() === "cisc361" ||
+            course.courseId.toLowerCase() === "cisc410" ||
+            course.courseId.toLowerCase() === "cisc436" ||
+            course.courseId.toLowerCase() === "cisc440" ||
+            course.courseId.toLowerCase() === "cisc442" ||
+            course.courseId.toLowerCase() === "cisc449" ||
+            course.courseId.toLowerCase() === "cisc450" ||
+            course.courseId.toLowerCase() === "cisc471" ||
+            course.courseId.toLowerCase() === "cisc474" ||
+            course.courseId.toLowerCase() === "cisc483" ||
+            course.courseId.toLowerCase() === "cisc484" ||
+            course.courseId.toLowerCase() === "cisc489" ||
+            course.courseId.toLowerCase() === "eleg387" ||
+            course.courseId.toLowerCase() === "eleg487" ||
+            course.courseId.toLowerCase() === "math302" ||
+            course.courseId.toLowerCase() === "math350" ||
+            course.courseId.toLowerCase() === "math428" ||
+            course.courseId.toLowerCase() === "math450"
         ) {
             totalRestCreditCount += course.credithours;
         }

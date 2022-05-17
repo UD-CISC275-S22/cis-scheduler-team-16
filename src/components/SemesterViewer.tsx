@@ -58,10 +58,6 @@ export const SemesterViewer = ({
     let creditTotal = 0;
     courses.map((course: Course) => (creditTotal += course.credithours));
 
-    //console.log("courses = ", courses);
-
-    //Component View
-
     //Return View
     return (
         <div

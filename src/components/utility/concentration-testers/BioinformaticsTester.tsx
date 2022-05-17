@@ -148,16 +148,16 @@ export function testBioinformaticsRequirements(
     let totalRestCreditCount = 0;
     planCourses.map((course: Course) => {
         if (
-            course.courseId === "anfs300" ||
-            course.courseId === "anfs310" ||
-            course.courseId === "anfs470" ||
-            course.courseId === "bisc403" ||
-            course.courseId === "bisc484" ||
-            course.courseId === "bisc492" ||
-            course.courseId === "chem214" ||
-            course.courseId === "chem322" ||
-            course.courseId === "chem326" ||
-            course.courseId === "math243" ||
+            course.courseId.toLowerCase() === "anfs300" ||
+            course.courseId.toLowerCase() === "anfs310" ||
+            course.courseId.toLowerCase() === "anfs470" ||
+            course.courseId.toLowerCase() === "bisc403" ||
+            course.courseId.toLowerCase() === "bisc484" ||
+            course.courseId.toLowerCase() === "bisc492" ||
+            course.courseId.toLowerCase() === "chem214" ||
+            course.courseId.toLowerCase() === "chem322" ||
+            course.courseId.toLowerCase() === "chem326" ||
+            course.courseId.toLowerCase() === "math243" ||
             course.courseId.toLowerCase().startsWith("cisc3") ||
             course.courseId.toLowerCase().startsWith("cisc4") ||
             course.courseId.toLowerCase().startsWith("cisc5") ||

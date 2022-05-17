@@ -127,9 +127,6 @@ export function PlanViewer(): JSX.Element {
 
     //This is the Control
     function updatePlan(event: React.ChangeEvent<HTMLSelectElement>) {
-        //console.log("setting plan to : ", allPlans[+event.target.value]);
-        console.log(allPlans);
-        console.log(curPlan.semesters);
         const clonedAllPlans = [...allPlans].map((eachPlan: Plan) => {
             if (eachPlan.id === curPlan.id) {
                 return {
@@ -452,7 +449,6 @@ export function PlanViewer(): JSX.Element {
                                     const csvContent = `data:text/csv;charset=utf-8,${CSVdata.map(
                                         (e) => e.join(",")
                                     ).join("\n")}`;
-                                    console.log(csvContent);
 
                                     const encodedUri = encodeURI(csvContent);
                                     const link = document.createElement("a");

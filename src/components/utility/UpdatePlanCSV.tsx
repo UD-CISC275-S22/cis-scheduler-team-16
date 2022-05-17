@@ -55,7 +55,6 @@ export function updatePlanCSV({
             CSVarray[i].trim() === "Fall" ||
             CSVarray[i].trim() === "Winter"
         ) {
-            console.log("duplicate found, adding to prev semester array");
             prevString = CSVarray[i].trim() + CSVarray[i + 1];
 
             newCourses.push({

@@ -81,32 +81,33 @@ export function testAIRequirements(
     let totalRestCreditCount = 0;
     planCourses.map((course: Course) => {
         if (
-            course.courseId === "cisc436" ||
-            course.courseId === "cisc437" ||
-            course.courseId === "cisc489" ||
-            course.courseId === "cisc889" ||
-            course.courseId === "educ462" ||
-            course.courseId === "eleg404" ||
-            course.courseId === "eleg418" ||
-            course.courseId === "eleg387" ||
-            course.courseId === "eleg487" ||
-            course.courseId === "ling202" ||
-            course.courseId === "ling404" ||
-            course.courseId === "ling418" ||
-            course.courseId === "ling444" ||
-            course.courseId === "ling451" ||
-            course.courseId === "ling455" ||
-            course.courseId === "mast632" ||
-            course.courseId === "math242" ||
-            course.courseId === "math349" ||
-            course.courseId === "meeg671" ||
-            course.courseId === "psyc310" ||
-            course.courseId === "psyc340" ||
-            course.courseId === "psyc344"
+            course.courseId.toLowerCase() === "cisc436" ||
+            course.courseId.toLowerCase() === "cisc437" ||
+            course.courseId.toLowerCase() === "cisc489" ||
+            course.courseId.toLowerCase() === "cisc889" ||
+            course.courseId.toLowerCase() === "educ462" ||
+            course.courseId.toLowerCase() === "eleg404" ||
+            course.courseId.toLowerCase() === "eleg418" ||
+            course.courseId.toLowerCase() === "eleg387" ||
+            course.courseId.toLowerCase() === "eleg487" ||
+            course.courseId.toLowerCase() === "ling202" ||
+            course.courseId.toLowerCase() === "ling404" ||
+            course.courseId.toLowerCase() === "ling418" ||
+            course.courseId.toLowerCase() === "ling444" ||
+            course.courseId.toLowerCase() === "ling451" ||
+            course.courseId.toLowerCase() === "ling455" ||
+            course.courseId.toLowerCase() === "mast632" ||
+            course.courseId.toLowerCase() === "math242" ||
+            course.courseId.toLowerCase() === "math349" ||
+            course.courseId.toLowerCase() === "meeg671" ||
+            course.courseId.toLowerCase() === "psyc310" ||
+            course.courseId.toLowerCase() === "psyc340" ||
+            course.courseId.toLowerCase() === "psyc344"
         ) {
             totalRestCreditCount += course.credithours;
         }
     });
+
     const checkRestReq = totalRestCreditCount >= 12;
     if (!checkRestReq) {
         checkResults.errorMessages.push(

@@ -18,7 +18,6 @@ export function DisplayMessage({
                 show={show}
                 onHide={handleClose}
                 animation={true}
-                fade={false}
                 data-testId="message-modal"
             >
                 <Modal.Header closeButton>

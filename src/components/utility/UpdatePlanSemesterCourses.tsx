@@ -73,8 +73,6 @@ export function updateSemesterCourse({
             const newPlans = [...allPlans];
             newPlans.splice(allPlans.length, 0, newPlan);
             setAllPlans(newPlans);
-            console.log("Add Plan: ", newPlans);
-            console.log("Add Plan: ", allPlans);
         }
     };
 
@@ -102,9 +100,7 @@ export function updateSemesterCourse({
         if (allPlans != undefined && setAllPlans != undefined) {
             if (allPlans.length > 0) {
                 const newPlans = [...allPlans];
-                console.log("newPlans Before", newPlans);
                 newPlans.splice(parseInt(curPlan.id), 1);
-                console.log("newPlans After", newPlans);
                 setCurPlan(newPlans[0]);
                 setAllPlans(newPlans);
             }
@@ -241,10 +237,6 @@ export function updateSemesterCourse({
                 if (semesterFound !== undefined) {
                     curPlan.semesters.map((s: Semester) => {
                         if (s.term + " " + s.year === semesterInputID) {
-                            console.log(
-                                "semester term and year",
-                                semester.term + " " + semester.year
-                            );
                             const moveCourse = semester.courses.splice(
                                 courseIndex,
                                 1
@@ -264,9 +256,6 @@ export function updateSemesterCourse({
             break;
         }
         case "addSemester": {
-            // add course
-            //console.log("Assembly Guy");
-
             if (
                 semesterAdder != undefined &&
                 year != undefined &&
@@ -288,7 +277,6 @@ export function updateSemesterCourse({
                         s.term + " " + s.year ===
                         newSemester.term + " " + newSemester.year
                 );
-                //console.log("newSem length: ", newSemesters.length);
                 if (semesterDuplicateFound === undefined) {
                     semesterAdder(newSemester);
                 }
@@ -303,7 +291,6 @@ export function updateSemesterCourse({
                 setModalMessage(
                     "Are you sure you want to delete this semester?"
                 );
-                console.log("semesterIndex: ", semesterIndex);
                 semesterDeleter(semesterIndex);
             }
             break;
@@ -322,7 +309,6 @@ export function updateSemesterCourse({
                     semesters: [],
                     id: `${allPlans.length}`
                 };
-                //console.log("newSem length: ", newSemesters.length);
                 if (planAdder != undefined) {
                     planAdder(newPlan);
                 }

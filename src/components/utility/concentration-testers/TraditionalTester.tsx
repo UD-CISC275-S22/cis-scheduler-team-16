@@ -50,12 +50,12 @@ export function testTraditionalRequirements(
                 course.courseId.toLowerCase().startsWith("cisc7") ||
                 course.courseId.toLowerCase().startsWith("cisc8") ||
                 course.courseId.toLowerCase().startsWith("cisc9")) &&
-            course.courseId !== "cisc355" &&
-            course.courseId !== "cisc356" &&
-            course.courseId !== "cisc357" &&
-            course.courseId !== "cisc465" &&
-            course.courseId !== "cisc366" &&
-            course.courseId !== "cisc466"
+            course.courseId.toLowerCase() !== "cisc355" &&
+            course.courseId.toLowerCase() !== "cisc356" &&
+            course.courseId.toLowerCase() !== "cisc357" &&
+            course.courseId.toLowerCase() !== "cisc465" &&
+            course.courseId.toLowerCase() !== "cisc366" &&
+            course.courseId.toLowerCase() !== "cisc466"
         ) {
             totalUpperLevelCISC += course.credithours;
         }
