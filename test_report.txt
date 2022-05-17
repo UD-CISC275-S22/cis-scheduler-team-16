@@ -2,7 +2,7 @@
 > react-typescript-starter@0.1.0 test
 > react-scripts test "--coverage"
 
-PASS src/tests/CourseViewer.test.tsx (8.68 s)
+PASS src/tests/CourseViewer.test.tsx (9.134 s)
   ● Console
 
     console.log
@@ -221,7 +221,7 @@ PASS src/tests/CourseViewer.test.tsx (8.68 s)
     console.log
       semester term and year Spring 2022
 
-      at map (src/components/utility/UpdatePlanSemesterCourses.tsx:253:37)
+      at map (src/components/utility/UpdatePlanSemesterCourses.tsx:255:37)
           at Array.map (<anonymous>)
 
     console.log
@@ -800,7 +800,7 @@ PASS src/tests/CourseViewer.test.tsx (8.68 s)
       at map (src/components/PlanViewer.tsx:229:50)
           at Array.map (<anonymous>)
 
-PASS src/tests/Bioinformatics.test.tsx (5.57 s)
+PASS src/tests/Bioinformatics.test.tsx (5.681 s)
   ● Console
 
     console.log
@@ -17592,11 +17592,6 @@ PASS src/tests/SemesterViewer.test.tsx
           at Array.map (<anonymous>)
 
     console.log
-      semesterIndex:  0
-
-      at updateSemesterCourse (src/components/utility/UpdatePlanSemesterCourses.tsx:321:25)
-
-    console.log
       0
 
       at map (src/components/PlanViewer.tsx:229:50)
@@ -18054,13 +18049,13 @@ All files                                     |   97.53 |    90.03 |   97.85 |  
   CourseViewer.tsx                            |     100 |     90.9 |     100 |     100 | 87-88             
   PlanViewer.tsx                              |    92.8 |    67.64 |   95.34 |    92.8 | 21,30,78-92       
   SemesterViewer.tsx                          |     100 |      100 |     100 |     100 |                   
- src/components/utility                       |   94.89 |     72.4 |   97.56 |   94.87 |                   
+ src/components/utility                       |   94.87 |     72.4 |   97.56 |   94.85 |                   
   DisplayMessage.tsx                          |     100 |      100 |     100 |     100 |                   
   GenerateCoursePool.tsx                      |     100 |      100 |     100 |     100 |                   
   GetInitialPlans.tsx                         |     100 |      100 |     100 |     100 |                   
   PlanTester.tsx                              |   98.05 |    72.36 |   94.73 |   98.05 | 255,515           
   UpdatePlanCSV.tsx                           |   57.89 |       50 |     100 |   55.55 | 36-54,66-89       
-  UpdatePlanSemesterCourses.tsx               |   97.05 |    77.63 |     100 |   97.05 | 304-308,327       
+  UpdatePlanSemesterCourses.tsx               |   97.03 |    77.63 |     100 |   97.03 | 306-310,328       
  src/components/utility/concentration-testers |     100 |      100 |     100 |     100 |                   
   ArtificialIntelligenceTester.tsx            |     100 |      100 |     100 |     100 |                   
   BioinformaticsTester.tsx                    |     100 |      100 |     100 |     100 |                   
@@ -18082,5 +18077,5 @@ All files                                     |   97.53 |    90.03 |   97.85 |  
 Test Suites: 14 passed, 14 total
 Tests:       160 passed, 160 total
 Snapshots:   0 total
-Time:        52.769 s
+Time:        53.777 s
 Ran all test suites.
