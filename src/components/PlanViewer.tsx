@@ -226,7 +226,6 @@ export function PlanViewer(): JSX.Element {
                                 (plan: Plan): JSX.Element => (
                                     <option key={plan.id} value={plan.id}>
                                         {" "}
-                                        {console.log(plan.id)}
                                         {plan.name}{" "}
                                     </option>
                                 )
