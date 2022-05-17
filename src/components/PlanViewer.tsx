@@ -421,13 +421,14 @@ export function PlanViewer(): JSX.Element {
                                             let reqs =
                                                 eachcourse.satisfied_requirements.join(
                                                     "/"
-                                                ) + ",";
+                                                );
                                             if (
                                                 eachcourse.satisfied_requirements.join(
                                                     "/"
                                                 ) === ""
                                             )
-                                                reqs = "None,";
+                                                reqs = "None";
+                                            console.log(reqs);
                                             CSVdata.push([
                                                 semesterName,
                                                 semesterYear,
@@ -435,7 +436,7 @@ export function PlanViewer(): JSX.Element {
                                                 courseID,
                                                 credits,
                                                 prereqs,
-                                                reqs
+                                                reqs + ","
                                             ]);
                                         }
                                     }
