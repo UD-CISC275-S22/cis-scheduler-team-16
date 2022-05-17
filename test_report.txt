@@ -2,7 +2,7 @@
 > react-typescript-starter@0.1.0 test
 > react-scripts test "--coverage"
 
-PASS src/tests/CourseViewer.test.tsx (6.915 s)
+PASS src/tests/CourseViewer.test.tsx (8.977 s)
   ● Console
 
     console.error
@@ -50,7 +50,7 @@ PASS src/tests/CourseViewer.test.tsx (6.915 s)
       at setInitialProperties (node_modules/react-dom/cjs/react-dom.development.js:9041:5)
       at finalizeInitialChildren (node_modules/react-dom/cjs/react-dom.development.js:10201:3)
 
-PASS src/tests/Bioinformatics.test.tsx
+PASS src/tests/Bioinformatics.test.tsx (5.526 s)
   ● Console
 
     console.error
@@ -698,7 +698,7 @@ All files                                     |   96.92 |    89.42 |   95.68 |  
   GenerateCoursePool.tsx                      |     100 |      100 |     100 |     100 |                   
   PlanTester.tsx                              |   98.05 |    72.36 |   94.73 |   98.05 | 255,515           
   UpdatePlanCSV.tsx                           |   57.89 |       50 |     100 |   55.55 | 36-54,66-89       
-  UpdatePlanSemesterCourses.tsx               |   99.18 |    77.77 |     100 |   99.18 | 298               
+  UpdatePlanSemesterCourses.tsx               |   99.18 |    77.77 |     100 |   99.18 | 300               
  src/components/utility/concentration-testers |     100 |      100 |     100 |     100 |                   
   ArtificialIntelligenceTester.tsx            |     100 |      100 |     100 |     100 |                   
   BioinformaticsTester.tsx                    |     100 |      100 |     100 |     100 |                   
@@ -720,5 +720,5 @@ All files                                     |   96.92 |    89.42 |   95.68 |  
 Test Suites: 14 passed, 14 total
 Tests:       158 passed, 158 total
 Snapshots:   0 total
-Time:        39.296 s
+Time:        52.228 s
 Ran all test suites.
