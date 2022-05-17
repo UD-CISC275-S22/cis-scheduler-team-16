@@ -7,138 +7,129 @@ describe("Planner Tests", () => {
     beforeEach(() => {
         render(<PlanViewer />);
     });
-    test("Test Restricted Electives for AI Concentration", () => {
+    test("Test CISC361 for Cybersecurity Concentration", () => {
         const select = screen.queryAllByRole("combobox");
-        userEvent.selectOptions(select[1], "Artificial Intelligence");
+        userEvent.selectOptions(select[1], "Cybersecurity");
 
         const textboxes = screen.queryAllByRole("textbox");
-        const titleInstances = screen.queryByText("CISC436");
+        const titleInstances = screen.queryByText("CISC361");
         expect(titleInstances).not.toBeInTheDocument();
-
-        userEvent.type(textboxes[0], "CISC436");
+        userEvent.type(textboxes[0], "CISC361");
         const submitButton = screen.getByTestId("submit-course-pool-button");
         submitButton.click();
-        const closeButton = screen.getByTestId("close-modal-button");
-        closeButton.click();
-
-        userEvent.type(textboxes[0], "{selectall}{delete}CISC437");
-        submitButton.click();
-        closeButton.click();
-
-        userEvent.type(textboxes[0], "{selectall}{delete}CISC489");
-        submitButton.click();
-        closeButton.click();
-
-        userEvent.type(textboxes[0], "{selectall}{delete}CISC889");
-        submitButton.click();
-        closeButton.click();
-
-        const titleInstancesFinal = screen.queryByText("CISC436");
-        expect(titleInstancesFinal).toBeInTheDocument();
-    });
-    test("Test CISC304 for AI Concentration", () => {
-        const select = screen.queryAllByRole("combobox");
-        userEvent.selectOptions(select[1], "Artificial Intelligence");
-
-        const textboxes = screen.queryAllByRole("textbox");
-        const titleInstances = screen.queryByText("CISC304");
-        expect(titleInstances).not.toBeInTheDocument();
-        userEvent.type(textboxes[0], "CISC304");
-        const submitButton = screen.getByTestId("submit-course-pool-button");
-        submitButton.click();
-        const titleInstancesFinal = screen.queryByText("CISC304");
+        const titleInstancesFinal = screen.queryByText("CISC361");
         expect(titleInstancesFinal).toBeInTheDocument();
         const closeButton = screen.getByTestId("close-modal-button");
         closeButton.click();
 
         const checkProblems = screen.queryByText(
-            "Concentration Requirement: CISC304"
+            "Concentration Requirement: CISC361"
         );
         expect(checkProblems).not.toBeInTheDocument();
     });
-    test("Test CISC442 for AI Concentration", () => {
+    test("Test CISC372 for Cybersecurity Concentration", () => {
         const select = screen.queryAllByRole("combobox");
-        userEvent.selectOptions(select[1], "Artificial Intelligence");
+        userEvent.selectOptions(select[1], "Cybersecurity");
 
         const textboxes = screen.queryAllByRole("textbox");
-        const titleInstances = screen.queryByText("CISC442");
+        const titleInstances = screen.queryByText("CISC372");
         expect(titleInstances).not.toBeInTheDocument();
-        userEvent.type(textboxes[0], "CISC442");
+        userEvent.type(textboxes[0], "CISC372");
         const submitButton = screen.getByTestId("submit-course-pool-button");
         submitButton.click();
-        const titleInstancesFinal = screen.queryByText("CISC442");
+        const titleInstancesFinal = screen.queryByText("CISC372");
         expect(titleInstancesFinal).toBeInTheDocument();
         const closeButton = screen.getByTestId("close-modal-button");
         closeButton.click();
 
         const checkProblems = screen.queryByText(
-            "Concentration Requirement: CISC442"
+            "Concentration Requirement: CISC372"
         );
         expect(checkProblems).not.toBeInTheDocument();
     });
-    test("Test CISC481 for AI Concentration", () => {
+    test("Test CISC450 for Cybersecurity Concentration", () => {
         const select = screen.queryAllByRole("combobox");
-        userEvent.selectOptions(select[1], "Artificial Intelligence");
+        userEvent.selectOptions(select[1], "Cybersecurity");
 
         const textboxes = screen.queryAllByRole("textbox");
-        const titleInstances = screen.queryByText("CISC481");
+        const titleInstances = screen.queryByText("CISC450");
         expect(titleInstances).not.toBeInTheDocument();
-        userEvent.type(textboxes[0], "CISC481");
+        userEvent.type(textboxes[0], "CISC450");
         const submitButton = screen.getByTestId("submit-course-pool-button");
         submitButton.click();
-        const titleInstancesFinal = screen.queryByText("CISC481");
+        const titleInstancesFinal = screen.queryByText("CISC450");
         expect(titleInstancesFinal).toBeInTheDocument();
         const closeButton = screen.getByTestId("close-modal-button");
         closeButton.click();
 
         const checkProblems = screen.queryByText(
-            "Concentration Requirement: CISC481"
+            "Concentration Requirement: CISC450"
         );
         expect(checkProblems).not.toBeInTheDocument();
     });
-    test("Test CISC483 for AI Concentration", () => {
+    test("Test CISC464 for Cybersecurity Concentration", () => {
         const select = screen.queryAllByRole("combobox");
-        userEvent.selectOptions(select[1], "Artificial Intelligence");
+        userEvent.selectOptions(select[1], "Cybersecurity");
 
         const textboxes = screen.queryAllByRole("textbox");
-        const titleInstances = screen.queryByText("CISC483");
+        const titleInstances = screen.queryByText("CISC464");
         expect(titleInstances).not.toBeInTheDocument();
-        userEvent.type(textboxes[0], "CISC483");
+        userEvent.type(textboxes[0], "CISC464");
         const submitButton = screen.getByTestId("submit-course-pool-button");
         submitButton.click();
-        const titleInstancesFinal = screen.queryByText("CISC483");
+        const titleInstancesFinal = screen.queryByText("CISC464");
         expect(titleInstancesFinal).toBeInTheDocument();
         const closeButton = screen.getByTestId("close-modal-button");
         closeButton.click();
 
         const checkProblems = screen.queryByText(
-            "Concentration Requirement: CISC483"
+            "Concentration Requirement: CISC464"
         );
         expect(checkProblems).not.toBeInTheDocument();
     });
-    test("Test CISC484 for AI Concentration", () => {
+    test("Test CPEG465 for Cybersecurity Concentration", () => {
         const select = screen.queryAllByRole("combobox");
-        userEvent.selectOptions(select[1], "Artificial Intelligence");
+        userEvent.selectOptions(select[1], "Cybersecurity");
 
         const textboxes = screen.queryAllByRole("textbox");
-        const titleInstances = screen.queryByText("CISC484");
+        const titleInstances = screen.queryByText("CPEG465");
         expect(titleInstances).not.toBeInTheDocument();
-        userEvent.type(textboxes[0], "CISC484");
+        userEvent.type(textboxes[0], "CPEG465");
         const submitButton = screen.getByTestId("submit-course-pool-button");
         submitButton.click();
-        const titleInstancesFinal = screen.queryByText("CISC484");
+        const titleInstancesFinal = screen.queryByText("CPEG465");
         expect(titleInstancesFinal).toBeInTheDocument();
         const closeButton = screen.getByTestId("close-modal-button");
         closeButton.click();
 
         const checkProblems = screen.queryByText(
-            "Concentration Requirement: CISC484"
+            "Concentration Requirement: CPEG465"
         );
         expect(checkProblems).not.toBeInTheDocument();
     });
-    test("Test MATH205 for AI Concentration", () => {
+    test("Test CPEG494 for Cybersecurity Concentration", () => {
         const select = screen.queryAllByRole("combobox");
-        userEvent.selectOptions(select[1], "Artificial Intelligence");
+        userEvent.selectOptions(select[1], "Cybersecurity");
+
+        const textboxes = screen.queryAllByRole("textbox");
+        const titleInstances = screen.queryByText("CPEG494");
+        expect(titleInstances).not.toBeInTheDocument();
+        userEvent.type(textboxes[0], "CPEG494");
+        const submitButton = screen.getByTestId("submit-course-pool-button");
+        submitButton.click();
+        const titleInstancesFinal = screen.queryByText("CPEG494");
+        expect(titleInstancesFinal).toBeInTheDocument();
+        const closeButton = screen.getByTestId("close-modal-button");
+        closeButton.click();
+
+        const checkProblems = screen.queryByText(
+            "Concentration Requirement: CPEG494"
+        );
+        expect(checkProblems).not.toBeInTheDocument();
+    });
+    test("Test MATH205 for Cybersecurity Concentration", () => {
+        const select = screen.queryAllByRole("combobox");
+        userEvent.selectOptions(select[1], "Cybersecurity");
 
         const textboxes = screen.queryAllByRole("textbox");
         const titleInstances = screen.queryByText("MATH205");
@@ -156,24 +147,54 @@ describe("Planner Tests", () => {
         );
         expect(checkProblems).not.toBeInTheDocument();
     });
-    test("Test CISC361 for AI Concentration", () => {
+    test("Test CPEG472 for Cybersecurity Concentration", () => {
         const select = screen.queryAllByRole("combobox");
-        userEvent.selectOptions(select[1], "Artificial Intelligence");
+        userEvent.selectOptions(select[1], "Cybersecurity");
 
         const textboxes = screen.queryAllByRole("textbox");
-        const titleInstances = screen.queryByText("CISC361");
+        const titleInstances = screen.queryByText("CPEG472");
         expect(titleInstances).not.toBeInTheDocument();
-        userEvent.type(textboxes[0], "CISC361");
+
+        userEvent.type(textboxes[0], "CPEG472");
         const submitButton = screen.getByTestId("submit-course-pool-button");
         submitButton.click();
-        const titleInstancesFinal = screen.queryByText("CISC361");
-        expect(titleInstancesFinal).toBeInTheDocument();
         const closeButton = screen.getByTestId("close-modal-button");
         closeButton.click();
 
-        const checkProblems = screen.queryByText(
-            "Concentration Requirement: Systems"
-        );
-        expect(checkProblems).not.toBeInTheDocument();
+        userEvent.type(textboxes[0], "{selectall}{delete}CPEG473");
+        submitButton.click();
+        closeButton.click();
+
+        const titleInstancesFinal = screen.queryByText("CPEG472");
+        expect(titleInstancesFinal).toBeInTheDocument();
+    });
+    test("Test Restricted Electives for Cybersecurity Concentration", () => {
+        const select = screen.queryAllByRole("combobox");
+        userEvent.selectOptions(select[1], "Cybersecurity");
+
+        const textboxes = screen.queryAllByRole("textbox");
+        const titleInstances = screen.queryByText("CISC436");
+        expect(titleInstances).not.toBeInTheDocument();
+
+        userEvent.type(textboxes[0], "MATH242");
+        const submitButton = screen.getByTestId("submit-course-pool-button");
+        submitButton.click();
+        const closeButton = screen.getByTestId("close-modal-button");
+        closeButton.click();
+
+        userEvent.type(textboxes[0], "{selectall}{delete}MATH349");
+        submitButton.click();
+        closeButton.click();
+
+        userEvent.type(textboxes[0], "{selectall}{delete}CISC489");
+        submitButton.click();
+        closeButton.click();
+
+        userEvent.type(textboxes[0], "{selectall}{delete}CISC889");
+        submitButton.click();
+        closeButton.click();
+
+        const titleInstancesFinal = screen.queryByText("MATH242");
+        expect(titleInstancesFinal).toBeInTheDocument();
     });
 });

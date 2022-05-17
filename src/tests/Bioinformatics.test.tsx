@@ -21,6 +21,14 @@ describe("Planner Tests", () => {
         expect(titleInstancesFinal).toBeInTheDocument();
         const closeButton = screen.getByTestId("close-modal-button");
         closeButton.click();
+
+        const expandButton = screen.getByTestId("expand-problems");
+        expandButton.click();
+
+        const checkProblems = screen.queryByText(
+            "Concentration Requirement: BISC207"
+        );
+        expect(checkProblems).not.toBeInTheDocument();
     });
     test("Test BISC208 for Bioinformatics Concentration", () => {
         const select = screen.queryAllByRole("combobox");
@@ -36,6 +44,11 @@ describe("Planner Tests", () => {
         expect(titleInstancesFinal).toBeInTheDocument();
         const closeButton = screen.getByTestId("close-modal-button");
         closeButton.click();
+
+        const checkProblems = screen.queryByText(
+            "Concentration Requirement: BISC208"
+        );
+        expect(checkProblems).not.toBeInTheDocument();
     });
     test("Test BISC401 for Bioinformatics Concentration", () => {
         const select = screen.queryAllByRole("combobox");
@@ -51,6 +64,11 @@ describe("Planner Tests", () => {
         expect(titleInstancesFinal).toBeInTheDocument();
         const closeButton = screen.getByTestId("close-modal-button");
         closeButton.click();
+
+        const checkProblems = screen.queryByText(
+            "Concentration Requirement: BISC401"
+        );
+        expect(checkProblems).not.toBeInTheDocument();
     });
     test("Test CHEM103 for Bioinformatics Concentration", () => {
         const select = screen.queryAllByRole("combobox");
@@ -66,6 +84,11 @@ describe("Planner Tests", () => {
         expect(titleInstancesFinal).toBeInTheDocument();
         const closeButton = screen.getByTestId("close-modal-button");
         closeButton.click();
+
+        const checkProblems = screen.queryByText(
+            "Concentration Requirement: CHEM103"
+        );
+        expect(checkProblems).not.toBeInTheDocument();
     });
     test("Test CHEM133 for Bioinformatics Concentration", () => {
         const select = screen.queryAllByRole("combobox");
@@ -81,6 +104,11 @@ describe("Planner Tests", () => {
         expect(titleInstancesFinal).toBeInTheDocument();
         const closeButton = screen.getByTestId("close-modal-button");
         closeButton.click();
+
+        const checkProblems = screen.queryByText(
+            "Concentration Requirement: CHEM133"
+        );
+        expect(checkProblems).not.toBeInTheDocument();
     });
     test("Test CHEM104 for Bioinformatics Concentration", () => {
         const select = screen.queryAllByRole("combobox");
@@ -96,6 +124,11 @@ describe("Planner Tests", () => {
         expect(titleInstancesFinal).toBeInTheDocument();
         const closeButton = screen.getByTestId("close-modal-button");
         closeButton.click();
+
+        const checkProblems = screen.queryByText(
+            "Concentration Requirement: CHEM104"
+        );
+        expect(checkProblems).not.toBeInTheDocument();
     });
     test("Test CHEM134 for Bioinformatics Concentration", () => {
         const select = screen.queryAllByRole("combobox");
@@ -111,6 +144,11 @@ describe("Planner Tests", () => {
         expect(titleInstancesFinal).toBeInTheDocument();
         const closeButton = screen.getByTestId("close-modal-button");
         closeButton.click();
+
+        const checkProblems = screen.queryByText(
+            "Concentration Requirement: CHEM134"
+        );
+        expect(checkProblems).not.toBeInTheDocument();
     });
     test("Test CISC372 for Bioinformatics Concentration", () => {
         const select = screen.queryAllByRole("combobox");
@@ -126,6 +164,11 @@ describe("Planner Tests", () => {
         expect(titleInstancesFinal).toBeInTheDocument();
         const closeButton = screen.getByTestId("close-modal-button");
         closeButton.click();
+
+        const checkProblems = screen.queryByText(
+            "Concentration Requirement: CISC372"
+        );
+        expect(checkProblems).not.toBeInTheDocument();
     });
     test("Test CISC436 for Bioinformatics Concentration", () => {
         const select = screen.queryAllByRole("combobox");
@@ -141,6 +184,11 @@ describe("Planner Tests", () => {
         expect(titleInstancesFinal).toBeInTheDocument();
         const closeButton = screen.getByTestId("close-modal-button");
         closeButton.click();
+
+        const checkProblems = screen.queryByText(
+            "Concentration Requirement: CISC436"
+        );
+        expect(checkProblems).not.toBeInTheDocument();
     });
     test("Test MATH242 for Bioinformatics Concentration", () => {
         const select = screen.queryAllByRole("combobox");
@@ -156,6 +204,11 @@ describe("Planner Tests", () => {
         expect(titleInstancesFinal).toBeInTheDocument();
         const closeButton = screen.getByTestId("close-modal-button");
         closeButton.click();
+
+        const checkProblems = screen.queryByText(
+            "Concentration Requirement: MATH242"
+        );
+        expect(checkProblems).not.toBeInTheDocument();
     });
     test("Test MATH349 for Bioinformatics Concentration", () => {
         const select = screen.queryAllByRole("combobox");
@@ -171,6 +224,11 @@ describe("Planner Tests", () => {
         expect(titleInstancesFinal).toBeInTheDocument();
         const closeButton = screen.getByTestId("close-modal-button");
         closeButton.click();
+
+        const checkProblems = screen.queryByText(
+            "Concentration Requirement: MATH349"
+        );
+        expect(checkProblems).not.toBeInTheDocument();
     });
     test("Test Core Chem for Bioinformatics Concentration", () => {
         const select = screen.queryAllByRole("combobox");
@@ -190,8 +248,73 @@ describe("Planner Tests", () => {
         submitButton.click();
         closeButton.click();
 
-        const titleInstancesFinal = screen.queryByText("CHEM213");
+        const checkProblems = screen.queryByText(
+            "Concentration Requirement: Organic"
+        );
+        expect(checkProblems).not.toBeInTheDocument();
+    });
+    test("Test Core Chem for Bioinformatics Concentration", () => {
+        const select = screen.queryAllByRole("combobox");
+        userEvent.selectOptions(select[1], "Bioinformatics");
+
+        const textboxes = screen.queryAllByRole("textbox");
+        const titleInstances = screen.queryByText("CHEM321");
+        expect(titleInstances).not.toBeInTheDocument();
+
+        userEvent.type(textboxes[0], "CHEM321");
+        const submitButton = screen.getByTestId("submit-course-pool-button");
+        submitButton.click();
+        const closeButton = screen.getByTestId("close-modal-button");
+        closeButton.click();
+
+        userEvent.type(textboxes[0], "{selectall}{delete}CHEM325");
+        submitButton.click();
+        closeButton.click();
+
+        const checkProblems = screen.queryByText(
+            "Concentration Requirement: Organic"
+        );
+        expect(checkProblems).not.toBeInTheDocument();
+    });
+    test("Test MATH205 for Bioinformatics Concentration", () => {
+        const select = screen.queryAllByRole("combobox");
+        userEvent.selectOptions(select[1], "Bioinformatics");
+
+        const textboxes = screen.queryAllByRole("textbox");
+        const titleInstances = screen.queryByText("MATH205");
+        expect(titleInstances).not.toBeInTheDocument();
+        userEvent.type(textboxes[0], "MATH205");
+        const submitButton = screen.getByTestId("submit-course-pool-button");
+        submitButton.click();
+        const titleInstancesFinal = screen.queryByText("MATH205");
         expect(titleInstancesFinal).toBeInTheDocument();
+        const closeButton = screen.getByTestId("close-modal-button");
+        closeButton.click();
+
+        const checkProblems = screen.queryByText(
+            "Concentration Requirement: Probability"
+        );
+        expect(checkProblems).not.toBeInTheDocument();
+    });
+    test("Test CISC483 for Bioinformatics Concentration", () => {
+        const select = screen.queryAllByRole("combobox");
+        userEvent.selectOptions(select[1], "Bioinformatics");
+
+        const textboxes = screen.queryAllByRole("textbox");
+        const titleInstances = screen.queryByText("CISC483");
+        expect(titleInstances).not.toBeInTheDocument();
+        userEvent.type(textboxes[0], "CISC483");
+        const submitButton = screen.getByTestId("submit-course-pool-button");
+        submitButton.click();
+        const titleInstancesFinal = screen.queryByText("CISC483");
+        expect(titleInstancesFinal).toBeInTheDocument();
+        const closeButton = screen.getByTestId("close-modal-button");
+        closeButton.click();
+
+        const checkProblems = screen.queryByText(
+            "Concentration Requirement: Data Analysis"
+        );
+        expect(checkProblems).not.toBeInTheDocument();
     });
     test("Test Restricted Electives for Bioinformatics Concentration", () => {
         const select = screen.queryAllByRole("combobox");
@@ -210,5 +333,14 @@ describe("Planner Tests", () => {
         userEvent.type(textboxes[0], "{selectall}{delete}ANFS310");
         submitButton.click();
         closeButton.click();
+
+        userEvent.type(textboxes[0], "{selectall}{delete}BISC403");
+        submitButton.click();
+        closeButton.click();
+
+        const checkProblems = screen.queryByText(
+            "Concentration Requirement: Fewer than"
+        );
+        expect(checkProblems).not.toBeInTheDocument();
     });
 });

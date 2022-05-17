@@ -145,7 +145,7 @@ export function testDataScienceRequirements(
     const checkRestReq = totalRestCreditCount >= 3;
     if (!checkRestReq) {
         checkResults.errorMessages.push(
-            "Concentration Requirement: Fewer than 6 restricted elective credits in plan, " +
+            "Concentration Requirement: Fewer than 3 restricted elective credits in plan, " +
                 totalRestCreditCount +
                 " found"
         );
