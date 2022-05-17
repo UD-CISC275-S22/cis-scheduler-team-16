@@ -60,6 +60,30 @@ describe("Planner Tests", () => {
         expect(afterMoveDownButton).toBeInTheDocument();
         expect(afterMoveBox).toBeInTheDocument();
     });
+    test("Check to get the modal for moving at the top", () => {
+        const moveButton = screen.queryAllByTestId("move-course-button");
+        moveButton[0].click();
+        const initialMoveUpButton = screen.queryAllByTestId(
+            "move-course-up-button"
+        );
+        initialMoveUpButton[0].click();
+        const errorMessage = screen.queryByText(
+            "Could not move the course up further, as it is the first course in the semester"
+        );
+        expect(errorMessage).toBeInTheDocument();
+    });
+    test("Check to get the modal for moving at the bottom", () => {
+        const moveButton = screen.queryAllByTestId("move-course-button");
+        moveButton[moveButton.length - 1].click();
+        const initialMoveDownButton = screen.queryAllByTestId(
+            "move-course-down-button"
+        );
+        initialMoveDownButton[0].click();
+        const errorMessage = screen.queryByText(
+            "Could not move the course down further, as it is the last course in the semester"
+        );
+        expect(errorMessage).toBeInTheDocument();
+    });
     test("Check to see that the move down button is working", () => {
         const editModeButtons = screen.queryAllByTestId("course-edit-button");
         editModeButtons[0].click();
@@ -118,6 +142,20 @@ describe("Planner Tests", () => {
         newEditModeButtons[4].click();
         const finalTextboxes = screen.getAllByRole("textbox");
         expect(finalTextboxes[2]).toHaveValue("Introductory English");
+    });
+    test("Check to see that moving to an invalid semester works", () => {
+        const editModeButtons = screen.queryAllByTestId("course-edit-button");
+        editModeButtons[0].click();
+        const initTextboxes = screen.getAllByRole("textbox");
+        expect(initTextboxes[2]).toHaveValue("Introductory English");
+        editModeButtons[0].click();
+
+        const moveButtons = screen.getAllByTestId("move-course-button");
+        moveButtons[0].click();
+        const moveTextbox = screen.getByTestId("change-semester-box");
+        userEvent.type(moveTextbox, "DHJLSKADKJHSKLD");
+        const selectButton = screen.getByTestId("change-semester-button");
+        selectButton.click();
     });
     test("Check to see if the edit mode options are initially hidden", () => {
         const initHeader = screen.queryByText("Overwrite Course Properties");

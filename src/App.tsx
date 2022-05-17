@@ -9,7 +9,7 @@ function App(): JSX.Element {
     return (
         <div className="App">
             <img src={headerImage} width="100%" />
-            <p
+            <div
                 className="Hello-message"
                 style={{
                     marginLeft: "20px",
@@ -36,7 +36,7 @@ function App(): JSX.Element {
                     with a 24 hour website dedicated to labelling your scholarly
                     journey.
                 </div>
-            </p>
+            </div>
             <PlanViewer></PlanViewer>
         </div>
     );

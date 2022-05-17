@@ -2,6 +2,12 @@ import { Course } from "../../templates/course";
 import { Semester } from "../../templates/semester";
 import { Plan } from "../../templates/plan";
 
+/**
+ * Hey! Sorry that this one isn't tested all that well! Since this deals with importing data from the user,
+ * we didn't have any real way of being able to test this. Sorry about that! But we wanted to acknowledge the
+ * last of testing for this file :)
+ */
+
 export function updatePlanCSV({
     content,
     curPlan,

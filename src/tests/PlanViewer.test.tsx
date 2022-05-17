@@ -127,4 +127,12 @@ describe("Planner Tests", () => {
         const finalHeader = screen.queryByText("Upload a file");
         expect(finalHeader).toBeInTheDocument();
     });
+    test("Click import button", () => {
+        const initialHeader = screen.queryByText("Upload a file");
+        expect(initialHeader).not.toBeInTheDocument();
+        const showButton = screen.getByTestId("show-hide-import-button");
+        showButton.click();
+        const importButton = screen.getByTestId("import-button");
+        importButton.click();
+    });
 });

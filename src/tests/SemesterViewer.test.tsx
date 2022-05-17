@@ -15,6 +15,14 @@ describe("Semester Tests", () => {
         const title = screen.queryByText("Fall 0");
         expect(title).toBeInTheDocument();
     });
+    test("Can Show/Hide Semesters", () => {
+        const text = screen.queryByText("ENGL110");
+        expect(text).toBeInTheDocument();
+        const button = screen.getAllByTestId("show-hide-button");
+        button[0].click();
+        const final_text = screen.queryByText("ENGL110");
+        expect(final_text).not.toBeInTheDocument();
+    });
     test("Semesters can be removed from the plan", () => {
         const initial_values = screen.queryAllByText("Spring 2022");
         expect(initial_values.length).toBe(1);

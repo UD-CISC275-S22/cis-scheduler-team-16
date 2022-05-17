@@ -65,7 +65,6 @@ export function updateSemesterCourse({
         });
         planSemesters.splice(planSemesters.length, 0, semester);
         setCurPlan({ ...curPlan, semesters: planSemesters });
-        //setEditSem(!editSem); //added to close semester edit when saved
     };
 
     const planAdder = (newPlan: Plan): void => {
