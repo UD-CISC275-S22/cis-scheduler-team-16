@@ -108,8 +108,11 @@ export function updateSemesterCourse({
         if (allPlans != undefined && setAllPlans != undefined) {
             if (allPlans.length > 0) {
                 const newPlans = [...allPlans];
-                console.log("newPlans Before", allPlans);
+                console.log("newPlans Before", newPlans);
                 newPlans.splice(parseInt(curPlan.id), 1);
+                newPlans.map(
+                    (plan: Plan, index: number) => (plan.id = index.toString())
+                );
                 console.log("newPlans After", newPlans);
                 setCurPlan(newPlans[0]);
                 setAllPlans(newPlans);
@@ -155,8 +158,10 @@ export function updateSemesterCourse({
         case "delete": {
             // delete course
             setShowMessage(true);
-            setModalHeader("Deletion");
-            setModalMessage("Removed course from semester.");
+            setModalHeader("Warning");
+            setModalMessage(
+                "Are you sure that you want to delete this course?"
+            );
             if (courseIndex !== undefined) {
                 semester.courses.splice(courseIndex, 1);
             }
@@ -179,8 +184,10 @@ export function updateSemesterCourse({
         }
         case "clear": {
             setShowMessage(true);
-            setModalHeader("Deletion");
-            setModalMessage("All courses have been cleared for this semester");
+            setModalHeader("Warning");
+            setModalMessage(
+                "Are you sure you want to clear all of the courses from your semester?"
+            );
             semester.courses = [];
             planSetter(semesterIndex, semester);
             break;
@@ -307,8 +314,10 @@ export function updateSemesterCourse({
             // delete course
             if (semesterIndex !== undefined && semesterDeleter != undefined) {
                 setShowMessage(true);
-                setModalHeader("Deletion");
-                setModalMessage("The semester has been deleted!");
+                setModalHeader("Warning");
+                setModalMessage(
+                    "Are you sure you want to delete this semester?"
+                );
                 console.log("semesterIndex: ", semesterIndex);
                 semesterDeleter(semesterIndex);
             }
@@ -342,8 +351,8 @@ export function updateSemesterCourse({
             // delete course
             if (planDeleter != undefined) {
                 setShowMessage(true);
-                setModalHeader("Deletion");
-                setModalMessage("The plan has been removed!");
+                setModalHeader("Warning");
+                setModalMessage("Are you sure you want to delete this plan?");
                 planDeleter();
             }
             break;
