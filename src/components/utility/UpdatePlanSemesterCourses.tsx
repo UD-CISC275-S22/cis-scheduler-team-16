@@ -322,7 +322,7 @@ export function updateSemesterCourse({
             if (planDeleter != undefined) {
                 setShowMessage(true);
                 setModalHeader("Delete Successful");
-                setModalMessage("Plan Successfully Deleted");
+                setModalMessage("Plan Successfully Removed");
                 planDeleter();
             }
             break;
