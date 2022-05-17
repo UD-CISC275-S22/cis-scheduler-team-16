@@ -158,9 +158,11 @@ export function updateSemesterCourse({
         case "delete": {
             // delete course
             setShowMessage(true);
-            setModalHeader("Warning");
+            setModalHeader("Deletion Successful");
             setModalMessage(
-                "Are you sure that you want to delete this course?"
+                `Successfully deleted ${
+                    semester.courses[courseIndex as number].courseId
+                }`
             );
             if (courseIndex !== undefined) {
                 semester.courses.splice(courseIndex, 1);
@@ -184,9 +186,9 @@ export function updateSemesterCourse({
         }
         case "clear": {
             setShowMessage(true);
-            setModalHeader("Warning");
+            setModalHeader("Action Successful");
             setModalMessage(
-                "Are you sure you want to clear all of the courses from your semester?"
+                `Successfully cleared all courses from ${semester.term} ${semester.year}`
             );
             semester.courses = [];
             planSetter(semesterIndex, semester);
@@ -200,7 +202,7 @@ export function updateSemesterCourse({
                 semester.courses[courseIndex - 1] = tmpCourse;
             } else {
                 setShowMessage(true);
-                setModalHeader("For your information");
+                setModalHeader("Attention");
                 setModalMessage(
                     "Could not move the course up further, as it is the first course in the semester"
                 );
@@ -219,7 +221,7 @@ export function updateSemesterCourse({
                 semester.courses[courseIndex + 1] = tmpCourse;
             } else {
                 setShowMessage(true);
-                setModalHeader("For your information");
+                setModalHeader("Attention");
                 setModalMessage(
                     "Could not move the course down further, as it is the last course in the semester"
                 );
@@ -239,7 +241,7 @@ export function updateSemesterCourse({
                 );
                 if (semesterFound != undefined) {
                     setShowMessage(true);
-                    setModalHeader("Lets Go!");
+                    setModalHeader("Action Successful");
                     setModalMessage(
                         `${course.courseId} has been moved to ${
                             semesterFound.term + " " + semesterFound.year
@@ -295,7 +297,7 @@ export function updateSemesterCourse({
                 //console.log("newSem length: ", newSemesters.length);
                 if (semesterDuplicateFound === undefined) {
                     setShowMessage(true);
-                    setModalHeader("Lets Go!");
+                    setModalHeader("Action Successful");
                     setModalMessage(
                         `${term + " " + year} has been added to the Plan!`
                     );
@@ -314,11 +316,10 @@ export function updateSemesterCourse({
             // delete course
             if (semesterIndex !== undefined && semesterDeleter != undefined) {
                 setShowMessage(true);
-                setModalHeader("Warning");
+                setModalHeader("Delete Successful");
                 setModalMessage(
-                    "Are you sure you want to delete this semester?"
+                    `Successfully Deleted ${semester.term} ${semester.year}`
                 );
-                console.log("semesterIndex: ", semesterIndex);
                 semesterDeleter(semesterIndex);
             }
             break;
@@ -351,8 +352,8 @@ export function updateSemesterCourse({
             // delete course
             if (planDeleter != undefined) {
                 setShowMessage(true);
-                setModalHeader("Warning");
-                setModalMessage("Are you sure you want to delete this plan?");
+                setModalHeader("Delete Successful");
+                setModalMessage("Plan Successfully Deleted");
                 planDeleter();
             }
             break;
