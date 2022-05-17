@@ -100,32 +100,32 @@ export function testCyberRequirements(
     let totalRestCreditCount = 0;
     planCourses.map((course: Course) => {
         if (
-            course.courseId === "math242" ||
-            course.courseId === "math349" ||
-            course.courseId === "math549" ||
-            course.courseId === "cisc304" ||
-            course.courseId === "cisc436" ||
-            course.courseId === "cisc437" ||
-            course.courseId === "cisc440" ||
-            course.courseId === "cisc442" ||
-            course.courseId === "cisc449" ||
-            course.courseId === "cisc453" ||
-            course.courseId === "cisc459" ||
-            course.courseId === "cisc481" ||
-            course.courseId === "cisc483" ||
-            course.courseId === "cisc484" ||
-            course.courseId === "cisc474" ||
-            course.courseId === "cpeg470" ||
-            course.courseId === "cpeg471" ||
-            course.courseId === "cpeg472" ||
-            course.courseId === "cpeg473" ||
-            course.courseId === "cpeg474" ||
-            course.courseId === "cpeg475" ||
-            course.courseId === "cpeg476" ||
-            course.courseId === "cpeg494" ||
-            course.courseId === "cpeg495" ||
-            course.courseId === "eleg387" ||
-            course.courseId === "eleg487"
+            course.courseId.toLowerCase() === "math242" ||
+            course.courseId.toLowerCase() === "math349" ||
+            course.courseId.toLowerCase() === "math549" ||
+            course.courseId.toLowerCase() === "cisc304" ||
+            course.courseId.toLowerCase() === "cisc436" ||
+            course.courseId.toLowerCase() === "cisc437" ||
+            course.courseId.toLowerCase() === "cisc440" ||
+            course.courseId.toLowerCase() === "cisc442" ||
+            course.courseId.toLowerCase() === "cisc449" ||
+            course.courseId.toLowerCase() === "cisc453" ||
+            course.courseId.toLowerCase() === "cisc459" ||
+            course.courseId.toLowerCase() === "cisc481" ||
+            course.courseId.toLowerCase() === "cisc483" ||
+            course.courseId.toLowerCase() === "cisc484" ||
+            course.courseId.toLowerCase() === "cisc474" ||
+            course.courseId.toLowerCase() === "cpeg470" ||
+            course.courseId.toLowerCase() === "cpeg471" ||
+            course.courseId.toLowerCase() === "cpeg472" ||
+            course.courseId.toLowerCase() === "cpeg473" ||
+            course.courseId.toLowerCase() === "cpeg474" ||
+            course.courseId.toLowerCase() === "cpeg475" ||
+            course.courseId.toLowerCase() === "cpeg476" ||
+            course.courseId.toLowerCase() === "cpeg494" ||
+            course.courseId.toLowerCase() === "cpeg495" ||
+            course.courseId.toLowerCase() === "eleg387" ||
+            course.courseId.toLowerCase() === "eleg487"
         ) {
             totalRestCreditCount += course.credithours;
         }

@@ -58,10 +58,6 @@ export const SemesterViewer = ({
     let creditTotal = 0;
     courses.map((course: Course) => (creditTotal += course.credithours));
 
-    //console.log("courses = ", courses);
-
-    //Component View
-
     //Return View
     return (
         <div
@@ -74,11 +70,10 @@ export const SemesterViewer = ({
                 borderStyle: "solid",
                 borderRadius: "5px"
             }}
-            data-testID="fullSemester-div"
         >
             {/** Title and Top Level Buttons for Semester component */}
-            <Form.Group as={Row} data-testID="semesterTop-Group">
-                <Col data-testID="info-col">
+            <Form.Group as={Row}>
+                <Col>
                     <h2
                         style={{
                             textAlign: "left",
@@ -86,17 +81,7 @@ export const SemesterViewer = ({
                             marginTop: "5px",
                             marginBottom: "0px"
                         }}
-                        data-testID="semesterInfo-Header"
                     >
-                        {/**
-                         * {+semesterIndex +
-                            1 +
-                            " " +
-                            semester.term +
-                            "  " +
-                            semester.year}
-                         * 
-                         */}
                         {semester.term + "  " + semester.year}
                     </h2>
                     <p
@@ -105,7 +90,6 @@ export const SemesterViewer = ({
                             textAlign: "left",
                             marginLeft: "20px"
                         }}
-                        data-testID="semesterCredits-para"
                     >
                         Total Credits: {creditTotal}
                     </p>
@@ -116,7 +100,6 @@ export const SemesterViewer = ({
                         marginTop: "10px",
                         marginRight: "20px"
                     }}
-                    data-testID="Buttons-col"
                 >
                     <Button
                         onClick={() =>
@@ -159,7 +142,7 @@ export const SemesterViewer = ({
                     </Button>
                     <Button
                         onClick={() => setVisible(!visible)}
-                        data-testID="show/hide-button"
+                        data-testId="show-hide-button"
                         style={{ marginTop: "5px", marginRight: "5px" }}
                     >
                         Show/Hide
@@ -169,13 +152,10 @@ export const SemesterViewer = ({
 
             {/** Shows the SemesterView Component when not hidden */}
             {visible && (
-                <div data-testID="courseList-div">
+                <div>
                     {courses.map(
                         (course: Course, ind: number): JSX.Element => (
-                            <div
-                                key={course.courseId}
-                                data-testID="courseViewer-div"
-                            >
+                            <div key={course.courseId}>
                                 <CourseViewer
                                     course={course}
                                     updateCourse={updateCourse}

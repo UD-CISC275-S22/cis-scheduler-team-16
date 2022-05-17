@@ -70,6 +70,69 @@ describe("Planner Tests", () => {
             select[1],
             "Theory and Computation (Discrete Track)"
         );
+        userEvent.selectOptions(
+            select[1],
+            "Theory and Computation (Continuous Track)"
+        );
         userEvent.selectOptions(select[1], "Traditional Computer Science (BS)");
+    });
+    test("Adding from the course pool works", () => {
+        const textboxes = screen.queryAllByRole("textbox");
+        const titleInstances = screen.queryByText("ANTH101");
+        expect(titleInstances).not.toBeInTheDocument();
+        userEvent.type(textboxes[0], "ANTH101");
+        const submitButton = screen.getByTestId("submit-course-pool-button");
+        submitButton.click();
+        const titleInstancesFinal = screen.queryByText("ANTH101");
+        expect(titleInstancesFinal).toBeInTheDocument();
+        const closeButton = screen.getByTestId("close-modal-button");
+        closeButton.click();
+    });
+    test("Check that you can add to a course not in the first semester", () => {
+        const textboxes = screen.queryAllByRole("textbox");
+        const titleInstances = screen.queryByText("ANTH101");
+        expect(titleInstances).not.toBeInTheDocument();
+        userEvent.type(textboxes[0], "ANTH101");
+        const select = screen.queryAllByRole("combobox");
+        userEvent.selectOptions(select[2], "Spring");
+        const entryBox = screen.getByTestId("course-pool-entry-box");
+        userEvent.type(entryBox, "1");
+        const submitButton = screen.getByTestId("submit-course-pool-button");
+        submitButton.click();
+    });
+    test("Check that you can update the date in the term selection box", () => {
+        const textboxes = screen.queryAllByRole("textbox");
+        expect(textboxes[1]).toHaveValue("2022");
+        userEvent.type(textboxes[1], "2");
+        const textboxes_final = screen.queryAllByRole("textbox");
+        expect(textboxes_final[1]).toHaveValue("20222");
+    });
+    test("Expand requirements not met by plan", () => {
+        const expandButton = screen.getByTestId("expand-problems");
+        expandButton.click();
+        const headerText = screen.queryByText(
+            "Please correct the following issues:"
+        );
+        expect(headerText).toBeInTheDocument();
+    });
+    test("Test the Export CSV Button", () => {
+        const exportButton = screen.getByTestId("export-csv-button");
+        exportButton.click();
+    });
+    test("Test the show/hide import button", () => {
+        const initialHeader = screen.queryByText("Upload a file");
+        expect(initialHeader).not.toBeInTheDocument();
+        const showButton = screen.getByTestId("show-hide-import-button");
+        showButton.click();
+        const finalHeader = screen.queryByText("Upload a file");
+        expect(finalHeader).toBeInTheDocument();
+    });
+    test("Click import button", () => {
+        const initialHeader = screen.queryByText("Upload a file");
+        expect(initialHeader).not.toBeInTheDocument();
+        const showButton = screen.getByTestId("show-hide-import-button");
+        showButton.click();
+        const importButton = screen.getByTestId("import-button");
+        importButton.click();
     });
 });

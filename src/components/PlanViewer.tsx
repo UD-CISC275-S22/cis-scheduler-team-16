@@ -127,9 +127,6 @@ export function PlanViewer(): JSX.Element {
 
     //This is the Control
     function updatePlan(event: React.ChangeEvent<HTMLSelectElement>) {
-        //console.log("setting plan to : ", allPlans[+event.target.value]);
-        console.log(allPlans);
-        console.log(curPlan.semesters);
         const clonedAllPlans = [...allPlans].map((eachPlan: Plan) => {
             if (eachPlan.id === curPlan.id) {
                 return {
@@ -255,7 +252,7 @@ export function PlanViewer(): JSX.Element {
                         <Form.Select
                             value={curPlan.id}
                             onChange={updatePlan}
-                            data-testID="plan-dropdown"
+                            data-testId="plan-dropdown"
                         >
                             {allPlans.map(
                                 (plan: Plan, ind: number): JSX.Element => (
@@ -285,7 +282,7 @@ export function PlanViewer(): JSX.Element {
                         <Form.Select
                             value={currentConcentration}
                             onChange={updateCurrentConcentration}
-                            data-testID="concentration-dropdown"
+                            data-testId="concentration-dropdown"
                         >
                             <option value="Artificial Intelligence">
                                 Artificial Intelligence
@@ -356,7 +353,7 @@ export function PlanViewer(): JSX.Element {
                                     })
                                 }
                                 style={{ marginTop: "5px", marginRight: "5px" }}
-                                data-testID="add-plan-button"
+                                data-testId="add-plan-button"
                             >
                                 New Plan
                             </Button>
@@ -378,19 +375,19 @@ export function PlanViewer(): JSX.Element {
                                     })
                                 }
                                 style={{ marginRight: "5px", marginTop: "5px" }}
-                                data-testID="delete-plan-button"
+                                data-testId="delete-plan-button"
                             >
                                 Discard Plan
                             </Button>
                             <Button
-                                data-testid="save-plan-button"
+                                data-testId="save-plan-button"
                                 onClick={savePlan}
                                 style={{ marginRight: "5px", marginTop: "5px" }}
                             >
                                 Save Plan
                             </Button>
                             <Button
-                                data-testid="export-csv-button"
+                                data-testId="export-csv-button"
                                 style={{ marginRight: "5px", marginTop: "5px" }}
                                 onClick={() => {
                                     for (
@@ -451,7 +448,6 @@ export function PlanViewer(): JSX.Element {
                                     const csvContent = `data:text/csv;charset=utf-8,${CSVdata.map(
                                         (e) => e.join(",")
                                     ).join("\n")}`;
-                                    console.log(csvContent);
 
                                     const encodedUri = encodeURI(csvContent);
                                     const link = document.createElement("a");
@@ -480,6 +476,7 @@ export function PlanViewer(): JSX.Element {
                                         />
                                     </Form.Group>
                                     <Button
+                                        data-testId="import-button"
                                         onClick={() =>
                                             updatePlanCSV({
                                                 content,
@@ -515,7 +512,7 @@ export function PlanViewer(): JSX.Element {
                         }}
                     >
                         <Button
-                            data-testID="addSem-button"
+                            data-testId="addSem-button"
                             onClick={() => setEditSem(!editSem)}
                         >
                             Add Semester
@@ -526,7 +523,6 @@ export function PlanViewer(): JSX.Element {
                 <p> </p>
                 {editSem && (
                     <div
-                        data-testID="editSem-div"
                         style={{
                             marginLeft: "20px",
                             marginRight: "20px",
@@ -547,7 +543,7 @@ export function PlanViewer(): JSX.Element {
                                     <Form.Select
                                         value={term}
                                         onChange={updateTerm}
-                                        data-testID="term-dropdown"
+                                        data-testId="term-dropdown"
                                     >
                                         {termList.map((term: string) => (
                                             <option key={term} value={term}>
@@ -567,14 +563,15 @@ export function PlanViewer(): JSX.Element {
                                                     0
                                             )
                                         }
-                                        data-testID="year-textbox"
+                                        data-testId="year-textbox"
                                     />
                                 </Col>
                             </Row>
                             <p> </p>
                             <Button
                                 style={{
-                                    backgroundColor: "green"
+                                    backgroundColor: "green",
+                                    borderStyle: "none"
                                 }}
                                 onClick={() =>
                                     updateSemesterCourse({
@@ -592,19 +589,20 @@ export function PlanViewer(): JSX.Element {
                                         setShowMessage
                                     })
                                 }
-                                data-testID="insertSem-button"
+                                data-testId="insertSem-button"
                             >
-                                insert
+                                Insert
                             </Button>
                             {"  "}
                             <Button
-                                data-testID="cancelSem-button"
+                                data-testId="cancelSem-button"
                                 style={{
-                                    backgroundColor: "red"
+                                    backgroundColor: "red",
+                                    borderStyle: "none"
                                 }}
                                 onClick={() => setEditSem(!editSem)}
                             >
-                                cancel
+                                Cancel
                             </Button>
                         </Container>
                         <p> </p>
@@ -637,7 +635,7 @@ export function PlanViewer(): JSX.Element {
                         <Form.Select
                             value={poolTerm}
                             onChange={updatePoolTerm}
-                            data-testID="course-pool-term-dropdown"
+                            data-testId="course-pool-term-dropdown"
                         >
                             {termList.map((newTerm: string) => (
                                 <option key={newTerm} value={newTerm}>
@@ -652,7 +650,7 @@ export function PlanViewer(): JSX.Element {
                             onChange={(
                                 event: React.ChangeEvent<HTMLInputElement>
                             ) => setPoolYear(parseInt(event.target.value) || 0)}
-                            data-testID="course-pool-year-textbox"
+                            data-testId="course-pool-year-textbox"
                         />
                     </Col>
                 </Row>
@@ -663,6 +661,7 @@ export function PlanViewer(): JSX.Element {
                         marginBottom: "20px",
                         borderStyle: "none"
                     }}
+                    data-testId="submit-course-pool-button"
                     onClick={addFromCoursePool}
                 >
                     Add Course

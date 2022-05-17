@@ -97,22 +97,22 @@ export function testTheoryDiscreteRequirements(
     let totalRestCreditCount = 0;
     planCourses.map((course: Course) => {
         if (
-            course.courseId === "cisc372" ||
-            course.courseId === "cisc404" ||
-            course.courseId === "cisc410" ||
-            course.courseId === "cisc414" ||
-            course.courseId === "cisc471" ||
-            course.courseId === "cisc481" ||
-            course.courseId === "eleg387" ||
-            course.courseId === "eleg487" ||
-            course.courseId === "math243" ||
-            course.courseId === "math245" ||
-            course.courseId === "math302" ||
-            course.courseId === "math315" ||
-            course.courseId === "math350" ||
-            course.courseId === "math428" ||
-            course.courseId === "math450" ||
-            course.courseId === "math451"
+            course.courseId.toLowerCase() === "cisc372" ||
+            course.courseId.toLowerCase() === "cisc404" ||
+            course.courseId.toLowerCase() === "cisc410" ||
+            course.courseId.toLowerCase() === "cisc414" ||
+            course.courseId.toLowerCase() === "cisc471" ||
+            course.courseId.toLowerCase() === "cisc481" ||
+            course.courseId.toLowerCase() === "eleg387" ||
+            course.courseId.toLowerCase() === "eleg487" ||
+            course.courseId.toLowerCase() === "math243" ||
+            course.courseId.toLowerCase() === "math245" ||
+            course.courseId.toLowerCase() === "math302" ||
+            course.courseId.toLowerCase() === "math315" ||
+            course.courseId.toLowerCase() === "math350" ||
+            course.courseId.toLowerCase() === "math428" ||
+            course.courseId.toLowerCase() === "math450" ||
+            course.courseId.toLowerCase() === "math451"
         ) {
             totalRestCreditCount += course.credithours;
         }

@@ -18,7 +18,7 @@ export function DisplayMessage({
                 show={show}
                 onHide={handleClose}
                 animation={true}
-                fade={false}
+                data-testId="message-modal"
             >
                 <Modal.Header closeButton>
                     <Modal.Title>{header}</Modal.Title>
@@ -28,7 +28,12 @@ export function DisplayMessage({
                     <br></br>
                     <br></br>
                     <div style={{ textAlign: "right" }}>
-                        <Button onClick={handleClose}>Close</Button>
+                        <Button
+                            onClick={handleClose}
+                            data-testId="close-modal-button"
+                        >
+                            Close
+                        </Button>
                     </div>
                 </Modal.Body>
             </Modal>
