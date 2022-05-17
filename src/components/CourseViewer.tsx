@@ -207,7 +207,7 @@ export function CourseViewer({
                             data-testId="course-delete-button"
                             style={{
                                 backgroundColor: "red",
-                                outlineColor: "slategray"
+                                borderColor: "darkred"
                             }}
                             onClick={() =>
                                 deleteCourse(semesterIndex, courseIndex)
