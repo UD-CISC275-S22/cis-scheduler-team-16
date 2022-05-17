@@ -2,7 +2,7 @@
 > react-typescript-starter@0.1.0 test
 > react-scripts test "--coverage"
 
-PASS src/tests/CourseViewer.test.tsx (7.186 s)
+PASS src/tests/CourseViewer.test.tsx (9.75 s)
   ● Console
 
     console.error
@@ -50,13 +50,7 @@ PASS src/tests/CourseViewer.test.tsx (7.186 s)
       at setInitialProperties (node_modules/react-dom/cjs/react-dom.development.js:9041:5)
       at finalizeInitialChildren (node_modules/react-dom/cjs/react-dom.development.js:10201:3)
 
-    console.log
-      semester term and year Spring 2022
-
-      at map (src/components/utility/UpdatePlanSemesterCourses.tsx:255:37)
-          at Array.map (<anonymous>)
-
-PASS src/tests/Bioinformatics.test.tsx
+PASS src/tests/Bioinformatics.test.tsx (5.938 s)
   ● Console
 
     console.error
@@ -536,105 +530,6 @@ PASS src/tests/PlanViewer.test.tsx
       at setInitialProperties (node_modules/react-dom/cjs/react-dom.development.js:9041:5)
       at finalizeInitialChildren (node_modules/react-dom/cjs/react-dom.development.js:10201:3)
 
-    console.log
-      Add Plan:  [
-        { name: 'My Plan 1', id: '0', semesters: [ [Object], [Object] ] },
-        { name: 'My Plan 2', id: '1', semesters: [ [Object], [Object] ] },
-        { name: 'My Plan 3', semesters: [], id: '2' }
-      ]
-
-      at planAdder (src/components/utility/UpdatePlanSemesterCourses.tsx:82:21)
-
-    console.log
-      Add Plan:  [
-        { name: 'My Plan 1', id: '0', semesters: [ [Object], [Object] ] },
-        { name: 'My Plan 2', id: '1', semesters: [ [Object], [Object] ] }
-      ]
-
-      at planAdder (src/components/utility/UpdatePlanSemesterCourses.tsx:83:21)
-
-    console.log
-      newPlans Before [
-        { name: 'My Plan 1', id: '0', semesters: [ [Object], [Object] ] },
-        { name: 'My Plan 2', id: '1', semesters: [ [Object], [Object] ] }
-      ]
-
-      at planDeleter (src/components/utility/UpdatePlanSemesterCourses.tsx:111:25)
-
-    console.log
-      newPlans After [ { name: 'My Plan 2', id: '0', semesters: [ [Object], [Object] ] } ]
-
-      at planDeleter (src/components/utility/UpdatePlanSemesterCourses.tsx:116:25)
-
-    console.log
-      Add Plan:  [
-        { name: 'My Plan 1', id: '0', semesters: [ [Object], [Object] ] },
-        { name: 'My Plan 2', id: '1', semesters: [ [Object], [Object] ] },
-        { name: 'My Plan 3', semesters: [], id: '2' }
-      ]
-
-      at planAdder (src/components/utility/UpdatePlanSemesterCourses.tsx:82:21)
-
-    console.log
-      Add Plan:  [
-        { name: 'My Plan 1', id: '0', semesters: [ [Object], [Object] ] },
-        { name: 'My Plan 2', id: '1', semesters: [ [Object], [Object] ] }
-      ]
-
-      at planAdder (src/components/utility/UpdatePlanSemesterCourses.tsx:83:21)
-
-    console.log
-      newPlans Before [
-        { name: 'My Plan 1', id: '0', semesters: [ [Object], [Object] ] },
-        { name: 'My Plan 2', id: '1', semesters: [ [Object], [Object] ] },
-        { name: 'My Plan 3', semesters: [], id: '2' }
-      ]
-
-      at planDeleter (src/components/utility/UpdatePlanSemesterCourses.tsx:111:25)
-
-    console.log
-      newPlans After [
-        { name: 'My Plan 1', id: '0', semesters: [ [Object], [Object] ] },
-        { name: 'My Plan 2', id: '1', semesters: [ [Object], [Object] ] }
-      ]
-
-      at planDeleter (src/components/utility/UpdatePlanSemesterCourses.tsx:116:25)
-
-    console.log
-      sem
-
-      at onClick (src/components/PlanViewer.tsx:431:53)
-
-    console.log
-      None
-
-      at onClick (src/components/PlanViewer.tsx:431:53)
-
-    console.log
-      None
-
-      at onClick (src/components/PlanViewer.tsx:431:53)
-
-    console.log
-      None
-
-      at onClick (src/components/PlanViewer.tsx:431:53)
-
-    console.log
-      None
-
-      at onClick (src/components/PlanViewer.tsx:431:53)
-
-    console.log
-      CSVarray  [ '' ]
-
-      at updatePlanCSV (src/components/utility/UpdatePlanCSV.tsx:24:13)
-
-    console.log
-
-
-      at updatePlanCSV (src/components/utility/UpdatePlanCSV.tsx:26:17)
-
 PASS src/tests/HighPerformanceData.test.tsx
   ● Console
 
@@ -786,20 +681,20 @@ PASS src/App.test.tsx
 ----------------------------------------------|---------|----------|---------|---------|-------------------
 File                                          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ----------------------------------------------|---------|----------|---------|---------|-------------------
-All files                                     |   97.54 |    89.72 |   97.85 |   97.53 |                   
+All files                                     |   97.62 |    89.72 |   97.85 |   97.61 |                   
  src                                          |     100 |      100 |     100 |     100 |                   
   App.tsx                                     |     100 |      100 |     100 |     100 |                   
- src/components                               |   94.76 |    77.58 |   96.96 |   94.73 |                   
+ src/components                               |   94.73 |    77.58 |   96.96 |    94.7 |                   
   CourseViewer.tsx                            |     100 |     90.9 |     100 |     100 | 87-88             
-  PlanViewer.tsx                              |   92.85 |    67.64 |   95.34 |   92.85 | 21,30,78-92       
+  PlanViewer.tsx                              |    92.8 |    67.64 |   95.34 |    92.8 | 21,30,78-92       
   SemesterViewer.tsx                          |     100 |      100 |     100 |     100 |                   
- src/components/utility                       |    94.9 |    71.65 |   97.56 |   94.89 |                   
+ src/components/utility                       |   95.13 |    71.65 |   97.56 |   95.11 |                   
   DisplayMessage.tsx                          |     100 |      100 |     100 |     100 |                   
   GenerateCoursePool.tsx                      |     100 |      100 |     100 |     100 |                   
   GetInitialPlans.tsx                         |     100 |      100 |     100 |     100 |                   
   PlanTester.tsx                              |   98.07 |    73.02 |   94.73 |   98.07 | 255,515           
-  UpdatePlanCSV.tsx                           |      60 |    41.66 |     100 |   57.89 | 37-61,73-96       
-  UpdatePlanSemesterCourses.tsx               |   97.03 |    77.63 |     100 |   97.03 | 306-310,328       
+  UpdatePlanCSV.tsx                           |   58.82 |    41.66 |     100 |   56.25 | 35-58,70-93       
+  UpdatePlanSemesterCourses.tsx               |   96.92 |    77.63 |     100 |   96.92 | 295-299,317       
  src/components/utility/concentration-testers |     100 |      100 |     100 |     100 |                   
   ArtificialIntelligenceTester.tsx            |     100 |      100 |     100 |     100 |                   
   BioinformaticsTester.tsx                    |     100 |      100 |     100 |     100 |                   
@@ -821,5 +716,5 @@ All files                                     |   97.54 |    89.72 |   97.85 |  
 Test Suites: 14 passed, 14 total
 Tests:       160 passed, 160 total
 Snapshots:   0 total
-Time:        40.71 s
+Time:        57.7 s
 Ran all test suites.
