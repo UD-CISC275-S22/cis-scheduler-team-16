@@ -581,7 +581,9 @@ export function PlanViewer(): JSX.Element {
                                         planSetter,
                                         setModalMessage,
                                         setModalHeader,
-                                        setShowMessage
+                                        setShowMessage,
+                                        editSem: editSem,
+                                        setEditSem
                                     })
                                 }
                                 data-testId="insertSem-button"
