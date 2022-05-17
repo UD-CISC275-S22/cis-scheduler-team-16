@@ -22,6 +22,8 @@ if (previousData !== null) {
 }
 
 export function PlanViewer(): JSX.Element {
+    //This little bit of code figures out if we should use the saved data from the browser
+    //or load in data from the default plan we've included
     let INIT_PLAN_DATA: Plan[] = [];
     const INITIAL_PLANS: Plan[] = getInitialPlans();
     if (savedPlanArray.length !== 0) {
