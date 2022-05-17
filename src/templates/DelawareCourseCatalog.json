@@ -28381,16 +28381,16 @@
     },
     "CISC367": {
         "courseId": "CISC367",
-        "name": "SEMINAR",
+        "name": "Introduction to Data Science",
         "prereqs": [],
-        "credithours": 6,
-        "satisfied_requirements": [],
+        "credithours": 3,
+        "satisfied_requirements": ["Technical"],
         "backup": {
             "courseId": "CISC367",
             "name": "SEMINAR",
             "prereqs": [],
-            "credithours": 6,
-            "satisfied_requirements": []
+            "credithours": 3,
+            "satisfied_requirements": ["Technical"]
         }
     },
     "CISC372": {
@@ -34196,13 +34196,13 @@
         "name": "Teaching Reading in Secondary English",
         "prereqs": ["ENGL110"],
         "credithours": 3,
-        "satisfied_requirements": [],
+        "satisfied_requirements": ["sem"],
         "backup": {
             "courseId": "EDUC422",
             "name": "Teaching Reading in Secondary English",
             "prereqs": ["ENGL110"],
             "credithours": 3,
-            "satisfied_requirements": []
+            "satisfied_requirements": ["sem"]
         }
     },
     "EDUC425": {
