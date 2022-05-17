@@ -223,9 +223,10 @@ export function PlanViewer(): JSX.Element {
                             data-testId="plan-dropdown"
                         >
                             {allPlans.map(
-                                (plan: Plan, ind: number): JSX.Element => (
-                                    <option key={ind} value={ind}>
+                                (plan: Plan): JSX.Element => (
+                                    <option key={plan.id} value={plan.id}>
                                         {" "}
+                                        {console.log(plan.id)}
                                         {plan.name}{" "}
                                     </option>
                                 )
@@ -581,7 +582,9 @@ export function PlanViewer(): JSX.Element {
                                         planSetter,
                                         setModalMessage,
                                         setModalHeader,
-                                        setShowMessage
+                                        setShowMessage,
+                                        editSem: editSem,
+                                        setEditSem
                                     })
                                 }
                                 data-testId="insertSem-button"
