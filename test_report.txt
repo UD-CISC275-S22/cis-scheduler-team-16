@@ -2,7 +2,7 @@
 > react-typescript-starter@0.1.0 test
 > react-scripts test "--coverage"
 
-PASS src/tests/CourseViewer.test.tsx (7.475 s)
+PASS src/tests/CourseViewer.test.tsx (7.979 s)
   ● Console
 
     console.error
@@ -721,5 +721,5 @@ All files                                     |   97.82 |     90.1 |   97.84 |  
 Test Suites: 14 passed, 14 total
 Tests:       160 passed, 160 total
 Snapshots:   0 total
-Time:        43.072 s
+Time:        45.973 s
 Ran all test suites.
