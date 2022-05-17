@@ -2,7 +2,7 @@
 > react-typescript-starter@0.1.0 test
 > react-scripts test "--coverage"
 
-PASS src/tests/CourseViewer.test.tsx (7.121 s)
+PASS src/tests/CourseViewer.test.tsx (7.186 s)
   ● Console
 
     console.error
@@ -601,9 +601,39 @@ PASS src/tests/PlanViewer.test.tsx
       at planDeleter (src/components/utility/UpdatePlanSemesterCourses.tsx:116:25)
 
     console.log
+      sem
+
+      at onClick (src/components/PlanViewer.tsx:431:53)
+
+    console.log
+      None
+
+      at onClick (src/components/PlanViewer.tsx:431:53)
+
+    console.log
+      None
+
+      at onClick (src/components/PlanViewer.tsx:431:53)
+
+    console.log
+      None
+
+      at onClick (src/components/PlanViewer.tsx:431:53)
+
+    console.log
+      None
+
+      at onClick (src/components/PlanViewer.tsx:431:53)
+
+    console.log
       CSVarray  [ '' ]
 
       at updatePlanCSV (src/components/utility/UpdatePlanCSV.tsx:24:13)
+
+    console.log
+
+
+      at updatePlanCSV (src/components/utility/UpdatePlanCSV.tsx:26:17)
 
 PASS src/tests/HighPerformanceData.test.tsx
   ● Console
@@ -756,19 +786,19 @@ PASS src/App.test.tsx
 ----------------------------------------------|---------|----------|---------|---------|-------------------
 File                                          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ----------------------------------------------|---------|----------|---------|---------|-------------------
-All files                                     |   97.53 |    90.15 |   97.85 |   97.52 |                   
+All files                                     |   97.54 |    89.72 |   97.85 |   97.53 |                   
  src                                          |     100 |      100 |     100 |     100 |                   
   App.tsx                                     |     100 |      100 |     100 |     100 |                   
- src/components                               |   94.73 |    77.58 |   96.96 |    94.7 |                   
+ src/components                               |   94.76 |    77.58 |   96.96 |   94.73 |                   
   CourseViewer.tsx                            |     100 |     90.9 |     100 |     100 | 87-88             
-  PlanViewer.tsx                              |    92.8 |    67.64 |   95.34 |    92.8 | 21,30,78-92       
+  PlanViewer.tsx                              |   92.85 |    67.64 |   95.34 |   92.85 | 21,30,78-92       
   SemesterViewer.tsx                          |     100 |      100 |     100 |     100 |                   
- src/components/utility                       |   94.89 |     72.8 |   97.56 |   94.87 |                   
+ src/components/utility                       |    94.9 |    71.65 |   97.56 |   94.89 |                   
   DisplayMessage.tsx                          |     100 |      100 |     100 |     100 |                   
   GenerateCoursePool.tsx                      |     100 |      100 |     100 |     100 |                   
   GetInitialPlans.tsx                         |     100 |      100 |     100 |     100 |                   
   PlanTester.tsx                              |   98.07 |    73.02 |   94.73 |   98.07 | 255,515           
-  UpdatePlanCSV.tsx                           |   57.89 |       50 |     100 |   55.55 | 36-54,66-89       
+  UpdatePlanCSV.tsx                           |      60 |    41.66 |     100 |   57.89 | 37-61,73-96       
   UpdatePlanSemesterCourses.tsx               |   97.03 |    77.63 |     100 |   97.03 | 306-310,328       
  src/components/utility/concentration-testers |     100 |      100 |     100 |     100 |                   
   ArtificialIntelligenceTester.tsx            |     100 |      100 |     100 |     100 |                   
@@ -791,5 +821,5 @@ All files                                     |   97.53 |    90.15 |   97.85 |  
 Test Suites: 14 passed, 14 total
 Tests:       160 passed, 160 total
 Snapshots:   0 total
-Time:        40.958 s
+Time:        40.71 s
 Ran all test suites.
