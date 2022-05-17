@@ -1,48 +1,39 @@
 import React, { useState } from "react";
 import { Button, Col, Row, Form, Container } from "react-bootstrap";
-import { Course, CourseBackup } from "../templates/course";
+import { Course } from "../templates/course";
 import { Semester } from "../templates/semester";
-//import { CourseViewer } from "./CourseViewer";
 import { SemesterViewer } from "./SemesterViewer";
 import { Plan } from "../templates/plan";
-import planList from "../templates/PlansList.json";
 import { checkPlan } from "./utility/PlanTester";
 import { generateCoursePool } from "./utility/GenerateCoursePool";
 import { DisplayMessage } from "./utility/DisplayMessage";
 import { updatePlanCSV } from "./utility/UpdatePlanCSV";
 import { updateSemesterCourse } from "./utility/UpdatePlanSemesterCourses";
+import { getInitialPlans } from "./utility/GetInitialPlans";
 
-const termList: string[] = ["Summer", "Fall", "Winter", "Spring"]; //list of diff terms
+const termList: string[] = ["Summer", "Fall", "Winter", "Spring"];
 
-const plansKey = "planData"; //key for saved plans array
-const previousPlans = localStorage.getItem(plansKey); //getting ahold of previous saved plans
+//Read in data from the browser cache if it exists!
+let savedPlanArray: Plan[] = [];
+const saveDataKey = "PLANNER_DATA_KEY";
+const previousData = localStorage.getItem(saveDataKey);
+if (previousData !== null) {
+    savedPlanArray = JSON.parse(previousData);
+}
 
 export function PlanViewer(): JSX.Element {
-    const INITIAL_PLANS: Plan[] = planList.map(
-        (plan): Plan => ({
-            ...plan,
-            semesters: plan.semesters.map(
-                (semester): Semester => ({
-                    ...semester,
-                    courses: semester.courses.map(
-                        (course): Course => ({
-                            ...course,
-                            backup: course.backup as CourseBackup
-                        })
-                    )
-                })
-            )
-        })
-    );
-    let planSave: Plan[] = [];
-
-    // reloading previous data if it exists
-    if (previousPlans !== null) {
-        planSave = JSON.parse(previousPlans);
+    //This little bit of code figures out if we should use the saved data from the browser
+    //or load in data from the default plan we've included
+    let INIT_PLAN_DATA: Plan[] = [];
+    const INITIAL_PLANS: Plan[] = getInitialPlans();
+    if (savedPlanArray.length !== 0) {
+        INIT_PLAN_DATA = savedPlanArray;
+    } else {
+        INIT_PLAN_DATA = INITIAL_PLANS;
     }
 
     // This is the State
-    const [allPlans, setAllPlans] = useState<Plan[]>(INITIAL_PLANS); //changed from planSave initial value
+    const [allPlans, setAllPlans] = useState<Plan[]>(INIT_PLAN_DATA); //changed from planSave initial value
     const [curPlan, setCurPlan] = useState<Plan>(allPlans[0]);
     const [currentConcentration, setCurrentConcentration] = useState<string>(
         "Traditional Computer Science (BS)"
@@ -61,29 +52,6 @@ export function PlanViewer(): JSX.Element {
 
     //Set up the course pool for the current Plan:
     const COURSE_POOL: Course[] = generateCoursePool(curPlan.semesters);
-
-    function savePlan() {
-        // function used to save curPlan
-        const oldPlan = planSave.find(
-            //looking for similar saved plan if its there
-            (plan: Plan): boolean => plan.id === curPlan.id
-        );
-        if (oldPlan !== undefined) {
-            //if the saved plan is already there, we update it
-            setAllPlans(
-                allPlans.map(
-                    (plan: Plan): Plan =>
-                        plan.id === curPlan.id ? curPlan : plan
-                )
-            );
-            localStorage.setItem(plansKey, JSON.stringify(allPlans));
-        }
-        if (oldPlan === undefined) {
-            //if its not there, we append it to the end
-            setAllPlans([...allPlans, curPlan]);
-            localStorage.setItem(plansKey, JSON.stringify(allPlans));
-        }
-    }
 
     // Get the total number of credit hours for this Plan
     let totalCredits = 0;
@@ -381,10 +349,27 @@ export function PlanViewer(): JSX.Element {
                             </Button>
                             <Button
                                 data-testId="save-plan-button"
-                                onClick={savePlan}
+                                onClick={() =>
+                                    localStorage.setItem(
+                                        saveDataKey,
+                                        JSON.stringify(allPlans)
+                                    )
+                                }
                                 style={{ marginRight: "5px", marginTop: "5px" }}
                             >
-                                Save Plan
+                                Save To Browser Cache
+                            </Button>
+                            <Button
+                                data-testId="clear-cache-button"
+                                style={{ marginRight: "5px", marginTop: "5px" }}
+                                onClick={() =>
+                                    localStorage.setItem(
+                                        saveDataKey,
+                                        JSON.stringify("")
+                                    )
+                                }
+                            >
+                                Clear Browser Cache
                             </Button>
                             <Button
                                 data-testId="export-csv-button"

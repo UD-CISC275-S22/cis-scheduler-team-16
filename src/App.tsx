@@ -1,9 +1,7 @@
 import React from "react";
 import "./App.css";
 import headerImage from "./media/banner.png";
-//import { SemesterViewer } from "./components/SemesterViewer";
 import { PlanViewer } from "./components/PlanViewer";
-//import { Semester } from "./templates/semester";
 
 function App(): JSX.Element {
     return (
