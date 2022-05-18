@@ -6,7 +6,7 @@ export function testSystemNetworkRequirements(
     planCourses: Course[]
 ): ConcentrationCheck {
     const checkResults: ConcentrationCheck = {
-        meetsConcentrationRequirements: false,
+        meetsConcentrationRequirements: true,
         errorMessages: []
     };
 

@@ -6,7 +6,7 @@ export function testCyberRequirements(
     planCourses: Course[]
 ): ConcentrationCheck {
     const checkResults: ConcentrationCheck = {
-        meetsConcentrationRequirements: false,
+        meetsConcentrationRequirements: true,
         errorMessages: []
     };
 
