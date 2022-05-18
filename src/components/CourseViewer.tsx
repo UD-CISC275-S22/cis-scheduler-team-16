@@ -158,6 +158,10 @@ export function CourseViewer({
                                         "mnt",
                                         "Mathematics, Natural Sciences, and Technology"
                                     )
+                                    .replace(
+                                        "mnst",
+                                        "Mathematics, Natural Sciences, and Technology"
+                                    )
                                     .replace("cap", "Capstone Experience")
                                     .replace("ulc", "Upper Level Credit")
                                     .replace(
