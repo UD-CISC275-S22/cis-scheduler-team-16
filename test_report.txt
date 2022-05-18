@@ -2,7 +2,7 @@
 > react-typescript-starter@0.1.0 test
 > react-scripts test "--coverage"
 
-PASS src/tests/CourseViewer.test.tsx (10.743 s)
+PASS src/tests/CourseViewer.test.tsx (7.927 s)
   ● Console
 
     console.error
@@ -50,7 +50,7 @@ PASS src/tests/CourseViewer.test.tsx (10.743 s)
       at setInitialProperties (node_modules/react-dom/cjs/react-dom.development.js:9041:5)
       at finalizeInitialChildren (node_modules/react-dom/cjs/react-dom.development.js:10201:3)
 
-PASS src/tests/Bioinformatics.test.tsx (6.784 s)
+PASS src/tests/Bioinformatics.test.tsx
   ● Console
 
     console.error
@@ -716,5 +716,5 @@ All files                                     |   97.62 |    89.72 |   97.85 |  
 Test Suites: 14 passed, 14 total
 Tests:       160 passed, 160 total
 Snapshots:   0 total
-Time:        62.192 s
+Time:        42.482 s
 Ran all test suites.
